@@ -10,8 +10,9 @@ class NLPModelCard: UIView {
     }
 
     static func show() {
-        if let window = UIApplication.shared.delegate?.window {
-            let backgroundView = VisionModelCard(frame: window!.bounds)
+        if let delegate = UIApplication.shared.delegate as? AppDelegate,
+            let window = delegate.window {
+            let backgroundView = VisionModelCard(frame: window.bounds)
             backgroundView.backgroundColor = UIColor(white: 0.0, alpha: 0.5)
             let nibs = Bundle.main.loadNibNamed("NLPModelCard", owner: backgroundView, options: nil)
             if let card = nibs?.first as? UIView {
@@ -20,7 +21,7 @@ class NLPModelCard: UIView {
                 card.layer.masksToBounds = true
                 backgroundView.addSubview(card)
             }
-            window?.addSubview(backgroundView)
+            window.addSubview(backgroundView)
         }
     }
 

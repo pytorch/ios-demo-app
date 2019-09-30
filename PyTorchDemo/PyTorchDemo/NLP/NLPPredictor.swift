@@ -16,7 +16,7 @@ class NLPPredictor: Predictor {
         }
         isRunning = true
         let startTime = CFAbsoluteTimeGetCurrent()
-        guard let outputs = module?.predictText(text) else {
+        guard let outputs = module?.predict(text: text) else {
             completionHandler([], 0.0, PredictorError.invalidInputTensor)
             return
         }
@@ -28,7 +28,7 @@ class NLPPredictor: Predictor {
 
     private func loadModel(name: String) -> NLPTorchModule? {
         if let filePath = Bundle.main.path(forResource: name, ofType: "pt"),
-            let module = NLPTorchModule.loadModel(filePath) {
+            let module = NLPTorchModule(fileAtPath: filePath) {
             return module
         } else {
             fatalError("Can't find the model with the given path!")
@@ -36,6 +36,9 @@ class NLPPredictor: Predictor {
     }
 
     private func loadTopics() -> [String] {
-        return module?.topics() ?? []
+        guard let topics = module?.topics() else {
+            fatalError("Load topics failed!")
+        }
+        return topics
     }
 }

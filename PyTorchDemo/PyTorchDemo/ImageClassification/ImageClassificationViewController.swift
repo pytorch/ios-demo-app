@@ -6,12 +6,12 @@ class ImageClassificationViewController: ViewController {
     @IBOutlet var bottomView: ImageClassificationResultView!
     @IBOutlet var benchmarkLabel: UILabel!
     @IBOutlet var indicator: UIActivityIndicatorView!
-    lazy var predictor = ImagePredictor()
+    var predictor = ImagePredictor()
     var cameraController = CameraController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        bottomView.config(3)
+        bottomView.config(resultCount: 3)
         weak var weakSelf = self
         cameraController.configPreviewLayer(cameraView)
         cameraController.videoCaptureCompletionBlock = { buffer, error in

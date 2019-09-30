@@ -19,7 +19,7 @@ class ImagePredictor: Predictor {
         }
         isRunning = true
         let startTime = CFAbsoluteTimeGetCurrent()
-        guard let outputs = module?.predictImage(UnsafeMutableRawPointer(&tensorBuffer)) else {
+        guard let outputs = module?.predict(image: UnsafeMutableRawPointer(&tensorBuffer)) else {
             completionHandler([], 0.0, PredictorError.invalidInputTensor)
             return
         }
@@ -40,7 +40,7 @@ class ImagePredictor: Predictor {
 
     private func loadModel(name: String) -> VisionTorchModule? {
         if let filePath = Bundle.main.path(forResource: name, ofType: "pt"),
-            let module = VisionTorchModule.loadModel(filePath) {
+            let module = VisionTorchModule(fileAtPath: filePath) {
             return module
         } else {
             fatalError("Can't find the model with the given path!")

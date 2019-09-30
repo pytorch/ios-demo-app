@@ -20,7 +20,7 @@ class ImageClassificationResultView: UIView {
         contentView.setup(self)
     }
 
-    func config(_ count: Int) {
+    func config(resultCount count: Int) {
         for index in 0 ..< count {
             let itemView = ImageClassificationItemView(frame: .zero)
             if index == 0 {
