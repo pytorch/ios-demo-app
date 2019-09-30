@@ -30,7 +30,7 @@ class ImageClassificationResultView: UIView {
                 itemView.resultLabel.font = UIFont.systemFont(ofSize: 14.0)
                 itemView.scoreLabel.font = UIFont.systemFont(ofSize: 14.0)
             }
-            itemView.progressBar.backgroundColor = UIColor(rgb: colors[index])
+            itemView.gradientColor = UIColor(rgb: colors[index])
             containerView.addArrangedSubview(itemView)
             itemViews.append(itemView)
         }

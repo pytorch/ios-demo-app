@@ -5,6 +5,7 @@ class ImageClassificationItemView: UIView {
     @IBOutlet var resultLabel: UILabel!
     @IBOutlet var scoreLabel: UILabel!
     @IBOutlet var progressBar: UIView!
+    var gradientColor = UIColor.clear
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -27,10 +28,10 @@ class ImageClassificationItemView: UIView {
         super.layoutSubviews()
         let gradientLayer = progressBar.layer.sublayers?[0] as? CAGradientLayer
         if let gradientLayer = gradientLayer {
-            gradientLayer.colors = [progressBar.backgroundColor!.cgColor, UIColor.black.cgColor]
-            gradientLayer.startPoint = CGPoint(x: 0, y: 0)
-            gradientLayer.endPoint = CGPoint(x: 1, y: 0)
-            gradientLayer.frame = progressBar.bounds
+            gradientLayer.colors = [gradientColor.cgColor, UIColor.black.cgColor]
+            gradientLayer.startPoint = CGPoint(x: 0, y: 0.5)
+            gradientLayer.endPoint = CGPoint(x: 1, y: 0.5)
+            gradientLayer.frame = CGRect(x: 0, y: 0, width: frame.width, height: frame.height)
         }
     }
 }

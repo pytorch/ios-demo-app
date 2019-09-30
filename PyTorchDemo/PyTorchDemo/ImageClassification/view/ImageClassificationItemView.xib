@@ -19,23 +19,23 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="693" height="312"/>
+            <rect key="frame" x="0.0" y="0.0" width="610" height="92"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="U2F-iI-LsY">
-                    <rect key="frame" x="0.0" y="0.0" width="693" height="312"/>
+                    <rect key="frame" x="0.0" y="0.0" width="610" height="92"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="65D-pB-baz">
-                            <rect key="frame" x="0.0" y="0.0" width="693" height="151"/>
+                            <rect key="frame" x="0.0" y="0.0" width="610" height="41"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gKF-LJ-GjD">
-                                    <rect key="frame" x="0.0" y="0.0" width="50" height="151"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="50" height="41"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EgI-Ha-jQf">
-                                    <rect key="frame" x="633" y="0.0" width="60" height="151"/>
+                                    <rect key="frame" x="550" y="0.0" width="60" height="41"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="60" id="O0t-iy-xxi"/>
                                     </constraints>
@@ -47,11 +47,11 @@
                             <color key="backgroundColor" red="0.094117647058823528" green="0.094117647058823528" blue="0.094117647058823528" alpha="0.60033176369863017" colorSpace="custom" customColorSpace="sRGB"/>
                         </stackView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B5j-9t-Ke2">
-                            <rect key="frame" x="0.0" y="161" width="693" height="151"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <rect key="frame" x="0.0" y="51" width="610" height="41"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                    <integer key="value" value="6"/>
+                                    <integer key="value" value="10"/>
                                 </userDefinedRuntimeAttribute>
                                 <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                             </userDefinedRuntimeAttributes>
@@ -69,7 +69,7 @@
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="177.536231884058" y="80.357142857142847"/>
+            <point key="canvasLocation" x="117.39130434782609" y="6.0267857142857144"/>
         </view>
     </objects>
 </document>
