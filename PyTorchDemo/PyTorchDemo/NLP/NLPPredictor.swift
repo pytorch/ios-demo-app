@@ -1,13 +1,13 @@
 import UIKit
 
 class NLPPredictor: Predictor {
-    var module: TorchModule?
-    var labels: [String] = []
+    var module: NLPTorchModule?
+    var topics: [String] = []
     var isRunning: Bool = false
 
     init() {
         module = loadModel(name: "reddit")
-        labels = loadLabels(name: "topics")
+        topics = loadTopics()
     }
 
     func forward(_ text: String, resultCount: Int, completionHandler: ([InferenceResult]?, Double, Error?) -> Void) {
@@ -16,14 +16,26 @@ class NLPPredictor: Predictor {
         }
         isRunning = true
         let startTime = CFAbsoluteTimeGetCurrent()
-        guard let outputBuffer = module?.predictText(text) else {
+        guard let outputs = module?.predictText(text) else {
             completionHandler([], 0.0, PredictorError.invalidInputTensor)
             return
         }
         let inferenceTime = (CFAbsoluteTimeGetCurrent() - startTime) * 1000
-        let outputs = outputBuffer.floatArray(size: labels.count)
-        let results = getTopN(scores: outputs, count: resultCount, inferenceTime: inferenceTime)
+        let results = topK(scores: outputs, labels: topics, count: resultCount, inferenceTime: inferenceTime)
         completionHandler(results, inferenceTime, nil)
         isRunning = false
+    }
+
+    private func loadModel(name: String) -> NLPTorchModule? {
+        if let filePath = Bundle.main.path(forResource: name, ofType: "pt"),
+            let module = NLPTorchModule.loadModel(filePath) {
+            return module
+        } else {
+            fatalError("Can't find the model with the given path!")
+        }
+    }
+
+    private func loadTopics() -> [String] {
+        return module?.topics() ?? []
     }
 }

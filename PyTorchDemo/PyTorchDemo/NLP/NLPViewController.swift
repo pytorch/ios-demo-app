@@ -29,11 +29,11 @@ extension NLPViewController: UITextViewDelegate {
             weak var weakSelf = self
             DispatchQueue.global().async {
                 self.predictor.forward(content, resultCount: 3, completionHandler: { results, _, error in
-                    if error != nil {
-                        weakSelf?.showAlert(error)
-                        return
-                    }
                     DispatchQueue.main.async {
+                        if error != nil {
+                            weakSelf?.showAlert(error)
+                            return
+                        }
                         if let results = results {
                             weakSelf?.resultView.isHidden = false
                             weakSelf?.resultView.update(results: results)

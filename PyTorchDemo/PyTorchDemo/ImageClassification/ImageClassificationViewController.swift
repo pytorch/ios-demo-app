@@ -15,17 +15,19 @@ class ImageClassificationViewController: ViewController {
         weak var weakSelf = self
         cameraController.configPreviewLayer(cameraView)
         cameraController.videoCaptureCompletionBlock = { buffer, error in
-            if error != nil {
-                weakSelf?.showAlert(error)
-                return
-            }
-            weakSelf?.predictor.forward(buffer, resultCount: 3, completionHandler: { results, inferenceTime, error in
+            DispatchQueue.main.async {
                 if error != nil {
                     weakSelf?.showAlert(error)
                     return
                 }
+            }
+            weakSelf?.predictor.forward(buffer, resultCount: 3, completionHandler: { results, inferenceTime, error in
                 DispatchQueue.main.async {
                     weakSelf?.indicator.isHidden = true
+                    if error != nil {
+                        weakSelf?.showAlert(error)
+                        return
+                    }
                     weakSelf?.bottomView.isHidden = false
                     weakSelf?.benchmarkLabel.isHidden = false
                     if let results = results {
