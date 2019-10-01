@@ -12,27 +12,29 @@ class ImageClassificationViewController: ViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         bottomView.config(resultCount: 3)
-        weak var weakSelf = self
         cameraController.configPreviewLayer(cameraView)
-        cameraController.videoCaptureCompletionBlock = { buffer, error in
+        cameraController.videoCaptureCompletionBlock = { [weak self] buffer, error in
+            guard let strongSelf = self else {
+                return
+            }
             DispatchQueue.main.async {
                 if error != nil {
-                    weakSelf?.showAlert(error)
+                    strongSelf.showAlert(error)
                     return
                 }
             }
-            weakSelf?.predictor.forward(buffer, resultCount: 3, completionHandler: { results, inferenceTime, error in
+            strongSelf.predictor.forward(buffer, resultCount: 3, completionHandler: { results, inferenceTime, error in
                 DispatchQueue.main.async {
-                    weakSelf?.indicator.isHidden = true
+                    strongSelf.indicator.isHidden = true
                     if error != nil {
-                        weakSelf?.showAlert(error)
+                        strongSelf.showAlert(error)
                         return
                     }
-                    weakSelf?.bottomView.isHidden = false
-                    weakSelf?.benchmarkLabel.isHidden = false
+                    strongSelf.bottomView.isHidden = false
+                    strongSelf.benchmarkLabel.isHidden = false
                     if let results = results {
-                        weakSelf?.benchmarkLabel.text = String(format: "%.3fms", inferenceTime)
-                        weakSelf?.bottomView.update(results: results)
+                        strongSelf.benchmarkLabel.text = String(format: "%.3fms", inferenceTime)
+                        strongSelf.bottomView.update(results: results)
                     }
                 }
             })

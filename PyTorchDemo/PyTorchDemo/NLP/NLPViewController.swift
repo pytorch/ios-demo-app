@@ -15,6 +15,11 @@ class NLPViewController: UIViewController {
         NLPModelCard.show()
     }
 
+    @IBAction func onClearClicked(_: Any) {
+        textView.text = ""
+        resultView.isHidden = true
+    }
+
     @IBAction func onBackClicked(_: Any) {
         navigationController?.popViewController(animated: true)
     }
@@ -29,7 +34,7 @@ extension NLPViewController: UITextViewDelegate {
         textView.resignFirstResponder()
         let content = textView.text!
         DispatchQueue.global().async {
-            self.predictor.forward(content, resultCount: 3, completionHandler: { results, _, error in
+            self.predictor.forward(content, resultCount: 3, completionHandler: { results, error in
                 DispatchQueue.main.async {
                     if error != nil {
                         self.showAlert(error)

@@ -18,17 +18,18 @@ extension CVPixelBuffer {
             return nil
         }
         var inBuff = vImage_Buffer(data: baseAddr, height: UInt(croppedImageSize), width: UInt(croppedImageSize), rowBytes: bytesPerRow)
-        guard let dstData = malloc(width * height * bytesPerPixel) else { // dstData will be freed by releaseCallback
+        guard let dstData = malloc(width * height * bytesPerPixel) else {
             return nil
         }
         var outBuff = vImage_Buffer(data: dstData, height: UInt(height), width: UInt(width), rowBytes: width * bytesPerPixel)
         let err = vImageScale_ARGB8888(&inBuff, &outBuff, nil, vImage_Flags(0))
         CVPixelBufferUnlockBaseAddress(self, .readOnly)
         if err != kvImageNoError {
+            free(dstData)
             return nil
         }
         let releaseCallback: CVPixelBufferReleaseBytesCallback = { _, pointer in
-            if pointer == pointer {
+            if pointer != nil {
                 free(UnsafeMutableRawPointer(mutating: pointer))
             }
         }
@@ -40,8 +41,8 @@ extension CVPixelBuffer {
             return nil
         }
         var normalizedBuffer: [Float32] = [Float32](repeating: 0, count: width * height * 3)
-        // seperate the RGB channels and normalize the pixel buffer
-        // see https://pytorch.org/hub/pytorch_vision_resnet/ for more detail
+        // normalize the pixel buffer
+        // see https://pytorch.org/hub/pytorch_vision_mobilenet_v2/ for more detail
         for i in 0 ..< width * height {
             normalizedBuffer[i] = (Float32(dstData.load(fromByteOffset: i * 4 + 2, as: UInt8.self)) / 255.0 - 0.485) / 0.229 // R
             normalizedBuffer[width * height + i] = (Float32(dstData.load(fromByteOffset: i * 4 + 1, as: UInt8.self)) / 255.0 - 0.456) / 0.224 // G

@@ -2,9 +2,9 @@ import AVFoundation
 import Foundation
 
 class CameraController: NSObject {
-    let inputWidth = 224
-    let inputHeight = 224
     var videoCaptureCompletionBlock: (([Float32]?, CameraControllerError?) -> Void)?
+    private let inputWidth = 224
+    private let inputHeight = 224
     private var captureSession = AVCaptureSession()
     private var videoOutput = AVCaptureVideoDataOutput()
     private var sessionQueue = DispatchQueue(label: "session")
@@ -17,25 +17,24 @@ class CameraController: NSObject {
     }
 
     func startSession() {
-        var weakSelf = self
         func reportError(error: CameraControllerError) {
             DispatchQueue.main.async {
-                if let callback = weakSelf.videoCaptureCompletionBlock {
+                if let callback = self.videoCaptureCompletionBlock {
                     callback(nil, error)
                 }
             }
         }
         sessionQueue.async {
             do {
-                weakSelf.captureSession.sessionPreset = .high
-                weakSelf.captureSession.beginConfiguration()
-                try weakSelf.configCameraInput()
-                try weakSelf.configCameraOutput()
-                weakSelf.captureSession.commitConfiguration()
-                weakSelf.prepare {
-                    if $0, !weakSelf.captureSession.isRunning {
-                        weakSelf.addListeners()
-                        weakSelf.captureSession.startRunning()
+                self.captureSession.sessionPreset = .high
+                self.captureSession.beginConfiguration()
+                try self.configCameraInput()
+                try self.configCameraOutput()
+                self.captureSession.commitConfiguration()
+                self.prepare {
+                    if $0, !self.captureSession.isRunning {
+                        self.addListeners()
+                        self.captureSession.startRunning()
                     } else {
                         reportError(error: .cameraAccessDenied)
                     }

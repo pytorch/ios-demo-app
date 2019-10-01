@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="j5v-bL-MiJ">
-    <device id="retina5_9" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="j5v-bL-MiJ">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -137,6 +135,31 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gNB-em-9S3">
+                                <rect key="frame" x="20" y="710" width="335" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="1lr-SF-8V2"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Clear">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="12"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBouds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="onClearClicked:" destination="Rcp-Mb-DKb" eventType="touchUpInside" id="Wsa-7u-j96"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.46274509803921571" green="0.23529411764705882" blue="0.8666666666666667" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -146,9 +169,12 @@
                             <constraint firstItem="7Bx-kK-QZ7" firstAttribute="trailing" secondItem="OjZ-oO-fjD" secondAttribute="trailing" id="5Gd-E9-x1v"/>
                             <constraint firstItem="7Bx-kK-QZ7" firstAttribute="trailing" secondItem="9v6-43-axw" secondAttribute="trailing" constant="20" id="Ahq-xw-28N"/>
                             <constraint firstItem="9v6-43-axw" firstAttribute="top" secondItem="OjZ-oO-fjD" secondAttribute="bottom" constant="10" id="NTx-Pl-ff8"/>
+                            <constraint firstItem="gNB-em-9S3" firstAttribute="leading" secondItem="7Bx-kK-QZ7" secondAttribute="leading" constant="20" id="PVW-Cf-8sK"/>
                             <constraint firstItem="31c-e0-u9X" firstAttribute="leading" secondItem="7Bx-kK-QZ7" secondAttribute="leading" constant="20" id="Rds-Ap-TAZ"/>
                             <constraint firstItem="7Bx-kK-QZ7" firstAttribute="trailing" secondItem="31c-e0-u9X" secondAttribute="trailing" constant="20" id="YoQ-tK-a1g"/>
+                            <constraint firstItem="7Bx-kK-QZ7" firstAttribute="trailing" secondItem="gNB-em-9S3" secondAttribute="trailing" constant="20" id="hkp-EP-8j0"/>
                             <constraint firstItem="9v6-43-axw" firstAttribute="leading" secondItem="7Bx-kK-QZ7" secondAttribute="leading" constant="20" id="hoq-Fd-8IW"/>
+                            <constraint firstItem="7Bx-kK-QZ7" firstAttribute="bottom" secondItem="gNB-em-9S3" secondAttribute="bottom" constant="20" id="qoj-tK-Hct"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="7Bx-kK-QZ7"/>
                     </view>

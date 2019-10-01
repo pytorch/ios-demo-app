@@ -10,4 +10,9 @@ extension UIView {
         NSLayoutConstraint(item: self, attribute: .top, relatedBy: .equal, toItem: container, attribute: .top, multiplier: 1.0, constant: 0).isActive = true
         NSLayoutConstraint(item: self, attribute: .bottom, relatedBy: .equal, toItem: container, attribute: .bottom, multiplier: 1.0, constant: 0).isActive = true
     }
+
+    @IBInspectable var borderColor: UIColor? {
+        get { return UIColor(cgColor: layer.borderColor!) }
+        set { layer.borderColor = newValue?.cgColor }
+    }
 }

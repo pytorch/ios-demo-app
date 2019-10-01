@@ -1,14 +1,24 @@
 import UIKit
 
 class ImagePredictor: Predictor {
-    var isRunning: Bool = false
-    var module: VisionTorchModule?
-    var labels: [String] = []
+    private var isRunning: Bool = false
+    private lazy var module: VisionTorchModule = {
+        if let filePath = Bundle.main.path(forResource: "mobilenet_quantized", ofType: "pt"),
+            let module = VisionTorchModule(fileAtPath: filePath) {
+            return module
+        } else {
+            fatalError("Can't find the model with the given path!")
+        }
+    }()
 
-    init() {
-        module = loadModel(name: "mobilenet_quantized")
-        labels = loadLabels(name: "words")
-    }
+    private var labels: [String] = {
+        if let filePath = Bundle.main.path(forResource: "words", ofType: "txt"),
+            let labels = try? String(contentsOfFile: filePath) {
+            return labels.components(separatedBy: .newlines)
+        } else {
+            fatalError("Label file was not found.")
+        }
+    }()
 
     func forward(_ buffer: [Float32]?, resultCount: Int, completionHandler: ([InferenceResult]?, Double, Error?) -> Void) {
         guard var tensorBuffer = buffer else {
@@ -18,32 +28,14 @@ class ImagePredictor: Predictor {
             return
         }
         isRunning = true
-        let startTime = CFAbsoluteTimeGetCurrent()
-        guard let outputs = module?.predict(image: UnsafeMutableRawPointer(&tensorBuffer)) else {
+        let startTime = CACurrentMediaTime()
+        guard let outputs = module.predict(image: UnsafeMutableRawPointer(&tensorBuffer)) else {
             completionHandler([], 0.0, PredictorError.invalidInputTensor)
             return
         }
-        let inferenceTime = (CFAbsoluteTimeGetCurrent() - startTime) * 1000
-        let results = topK(scores: outputs, labels: labels, count: resultCount, inferenceTime: inferenceTime)
+        let inferenceTime = (CACurrentMediaTime() - startTime) * 1000
+        let results = topK(scores: outputs, labels: labels, count: resultCount)
         completionHandler(results, inferenceTime, nil)
         isRunning = false
-    }
-
-    private func loadLabels(name: String) -> [String] {
-        if let filePath = Bundle.main.path(forResource: name, ofType: "txt"),
-            let labels = try? String(contentsOfFile: filePath) {
-            return labels.components(separatedBy: .newlines)
-        } else {
-            fatalError("Label file was not found.")
-        }
-    }
-
-    private func loadModel(name: String) -> VisionTorchModule? {
-        if let filePath = Bundle.main.path(forResource: name, ofType: "pt"),
-            let module = VisionTorchModule(fileAtPath: filePath) {
-            return module
-        } else {
-            fatalError("Can't find the model with the given path!")
-        }
     }
 }

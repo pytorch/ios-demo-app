@@ -58,10 +58,10 @@
 
 - (NSArray<NSNumber*>*)predictText:(NSString*)text {
   try {
-    uint8_t* buffer = (uint8_t*)text.UTF8String;
+    const char* buffer = text.UTF8String;
     torch::autograd::AutoGradMode guard(false);
     at::AutoNonVariableTypeMode non_var_type_mode(true);
-    at::Tensor tensor = torch::from_blob((void*)buffer, {1, (int64_t)(text.length)}, at::kByte);
+    at::Tensor tensor = torch::from_blob((void*)buffer, {1, (int64_t)(strlen(buffer))}, at::kByte);
     auto outputTensor = _impl.forward({tensor}).toTensor();
     void* tensorBuffer = outputTensor.storage().data();
     if (!tensorBuffer) {
