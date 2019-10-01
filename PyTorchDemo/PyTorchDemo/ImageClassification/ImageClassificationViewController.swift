@@ -17,6 +17,7 @@ class ImageClassificationViewController: ViewController {
         cameraController.configPreviewLayer(cameraView)
         cameraController.videoCaptureCompletionBlock = { [weak self] buffer, error in
             guard let strongSelf = self else { return }
+            guard let pixelBuffer = buffer else { return }
             if error != nil {
                 strongSelf.showAlert(error)
                 return
@@ -24,7 +25,7 @@ class ImageClassificationViewController: ViewController {
             let currentTimestamp = CACurrentMediaTime()
             if (currentTimestamp - strongSelf.prevTimestampMs) * 1000 <= strongSelf.delayMs { return }
             strongSelf.prevTimestampMs = currentTimestamp
-            if let results = try? strongSelf.predictor.forward(buffer, resultCount: 3) {
+            if let results = try? strongSelf.predictor.predict(pixelBuffer, resultCount: 3) {
                 DispatchQueue.main.async { strongSelf.indicator.isHidden = true
                     strongSelf.bottomView.isHidden = false
                     strongSelf.benchmarkLabel.isHidden = false

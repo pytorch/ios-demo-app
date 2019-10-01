@@ -15,9 +15,9 @@ class NLPPredictor: Predictor {
         topics = loadTopics()
     }
 
-    func forward(_ text: String, resultCount: Int) throws -> [InferenceResult]? {
+    func predict(_ text: String, resultCount: Int) throws -> [InferenceResult]? {
         if text.isEmpty {
-            return nil
+            throw PredictorError.invalidInputTensor
         }
         guard let outputs = module.predict(text: text) else {
             throw PredictorError.invalidInputTensor
