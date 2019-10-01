@@ -20,22 +20,21 @@ class ImagePredictor: Predictor {
         }
     }()
 
-    func forward(_ buffer: [Float32]?, resultCount: Int, completionHandler: ([InferenceResult]?, Double, Error?) -> Void) {
+    func forward(_ buffer: [Float32]?, resultCount: Int) throws -> ([InferenceResult], Double)? {
         guard var tensorBuffer = buffer else {
-            return
+            return nil
         }
         if isRunning {
-            return
+            return nil
         }
         isRunning = true
         let startTime = CACurrentMediaTime()
         guard let outputs = module.predict(image: UnsafeMutableRawPointer(&tensorBuffer)) else {
-            completionHandler([], 0.0, PredictorError.invalidInputTensor)
-            return
+            throw PredictorError.invalidInputTensor
         }
+        isRunning = false
         let inferenceTime = (CACurrentMediaTime() - startTime) * 1000
         let results = topK(scores: outputs, labels: labels, count: resultCount)
-        completionHandler(results, inferenceTime, nil)
-        isRunning = false
+        return (results, inferenceTime)
     }
 }

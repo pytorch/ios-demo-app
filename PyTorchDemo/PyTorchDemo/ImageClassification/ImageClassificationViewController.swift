@@ -6,38 +6,32 @@ class ImageClassificationViewController: ViewController {
     @IBOutlet var bottomView: ImageClassificationResultView!
     @IBOutlet var benchmarkLabel: UILabel!
     @IBOutlet var indicator: UIActivityIndicatorView!
-    var predictor = ImagePredictor()
-    var cameraController = CameraController()
+    private var predictor = ImagePredictor()
+    private var cameraController = CameraController()
+    private let delayMs: Double = 500
+    private var prevTimestampMs: Double = 0.0
 
     override func viewDidLoad() {
         super.viewDidLoad()
         bottomView.config(resultCount: 3)
         cameraController.configPreviewLayer(cameraView)
         cameraController.videoCaptureCompletionBlock = { [weak self] buffer, error in
-            guard let strongSelf = self else {
+            guard let strongSelf = self else { return }
+            if error != nil {
+                strongSelf.showAlert(error)
                 return
             }
-            DispatchQueue.main.async {
-                if error != nil {
-                    strongSelf.showAlert(error)
-                    return
-                }
-            }
-            strongSelf.predictor.forward(buffer, resultCount: 3, completionHandler: { results, inferenceTime, error in
-                DispatchQueue.main.async {
-                    strongSelf.indicator.isHidden = true
-                    if error != nil {
-                        strongSelf.showAlert(error)
-                        return
-                    }
+            let currentTimestamp = CACurrentMediaTime()
+            if (currentTimestamp - strongSelf.prevTimestampMs) * 1000 <= strongSelf.delayMs { return }
+            strongSelf.prevTimestampMs = currentTimestamp
+            if let results = try? strongSelf.predictor.forward(buffer, resultCount: 3) {
+                DispatchQueue.main.async { strongSelf.indicator.isHidden = true
                     strongSelf.bottomView.isHidden = false
                     strongSelf.benchmarkLabel.isHidden = false
-                    if let results = results {
-                        strongSelf.benchmarkLabel.text = String(format: "%.3fms", inferenceTime)
-                        strongSelf.bottomView.update(results: results)
-                    }
+                    strongSelf.benchmarkLabel.text = String(format: "%.2fms", results.1)
+                    strongSelf.bottomView.update(results: results.0)
                 }
-            })
+            }
         }
     }
 

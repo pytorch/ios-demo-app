@@ -1,5 +1,4 @@
 #import "TorchModule.h"
-#import <Foundation/Foundation.h>
 #import <LibTorch/LibTorch.h>
 
 @implementation TorchModule {

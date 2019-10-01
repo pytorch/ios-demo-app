@@ -9,11 +9,6 @@ class NLPResultView: UIView {
         commonInit()
     }
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        commonInit()
-    }
-
     func commonInit() {
         Bundle.main.loadNibNamed("NLPResultView", owner: self, options: nil)
         contentView.setup(self)

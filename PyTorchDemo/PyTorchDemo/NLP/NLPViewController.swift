@@ -34,18 +34,12 @@ extension NLPViewController: UITextViewDelegate {
         textView.resignFirstResponder()
         let content = textView.text!
         DispatchQueue.global().async {
-            self.predictor.forward(content, resultCount: 3, completionHandler: { results, error in
+            if let results = try? self.predictor.forward(content, resultCount: 3) {
                 DispatchQueue.main.async {
-                    if error != nil {
-                        self.showAlert(error)
-                        return
-                    }
-                    if let results = results {
-                        self.resultView.isHidden = false
-                        self.resultView.update(results: results)
-                    }
+                    self.resultView.isHidden = false
+                    self.resultView.update(results: results)
                 }
-            })
+            }
         }
         return false
     }

@@ -11,27 +11,18 @@ class NLPPredictor: Predictor {
     }()
 
     private var topics: [String] = []
-    private var isRunning: Bool = false
-
     init() {
         topics = loadTopics()
     }
 
-    func forward(_ text: String, resultCount: Int, completionHandler: ([InferenceResult]?, Error?) -> Void) {
+    func forward(_ text: String, resultCount: Int) throws -> [InferenceResult]? {
         if text.isEmpty {
-            return
+            return nil
         }
-        if isRunning {
-            return
-        }
-        isRunning = true
         guard let outputs = module.predict(text: text) else {
-            completionHandler([], PredictorError.invalidInputTensor)
-            return
+            throw PredictorError.invalidInputTensor
         }
-        let results = topK(scores: outputs, labels: topics, count: resultCount)
-        completionHandler(results, nil)
-        isRunning = false
+        return topK(scores: outputs, labels: topics, count: resultCount)
     }
 
     private func loadTopics() -> [String] {
