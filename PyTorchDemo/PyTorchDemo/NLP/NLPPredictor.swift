@@ -6,7 +6,7 @@ class NLPPredictor: Predictor {
             let module = NLPTorchModule(fileAtPath: filePath) {
             return module
         } else {
-            fatalError("Can't find the model with the given path!")
+            fatalError("Failed to load model!")
         }
     }()
 
@@ -27,7 +27,7 @@ class NLPPredictor: Predictor {
 
     private func loadTopics() -> [String] {
         guard let topics = module.topics() else {
-            fatalError("Load reddit topics failed!")
+            fatalError("Failed to load topics from model")
         }
         return topics
     }

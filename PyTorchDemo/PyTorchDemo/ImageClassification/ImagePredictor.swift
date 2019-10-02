@@ -7,7 +7,7 @@ class ImagePredictor: Predictor {
             let module = VisionTorchModule(fileAtPath: filePath) {
             return module
         } else {
-            fatalError("Can't find the model with the given path!")
+            fatalError("Failed to load model!")
         }
     }()
 
