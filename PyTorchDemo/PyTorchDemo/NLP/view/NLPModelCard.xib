@@ -17,14 +17,14 @@
                     <rect key="frame" x="12" y="16" width="256" height="212"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NLP Model" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Foo-sQ-Zev">
-                            <rect key="frame" x="0.0" y="0.0" width="256" height="23.5"/>
+                            <rect key="frame" x="0.0" y="0.0" width="256" height="22"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Nf-Jj-3It">
-                            <rect key="frame" x="0.0" y="43.5" width="256" height="108.5"/>
-                            <string key="text">The input is a uint8 buffer of shape  (1xN) where N represents the length of the buffer. The output is a one dimensional float tensor of 1x16, where each number represents the confidence that a topic is inferred from the input string.</string>
+                            <rect key="frame" x="0.0" y="42" width="256" height="110"/>
+                            <string key="text">The input data is a uint8 buffer of shape  (1xN) where N represents the length of the buffer. The output data is a one dimensional float tensor of 1x16, where each number represents the confidence that a topic is inferred from the input string.</string>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>

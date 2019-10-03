@@ -3,7 +3,6 @@ import UIKit
 class ViewController: UIViewController {
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var resultView: UITextView!
-    // step 1
     private lazy var module: TorchModule = {
         if let filePath = Bundle.main.path(forResource: "model", ofType: "pt"),
             let module = TorchModule(fileAtPath: filePath) {
@@ -13,7 +12,6 @@ class ViewController: UIViewController {
         }
     }()
 
-    // step 2
     private lazy var labels: [String] = {
         if let filePath = Bundle.main.path(forResource: "words", ofType: "txt"),
             let labels = try? String(contentsOfFile: filePath) {
@@ -25,20 +23,15 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // step 3
         let image = UIImage(named: "image.jpg")!
         imageView.image = image
-
-        // step 4
         let resizedImage = image.resized(to: CGSize(width: 224, height: 224))
         guard var pixelBuffer = resizedImage.normalized() else {
             return
         }
-        // step 5
         guard let outputs = module.predict(image: UnsafeMutableRawPointer(&pixelBuffer)) else {
             return
         }
-        // step 6
         let zippedResults = zip(labels.indices, outputs)
         let sortedResults = zippedResults.sorted { $0.1.floatValue > $1.1.floatValue }.prefix(3)
         var text = ""
