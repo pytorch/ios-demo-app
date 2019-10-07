@@ -106,7 +106,7 @@
                                     <constraint firstItem="78P-dx-CaG" firstAttribute="centerY" secondItem="OjZ-oO-fjD" secondAttribute="centerY" id="pSG-r6-eQP"/>
                                 </constraints>
                             </view>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" text="Steph Curry" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="9v6-43-axw">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" text="May the force be with you" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="9v6-43-axw">
                                 <rect key="frame" x="20" y="114" width="335" height="120"/>
                                 <color key="backgroundColor" red="0.41960784313725491" green="0.14117647058823529" blue="0.74901960784313726" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>

@@ -14,7 +14,6 @@
       if (std::find(qengines.begin(), qengines.end(), at::QEngine::QNNPACK) != qengines.end()) {
         at::globalContext().setQEngine(at::QEngine::QNNPACK);
       }
-      at::AutoNonVariableTypeMode non_var_type_mode(true);
       _impl = torch::jit::load(filePath.UTF8String);
       _impl.eval();
     } catch (const std::exception& exception) {
