@@ -37,7 +37,6 @@
 		A091B760233078BE0008A5B8 /* ImagePredictor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A091B75F233078BE0008A5B8 /* ImagePredictor.swift */; };
 		A091B76223315D1A0008A5B8 /* CameraPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A091B76123315D1A0008A5B8 /* CameraPreviewView.swift */; };
 		A091B764233168DE0008A5B8 /* CVPixelBuffer+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A091B763233168DE0008A5B8 /* CVPixelBuffer+Helper.swift */; };
-		A091B7662331D4110008A5B8 /* Predictor+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A091B7652331D4110008A5B8 /* Predictor+Helper.swift */; };
 		A09E179423398CC9002F8F15 /* VisionModelCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09E179323398CC9002F8F15 /* VisionModelCard.swift */; };
 		A09E1796233990A0002F8F15 /* VisionModelCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = A09E1795233990A0002F8F15 /* VisionModelCard.xib */; };
 		A0B12D4E2338944900380B1D /* TorchModule.mm in Sources */ = {isa = PBXBuildFile; fileRef = A0B12D4D2338944900380B1D /* TorchModule.mm */; };
@@ -77,7 +76,6 @@
 		A091B75F233078BE0008A5B8 /* ImagePredictor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePredictor.swift; sourceTree = "<group>"; };
 		A091B76123315D1A0008A5B8 /* CameraPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPreviewView.swift; sourceTree = "<group>"; };
 		A091B763233168DE0008A5B8 /* CVPixelBuffer+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CVPixelBuffer+Helper.swift"; sourceTree = "<group>"; };
-		A091B7652331D4110008A5B8 /* Predictor+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Predictor+Helper.swift"; sourceTree = "<group>"; };
 		A09E179323398CC9002F8F15 /* VisionModelCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionModelCard.swift; sourceTree = "<group>"; };
 		A09E1795233990A0002F8F15 /* VisionModelCard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VisionModelCard.xib; sourceTree = "<group>"; };
 		A0B12D4C2338944900380B1D /* TorchModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TorchModule.h; sourceTree = "<group>"; };
@@ -159,7 +157,6 @@
 			children = (
 				A03349B4233D2F8F003425FD /* view */,
 				A01F52AD233C985C004039FC /* Predictor.swift */,
-				A091B7652331D4110008A5B8 /* Predictor+Helper.swift */,
 				A0B12D4B2338940B00380B1D /* TorchBridge */,
 				A0296C482333176500C77366 /* NLP */,
 				A091B757233077600008A5B8 /* ImageClassification */,
@@ -316,7 +313,6 @@
 				A06D4CCD2330AAA200763E16 /* CameraController.swift in Sources */,
 				A0B12D4E2338944900380B1D /* TorchModule.mm in Sources */,
 				A03349C6233D8E95003425FD /* UIView+Helper.swift in Sources */,
-				A091B7662331D4110008A5B8 /* Predictor+Helper.swift in Sources */,
 				A091B760233078BE0008A5B8 /* ImagePredictor.swift in Sources */,
 				A091B764233168DE0008A5B8 /* CVPixelBuffer+Helper.swift in Sources */,
 				A0296C4A2333178500C77366 /* NLPViewController.swift in Sources */,
