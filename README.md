@@ -4,7 +4,7 @@ HelloWorld is a simple image classification application that demonstrates how to
 
 ### Model preparation
 
-The model we are going to use is [Resnet18](https://pytorch.org/hub/pytorch_vision_resnet/), a pre-trained image classification model that has packaged in [TorchVision](https://pytorch.org/docs/stable/torchvision/index.html). To install it, run the command below.
+The model we are going to use is [Resnet18](https://pytorch.org/hub/pytorch_vision_resnet/), a pre-trained image classification model that has been packaged in [TorchVision](https://pytorch.org/docs/stable/torchvision/index.html). To install it, run the command below.
 
 > Before running the command, we highly recommend following the [Pytorch Github page](https://github.com/pytorch/pytorch) to set up the Python development environment on your local machine. 
 
