@@ -4,13 +4,15 @@ HelloWorld is a simple image classification application that demonstrates how to
 
 ### Model preparation
 
-We are going to use a pre-trained image classification model(Resnet18), which is already packaged in [TorchVision](https://pytorch.org/docs/stable/torchvision/index.html). To install it, run the command below.
+The model we are going to use is [Resnet18](https://pytorch.org/hub/pytorch_vision_resnet/), a pre-trained image classification model that has been packaged in [TorchVision](https://pytorch.org/docs/stable/torchvision/index.html). To install it, run the command below.
+
+> Before running the command, we highly recommend following the [Pytorch Github page](https://github.com/pytorch/pytorch) to set up the Python development environment on your local machine. 
 
 ```shell
 pip install torchvision
 ```
 
-Once we have TorchVision installed successfully, navigate to the HelloWorld folder and run `trace_model.py` to generate our model. The script contains the code of tracing and saving a [torchscript model](https://pytorch.org/tutorials/beginner/Intro_to_TorchScript_tutorial.html) that can be run on mobile devices. Before running the command below, we highly recommend following the [Pytorch Github page](https://github.com/pytorch/pytorch) to set up the Python development environment on your local machine. 
+Once we have TorchVision installed successfully, navigate to the HelloWorld folder and run `trace_model.py` to generate our model. The script contains the code of tracing and saving a [torchscript model](https://pytorch.org/tutorials/beginner/Intro_to_TorchScript_tutorial.html) that can be run on mobile devices. 
 
 ```shell
 python trace_model.py
@@ -27,8 +29,8 @@ pod install
 ```
 Now it's time to open the `HelloWorld.xcworkspace` in XCode, select an iOS simulator and launch it (cmd + R). 
 
-If everything works well, we should see a wolf picture on the simulator screen along with the prediction result.
+If everything works well, we should see a wolf picture on the simulator screen along with the prediction results.
 
 ### PyTorch demo app
 
-For more complex use cases, we recommend to check out the PyTorch demo application. The demo app contains two showcases. A camera app that runs a quantized model to predict the images coming from device’s rear-facing camera in real time. And a text-based app that uses a self-trained NLP model to predict the topic from the input string.
+For more complex use cases, we recommend to check out the PyTorch demo application. The demo app contains two showcases. A camera app that runs a quantized model to predict the images coming from device’s rear-facing camera in real time. And a text classsification app that uses an NLP model to predict the topic from the input string.
