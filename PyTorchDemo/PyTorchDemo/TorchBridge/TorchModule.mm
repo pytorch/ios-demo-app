@@ -30,7 +30,7 @@
 
 - (NSArray<NSNumber*>*)predictImage:(void*)imageBuffer {
   try {
-    at::Tensor tensor = torch::from_blob((void*)imageBuffer, {1, 3, 224, 224}, at::kFloat);
+    at::Tensor tensor = torch::from_blob(imageBuffer, {1, 3, 224, 224}, at::kFloat);
     torch::autograd::AutoGradMode guard(false);
     at::AutoNonVariableTypeMode non_var_type_mode(true);
     auto outputTensor = _impl.forward({tensor}).toTensor();
