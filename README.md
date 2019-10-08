@@ -29,8 +29,8 @@ pod install
 ```
 Now it's time to open the `HelloWorld.xcworkspace` in XCode, select an iOS simulator and launch it (cmd + R). 
 
-If everything works well, we should see a wolf picture on the simulator screen along with the prediction result.
+If everything works well, we should see a wolf picture on the simulator screen along with the prediction results.
 
 ### PyTorch demo app
 
-For more complex use cases, we recommend to check out the PyTorch demo application. The demo app contains two showcases. A camera app that runs a quantized model to predict the images coming from device’s rear-facing camera in real time. And a text-based app that uses a self-trained NLP model to predict the topic from the input string.
+For more complex use cases, we recommend to check out the PyTorch demo application. The demo app contains two showcases. A camera app that runs a quantized model to predict the images coming from device’s rear-facing camera in real time. And a text classsification app that uses an NLP model to predict the topic from the input string.
