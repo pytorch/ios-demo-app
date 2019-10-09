@@ -30,12 +30,11 @@
     torch::autograd::AutoGradMode guard(false);
     at::AutoNonVariableTypeMode non_var_type_mode(true);
     auto outputTensor = _impl.forward({tensor}).toTensor();
-    void* tensorBuffer = outputTensor.storage().data();
-    if (!tensorBuffer) {
+    float* floatBuffer = outputTensor.data_ptr<float>();
+    if (!floatBuffer) {
       return nil;
     }
     NSMutableArray* results = [[NSMutableArray alloc] init];
-    float* floatBuffer = (float*)tensorBuffer;
     for (int i = 0; i < 1000; i++) {
       [results addObject:@(floatBuffer[i])];
     }
