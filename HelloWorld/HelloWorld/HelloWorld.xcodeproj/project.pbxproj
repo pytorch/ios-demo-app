@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7E68D8619856AE607F3FA83E /* libPods-HelloWorld.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EAC3F62F0193DD6A314D572C /* libPods-HelloWorld.a */; };
 		A07753C62343DDEE00186969 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07753C52343DDEE00186969 /* AppDelegate.swift */; };
 		A07753CA2343DDEE00186969 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07753C92343DDEE00186969 /* ViewController.swift */; };
 		A07753CD2343DDEE00186969 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A07753CB2343DDEE00186969 /* Main.storyboard */; };
@@ -17,10 +18,10 @@
 		A07753E42343F9AD00186969 /* words.txt in Resources */ = {isa = PBXBuildFile; fileRef = A07753E22343F9AD00186969 /* words.txt */; };
 		A07753E82343FDE700186969 /* image.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A07753E72343FDE700186969 /* image.jpg */; };
 		A07753EA2343FDEC00186969 /* UIImage+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07753E92343FDEC00186969 /* UIImage+Helper.swift */; };
-		A077540C2344042700186969 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A077540B2344042700186969 /* SceneDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		90DEE6F3A260BF543DE52650 /* Pods-HelloWorld.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HelloWorld.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HelloWorld/Pods-HelloWorld.debug.xcconfig"; sourceTree = "<group>"; };
 		A07753C22343DDEE00186969 /* HelloWorld.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloWorld.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A07753C52343DDEE00186969 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A07753C92343DDEE00186969 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -35,7 +36,8 @@
 		A07753E22343F9AD00186969 /* words.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = words.txt; sourceTree = "<group>"; };
 		A07753E72343FDE700186969 /* image.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image.jpg; sourceTree = "<group>"; };
 		A07753E92343FDEC00186969 /* UIImage+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Helper.swift"; sourceTree = "<group>"; };
-		A077540B2344042700186969 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		D0DD351169978B275C2B0542 /* Pods-HelloWorld.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HelloWorld.release.xcconfig"; path = "Pods/Target Support Files/Pods-HelloWorld/Pods-HelloWorld.release.xcconfig"; sourceTree = "<group>"; };
+		EAC3F62F0193DD6A314D572C /* libPods-HelloWorld.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HelloWorld.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,17 +45,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7E68D8619856AE607F3FA83E /* libPods-HelloWorld.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		23E4671209A71A4C7073A5D9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EAC3F62F0193DD6A314D572C /* libPods-HelloWorld.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		A07753B92343DDEE00186969 = {
 			isa = PBXGroup;
 			children = (
 				A07753C42343DDEE00186969 /* HelloWorld */,
 				A07753C32343DDEE00186969 /* Products */,
+				BFFC60692DE2B689CCF142A1 /* Pods */,
+				23E4671209A71A4C7073A5D9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -73,7 +86,6 @@
 				A07753D92343EDE700186969 /* TorchBridge */,
 				A07753C52343DDEE00186969 /* AppDelegate.swift */,
 				A07753C92343DDEE00186969 /* ViewController.swift */,
-				A077540B2344042700186969 /* SceneDelegate.swift */,
 				A07753E92343FDEC00186969 /* UIImage+Helper.swift */,
 				A07753CB2343DDEE00186969 /* Main.storyboard */,
 				A07753CE2343DDEF00186969 /* Assets.xcassets */,
@@ -102,6 +114,15 @@
 			path = model;
 			sourceTree = "<group>";
 		};
+		BFFC60692DE2B689CCF142A1 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				90DEE6F3A260BF543DE52650 /* Pods-HelloWorld.debug.xcconfig */,
+				D0DD351169978B275C2B0542 /* Pods-HelloWorld.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -109,6 +130,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A07753D62343DDEF00186969 /* Build configuration list for PBXNativeTarget "HelloWorld" */;
 			buildPhases = (
+				215545777C08FFEB3E426D67 /* [CP] Check Pods Manifest.lock */,
 				A07753BE2343DDEE00186969 /* Sources */,
 				A07753BF2343DDEE00186969 /* Frameworks */,
 				A07753C02343DDEE00186969 /* Resources */,
@@ -172,6 +194,27 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		215545777C08FFEB3E426D67 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HelloWorld-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		A07753BE2343DDEE00186969 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -181,7 +224,6 @@
 				A07753CA2343DDEE00186969 /* ViewController.swift in Sources */,
 				A07753EA2343FDEC00186969 /* UIImage+Helper.swift in Sources */,
 				A07753C62343DDEE00186969 /* AppDelegate.swift in Sources */,
-				A077540C2344042700186969 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -323,13 +365,14 @@
 		};
 		A07753D72343DDEF00186969 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 90DEE6F3A260BF543DE52650 /* Pods-HelloWorld.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = HelloWorld/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -345,13 +388,14 @@
 		};
 		A07753D82343DDEF00186969 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D0DD351169978B275C2B0542 /* Pods-HelloWorld.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = HelloWorld/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
