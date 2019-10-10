@@ -1,12 +1,19 @@
-## Quickstart with a Hello World example
+## PyTorch iOS Examples
+
+### Requirements
+
+- XCode 11.0 or above
+- iOS 12.0 or above
+
+## Quick Start with a HelloWorld Example
 
 HelloWorld is a simple image classification application that demonstrates how to use PyTorch C++ libraries on iOS. The code is written in Swift and uses Objective-C as a bridge.
 
-### Model preparation
+### Model Preparation
 
 The model we are going to use is [Resnet18](https://pytorch.org/hub/pytorch_vision_resnet/), a pre-trained image classification model that has been packaged in [TorchVision](https://pytorch.org/docs/stable/torchvision/index.html). To install it, run the command below.
 
-> Before running the command, we highly recommend following the [Pytorch Github page](https://github.com/pytorch/pytorch) to set up the Python development environment on your local machine. 
+> We highly recommend following the [Pytorch Github page](https://github.com/pytorch/pytorch) to set up the Python development environment on your local machine. 
 
 ```shell
 pip install torchvision
@@ -18,22 +25,22 @@ Once we have TorchVision installed successfully, navigate to the HelloWorld fold
 python trace_model.py
 ```
 
-If everything works well, `model.pt` should be generated in the same folder. Now copy the model file to our application folder `HelloWorld/model`.
+If everything works well, `model.pt` should be generated in the `HelloWorld` folder. Now copy the model file to our application folder `HelloWorld/model`.
 
-### Install PyTorch C++ libraries via Cocoapods
+### Install LibTorch via Cocoapods
 
 The PyTorch C++ library is available in [Cocoapods](https://cocoapods.org/), to integrate it to our project, we can run 
 
 ```ruby
 pod install
 ```
-Now it's time to open the `HelloWorld.xcworkspace` in XCode, select an iOS simulator and launch it (cmd + R). 
+Now open the `HelloWorld.xcworkspace` in XCode, select an iOS simulator and launch it (cmd + R). If everything works well, we should see a wolf picture on the simulator screen along with the prediction results.
 
-If everything works well, we should see a wolf picture on the simulator screen along with the prediction results.
+<img src="https://github.com/pytorch/ios-demo-app/blob/master/HelloWorld/screenshot.png?raw=true" width="50%">
 
 ### PyTorch demo app
 
-For more complex use cases, we recommend to check out the PyTorch demo application. The demo app contains two showcases. A camera app that runs a quantized model to predict the images coming from device’s rear-facing camera in real time. And a text classsification app that uses an NLP model to predict the topic from the input string.
+For more complex use cases, we recommend to check out the PyTorch demo application. The demo app contains two showcases. A camera app that runs a quantized model to predict the images coming from device’s rear-facing camera in real time.  And a text-based app that uses a text classififcation model to predict the topic from the input string.
 
 ## LICENSE
 
