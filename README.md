@@ -3,7 +3,7 @@
 ### Requirements
 
 - XCode 11.0 or above
-- iOS 12.0 or above
+- iOS 13.0 or above
 
 ## Quick Start with a HelloWorld Example
 
