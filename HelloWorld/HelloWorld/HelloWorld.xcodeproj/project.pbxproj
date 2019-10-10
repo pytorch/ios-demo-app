@@ -17,7 +17,6 @@
 		A07753E42343F9AD00186969 /* words.txt in Resources */ = {isa = PBXBuildFile; fileRef = A07753E22343F9AD00186969 /* words.txt */; };
 		A07753E82343FDE700186969 /* image.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A07753E72343FDE700186969 /* image.jpg */; };
 		A07753EA2343FDEC00186969 /* UIImage+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07753E92343FDEC00186969 /* UIImage+Helper.swift */; };
-		A077540C2344042700186969 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A077540B2344042700186969 /* SceneDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,7 +34,6 @@
 		A07753E22343F9AD00186969 /* words.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = words.txt; sourceTree = "<group>"; };
 		A07753E72343FDE700186969 /* image.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image.jpg; sourceTree = "<group>"; };
 		A07753E92343FDEC00186969 /* UIImage+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Helper.swift"; sourceTree = "<group>"; };
-		A077540B2344042700186969 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,7 +71,6 @@
 				A07753D92343EDE700186969 /* TorchBridge */,
 				A07753C52343DDEE00186969 /* AppDelegate.swift */,
 				A07753C92343DDEE00186969 /* ViewController.swift */,
-				A077540B2344042700186969 /* SceneDelegate.swift */,
 				A07753E92343FDEC00186969 /* UIImage+Helper.swift */,
 				A07753CB2343DDEE00186969 /* Main.storyboard */,
 				A07753CE2343DDEF00186969 /* Assets.xcassets */,
@@ -181,7 +178,6 @@
 				A07753CA2343DDEE00186969 /* ViewController.swift in Sources */,
 				A07753EA2343FDEC00186969 /* UIImage+Helper.swift in Sources */,
 				A07753C62343DDEE00186969 /* AppDelegate.swift in Sources */,
-				A077540C2344042700186969 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -329,7 +325,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = HelloWorld/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -351,7 +347,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = HelloWorld/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
