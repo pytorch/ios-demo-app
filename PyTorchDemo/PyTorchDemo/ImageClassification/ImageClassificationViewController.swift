@@ -17,16 +17,17 @@ class ImageClassificationViewController: ViewController {
         cameraController.configPreviewLayer(cameraView)
         cameraController.videoCaptureCompletionBlock = { [weak self] buffer, error in
             guard let strongSelf = self else { return }
-            guard let pixelBuffer = buffer else { return }
             if error != nil {
                 strongSelf.showAlert(error)
                 return
             }
+            guard let pixelBuffer = buffer else { return }
             let currentTimestamp = CACurrentMediaTime()
             if (currentTimestamp - strongSelf.prevTimestampMs) * 1000 <= strongSelf.delayMs { return }
             strongSelf.prevTimestampMs = currentTimestamp
             if let results = try? strongSelf.predictor.predict(pixelBuffer, resultCount: 3) {
-                DispatchQueue.main.async { strongSelf.indicator.isHidden = true
+                DispatchQueue.main.async {
+                    strongSelf.indicator.isHidden = true
                     strongSelf.bottomView.isHidden = false
                     strongSelf.benchmarkLabel.isHidden = false
                     strongSelf.benchmarkLabel.text = String(format: "%.2fms", results.1)

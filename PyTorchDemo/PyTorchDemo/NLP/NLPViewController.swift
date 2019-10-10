@@ -3,10 +3,13 @@ import UIKit
 class NLPViewController: UIViewController {
     @IBOutlet var textView: UITextView!
     @IBOutlet var resultView: NLPResultView!
+    let placeholderText = "Enter some text and press Enter"
     var predictor = NLPPredictor()
     override func viewDidLoad() {
         super.viewDidLoad()
         textView.delegate = self
+        textView.text = placeholderText
+        textView.textColor = .lightGray
         resultView.config(resultCount: 3)
     }
 
@@ -26,6 +29,19 @@ class NLPViewController: UIViewController {
 }
 
 extension NLPViewController: UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.text == placeholderText {
+            textView.text = ""
+            textView.textColor = .white
+        }
+    }
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text == "" {
+            textView.text = placeholderText
+            textView.textColor = .lightGray
+            resultView.isHidden = true
+        }
+    }
     func textView(_ textView: UITextView, shouldChangeTextIn _: NSRange, replacementText text: String) -> Bool {
         if text != "\n" {
             return true
