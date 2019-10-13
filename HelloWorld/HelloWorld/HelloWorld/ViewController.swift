@@ -23,7 +23,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let image = UIImage(named: "image.jpg")!
+        let image = UIImage(named: "image.png")!
         imageView.image = image
         let resizedImage = image.resized(to: CGSize(width: 224, height: 224))
         guard var pixelBuffer = resizedImage.normalized() else {

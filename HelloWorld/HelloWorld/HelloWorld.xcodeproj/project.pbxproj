@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A0497B682352FFA000D70E9E /* image.png in Resources */ = {isa = PBXBuildFile; fileRef = A0497B672352FFA000D70E9E /* image.png */; };
 		A07753C62343DDEE00186969 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07753C52343DDEE00186969 /* AppDelegate.swift */; };
 		A07753CA2343DDEE00186969 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07753C92343DDEE00186969 /* ViewController.swift */; };
 		A07753CD2343DDEE00186969 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A07753CB2343DDEE00186969 /* Main.storyboard */; };
@@ -15,11 +16,11 @@
 		A07753DD2343F15B00186969 /* TorchModule.mm in Sources */ = {isa = PBXBuildFile; fileRef = A07753DB2343F15B00186969 /* TorchModule.mm */; };
 		A07753E32343F9AD00186969 /* model.pt in Resources */ = {isa = PBXBuildFile; fileRef = A07753E12343F9AD00186969 /* model.pt */; };
 		A07753E42343F9AD00186969 /* words.txt in Resources */ = {isa = PBXBuildFile; fileRef = A07753E22343F9AD00186969 /* words.txt */; };
-		A07753E82343FDE700186969 /* image.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A07753E72343FDE700186969 /* image.jpg */; };
 		A07753EA2343FDEC00186969 /* UIImage+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07753E92343FDEC00186969 /* UIImage+Helper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A0497B672352FFA000D70E9E /* image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image.png; sourceTree = "<group>"; };
 		A07753C22343DDEE00186969 /* HelloWorld.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloWorld.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A07753C52343DDEE00186969 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A07753C92343DDEE00186969 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -32,7 +33,6 @@
 		A07753DC2343F15B00186969 /* TorchModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TorchModule.h; sourceTree = "<group>"; };
 		A07753E12343F9AD00186969 /* model.pt */ = {isa = PBXFileReference; lastKnownFileType = file; path = model.pt; sourceTree = "<group>"; };
 		A07753E22343F9AD00186969 /* words.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = words.txt; sourceTree = "<group>"; };
-		A07753E72343FDE700186969 /* image.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image.jpg; sourceTree = "<group>"; };
 		A07753E92343FDEC00186969 /* UIImage+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Helper.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -66,7 +66,7 @@
 		A07753C42343DDEE00186969 /* HelloWorld */ = {
 			isa = PBXGroup;
 			children = (
-				A07753E72343FDE700186969 /* image.jpg */,
+				A0497B672352FFA000D70E9E /* image.png */,
 				A07753E02343F9AD00186969 /* model */,
 				A07753D92343EDE700186969 /* TorchBridge */,
 				A07753C52343DDEE00186969 /* AppDelegate.swift */,
@@ -163,7 +163,7 @@
 				A07753CD2343DDEE00186969 /* Main.storyboard in Resources */,
 				A07753E42343F9AD00186969 /* words.txt in Resources */,
 				A07753E32343F9AD00186969 /* model.pt in Resources */,
-				A07753E82343FDE700186969 /* image.jpg in Resources */,
+				A0497B682352FFA000D70E9E /* image.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
