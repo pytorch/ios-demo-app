@@ -40,7 +40,7 @@ Now open the `HelloWorld.xcworkspace` in XCode, select an iOS simulator and laun
 
 ### PyTorch demo app
 
-For more complex use cases, we recommend to check out the PyTorch demo application. The demo app contains two showcases. A camera app that runs a quantized model to predict the images coming from device’s rear-facing camera in real time.  And a text-based app that uses a text classififcation model to predict the topic from the input string.
+For more complex use cases, we recommend to check out the PyTorch demo application. The demo app contains two showcases. A camera app that runs a quantized model to predict the images coming from device’s rear-facing camera in real time.  And a text-based app that uses a text classification model to predict the topic from the input string.
 
 ## LICENSE
 
