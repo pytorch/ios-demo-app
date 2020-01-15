@@ -28,18 +28,6 @@ extension CVPixelBuffer {
             free(dstData)
             return nil
         }
-        let releaseCallback: CVPixelBufferReleaseBytesCallback = { _, pointer in
-            if pointer != nil {
-                free(UnsafeMutableRawPointer(mutating: pointer))
-            }
-        }
-        var dstPixelBuffer: CVPixelBuffer?
-        let pixelType = CVPixelBufferGetPixelFormatType(self)
-        let status = CVPixelBufferCreateWithBytes(nil, width, height, pixelType, dstData, width * 4, releaseCallback, nil, nil, &dstPixelBuffer)
-        if status != kCVReturnSuccess {
-            free(dstData)
-            return nil
-        }
         var normalizedBuffer: [Float32] = [Float32](repeating: 0, count: width * height * 3)
         // normalize the pixel buffer
         // see https://pytorch.org/hub/pytorch_vision_mobilenet_v2/ for more detail
@@ -48,6 +36,7 @@ extension CVPixelBuffer {
             normalizedBuffer[width * height + i] = (Float32(dstData.load(fromByteOffset: i * 4 + 1, as: UInt8.self)) / 255.0 - 0.456) / 0.224 // G
             normalizedBuffer[width * height * 2 + i] = (Float32(dstData.load(fromByteOffset: i * 4 + 0, as: UInt8.self)) / 255.0 - 0.406) / 0.225 // B
         }
+        free(dstData)
         return normalizedBuffer
     }
 }
