@@ -10,10 +10,6 @@
   self = [super init];
   if (self) {
     try {
-      auto qengines = at::globalContext().supportedQEngines();
-      if (std::find(qengines.begin(), qengines.end(), at::QEngine::QNNPACK) != qengines.end()) {
-        at::globalContext().setQEngine(at::QEngine::QNNPACK);
-      }
       _impl = torch::jit::load(filePath.UTF8String);
       _impl.eval();
     } catch (const std::exception& exception) {
