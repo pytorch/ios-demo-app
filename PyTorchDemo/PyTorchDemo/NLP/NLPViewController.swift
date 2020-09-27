@@ -4,7 +4,9 @@ class NLPViewController: UIViewController {
     @IBOutlet var textView: UITextView!
     @IBOutlet var resultView: NLPResultView!
     let placeholderText = "Enter some text and press Enter"
-    var predictor = NLPPredictor()
+    //var predictor = NLPPredictor()
+    var predictor = NLPMachineTranslation()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         textView.delegate = self
@@ -50,10 +52,12 @@ extension NLPViewController: UITextViewDelegate {
         textView.resignFirstResponder()
         let content = textView.text!
         DispatchQueue.global().async {
-            if let results = try? self.predictor.predict(content, resultCount: 3) {
+            if let results = try? self.predictor.translate(content) {
+//            if let results = try? self.predictor.predict(content, resultCount: 3) {
                 DispatchQueue.main.async {
                     self.resultView.isHidden = false
-                    self.resultView.update(results: results)
+                    print(results)
+                    //self.resultView.update(results: results)
                 }
             }
         }

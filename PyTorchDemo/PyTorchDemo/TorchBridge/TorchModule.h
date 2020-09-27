@@ -16,8 +16,9 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 @interface NLPTorchModule : TorchModule
-- (nullable NSArray<NSString*>*)topics;
+//- (nullable NSArray<NSString*>*)topics;
 - (nullable NSArray<NSNumber*>*)predictText:(NSString*)text NS_SWIFT_NAME(predict(text:));
+- (nullable NSString*)translateText:(NSString*)text NS_SWIFT_NAME(translate(text:));
 @end
 
 NS_ASSUME_NONNULL_END

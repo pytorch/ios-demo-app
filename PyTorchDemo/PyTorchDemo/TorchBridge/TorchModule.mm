@@ -53,6 +53,34 @@
 
 @implementation NLPTorchModule
 
+- (NSString*)translateText:(NSString*)text {
+  try {
+    //var normalizedBuffer: [Float32] = [Float32](repeating: 0, count: w * h * 3)
+    //const char* buffer = text.UTF8String;
+    long buffer[8]  = {67, 350, 429, 87, 67, 125, 38, 1};
+      float buffer2[256];
+      for (int i=0; i<256; i++)
+          buffer2[i] =  0.0;
+    torch::autograd::AutoGradMode guard(false);
+    at::AutoNonVariableTypeMode non_var_type_mode(true);
+      at::Tensor tensorInput = torch::from_blob((void*)buffer, {1}, at::kLong);
+    at::Tensor tensorHidden = torch::from_blob((void*)buffer2, {1, 1, 256}, at::kFloat);
+      auto outputTensor = _impl.forward({tensorInput, tensorHidden});
+//    float* floatBuffer = outputTensor.data_ptr<float>();
+//    if (!floatBuffer) {
+//      return nil;
+//    }
+//    NSMutableArray* results = [[NSMutableArray alloc] init];
+//    for (int i = 0; i < 16; i++) {
+//      [results addObject:@(floatBuffer[i])];
+//    }
+      return nil;///[results copy];
+  } catch (const std::exception& exception) {
+    NSLog(@"%s", exception.what());
+  }
+  return nil;
+}
+
 - (NSArray<NSNumber*>*)predictText:(NSString*)text {
   try {
     const char* buffer = text.UTF8String;
@@ -75,6 +103,7 @@
   return nil;
 }
 
+/*
 - (NSArray<NSString*>*)topics {
   try {
     auto genericList = _impl.run_method("get_classes").toGenericList();
@@ -89,5 +118,5 @@
   }
   return nil;
 }
-
+*/
 @end
