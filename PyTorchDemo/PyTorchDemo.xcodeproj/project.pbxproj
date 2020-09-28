@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		262FC28325213B67008E6584 /* optimized_encoder_150k.pth in Resources */ = {isa = PBXBuildFile; fileRef = 262FC28125213B65008E6584 /* optimized_encoder_150k.pth */; };
+		262FC28425213B67008E6584 /* optimized_decoder_150k.pth in Resources */ = {isa = PBXBuildFile; fileRef = 262FC28225213B67008E6584 /* optimized_decoder_150k.pth */; };
+		262FC28825213B6F008E6584 /* target_idx2wrd.json in Resources */ = {isa = PBXBuildFile; fileRef = 262FC28625213B6F008E6584 /* target_idx2wrd.json */; };
+		262FC28925213B6F008E6584 /* source_wrd2idx.json in Resources */ = {isa = PBXBuildFile; fileRef = 262FC28725213B6F008E6584 /* source_wrd2idx.json */; };
+		262FC28C25213B90008E6584 /* NLPMachineTranslation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262FC28B25213B8F008E6584 /* NLPMachineTranslation.swift */; };
+		920B939DAE9A1C99E095968F /* libPods-PyTorchDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 33B3D31D52834594376E3A7B /* libPods-PyTorchDemo.a */; };
 		A01F52AC233C6C32004039FC /* topics.txt in Resources */ = {isa = PBXBuildFile; fileRef = A01F52AB233C6C32004039FC /* topics.txt */; };
 		A01F52AE233C985C004039FC /* Predictor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01F52AD233C985C004039FC /* Predictor.swift */; };
 		A0296C4A2333178500C77366 /* NLPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0296C492333178500C77366 /* NLPViewController.swift */; };
@@ -43,6 +49,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		089AD94B500AE700458C8BA3 /* Pods-PyTorchDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PyTorchDemo.debug.xcconfig"; path = "Target Support Files/Pods-PyTorchDemo/Pods-PyTorchDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		262FC28125213B65008E6584 /* optimized_encoder_150k.pth */ = {isa = PBXFileReference; lastKnownFileType = file; path = optimized_encoder_150k.pth; sourceTree = "<group>"; };
+		262FC28225213B67008E6584 /* optimized_decoder_150k.pth */ = {isa = PBXFileReference; lastKnownFileType = file; path = optimized_decoder_150k.pth; sourceTree = "<group>"; };
+		262FC28625213B6F008E6584 /* target_idx2wrd.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = target_idx2wrd.json; path = ../../../../target_idx2wrd.json; sourceTree = "<group>"; };
+		262FC28725213B6F008E6584 /* source_wrd2idx.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = source_wrd2idx.json; path = ../../../../source_wrd2idx.json; sourceTree = "<group>"; };
+		262FC28B25213B8F008E6584 /* NLPMachineTranslation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NLPMachineTranslation.swift; sourceTree = "<group>"; };
+		33B3D31D52834594376E3A7B /* libPods-PyTorchDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PyTorchDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A01F52AB233C6C32004039FC /* topics.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = topics.txt; sourceTree = "<group>"; };
 		A01F52AD233C985C004039FC /* Predictor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Predictor.swift; sourceTree = "<group>"; };
 		A0296C492333178500C77366 /* NLPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NLPViewController.swift; sourceTree = "<group>"; };
@@ -80,6 +93,7 @@
 		A09E1795233990A0002F8F15 /* VisionModelCard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VisionModelCard.xib; sourceTree = "<group>"; };
 		A0B12D4C2338944900380B1D /* TorchModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TorchModule.h; sourceTree = "<group>"; };
 		A0B12D4D2338944900380B1D /* TorchModule.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = TorchModule.mm; sourceTree = "<group>"; };
+		D81CAB6B8B06A0748A406EBA /* Pods-PyTorchDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PyTorchDemo.release.xcconfig"; path = "Target Support Files/Pods-PyTorchDemo/Pods-PyTorchDemo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,12 +101,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				920B939DAE9A1C99E095968F /* libPods-PyTorchDemo.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6227F3FB05BF278030016438 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				089AD94B500AE700458C8BA3 /* Pods-PyTorchDemo.debug.xcconfig */,
+				D81CAB6B8B06A0748A406EBA /* Pods-PyTorchDemo.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		89F244698F9B5D3FA9C587A7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				33B3D31D52834594376E3A7B /* libPods-PyTorchDemo.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		A0296C482333176500C77366 /* NLP */ = {
 			isa = PBXGroup;
 			children = (
@@ -100,6 +132,7 @@
 				A036EA2C233B1BEA00054A36 /* view */,
 				A0296C492333178500C77366 /* NLPViewController.swift */,
 				A036EA2A233B167A00054A36 /* NLPPredictor.swift */,
+				262FC28B25213B8F008E6584 /* NLPMachineTranslation.swift */,
 			);
 			path = NLP;
 			sourceTree = "<group>";
@@ -130,6 +163,10 @@
 		A036EA31233C19F500054A36 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				262FC28725213B6F008E6584 /* source_wrd2idx.json */,
+				262FC28625213B6F008E6584 /* target_idx2wrd.json */,
+				262FC28225213B67008E6584 /* optimized_decoder_150k.pth */,
+				262FC28125213B65008E6584 /* optimized_encoder_150k.pth */,
 				A036EA32233C19F500054A36 /* reddit.pt */,
 				A01F52AB233C6C32004039FC /* topics.txt */,
 			);
@@ -141,6 +178,8 @@
 			children = (
 				A091B19523303F2D0008A5B8 /* PyTorchDemo */,
 				A091B19423303F2D0008A5B8 /* Products */,
+				6227F3FB05BF278030016438 /* Pods */,
+				89F244698F9B5D3FA9C587A7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -223,6 +262,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A091B1A523303F2D0008A5B8 /* Build configuration list for PBXNativeTarget "PyTorchDemo" */;
 			buildPhases = (
+				AFE6FA178C05874D1D7B47AC /* [CP] Check Pods Manifest.lock */,
 				A091B18F23303F2D0008A5B8 /* Sources */,
 				A091B19023303F2D0008A5B8 /* Frameworks */,
 				A091B19123303F2D0008A5B8 /* Resources */,
@@ -275,15 +315,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				A065C92B2335711B006BEAAD /* words.txt in Resources */,
+				262FC28925213B6F008E6584 /* source_wrd2idx.json in Resources */,
 				A036EA30233B1C0B00054A36 /* NLPModelCard.xib in Resources */,
 				A03349C0233D6A7E003425FD /* ImageClassificationResultView.xib in Resources */,
 				A091B1A123303F2D0008A5B8 /* LaunchScreen.storyboard in Resources */,
+				262FC28425213B67008E6584 /* optimized_decoder_150k.pth in Resources */,
+				262FC28825213B6F008E6584 /* target_idx2wrd.json in Resources */,
 				A091B19E23303F2D0008A5B8 /* Assets.xcassets in Resources */,
 				A03349CA233DAE9F003425FD /* NLPResultView.xib in Resources */,
 				A03349C4233D71F2003425FD /* ImageClassificationItemView.xib in Resources */,
 				A036EA33233C19F500054A36 /* reddit.pt in Resources */,
 				A03349CE233DB128003425FD /* NLPItemView.xib in Resources */,
 				A091B19C23303F2D0008A5B8 /* Main.storyboard in Resources */,
+				262FC28325213B67008E6584 /* optimized_encoder_150k.pth in Resources */,
 				A01F52AC233C6C32004039FC /* topics.txt in Resources */,
 				A03349BC233D5E7C003425FD /* mobilenet_quantized.pt in Resources */,
 				A09E1796233990A0002F8F15 /* VisionModelCard.xib in Resources */,
@@ -291,6 +335,31 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		AFE6FA178C05874D1D7B47AC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PyTorchDemo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A091B18F23303F2D0008A5B8 /* Sources */ = {
@@ -301,6 +370,7 @@
 				A091B75E2330789A0008A5B8 /* ImageClassificationViewController.swift in Sources */,
 				A036EA2B233B167A00054A36 /* NLPPredictor.swift in Sources */,
 				A03349C8233DAE8F003425FD /* NLPResultView.swift in Sources */,
+				262FC28C25213B90008E6584 /* NLPMachineTranslation.swift in Sources */,
 				A03349C2233D71E0003425FD /* ImageClassificationItemView.swift in Sources */,
 				A091B19923303F2D0008A5B8 /* ViewController.swift in Sources */,
 				A03349CC233DB0B0003425FD /* NLPItemView.swift in Sources */,
@@ -460,6 +530,7 @@
 		};
 		A091B1A623303F2D0008A5B8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 089AD94B500AE700458C8BA3 /* Pods-PyTorchDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -484,6 +555,7 @@
 		};
 		A091B1A723303F2D0008A5B8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D81CAB6B8B06A0748A406EBA /* Pods-PyTorchDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;

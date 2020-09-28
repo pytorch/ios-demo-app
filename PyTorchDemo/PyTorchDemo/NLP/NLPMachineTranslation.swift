@@ -34,9 +34,22 @@ class NLPMachineTranslation: Predictor {
         if text.isEmpty {
             return ""
         }
-        guard let result = moduleEncoder.translate(text:"je suis un homme") else {
-            fatalError("Failed to load topics from model")
+        guard let dict = moduleEncoder.encoderForward(text:text)
+        else {
+            fatalError("Failed to run encoder")
         }
-        return "xxx"
+        
+        
+        // TODO: how to let translate return 2 values - outputs and final hidden tensor
+        print(dict)
+        
+        guard let result = moduleDecoder.decoderForward(dict:dict)
+        else {
+            fatalError("Failed to run decoder")
+        }
+
+        print(result)
+        
+        return result
     }
 }
