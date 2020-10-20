@@ -1,0 +1,8 @@
+.DS_Store
+Pods/
+*.pt
+ImageSegmentation.xcworkspace/
+xcuserdata/
+project.xcworkspace/
+
+
