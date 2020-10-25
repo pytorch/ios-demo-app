@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ImageSegmentation" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AFt-y5-Qb0">
+                                <rect key="frame" x="0.0" y="144" width="414" height="413"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m7H-I4-JnQ">
+                                <rect key="frame" x="176" y="582" width="62" height="30"/>
+                                <state key="normal" title="Segment"/>
+                                <connections>
+                                    <action selector="doInfer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GGf-Sz-pzs"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NgX-pU-lm2">
+                                <rect key="frame" x="182" y="628" width="50" height="30"/>
+                                <state key="normal" title="Restart"/>
+                                <connections>
+                                    <action selector="doRestart:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HR5-zG-1fZ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="NgX-pU-lm2" firstAttribute="top" secondItem="m7H-I4-JnQ" secondAttribute="bottom" constant="16" id="0pu-Vb-0LX"/>
+                            <constraint firstItem="AFt-y5-Qb0" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="3Wa-SG-lAa"/>
+                            <constraint firstItem="AFt-y5-Qb0" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="9KD-uS-rD3"/>
+                            <constraint firstItem="NgX-pU-lm2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="182" id="E0b-8y-MQD"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="m7H-I4-JnQ" secondAttribute="trailing" constant="176" id="LWi-4X-LQD"/>
+                            <constraint firstItem="AFt-y5-Qb0" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="W5F-cB-3op"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="NgX-pU-lm2" secondAttribute="trailing" constant="182" id="W9C-r3-taW"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="AFt-y5-Qb0" secondAttribute="bottom" constant="305" id="bqE-48-qFL"/>
+                            <constraint firstItem="m7H-I4-JnQ" firstAttribute="top" secondItem="AFt-y5-Qb0" secondAttribute="bottom" constant="25" id="eRm-0s-qPG"/>
+                            <constraint firstItem="m7H-I4-JnQ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="176" id="o9z-Yo-UGt"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="AFt-y5-Qb0" id="Rrb-4O-33M"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="18.840579710144929" y="93.75"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
