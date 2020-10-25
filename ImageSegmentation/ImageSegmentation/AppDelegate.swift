@@ -1,10 +1,3 @@
-//
-//  AppDelegate.swift
-//  ImageSegmentation
-//
-//  Created by Jeff Tang on 10/16/20.
-//
-
 import UIKit
 
 @main

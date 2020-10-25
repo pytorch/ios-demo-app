@@ -1,10 +1,3 @@
-//
-//  SceneDelegate.swift
-//  ImageSegmentation
-//
-//  Created by Jeff Tang on 10/16/20.
-//
-
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {

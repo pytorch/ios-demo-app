@@ -122,7 +122,6 @@
                            withHeight:(int)height
 {
 
-    // added code
     char* rgba = (char*)malloc(width * height * 4);
     for (int i = 0; i < width * height; ++i) {
         rgba[4 * i] = buffer[3 * i];
@@ -130,7 +129,6 @@
         rgba[4 * i + 2] = buffer[3 * i + 2];
         rgba[4 * i + 3] = 255;
     }
-    //
 
     size_t bufferLength = width * height * 4;
     CGDataProviderRef provider = CGDataProviderCreateWithData(NULL, rgba, bufferLength, NULL);
@@ -155,9 +153,9 @@
         bytesPerRow,
         colorSpaceRef,
         bitmapInfo,
-        provider, // data provider
-        NULL, // decode
-        YES, // should interpolate
+        provider,
+        NULL,
+        YES,
         renderingIntent);
 
     uint32_t* pixels = (uint32_t*)malloc(bufferLength);
@@ -187,10 +185,8 @@
     if (context) {
 
         CGContextDrawImage(context, CGRectMake(0.0f, 0.0f, width, height), iref);
-
         CGImageRef imageRef = CGBitmapContextCreateImage(context);
 
-        // Support both iPad 3.2 and iPhone 4 Retina displays with the correct scale
         if ([UIImage respondsToSelector:@selector(imageWithCGImage:scale:orientation:)]) {
             float scale = [[UIScreen mainScreen] scale];
             image = [UIImage imageWithCGImage:imageRef scale:scale orientation:UIImageOrientationUp];
