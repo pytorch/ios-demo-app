@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
     NS_SWIFT_NAME(init(fileAtPath:))NS_DESIGNATED_INITIALIZER;
 + (instancetype)new NS_UNAVAILABLE;
 - (instancetype)init NS_UNAVAILABLE;
-- (unsigned char*)predictImage:(void*)imageBuffer NS_SWIFT_NAME(predict(image:));
+- (unsigned char*)segmentImage:(void*)imageBuffer withWidth:(int)width withHeight:(int)height NS_SWIFT_NAME(segment(image:withWidth:withHeight:));
 
 
 @end

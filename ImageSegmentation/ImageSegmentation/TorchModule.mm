@@ -15,12 +15,10 @@
     torch::jit::script::Module _impl;
 }
 
-- (nullable instancetype)initWithFileAtPath:(NSString*)filePath
-{
+- (nullable instancetype)initWithFileAtPath:(NSString*)filePath {
     self = [super init];
     if (self) {
         try {
-
             _impl = torch::jit::load(filePath.UTF8String);
             _impl.eval();
         } catch (const std::exception& exception) {
@@ -31,12 +29,14 @@
     return self;
 }
 
-- (unsigned char*)predictImage:(void*)imageBuffer
-{
+- (unsigned char*)segmentImage:(void *)imageBuffer withWidth:(int)width withHeight:(int)height {
     try {
-        int classnum = 21;
-        int width = 800;
-        int height = 800;
+        
+        // see http://host.robots.ox.ac.uk:8080/pascal/VOC/voc2007/segexamples/index.html for the list of classes with indexes
+        const int CLASSNUM = 21;
+        const int DOG = 12;
+        const int PERSON = 15;
+        const int SHEEP = 17;
 
         at::Tensor tensor = torch::from_blob(imageBuffer, { 1, 3, width, height }, at::kFloat);
 
@@ -61,7 +61,7 @@
             return nil;
         }
         NSMutableArray* results = [[NSMutableArray alloc] init];
-        for (int i = 0; i < classnum * width * height; i++) {
+        for (int i = 0; i < CLASSNUM * width * height; i++) {
             [results addObject:@(floatBuffer[i])];
         }
 
@@ -74,7 +74,7 @@
                 int maxi = 0;
 
                 float maxnum = -100000.0;
-                for (int i = 0; i < classnum; i++) {
+                for (int i = 0; i < CLASSNUM; i++) {
                     if ([results[i * (width * height) + j * width + k] floatValue] > maxnum) {
                         maxnum = [results[i * (width * height) + j * width + k] floatValue];
                         maxj = j;
@@ -83,24 +83,19 @@
                     }
                 }
 
-                if (maxi == 15) {
+                if (maxi == PERSON) {
                     buffer[3 * (maxj * width + maxk)] = 255;
                     buffer[3 * (maxj * width + maxk) + 1] = 0;
                     buffer[3 * (maxj * width + maxk) + 2] = 0;
                 }
-
-                else if (maxi == 17) {
-                    buffer[3 * (maxj * width + maxk)] = 0;
-                    buffer[3 * (maxj * width + maxk) + 1] = 0;
-                    buffer[3 * (maxj * width + maxk) + 2] = 255;
-                } else if (maxi == 13) {
+                else if (maxi == DOG) {
                     buffer[3 * (maxj * width + maxk)] = 0;
                     buffer[3 * (maxj * width + maxk) + 1] = 255;
                     buffer[3 * (maxj * width + maxk) + 2] = 0;
-                } else if (maxi == 8) {
-                    buffer[3 * (maxj * width + maxk)] = 255;
+                } else if (maxi == SHEEP) {
+                    buffer[3 * (maxj * width + maxk)] = 0;
                     buffer[3 * (maxj * width + maxk) + 1] = 0;
-                    buffer[3 * (maxj * width + maxk) + 2] = 0;
+                    buffer[3 * (maxj * width + maxk) + 2] = 255;
                 } else {
                     buffer[3 * (maxj * width + maxk)] = 0;
                     buffer[3 * (maxj * width + maxk) + 1] = 0;

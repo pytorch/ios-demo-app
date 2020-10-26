@@ -1,3 +1,9 @@
+# Semantic Image Segmentation DeepLabV3 on iOS
+
+## Introduction
+
+This repo offers a Python script that converts the [PyTorch DeepLabV3 model](https://pytorch.org/hub/pytorch_vision_deeplabv3_resnet101) for mobile apps and an iOS app that uses the model to segment images.
+
 ## Quick Start
 
 To Test Run the Image Segmentation iOS App, follow the steps below:
@@ -32,3 +38,9 @@ results are:
 
 ![](screenshot1.png)
 ![](screenshot2.png)
+
+Note that the example image used in the repo is pretty large (800x800) so the segmentation process may take over 30 seconds. Use either a smaller-sized image or call the `resized` method in `UIImage+Helper.swift` to speed up the inference (it takes about 1 second on an image of size 180*180).
+
+## Tutorial
+
+Read the tutorial [here](https://pytorch.org/tutorials/beginner/deeplabv3_on_ios.html) for detailed step-by-step instructions of how to prepare and run the [PyTorch DeepLabV3 model](https://pytorch.org/hub/pytorch_vision_deeplabv3_resnet101) on iOS, as well as practical tips on how to successfully use a pre-trained PyTorch model on iOS and avoid common pitfalls.

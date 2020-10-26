@@ -4,16 +4,13 @@
 
 UIImageView* m_imageView;
 
-- (void)setImageView:(UIImageView*)imageView
-{
+- (void)setImageView:(UIImageView*)imageView {
     m_imageView = imageView;
 }
 
 - (UIImage*)convertRGBBufferToUIImage:(unsigned char*)buffer
                             withWidth:(int)width
-                           withHeight:(int)height
-{
-
+                           withHeight:(int)height {
     char* rgba = (char*)malloc(width * height * 4);
     for (int i = 0; i < width * height; ++i) {
         rgba[4 * i] = buffer[3 * i];
@@ -75,11 +72,8 @@ UIImageView* m_imageView;
 
     UIImage* image = nil;
     if (context) {
-
         CGContextDrawImage(context, CGRectMake(0.0f, 0.0f, width, height), iref);
-
         CGImageRef imageRef = CGBitmapContextCreateImage(context);
-
         if ([UIImage respondsToSelector:@selector(imageWithCGImage:scale:orientation:)]) {
             float scale = [[UIScreen mainScreen] scale];
             image = [UIImage imageWithCGImage:imageRef scale:scale orientation:UIImageOrientationUp];
