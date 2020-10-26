@@ -16,7 +16,6 @@
 		265BAFF4253A6A6900467AC4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 265BAFF2253A6A6900467AC4 /* LaunchScreen.storyboard */; };
 		265BB005253A6B6200467AC4 /* deeplabv3_scripted.pt in Resources */ = {isa = PBXBuildFile; fileRef = 265BB004253A6B6200467AC4 /* deeplabv3_scripted.pt */; };
 		265BB008253A6B9600467AC4 /* deeplab.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 265BB007253A6B9600467AC4 /* deeplab.jpg */; };
-		265BB00B253A6B9E00467AC4 /* kitten.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 265BB00A253A6B9E00467AC4 /* kitten.jpg */; };
 		265BB00E253A6E0E00467AC4 /* UIImage+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265BB00D253A6E0E00467AC4 /* UIImage+Helper.swift */; };
 		265BB017253A7F0500467AC4 /* TorchModule.mm in Sources */ = {isa = PBXBuildFile; fileRef = 265BB015253A7F0500467AC4 /* TorchModule.mm */; };
 /* End PBXBuildFile section */
@@ -35,7 +34,6 @@
 		265BAFFF253A6B1200467AC4 /* ImageSegmentation-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ImageSegmentation-Bridging-Header.h"; sourceTree = "<group>"; };
 		265BB004253A6B6200467AC4 /* deeplabv3_scripted.pt */ = {isa = PBXFileReference; lastKnownFileType = file; path = deeplabv3_scripted.pt; sourceTree = "<group>"; };
 		265BB007253A6B9600467AC4 /* deeplab.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = deeplab.jpg; sourceTree = "<group>"; };
-		265BB00A253A6B9E00467AC4 /* kitten.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = kitten.jpg; sourceTree = "<group>"; };
 		265BB00D253A6E0E00467AC4 /* UIImage+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Helper.swift"; sourceTree = "<group>"; };
 		265BB015253A7F0500467AC4 /* TorchModule.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TorchModule.mm; sourceTree = "<group>"; };
 		265BB016253A7F0500467AC4 /* TorchModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TorchModule.h; sourceTree = "<group>"; };
@@ -94,7 +92,6 @@
 				265BAFFF253A6B1200467AC4 /* ImageSegmentation-Bridging-Header.h */,
 				265BB004253A6B6200467AC4 /* deeplabv3_scripted.pt */,
 				265BB007253A6B9600467AC4 /* deeplab.jpg */,
-				265BB00A253A6B9E00467AC4 /* kitten.jpg */,
 			);
 			path = ImageSegmentation;
 			sourceTree = "<group>";
@@ -161,7 +158,6 @@
 				265BB008253A6B9600467AC4 /* deeplab.jpg in Resources */,
 				265BAFF1253A6A6900467AC4 /* Assets.xcassets in Resources */,
 				265BB005253A6B6200467AC4 /* deeplabv3_scripted.pt in Resources */,
-				265BB00B253A6B9E00467AC4 /* kitten.jpg in Resources */,
 				265BAFEF253A6A6800467AC4 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

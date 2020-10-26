@@ -27,24 +27,18 @@ class ViewController: UIViewController {
     
 
     @IBAction func doInfer(_ sender: Any) {
-
         guard var pixelBuffer = image!.normalized() else {
             return
         }
         
         let buffer = module.predict(image: UnsafeMutableRawPointer(&pixelBuffer))
-        
-        imageView.image = imageHelper.convertRGBBuffer(toUIImage: buffer , withWidth: 179, withHeight: 179)
+        let width = Int32(image!.size.width)
+        let height = Int32(image!.size.height)
+        imageView.image = imageHelper.convertRGBBuffer(toUIImage: buffer , withWidth: width, withHeight: height)
     }
 
     
     @IBAction func doRestart(_ sender: Any) {
-        if imageName == "deeplab.jpg" {
-            imageName = "kitten.jpg"
-        }
-        else {
-            imageName = "deeplab.jpg"
-        }
         image = UIImage(named: imageName)!
         imageView.image = image
     }

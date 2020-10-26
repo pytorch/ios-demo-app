@@ -26,4 +26,9 @@ open ImageSegmentation.xcworkspace/
 ```
 
 ### 3. Run the app
-Select the iPhone 11 simulator or an iOS device on Xcode to run the app.
+Select an iOS simulator or device on Xcode to run the app. The example image and its segmented result are as follows:
+
+results are:
+
+![](screenshot1.png)
+![](screenshot2.png)
