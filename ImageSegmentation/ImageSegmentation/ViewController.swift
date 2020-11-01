@@ -30,8 +30,12 @@ class ViewController: UIViewController {
         if let img = image {
             let w = Int32(img.size.width)
             let h = Int32(img.size.height)
-            let buffer = module.segment(image: UnsafeMutableRawPointer(&pixelBuffer), withWidth:w, withHeight: h)
-            imageView.image = imageHelper.convertRGBBuffer(toUIImage: buffer , withWidth: w, withHeight: h)
+            DispatchQueue.global().async {
+                let buffer = self.module.segment(image: UnsafeMutableRawPointer(&pixelBuffer), withWidth:w, withHeight: h)
+                DispatchQueue.main.async {
+                    self.imageView.image = self.imageHelper.convertRGBBuffer(toUIImage: buffer , withWidth: w, withHeight: h)
+                }
+            }
         }
     }
     
