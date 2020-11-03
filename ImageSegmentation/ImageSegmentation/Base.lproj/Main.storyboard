@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -20,8 +20,8 @@
                                 <rect key="frame" x="0.0" y="144" width="414" height="413"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m7H-I4-JnQ">
-                                <rect key="frame" x="176" y="582" width="62" height="30"/>
-                                <state key="normal" title="Segment"/>
+                                <rect key="frame" x="125" y="582" width="164" height="30"/>
+                                <state key="normal" title="Running the model..."/>
                                 <connections>
                                     <action selector="doInfer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GGf-Sz-pzs"/>
                                 </connections>
@@ -41,15 +41,16 @@
                             <constraint firstItem="AFt-y5-Qb0" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="3Wa-SG-lAa"/>
                             <constraint firstItem="AFt-y5-Qb0" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="9KD-uS-rD3"/>
                             <constraint firstItem="NgX-pU-lm2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="182" id="E0b-8y-MQD"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="m7H-I4-JnQ" secondAttribute="trailing" constant="176" id="LWi-4X-LQD"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="m7H-I4-JnQ" secondAttribute="trailing" constant="125" id="LWi-4X-LQD"/>
                             <constraint firstItem="AFt-y5-Qb0" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="W5F-cB-3op"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="NgX-pU-lm2" secondAttribute="trailing" constant="182" id="W9C-r3-taW"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="AFt-y5-Qb0" secondAttribute="bottom" constant="305" id="bqE-48-qFL"/>
                             <constraint firstItem="m7H-I4-JnQ" firstAttribute="top" secondItem="AFt-y5-Qb0" secondAttribute="bottom" constant="25" id="eRm-0s-qPG"/>
-                            <constraint firstItem="m7H-I4-JnQ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="176" id="o9z-Yo-UGt"/>
+                            <constraint firstItem="m7H-I4-JnQ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="125" id="o9z-Yo-UGt"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="btnSegment" destination="m7H-I4-JnQ" id="Jzb-6B-GtV"/>
                         <outlet property="imageView" destination="AFt-y5-Qb0" id="Rrb-4O-33M"/>
                     </connections>
                 </viewController>

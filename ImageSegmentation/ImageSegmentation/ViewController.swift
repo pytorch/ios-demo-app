@@ -2,8 +2,10 @@ import UIKit
 
 class ViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var btnSegment: UIButton!
     
-    private let image = UIImage(named: "deeplab.jpg")
+    private var imageName = "deeplab.jpg"
+    private var image : UIImage?
     private let imageHelper = UIImageHelper()
 
     private lazy var module: TorchModule = {
@@ -19,27 +21,39 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        btnSegment.setTitle("Segment", for: .normal)
+        image = UIImage(named: imageName)!
         imageView.image = image
     }
 
     @IBAction func doInfer(_ sender: Any) {
-        guard var pixelBuffer = image!.normalized() else {
+        btnSegment.isEnabled = false
+        btnSegment.setTitle("Running the model...", for: .normal)
+        let resizedImage = image!.resized(to: CGSize(width: 250, height: 250))
+        guard var pixelBuffer = resizedImage.normalized() else {
             return
         }
                 
-        if let img = image {
-            let w = Int32(img.size.width)
-            let h = Int32(img.size.height)
-            DispatchQueue.global().async {
-                let buffer = self.module.segment(image: UnsafeMutableRawPointer(&pixelBuffer), withWidth:w, withHeight: h)
-                DispatchQueue.main.async {
-                    self.imageView.image = self.imageHelper.convertRGBBuffer(toUIImage: buffer , withWidth: w, withHeight: h)
-                }
+        let w = Int32(resizedImage.size.width)
+        let h = Int32(resizedImage.size.height)
+        DispatchQueue.global().async {
+            let buffer = self.module.segment(image: UnsafeMutableRawPointer(&pixelBuffer), withWidth:w, withHeight: h)
+            DispatchQueue.main.async {
+                self.imageView.image = self.imageHelper.convertRGBBuffer(toUIImage: buffer , withWidth: w, withHeight: h)
+                self.btnSegment.isEnabled = true
+                self.btnSegment.setTitle("Segment", for: .normal)
             }
         }
     }
     
     @IBAction func doRestart(_ sender: Any) {
+        if imageName == "deeplab.jpg" {
+            imageName = "dog.jpg"
+        }
+        else {
+            imageName = "deeplab.jpg"
+        }
+        image = UIImage(named: imageName)!
         imageView.image = image
     }    
 }
