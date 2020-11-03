@@ -39,7 +39,7 @@ results are:
 ![](screenshot1.png)
 ![](screenshot2.png)
 
-Note that the example image used in the repo is pretty large (800x800) so the segmentation process may take over 30 seconds. Use either a smaller-sized image or call the `resized` method in `UIImage+Helper.swift` to speed up the inference (it takes about 1 second on an image of size 180*180).
+Note that the `resized` method in `UIImage+Helper.swift` is used to speed up the model inference, but a smaller size may cause the result to be less accurate.
 
 ## Tutorial
 
