@@ -79,20 +79,14 @@
                         maxi = i; maxj = j; maxk = k;
                     }
                 }
-                // showing color coding for person, dog, sheep and background
+
                 int n = 3 * (maxj * width + maxk);
-                if (maxi == PERSON) { // red
-                    buffer[n] = 255; buffer[n+1] = 0; buffer[n+2] = 0;
-                }
-                else if (maxi == DOG) { // green
-                    buffer[n] = 0; buffer[n+1] = 255; buffer[n+2] = 0;
-                }
-                else if (maxi == SHEEP) { // blue
-                    buffer[n] = 0; buffer[n+1] = 0; buffer[n+2] = 255;
-                }
-                else { // black
-                    buffer[n] = 0; buffer[n+1] = 0; buffer[n+2] = 0;
-                }
+                // color coding for person (red), dog (green), sheep (blue)
+                // black color for background and other classes
+                buffer[n] = 0; buffer[n+1] = 0; buffer[n+2] = 0;
+                if (maxi == PERSON) buffer[n] = 255;
+                else if (maxi == DOG) buffer[n+1] = 255;
+                else if (maxi == SHEEP) buffer[n+2] = 255;
             }
         }
 
