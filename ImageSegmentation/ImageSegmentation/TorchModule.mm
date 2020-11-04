@@ -65,41 +65,33 @@
             [results addObject:@(floatBuffer[i])];
         }
 
-        unsigned char* buffer = (unsigned char*)malloc(3 * width * height);
-
+        NSMutableData* data = [NSMutableData dataWithLength:sizeof(unsigned char) * 3 * width * height];
+        unsigned char* buffer = (unsigned char*)[data mutableBytes];
+        // go through each element in the output of size [WIDTH, HEIGHT] and
+        // set different color for different classnum
         for (int j = 0; j < width; j++) {
             for (int k = 0; k < height; k++) {
-                int maxj = 0;
-                int maxk = 0;
-                int maxi = 0;
-
+                int maxi = 0, maxj = 0, maxk = 0;
                 float maxnum = -100000.0;
                 for (int i = 0; i < CLASSNUM; i++) {
                     if ([results[i * (width * height) + j * width + k] floatValue] > maxnum) {
                         maxnum = [results[i * (width * height) + j * width + k] floatValue];
-                        maxj = j;
-                        maxk = k;
-                        maxi = i;
+                        maxi = i; maxj = j; maxk = k;
                     }
                 }
-
-                if (maxi == PERSON) {
-                    buffer[3 * (maxj * width + maxk)] = 255;
-                    buffer[3 * (maxj * width + maxk) + 1] = 0;
-                    buffer[3 * (maxj * width + maxk) + 2] = 0;
+                // showing color coding for person, dog, sheep and background
+                int n = 3 * (maxj * width + maxk);
+                if (maxi == PERSON) { // red
+                    buffer[n] = 255; buffer[n+1] = 0; buffer[n+2] = 0;
                 }
-                else if (maxi == DOG) {
-                    buffer[3 * (maxj * width + maxk)] = 0;
-                    buffer[3 * (maxj * width + maxk) + 1] = 255;
-                    buffer[3 * (maxj * width + maxk) + 2] = 0;
-                } else if (maxi == SHEEP) {
-                    buffer[3 * (maxj * width + maxk)] = 0;
-                    buffer[3 * (maxj * width + maxk) + 1] = 0;
-                    buffer[3 * (maxj * width + maxk) + 2] = 255;
-                } else {
-                    buffer[3 * (maxj * width + maxk)] = 0;
-                    buffer[3 * (maxj * width + maxk) + 1] = 0;
-                    buffer[3 * (maxj * width + maxk) + 2] = 0;
+                else if (maxi == DOG) { // green
+                    buffer[n] = 0; buffer[n+1] = 255; buffer[n+2] = 0;
+                }
+                else if (maxi == SHEEP) { // blue
+                    buffer[n] = 0; buffer[n+1] = 0; buffer[n+2] = 255;
+                }
+                else { // black
+                    buffer[n] = 0; buffer[n+1] = 0; buffer[n+2] = 0;
                 }
             }
         }
