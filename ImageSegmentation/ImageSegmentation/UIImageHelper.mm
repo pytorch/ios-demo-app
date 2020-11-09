@@ -2,11 +2,6 @@
 
 @implementation UIImageHelper : NSObject
 
-UIImageView* m_imageView;
-
-- (void)setImageView:(UIImageView*)imageView {
-    m_imageView = imageView;
-}
 
 - (UIImage*)convertRGBBufferToUIImage:(unsigned char*)buffer
                             withWidth:(int)width
