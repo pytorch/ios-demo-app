@@ -5,7 +5,7 @@
 - XCode 11.0 or above
 - iOS 12.0 or above
 
-## Quick Start with a HelloWorld Example
+## The HelloWorld Example
 
 HelloWorld is a simple image classification application that demonstrates how to use PyTorch C++ libraries on iOS. The code is written in Swift and uses Objective-C as a bridge.
 
@@ -40,7 +40,7 @@ Now open the `HelloWorld.xcworkspace` in XCode, select an iOS simulator and laun
 
 ### PyTorch demo app
 
-For more complex use cases, we recommend to check out the PyTorch demo application. The demo app contains two showcases. A camera app that runs a quantized model to predict the images coming from device’s rear-facing camera in real time.  And a text-based app that uses a text classification model to predict the topic from the input string.
+The PyTorch demo app is a full-fledged app that contains two showcases. A camera app that runs a quantized model to classifiy images in real time. And a text-based app that uses a text classification model to predict the topic from the input text.
 
 ## LICENSE
 
