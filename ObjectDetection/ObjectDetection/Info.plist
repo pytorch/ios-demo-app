@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSCameraUsageDescription</key>
+	<string>so you can choose a photo or take a picture for object detection</string>
 	<key>CFBundleDisplayName</key>
 	<string>YOLOv5</string>
 	<key>CFBundleDevelopmentRegion</key>

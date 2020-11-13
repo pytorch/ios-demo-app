@@ -16,15 +16,63 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SRR-fU-drQ">
-                                <rect key="frame" x="20" y="178" width="374" height="374"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SRR-fU-drQ">
+                                <rect key="frame" x="0.0" y="144" width="414" height="414"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="414" id="91b-dW-d6L"/>
+                                </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x5T-Eu-U1r">
+                                <rect key="frame" x="136" y="583" width="142" height="30"/>
+                                <state key="normal" title="Running the model..."/>
+                                <connections>
+                                    <action selector="runTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nDQ-kn-r2l"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HOC-XB-vDL">
+                                <rect key="frame" x="191" y="633" width="32" height="30"/>
+                                <state key="normal" title="Next"/>
+                                <connections>
+                                    <action selector="nextTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="t9w-dC-RNT"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ngn-Yr-ype">
+                                <rect key="frame" x="183" y="683" width="48" height="30"/>
+                                <state key="normal" title="Photos"/>
+                                <connections>
+                                    <action selector="photosTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Kwo-c4-2dY"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rnC-JU-BNk">
+                                <rect key="frame" x="181" y="733" width="54" height="30"/>
+                                <state key="normal" title="Camera"/>
+                                <connections>
+                                    <action selector="cameraTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LuC-7i-X3x"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="rnC-JU-BNk" firstAttribute="top" secondItem="Ngn-Yr-ype" secondAttribute="bottom" constant="20" id="0So-Jk-O8r"/>
+                            <constraint firstItem="SRR-fU-drQ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="3TH-Oj-UfI"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="HOC-XB-vDL" secondAttribute="trailing" constant="191" id="4I6-An-K2k"/>
+                            <constraint firstItem="HOC-XB-vDL" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="191" id="4VV-AN-7Az"/>
+                            <constraint firstItem="rnC-JU-BNk" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="181" id="7EQ-tB-L4Z"/>
+                            <constraint firstItem="HOC-XB-vDL" firstAttribute="top" secondItem="x5T-Eu-U1r" secondAttribute="bottom" constant="20" id="CKX-YV-iok"/>
+                            <constraint firstItem="SRR-fU-drQ" firstAttribute="centerX" secondItem="x5T-Eu-U1r" secondAttribute="centerX" id="CMU-q7-8Qh"/>
+                            <constraint firstItem="Ngn-Yr-ype" firstAttribute="top" secondItem="HOC-XB-vDL" secondAttribute="bottom" constant="20" id="EaU-Uh-xq3"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="rnC-JU-BNk" secondAttribute="trailing" constant="179" id="Fwg-9f-6Kl"/>
+                            <constraint firstItem="Ngn-Yr-ype" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="183" id="VgJ-Ft-Xnd"/>
+                            <constraint firstItem="SRR-fU-drQ" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Yqn-0Q-sWL"/>
+                            <constraint firstItem="SRR-fU-drQ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="k1r-XA-qbB"/>
+                            <constraint firstItem="x5T-Eu-U1r" firstAttribute="top" secondItem="SRR-fU-drQ" secondAttribute="bottom" constant="25" id="oip-GM-Bry"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Ngn-Yr-ype" secondAttribute="trailing" constant="183" id="qmQ-Nu-YOp"/>
+                        </constraints>
                     </view>
                     <connections>
+                        <outlet property="btnNext" destination="HOC-XB-vDL" id="jIw-Nc-Wed"/>
+                        <outlet property="btnRun" destination="x5T-Eu-U1r" id="jp1-u7-s29"/>
                         <outlet property="imageView" destination="SRR-fU-drQ" id="kU6-wU-0Qx"/>
                     </connections>
                 </viewController>
