@@ -30,21 +30,30 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HOC-XB-vDL">
-                                <rect key="frame" x="191" y="633" width="32" height="30"/>
-                                <state key="normal" title="Next"/>
+                                <rect key="frame" x="50" y="633" width="110" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="110" id="u6p-wo-YZb"/>
+                                </constraints>
+                                <state key="normal" title="Test Image 1/3"/>
                                 <connections>
                                     <action selector="nextTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="t9w-dC-RNT"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ngn-Yr-ype">
-                                <rect key="frame" x="183" y="683" width="48" height="30"/>
+                                <rect key="frame" x="200" y="633" width="48" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="48" id="57C-Gz-qXn"/>
+                                </constraints>
                                 <state key="normal" title="Photos"/>
                                 <connections>
                                     <action selector="photosTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Kwo-c4-2dY"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rnC-JU-BNk">
-                                <rect key="frame" x="181" y="733" width="54" height="30"/>
+                                <rect key="frame" x="293" y="633" width="54" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="54" id="mt5-Dh-6Bc"/>
+                                </constraints>
                                 <state key="normal" title="Camera"/>
                                 <connections>
                                     <action selector="cameraTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LuC-7i-X3x"/>
@@ -54,20 +63,17 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="rnC-JU-BNk" firstAttribute="top" secondItem="Ngn-Yr-ype" secondAttribute="bottom" constant="20" id="0So-Jk-O8r"/>
                             <constraint firstItem="SRR-fU-drQ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="3TH-Oj-UfI"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="HOC-XB-vDL" secondAttribute="trailing" constant="191" id="4I6-An-K2k"/>
-                            <constraint firstItem="HOC-XB-vDL" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="191" id="4VV-AN-7Az"/>
-                            <constraint firstItem="rnC-JU-BNk" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="181" id="7EQ-tB-L4Z"/>
+                            <constraint firstItem="HOC-XB-vDL" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="4VV-AN-7Az"/>
+                            <constraint firstItem="rnC-JU-BNk" firstAttribute="top" secondItem="SRR-fU-drQ" secondAttribute="bottom" constant="75" id="7XH-Qv-T1q"/>
+                            <constraint firstItem="Ngn-Yr-ype" firstAttribute="leading" secondItem="HOC-XB-vDL" secondAttribute="trailing" constant="40" id="Adb-QU-DoN"/>
                             <constraint firstItem="HOC-XB-vDL" firstAttribute="top" secondItem="x5T-Eu-U1r" secondAttribute="bottom" constant="20" id="CKX-YV-iok"/>
                             <constraint firstItem="SRR-fU-drQ" firstAttribute="centerX" secondItem="x5T-Eu-U1r" secondAttribute="centerX" id="CMU-q7-8Qh"/>
-                            <constraint firstItem="Ngn-Yr-ype" firstAttribute="top" secondItem="HOC-XB-vDL" secondAttribute="bottom" constant="20" id="EaU-Uh-xq3"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="rnC-JU-BNk" secondAttribute="trailing" constant="179" id="Fwg-9f-6Kl"/>
-                            <constraint firstItem="Ngn-Yr-ype" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="183" id="VgJ-Ft-Xnd"/>
+                            <constraint firstItem="Ngn-Yr-ype" firstAttribute="top" secondItem="x5T-Eu-U1r" secondAttribute="bottom" constant="20" id="ScM-9t-yR6"/>
                             <constraint firstItem="SRR-fU-drQ" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Yqn-0Q-sWL"/>
+                            <constraint firstItem="rnC-JU-BNk" firstAttribute="leading" secondItem="Ngn-Yr-ype" secondAttribute="trailing" constant="45" id="ZIZ-l5-GOk"/>
                             <constraint firstItem="SRR-fU-drQ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="k1r-XA-qbB"/>
                             <constraint firstItem="x5T-Eu-U1r" firstAttribute="top" secondItem="SRR-fU-drQ" secondAttribute="bottom" constant="25" id="oip-GM-Bry"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Ngn-Yr-ype" secondAttribute="trailing" constant="183" id="qmQ-Nu-YOp"/>
                         </constraints>
                     </view>
                     <connections>
