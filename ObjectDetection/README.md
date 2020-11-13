@@ -1,26 +1,31 @@
-# Semantic Image Segmentation DeepLabV3 on iOS
+# Object Detection with YOLOv5 on iOS
 
 ## Introduction
 
-This repo offers a Python script that converts the [PyTorch DeepLabV3 model](https://pytorch.org/hub/pytorch_vision_deeplabv3_resnet101) for mobile apps and an iOS app that uses the model to segment images.
+[YOLO](https://pjreddie.com/darknet/yolo/) (You Only Look Once) is one of the fastest and most popular object detection model. [YOLOv5](https://github.com/ultralytics/yolov5) is an open-source implementation of the latest version of YOLO. This Object Detection with YOLOv5 iOS sample app uses the PyTorch scripted YOLOv5 model to detect objects of [80 classes](https://github.com/ultralytics/yolov5/blob/master/data/coco.yaml) trained with the model.
+
+## Prerequisites
+
+PyTorch 1.7 or later (Optional)
+Python 3.8 (Optional)
+Xcode 12 or later
 
 ## Quick Start
 
-To Test Run the Image Segmentation iOS App, follow the steps below:
+To Test Run the Object Detection iOS App, follow the steps below:
 
 ### 1. Prepare the Model
 
 Open a Mac Terminal, run the following commands:
 
 ```
-git clone https://github.com/pytorch/ios-demo-app
-cd ios-demo-app/ImageSegmentation
-python deeplabv3.py
+git clone https://github.com/jeffxtang/yolov5
+cd yolov5
+pip install -r requirements.txt
+python export.py
 ```
 
-The Python script `deeplabv3.py` is used to generate the TorchScript-formatted model for mobile apps. If you don't have the PyTorch environment set up to run the script, you can download the model file to the `ios-demo-app/ImageSegmentation` folder using the link [here](https://drive.google.com/file/d/17KeE6mKo67l14XxTl8a-NbtqwAvduVZG/view?usp=sharing).
-
-Then run `mv deeplabv3_scripted.pt ImageSegmentation` to move the model file to the right location.
+The Python script `export.py` is used to generate the TorchScript-formatted YOLOv5 model for mobile apps. If you don't have the PyTorch environment set up to run the script, you can download the model file [here](https://drive.google.com/file/d/15FFbi1ajWh02Dqc4W4HdGI45Th3VhbkR/view?usp=sharing) to the `ios-demo-app/ObjectDetection/ObjectDetection` folder.
 
 ### 2. Use LibTorch
 
@@ -28,19 +33,19 @@ Run the commands below:
 
 ```
 pod install
-open ImageSegmentation.xcworkspace/
+open ObjectDetection.xcworkspace/
 ```
 
 ### 3. Run the app
-Select an iOS simulator or device on Xcode to run the app. The example image and its segmented result are as follows:
+Select an iOS simulator or device on Xcode to run the app. Some example results are as follows:
 
 results are:
 
 ![](screenshot1.png)
 ![](screenshot2.png)
 
-Note that the `resized` method in `UIImage+Helper.swift` is used to speed up the model inference, but a smaller size may cause the result to be less accurate.
+![](screenshot3.png)
+![](screenshot4.png)
 
-## Tutorial
 
-Read the tutorial [here](https://pytorch.org/tutorials/beginner/deeplabv3_on_ios.html) for detailed step-by-step instructions of how to prepare and run the [PyTorch DeepLabV3 model](https://pytorch.org/hub/pytorch_vision_deeplabv3_resnet101) on iOS, as well as practical tips on how to successfully use a pre-trained PyTorch model on iOS and avoid common pitfalls.
+You can also select a picture from your iOS device's Photos library or take a picture with the device camera and then do the object detection.
