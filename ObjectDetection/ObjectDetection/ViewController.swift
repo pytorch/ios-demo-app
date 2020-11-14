@@ -161,6 +161,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
+        image = image!.resized(to: CGSize(width: 640, height: 640*image!.size.height/image!.size.width))
         imageView.image = image
         self.dismiss(animated: true, completion: nil)
     }
