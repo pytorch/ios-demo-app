@@ -5,7 +5,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var btnRun: UIButton!
     @IBOutlet weak var btnNext: UIButton!
     
+    // 640x640 is the img-size used when exporting the model
+    private let width : Double = 640.0
+    private let height : Double = 640.0
+    private let thhreshold = 0.35
+    private let testImages = ["test1.png", "test2.jpg", "test3.png"]
+    
     private var imageName = "test1.png"
+
     private var image : UIImage?
 
     private lazy var module: TorchModule = {
@@ -16,29 +23,37 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             fatalError("Can't find the model file!")
         }
     }()
-
-    private let classes = ["person", "bicycle", "car", "motorcycle", "airplane", "bus", "train", "truck", "boat", "traffic light", "fire hydrant", "stop sign", "parking meter", "bench", "bird", "cat", "dog", "horse", "sheep", "cow", "elephant", "bear", "zebra", "giraffe", "backpack", "umbrella", "handbag", "tie", "suitcase", "frisbee", "skis", "snowboard", "sports ball", "kite", "baseball bat", "baseball glove", "skateboard", "surfboard", "tennis racket", "bottle", "wine glass", "cup", "fork", "knife", "spoon", "bowl", "banana", "apple", "sandwich", "orange", "broccoli", "carrot", "hot dog", "pizza", "donut", "cake", "chair", "couch", "potted plant", "bed", "dining table", "toilet", "tv", "laptop", "mouse", "remote", "keyboard", "cell phone", "microwave", "oven", "toaster", "sink", "refrigerator", "book", "clock", "vase", "scissors", "teddy bear","hair drier", "toothbrush"]
+    
+    private var classes: [String] = {
+        if let filePath = Bundle.main.path(forResource: "classes", ofType: "txt"),
+            let classes = try? String(contentsOfFile: filePath) {
+            return classes.components(separatedBy: .newlines)
+        } else {
+            fatalError("classes file was not found.")
+        }
+    }()
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
         image = UIImage(named: imageName)!
-        imageView.image = image
-        
-        btnRun.setTitle("Detect", for: .normal)
+        if let iv = imageView {
+            iv.image = image
+            
+            btnRun.setTitle("Detect", for: .normal)
+        }
     }
 
     @IBAction func runTapped(_ sender: Any) {
         btnRun.isEnabled = false
         btnRun.setTitle("Running the model...", for: .normal)
 
-        // 640x640 is the img-size used when exporting the model
-        let resizedImage = image!.resized(to: CGSize(width: 640, height: 640))
+
+        let resizedImage = image!.resized(to: CGSize(width: width, height: height))
         
-        let imgScaleX : Double = Double(image!.size.width / 640);
-        let imgScaleY : Double = Double(image!.size.height / 640);
+        let imgScaleX : Double = Double(image!.size.width) / width;
+        let imgScaleY : Double = Double(image!.size.height) / height;
         
-        let thhreshold = 0.35
         
         let ivScaleX : Double = (image!.size.width > image!.size.height ? Double(imageView.frame.size.width / imageView.image!.size.width) : Double(imageView.image!.size.width / imageView.image!.size.height))
         let ivScaleY : Double = (image!.size.height > image!.size.width ? Double(imageView.frame.size.height / imageView.image!.size.height) : Double(imageView.image!.size.height / imageView.image!.size.width))
@@ -51,15 +66,18 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
         
         DispatchQueue.global().async {
+            let currTime = CACurrentMediaTime()
             guard let outputs = self.module.detect(image: UnsafeMutableRawPointer(&pixelBuffer)) else {
                 return
             }
+            let newTime = CACurrentMediaTime()
+            print(currTime, newTime, newTime-currTime)
             
             // outputs is of size 25200*85, each row starts with left,top,right,bottom,score and 80 class probability (? - sum of 80 values not exactly same as 1.0: sum(prediction[0, 24599][5:]) is 0.7299)
             
             var predictions = [Prediction]()
             for i in 0..<25200 {
-                if Double(outputs[i*85+4]) > thhreshold {
+                if Double(outputs[i*85+4]) > self.thhreshold {
                     let x = Double(outputs[i*85])
                     let y = Double(outputs[i*85+1])
                     let w = Double(outputs[i*85+2])
@@ -87,7 +105,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 }
             }
             
-            let nmsPredictons = self.nonMaxSuppression(boxes: predictions, limit: 15, threshold: 0.3)
+            let nmsPredictons = nonMaxSuppression(boxes: predictions, limit: 15, threshold: 0.3)
+                        
             
             DispatchQueue.main.async {
                 for pred in nmsPredictons {
@@ -165,6 +184,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         imageView.image = image
         self.dismiss(animated: true, completion: nil)
     }
+}
+
+
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // code below about NMS is from  https://github.com/hollance/YOLO-CoreML-MPSNNGraph/blob/master/Common/Helpers.swift
@@ -181,6 +203,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
       let score: Float
       let rect: CGRect
     }
+    
     func nonMaxSuppression(boxes: [Prediction], limit: Int, threshold: Float) -> [Prediction] {
 
       // Do an argsort on the confidence scores, from high to low.
@@ -235,6 +258,3 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
       return Float(intersectionArea / (areaA + areaB - intersectionArea))
     }
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    
-}
-
