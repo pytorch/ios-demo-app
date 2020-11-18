@@ -29,15 +29,15 @@
         torch::autograd::AutoGradMode guard(false);
         at::AutoNonVariableTypeMode non_var_type_mode(true);
         
-        float* floatInput = tensor.data_ptr<float>();
-        if (!floatInput) {
-            return nil;
-        }
-        NSMutableArray* inputs = [[NSMutableArray alloc] init];
-        for (int i = 0; i < 3 * 640 * 640; i++) {
-            [inputs addObject:@(floatInput[i])];
-        }
-
+//        float* floatInput = tensor.data_ptr<float>();
+//        if (!floatInput) {
+//            return nil;
+//        }
+//        NSMutableArray* inputs = [[NSMutableArray alloc] init];
+//        for (int i = 0; i < 3 * 640 * 640; i++) {
+//            [inputs addObject:@(floatInput[i])];
+//        }
+//
         
 
         auto outputTuple = _impl.forward({ tensor }).toTuple();
