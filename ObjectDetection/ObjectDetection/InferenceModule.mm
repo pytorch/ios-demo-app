@@ -1,7 +1,13 @@
-#import "TorchModule.h"
+// Copyright (c) 2020 Facebook, Inc. and its affiliates.
+// All rights reserved.
+//
+// This source code is licensed under the BSD-style license found in the
+// LICENSE file in the root directory of this source tree.
+
+#import "InferenceModule.h"
 #import <LibTorch/LibTorch.h>
 
-@implementation TorchModule {
+@implementation InferenceModule {
 @protected
     torch::jit::script::Module _impl;
 }
@@ -29,17 +35,6 @@
         torch::autograd::AutoGradMode guard(false);
         at::AutoNonVariableTypeMode non_var_type_mode(true);
         
-//        float* floatInput = tensor.data_ptr<float>();
-//        if (!floatInput) {
-//            return nil;
-//        }
-//        NSMutableArray* inputs = [[NSMutableArray alloc] init];
-//        for (int i = 0; i < 3 * 640 * 640; i++) {
-//            [inputs addObject:@(floatInput[i])];
-//        }
-//
-        
-
         auto outputTuple = _impl.forward({ tensor }).toTuple();
 
         auto predTensor = outputTuple->elements()[0].toTensor();

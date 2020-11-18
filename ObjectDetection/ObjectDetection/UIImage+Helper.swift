@@ -1,3 +1,9 @@
+// Copyright (c) 2020 Facebook, Inc. and its affiliates.
+// All rights reserved.
+//
+// This source code is licensed under the BSD-style license found in the
+// LICENSE file in the root directory of this source tree.
+
 import UIKit
 
 extension UIImage {
@@ -153,8 +159,6 @@ func outputsToNMSPredictions(outputs: Array<NSNumber>, imgScaleX: Double, imgSca
 
     return nonMaxSuppression(boxes: predictions, limit: 15, threshold: 0.3)
 }
-
-
 
 func cleanDrawing(imageView: UIImageView) {
     if let layers = imageView.layer.sublayers {

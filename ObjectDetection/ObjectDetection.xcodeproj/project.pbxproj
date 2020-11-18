@@ -15,7 +15,6 @@
 		266E8748256350C000CF5151 /* CameraPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266E8744256350C000CF5151 /* CameraPreviewView.swift */; };
 		266E8749256350C000CF5151 /* LiveObjectDetectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266E8745256350C000CF5151 /* LiveObjectDetectionViewController.swift */; };
 		266E874D256359E900CF5151 /* ObjectDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266E874C256359E900CF5151 /* ObjectDetector.swift */; };
-		266E8750256359FE00CF5151 /* Inferencer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266E874F256359FE00CF5151 /* Inferencer.swift */; };
 		269E7472255CC56200B1D6CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269E7471255CC56200B1D6CA /* AppDelegate.swift */; };
 		269E7474255CC56200B1D6CA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269E7473255CC56200B1D6CA /* SceneDelegate.swift */; };
 		269E7476255CC56200B1D6CA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269E7475255CC56200B1D6CA /* ViewController.swift */; };
@@ -25,7 +24,7 @@
 		269E7488255CC69400B1D6CA /* test1.png in Resources */ = {isa = PBXBuildFile; fileRef = 269E7487255CC69400B1D6CA /* test1.png */; };
 		269E748C255CC6D100B1D6CA /* test3.png in Resources */ = {isa = PBXBuildFile; fileRef = 269E748A255CC6D100B1D6CA /* test3.png */; };
 		269E748D255CC6D100B1D6CA /* test2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 269E748B255CC6D100B1D6CA /* test2.jpg */; };
-		269E7498255CCBA000B1D6CA /* TorchModule.mm in Sources */ = {isa = PBXBuildFile; fileRef = 269E7496255CCBA000B1D6CA /* TorchModule.mm */; };
+		269E7498255CCBA000B1D6CA /* InferenceModule.mm in Sources */ = {isa = PBXBuildFile; fileRef = 269E7496255CCBA000B1D6CA /* InferenceModule.mm */; };
 		269E749B255CCBC300B1D6CA /* UIImage+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269E749A255CCBC300B1D6CA /* UIImage+Helper.swift */; };
 /* End PBXBuildFile section */
 
@@ -37,7 +36,6 @@
 		266E8744256350C000CF5151 /* CameraPreviewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraPreviewView.swift; sourceTree = "<group>"; };
 		266E8745256350C000CF5151 /* LiveObjectDetectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveObjectDetectionViewController.swift; sourceTree = "<group>"; };
 		266E874C256359E900CF5151 /* ObjectDetector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectDetector.swift; sourceTree = "<group>"; };
-		266E874F256359FE00CF5151 /* Inferencer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Inferencer.swift; sourceTree = "<group>"; };
 		269E746E255CC56200B1D6CA /* ObjectDetection.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ObjectDetection.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		269E7471255CC56200B1D6CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		269E7473255CC56200B1D6CA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -50,8 +48,8 @@
 		269E748A255CC6D100B1D6CA /* test3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test3.png; sourceTree = "<group>"; };
 		269E748B255CC6D100B1D6CA /* test2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test2.jpg; sourceTree = "<group>"; };
 		269E7495255CCBA000B1D6CA /* ObjectDetection-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ObjectDetection-Bridging-Header.h"; sourceTree = "<group>"; };
-		269E7496255CCBA000B1D6CA /* TorchModule.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TorchModule.mm; sourceTree = "<group>"; };
-		269E7497255CCBA000B1D6CA /* TorchModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TorchModule.h; sourceTree = "<group>"; };
+		269E7496255CCBA000B1D6CA /* InferenceModule.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = InferenceModule.mm; sourceTree = "<group>"; };
+		269E7497255CCBA000B1D6CA /* InferenceModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InferenceModule.h; sourceTree = "<group>"; };
 		269E749A255CCBC300B1D6CA /* UIImage+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Helper.swift"; sourceTree = "<group>"; };
 		53911D0823558D357008FFEF /* Pods-ObjectDetection.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ObjectDetection.debug.xcconfig"; path = "Target Support Files/Pods-ObjectDetection/Pods-ObjectDetection.debug.xcconfig"; sourceTree = "<group>"; };
 		EC0C3BEAFA35166508C9079C /* Pods_ObjectDetection.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ObjectDetection.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -115,15 +113,14 @@
 				269E7471255CC56200B1D6CA /* AppDelegate.swift */,
 				269E7473255CC56200B1D6CA /* SceneDelegate.swift */,
 				269E7475255CC56200B1D6CA /* ViewController.swift */,
+				269E749A255CCBC300B1D6CA /* UIImage+Helper.swift */,
+				269E7497255CCBA000B1D6CA /* InferenceModule.h */,
+				269E7496255CCBA000B1D6CA /* InferenceModule.mm */,
+				269E7495255CCBA000B1D6CA /* ObjectDetection-Bridging-Header.h */,
 				269E7477255CC56200B1D6CA /* Main.storyboard */,
 				269E747A255CC56400B1D6CA /* Assets.xcassets */,
 				269E747C255CC56400B1D6CA /* LaunchScreen.storyboard */,
 				269E747F255CC56400B1D6CA /* Info.plist */,
-				269E7497255CCBA000B1D6CA /* TorchModule.h */,
-				269E7496255CCBA000B1D6CA /* TorchModule.mm */,
-				266E874F256359FE00CF5151 /* Inferencer.swift */,
-				269E7495255CCBA000B1D6CA /* ObjectDetection-Bridging-Header.h */,
-				269E749A255CCBC300B1D6CA /* UIImage+Helper.swift */,
 				269E7487255CC69400B1D6CA /* test1.png */,
 				269E748B255CC6D100B1D6CA /* test2.jpg */,
 				269E748A255CC6D100B1D6CA /* test3.png */,
@@ -246,9 +243,8 @@
 			files = (
 				266E8748256350C000CF5151 /* CameraPreviewView.swift in Sources */,
 				266E8746256350C000CF5151 /* CameraController.swift in Sources */,
-				266E8750256359FE00CF5151 /* Inferencer.swift in Sources */,
 				266E8749256350C000CF5151 /* LiveObjectDetectionViewController.swift in Sources */,
-				269E7498255CCBA000B1D6CA /* TorchModule.mm in Sources */,
+				269E7498255CCBA000B1D6CA /* InferenceModule.mm in Sources */,
 				266E874D256359E900CF5151 /* ObjectDetector.swift in Sources */,
 				269E7476255CC56200B1D6CA /* ViewController.swift in Sources */,
 				269E749B255CCBC300B1D6CA /* UIImage+Helper.swift in Sources */,

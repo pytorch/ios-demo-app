@@ -1,9 +1,8 @@
+// Copyright (c) 2020 Facebook, Inc. and its affiliates.
+// All rights reserved.
 //
-//  AppDelegate.swift
-//  ObjectDetection
-//
-//  Created by Jeff Tang on 11/11/20.
-//
+// This source code is licensed under the BSD-style license found in the
+// LICENSE file in the root directory of this source tree.
 
 import UIKit
 
