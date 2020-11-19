@@ -11,30 +11,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var btnRun: UIButton!
     @IBOutlet weak var btnNext: UIButton!
     
-    private let width : CGFloat = 640.0
-    private let height : CGFloat = 640.0
     private let testImages = ["test1.png", "test2.jpg", "test3.png"]
     private var imgIndex = 0
 
     private var image : UIImage?
-
-    private lazy var module: InferenceModule = {
-        if let filePath = Bundle.main.path(forResource: "yolov5s.torchscript", ofType: "pt"),
-            let module = InferenceModule(fileAtPath: filePath) {
-            return module
-        } else {
-            fatalError("Can't find the model file!")
-        }
-    }()
-    
-    private var classes: [String] = {
-        if let filePath = Bundle.main.path(forResource: "classes", ofType: "txt"),
-            let classes = try? String(contentsOfFile: filePath) {
-            return classes.components(separatedBy: .newlines)
-        } else {
-            fatalError("classes file was not found.")
-        }
-    }()
+    private var inferencer = ObjectDetector()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,10 +30,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         btnRun.isEnabled = false
         btnRun.setTitle("Running the model...", for: .normal)
 
-        let resizedImage = image!.resized(to: CGSize(width: width, height: height))
+        let resizedImage = image!.resized(to: CGSize(width: CGFloat(PrePostProcessor.inputWidth), height: CGFloat(PrePostProcessor.inputHeight)))
         
-        let imgScaleX = Double(image!.size.width / width);
-        let imgScaleY = Double(image!.size.height / height);
+        let imgScaleX = Double(image!.size.width / CGFloat(PrePostProcessor.inputWidth));
+        let imgScaleY = Double(image!.size.height / CGFloat(PrePostProcessor.inputHeight));
         
         let ivScaleX : Double = (image!.size.width > image!.size.height ? Double(imageView.frame.size.width / imageView.image!.size.width) : Double(imageView.image!.size.width / imageView.image!.size.height))
         let ivScaleY : Double = (image!.size.height > image!.size.width ? Double(imageView.frame.size.height / imageView.image!.size.height) : Double(imageView.image!.size.height / imageView.image!.size.width))
@@ -65,27 +46,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
         
         DispatchQueue.global().async {
-            guard let outputs = self.module.detect(image: UnsafeMutableRawPointer(&pixelBuffer)) else {
+            guard let outputs = self.inferencer.module.detect(image: &pixelBuffer) else {
                 return
             }
             
-            let nmsPredictions = PostProcessor.outputsToNMSPredictions(outputs: outputs, imgScaleX: imgScaleX, imgScaleY: imgScaleY, ivScaleX: ivScaleX, ivScaleY: ivScaleY, startX: startX, startY: startY)
+            let nmsPredictions = PrePostProcessor.outputsToNMSPredictions(outputs: outputs, imgScaleX: imgScaleX, imgScaleY: imgScaleY, ivScaleX: ivScaleX, ivScaleY: ivScaleY, startX: startX, startY: startY)
             
             DispatchQueue.main.async {
-                for pred in nmsPredictions {
-                    let bbox = UIView(frame: pred.rect)
-                    bbox.backgroundColor = UIColor.clear
-                    bbox.layer.borderColor = UIColor.purple.cgColor
-                    bbox.layer.borderWidth = 3
-                    self.imageView.addSubview(bbox)
-                    
-                    let textLayer = CATextLayer()
-                    textLayer.string = String(format: " %@ %.2f", self.classes[pred.classIndex], pred.score)
-                    textLayer.foregroundColor = UIColor.red.cgColor
-                    textLayer.fontSize = 18
-                    textLayer.frame = CGRect(x: pred.rect.origin.x, y: pred.rect.origin.y, width:100, height:25)
-                    self.imageView.layer.addSublayer(textLayer)
-                }
+                PrePostProcessor.showDetection(imageView: self.imageView, nmsPredictions: nmsPredictions, classes: self.inferencer.classes)
                 self.btnRun.isEnabled = true
                 self.btnRun.setTitle("Detect", for: .normal)
             }
@@ -93,7 +61,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
 
     @IBAction func nextTapped(_ sender: Any) {
-        PostProcessor.cleanDrawing(imageView: imageView)
+        PrePostProcessor.cleanDetection(imageView: imageView)
         imgIndex = (imgIndex + 1) % testImages.count
         btnNext.setTitle(String(format: "Text Image %d/%d", imgIndex + 1, testImages.count), for:.normal)
         image = UIImage(named: testImages[imgIndex])!
@@ -101,7 +69,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
 
     @IBAction func photosTapped(_ sender: Any) {
-        PostProcessor.cleanDrawing(imageView: imageView)
+        PrePostProcessor.cleanDetection(imageView: imageView)
         let imagePickerController = UIImagePickerController()
         imagePickerController.delegate = self;
         imagePickerController.sourceType = .photoLibrary
@@ -109,7 +77,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     @IBAction func cameraTapped(_ sender: Any) {
-        PostProcessor.cleanDrawing(imageView: imageView)
+        PrePostProcessor.cleanDetection(imageView: imageView)
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
             let imagePickerController = UIImagePickerController()
             imagePickerController.delegate = self;
@@ -120,7 +88,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
-        image = image!.resized(to: CGSize(width: width, height: height*image!.size.height/image!.size.width))
+        image = image!.resized(to: CGSize(width: CGFloat(PrePostProcessor.inputWidth), height: CGFloat(PrePostProcessor.inputHeight)*image!.size.height/image!.size.width))
         imageView.image = image
         self.dismiss(animated: true, completion: nil)
     }

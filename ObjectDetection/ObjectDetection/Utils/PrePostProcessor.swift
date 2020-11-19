@@ -6,20 +6,22 @@
 
 import UIKit
 
-
 struct Prediction {
   let classIndex: Int
   let score: Float
   let rect: CGRect
 }
 
+class PrePostProcessor : NSObject {
+    // model input image size
+    static let inputWidth = 640
+    static let inputHeight = 640
 
-class PostProcessor : NSObject {
     // model output is of size 25200*85
-    static let output_row = 25200 // as decided by the YOLOv5 model for input image of size 640*640
-    static let output_column = 85 // left, top, right, bottom, score and 80 class probability
+    static let outputRow = 25200 // as decided by the YOLOv5 model for input image of size 640*640
+    static let outputColumn = 85 // left, top, right, bottom, score and 80 class probability
     static let threshold : Float = 0.35 // score above which a detection is generated
-    static let nms_limit = 15 // max number of detections
+    static let nmsLimit = 15 // max number of detections
     
     // The two methods nonMaxSuppression and IOU below are from  https://github.com/hollance/YOLO-CoreML-MPSNNGraph/blob/master/Common/Helpers.swift
     /**
@@ -84,28 +86,25 @@ class PostProcessor : NSObject {
       return Float(intersectionArea / (areaA + areaB - intersectionArea))
     }
 
-
-
     static func outputsToNMSPredictions(outputs: UnsafeMutablePointer<Float>, imgScaleX: Double, imgScaleY: Double, ivScaleX: Double, ivScaleY: Double, startX: Double, startY: Double) -> [Prediction] {
         var predictions = [Prediction]()
-        for i in 0..<output_row {
-            if Float(NSNumber(value: outputs[i*output_column+4])) > threshold {
-                let x = Double(outputs[i*output_column])
-                let y = Double(outputs[i*output_column+1])
-                let w = Double(outputs[i*output_column+2])
-                let h = Double(outputs[i*output_column+3])
+        for i in 0..<outputRow {
+            if Float(truncating: NSNumber(value: outputs[i*outputColumn+4])) > threshold {
+                let x = Double(outputs[i*outputColumn])
+                let y = Double(outputs[i*outputColumn+1])
+                let w = Double(outputs[i*outputColumn+2])
+                let h = Double(outputs[i*outputColumn+3])
                 
                 let left = imgScaleX * (x - w/2)
                 let top = imgScaleY * (y - h/2)
                 let right = imgScaleX * (x + w/2)
                 let bottom = imgScaleY * (y + h/2)
                 
-                var max = Double(outputs[i*output_column+5])
-                // get class index (0-79)
+                var max = Double(outputs[i*outputColumn+5])
                 var cls = 0
-                for j in 0 ..< output_column-5 {
-                    if Double(outputs[i*output_column+5+j]) > max {
-                        max = Double(outputs[i*output_column+5+j])
+                for j in 0 ..< outputColumn-5 {
+                    if Double(outputs[i*outputColumn+5+j]) > max {
+                        max = Double(outputs[i*outputColumn+5+j])
                         cls = j
                     }
                 }
@@ -117,10 +116,10 @@ class PostProcessor : NSObject {
             }
         }
 
-        return nonMaxSuppression(boxes: predictions, limit: nms_limit, threshold: threshold)
+        return nonMaxSuppression(boxes: predictions, limit: nmsLimit, threshold: threshold)
     }
 
-    static func cleanDrawing(imageView: UIImageView) {
+    static func cleanDetection(imageView: UIImageView) {
         if let layers = imageView.layer.sublayers {
             for layer in layers {
                 if layer is CATextLayer {
@@ -132,4 +131,22 @@ class PostProcessor : NSObject {
             }
         }
     }
+
+    static func showDetection(imageView: UIImageView, nmsPredictions: [Prediction], classes: [String]) {
+        for pred in nmsPredictions {
+            let bbox = UIView(frame: pred.rect)
+            bbox.backgroundColor = UIColor.clear
+            bbox.layer.borderColor = UIColor.yellow.cgColor
+            bbox.layer.borderWidth = 3
+            imageView.addSubview(bbox)
+            
+            let textLayer = CATextLayer()
+            textLayer.string = String(format: " %@ %.2f", classes[pred.classIndex], pred.score)
+            textLayer.foregroundColor = UIColor.red.cgColor
+            textLayer.fontSize = 18
+            textLayer.frame = CGRect(x: pred.rect.origin.x, y: pred.rect.origin.y, width:100, height:25)
+            imageView.layer.addSublayer(textLayer)
+        }
+    }
+
 }

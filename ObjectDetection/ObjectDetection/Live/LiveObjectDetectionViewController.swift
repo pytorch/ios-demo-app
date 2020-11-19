@@ -11,32 +11,13 @@ class LiveObjectDetectionViewController: ViewController {
     @IBOutlet var cameraView: CameraPreviewView!
     @IBOutlet var benchmarkLabel: UILabel!
     @IBOutlet var indicator: UIActivityIndicatorView!
-    private var cameraController = CameraController()
-    private var imageViewLive =  UIImageView()
 
     private let delayMs: Double = 1000
     private var prevTimestampMs: Double = 0.0
-    private let width: CGFloat = 640
-    private let height: CGFloat = 640
+    private var cameraController = CameraController()
+    private var imageViewLive =  UIImageView()
+    private var inferencer = ObjectDetector()
     
-    private var classes: [String] = {
-        if let filePath = Bundle.main.path(forResource: "classes", ofType: "txt"),
-            let classes = try? String(contentsOfFile: filePath) {
-            return classes.components(separatedBy: .newlines)
-        } else {
-            fatalError("classes file was not found.")
-        }
-    }()
-    
-    private lazy var module: InferenceModule = {
-        if let filePath = Bundle.main.path(forResource: "yolov5s.torchscript", ofType: "pt"),
-            let module = InferenceModule(fileAtPath: filePath) {
-            return module
-        } else {
-            fatalError("Can't find the model file!")
-        }
-    }()
-
     override func viewDidLoad() {
         super.viewDidLoad()
         cameraController.configPreviewLayer(cameraView)
@@ -54,39 +35,26 @@ class LiveObjectDetectionViewController: ViewController {
             if (currentTimestamp - strongSelf.prevTimestampMs) * 1000 <= strongSelf.delayMs { return }
             strongSelf.prevTimestampMs = currentTimestamp
             let startTime = CACurrentMediaTime()
-            guard let outputs = self?.module.detect(image: UnsafeMutableRawPointer(&pixelBuffer)) else {
+            guard let outputs = self?.inferencer.module.detect(image: &pixelBuffer) else {
                 return
             }
             let inferenceTime = CACurrentMediaTime() - startTime
                 
             DispatchQueue.main.async {
-                let ivScaleX : Double =  Double(strongSelf.imageViewLive.frame.size.width / strongSelf.width)
-                let ivScaleY : Double = Double(strongSelf.imageViewLive.frame.size.height / strongSelf.height)
+                let ivScaleX : Double =  Double(strongSelf.imageViewLive.frame.size.width / CGFloat(PrePostProcessor.inputWidth))
+                let ivScaleY : Double = Double(strongSelf.imageViewLive.frame.size.height / CGFloat(PrePostProcessor.inputHeight))
 
-                let startX = Double((strongSelf.imageViewLive.frame.size.width - CGFloat(ivScaleX) * strongSelf.width)/2)
-                let startY = Double((strongSelf.imageViewLive.frame.size.height -  CGFloat(ivScaleY) * strongSelf.height)/2)
+                let startX = Double((strongSelf.imageViewLive.frame.size.width - CGFloat(ivScaleX) * CGFloat(PrePostProcessor.inputWidth))/2)
+                let startY = Double((strongSelf.imageViewLive.frame.size.height -  CGFloat(ivScaleY) * CGFloat(PrePostProcessor.inputHeight))/2)
                 
-                let nmsPredictions = PostProcessor.outputsToNMSPredictions(outputs: outputs, imgScaleX: 1.0, imgScaleY: 1.0, ivScaleX: ivScaleX, ivScaleY: ivScaleY, startX: startX, startY: startY)
+                let nmsPredictions = PrePostProcessor.outputsToNMSPredictions(outputs: outputs, imgScaleX: 1.0, imgScaleY: 1.0, ivScaleX: ivScaleX, ivScaleY: ivScaleY, startX: startX, startY: startY)
 
-                PostProcessor.cleanDrawing(imageView: strongSelf.imageViewLive)
+                PrePostProcessor.cleanDetection(imageView: strongSelf.imageViewLive)
                 strongSelf.indicator.isHidden = true
                 strongSelf.benchmarkLabel.isHidden = false
                 strongSelf.benchmarkLabel.text = String(format: "%.2fms, %.2f", CACurrentMediaTime() - startTime, inferenceTime)
                 
-                for pred in nmsPredictions {
-                    let bbox = UIView(frame: pred.rect)
-                    bbox.backgroundColor = UIColor.clear
-                    bbox.layer.borderColor = UIColor.yellow.cgColor
-                    bbox.layer.borderWidth = 3
-                    strongSelf.imageViewLive.addSubview(bbox)
-                    
-                    let textLayer = CATextLayer()
-                    textLayer.string = String(format: " %@ %.2f", strongSelf.classes[pred.classIndex], pred.score)
-                    textLayer.foregroundColor = UIColor.red.cgColor
-                    textLayer.fontSize = 18
-                    textLayer.frame = CGRect(x: pred.rect.origin.x, y: pred.rect.origin.y, width:100, height:25)
-                    strongSelf.imageViewLive.layer.addSublayer(textLayer)
-                }
+                PrePostProcessor.showDetection(imageView: strongSelf.imageViewLive, nmsPredictions: nmsPredictions, classes: strongSelf.inferencer.classes)
             }
         }
     }

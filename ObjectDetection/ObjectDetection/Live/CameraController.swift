@@ -9,8 +9,6 @@ import Foundation
 
 class CameraController: NSObject {
     var videoCaptureCompletionBlock: (([Float32]?, CameraControllerError?) -> Void)?
-    private let inputWidth = 640
-    private let inputHeight = 640
     private var captureSession = AVCaptureSession()
     private var videoOutput = AVCaptureVideoDataOutput()
     private var sessionQueue = DispatchQueue(label: "session")
@@ -116,7 +114,7 @@ extension CameraController: AVCaptureVideoDataOutputSampleBufferDelegate {
         guard let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else {
             return
         }
-        guard let normalizedBuffer = pixelBuffer.normalized(inputWidth, inputHeight) else {
+        guard let normalizedBuffer = pixelBuffer.normalized(PrePostProcessor.inputWidth, PrePostProcessor.inputHeight) else {
             return
         }
         if let callback = videoCaptureCompletionBlock {
