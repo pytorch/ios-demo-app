@@ -66,9 +66,9 @@ class LiveObjectDetectionViewController: ViewController {
                 let startX = Double((strongSelf.imageViewLive.frame.size.width - CGFloat(ivScaleX) * strongSelf.width)/2)
                 let startY = Double((strongSelf.imageViewLive.frame.size.height -  CGFloat(ivScaleY) * strongSelf.height)/2)
                 
-                let nmsPredictions = outputsToNMSPredictions(outputs: outputs, imgScaleX: 1.0, imgScaleY: 1.0, ivScaleX: ivScaleX, ivScaleY: ivScaleY, startX: startX, startY: startY)
+                let nmsPredictions = PostProcessor.outputsToNMSPredictions(outputs: outputs, imgScaleX: 1.0, imgScaleY: 1.0, ivScaleX: ivScaleX, ivScaleY: ivScaleY, startX: startX, startY: startY)
 
-                cleanDrawing(imageView: strongSelf.imageViewLive)
+                PostProcessor.cleanDrawing(imageView: strongSelf.imageViewLive)
                 strongSelf.indicator.isHidden = true
                 strongSelf.benchmarkLabel.isHidden = false
                 strongSelf.benchmarkLabel.text = String(format: "%.2fms, %.2f", CACurrentMediaTime() - startTime, inferenceTime)

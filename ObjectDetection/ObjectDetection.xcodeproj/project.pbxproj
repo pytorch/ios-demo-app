@@ -26,6 +26,7 @@
 		269E748D255CC6D100B1D6CA /* test2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 269E748B255CC6D100B1D6CA /* test2.jpg */; };
 		269E7498255CCBA000B1D6CA /* InferenceModule.mm in Sources */ = {isa = PBXBuildFile; fileRef = 269E7496255CCBA000B1D6CA /* InferenceModule.mm */; };
 		269E749B255CCBC300B1D6CA /* UIImage+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269E749A255CCBC300B1D6CA /* UIImage+Helper.swift */; };
+		26FAB5692565E8FC00EA6ED6 /* PostProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FAB5682565E8FC00EA6ED6 /* PostProcessor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +52,7 @@
 		269E7496255CCBA000B1D6CA /* InferenceModule.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = InferenceModule.mm; sourceTree = "<group>"; };
 		269E7497255CCBA000B1D6CA /* InferenceModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InferenceModule.h; sourceTree = "<group>"; };
 		269E749A255CCBC300B1D6CA /* UIImage+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Helper.swift"; sourceTree = "<group>"; };
+		26FAB5682565E8FC00EA6ED6 /* PostProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostProcessor.swift; sourceTree = "<group>"; };
 		53911D0823558D357008FFEF /* Pods-ObjectDetection.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ObjectDetection.debug.xcconfig"; path = "Target Support Files/Pods-ObjectDetection/Pods-ObjectDetection.debug.xcconfig"; sourceTree = "<group>"; };
 		EC0C3BEAFA35166508C9079C /* Pods_ObjectDetection.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ObjectDetection.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5C6986B8C5C4EDC1EF7DC08 /* Pods-ObjectDetection.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ObjectDetection.release.xcconfig"; path = "Target Support Files/Pods-ObjectDetection/Pods-ObjectDetection.release.xcconfig"; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 				269E7497255CCBA000B1D6CA /* InferenceModule.h */,
 				269E7496255CCBA000B1D6CA /* InferenceModule.mm */,
 				269E7495255CCBA000B1D6CA /* ObjectDetection-Bridging-Header.h */,
+				26FAB5682565E8FC00EA6ED6 /* PostProcessor.swift */,
 				269E7477255CC56200B1D6CA /* Main.storyboard */,
 				269E747A255CC56400B1D6CA /* Assets.xcassets */,
 				269E747C255CC56400B1D6CA /* LaunchScreen.storyboard */,
@@ -244,6 +247,7 @@
 				266E8748256350C000CF5151 /* CameraPreviewView.swift in Sources */,
 				266E8746256350C000CF5151 /* CameraController.swift in Sources */,
 				266E8749256350C000CF5151 /* LiveObjectDetectionViewController.swift in Sources */,
+				26FAB5692565E8FC00EA6ED6 /* PostProcessor.swift in Sources */,
 				269E7498255CCBA000B1D6CA /* InferenceModule.mm in Sources */,
 				266E874D256359E900CF5151 /* ObjectDetector.swift in Sources */,
 				269E7476255CC56200B1D6CA /* ViewController.swift in Sources */,

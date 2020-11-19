@@ -7,13 +7,15 @@
 #import "InferenceModule.h"
 #import <LibTorch/LibTorch.h>
 
+// 640x640 is the default image size used in the export.py in the yolov5 repo to export the TorchScript model
+const int input_width = 640;
+const int input_height = 640;
+
 @implementation InferenceModule {
-@protected
-    torch::jit::script::Module _impl;
+    @protected torch::jit::script::Module _impl;
 }
 
-- (nullable instancetype)initWithFileAtPath:(NSString*)filePath
-{
+- (nullable instancetype)initWithFileAtPath:(NSString*)filePath {
     self = [super init];
     if (self) {
         try {
@@ -27,29 +29,20 @@
     return self;
 }
 
-- (NSArray<NSNumber*>*)detectImage:(void*)imageBuffer
-{
+- (float*)detectImage:(void*)imageBuffer {
     try {
-        // 640x640 is the default image size used in the export.py in the yolov5 repo to export the TorchScript model
-        at::Tensor tensor = torch::from_blob(imageBuffer, { 1, 3, 640, 640 }, at::kFloat);
+        at::Tensor tensor = torch::from_blob(imageBuffer, { 1, 3, input_width, input_height }, at::kFloat);
         torch::autograd::AutoGradMode guard(false);
         at::AutoNonVariableTypeMode non_var_type_mode(true);
         
         auto outputTuple = _impl.forward({ tensor }).toTuple();
+        auto outputTensor = outputTuple->elements()[0].toTensor();
 
-        auto predTensor = outputTuple->elements()[0].toTensor();
-
-        float* floatBuffer = predTensor.data_ptr<float>();
+        float* floatBuffer = outputTensor.data_ptr<float>();
         if (!floatBuffer) {
             return nil;
         }
-        NSMutableArray* results = [[NSMutableArray alloc] init];
-
-        // (1, 25200, 85) is the output size when running detect.py with an input image of size 640x640 from the yolov5 repo. See README.md for more info.
-        for (int i = 0; i < 25200 * 85; i++) {
-            [results addObject:@(floatBuffer[i])];
-        }
-        return [results copy];
+        return floatBuffer;
     } catch (const std::exception& exception) {
         NSLog(@"%s", exception.what());
     }

@@ -11,13 +11,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var btnRun: UIButton!
     @IBOutlet weak var btnNext: UIButton!
     
-    // 640x640 is the img-size used when exporting the model
-    private let width : Double = 640.0
-    private let height : Double = 640.0
-    private let thhreshold = 0.35
+    private let width : CGFloat = 640.0
+    private let height : CGFloat = 640.0
     private let testImages = ["test1.png", "test2.jpg", "test3.png"]
-    
-    private var imageName = "test1.png"
+    private var imgIndex = 0
 
     private var image : UIImage?
 
@@ -38,14 +35,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             fatalError("classes file was not found.")
         }
     }()
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        image = UIImage(named: imageName)!
+        image = UIImage(named: testImages[imgIndex])!
         if let iv = imageView {
             iv.image = image
-            
             btnRun.setTitle("Detect", for: .normal)
         }
     }
@@ -54,11 +49,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         btnRun.isEnabled = false
         btnRun.setTitle("Running the model...", for: .normal)
 
-
         let resizedImage = image!.resized(to: CGSize(width: width, height: height))
         
-        let imgScaleX : Double = Double(image!.size.width) / width;
-        let imgScaleY : Double = Double(image!.size.height) / height;
+        let imgScaleX = Double(image!.size.width / width);
+        let imgScaleY = Double(image!.size.height / height);
         
         let ivScaleX : Double = (image!.size.width > image!.size.height ? Double(imageView.frame.size.width / imageView.image!.size.width) : Double(imageView.image!.size.width / imageView.image!.size.height))
         let ivScaleY : Double = (image!.size.height > image!.size.width ? Double(imageView.frame.size.height / imageView.image!.size.height) : Double(imageView.image!.size.height / imageView.image!.size.width))
@@ -71,14 +65,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
         
         DispatchQueue.global().async {
-            let currTime = CACurrentMediaTime()
             guard let outputs = self.module.detect(image: UnsafeMutableRawPointer(&pixelBuffer)) else {
                 return
             }
-            let newTime = CACurrentMediaTime()
-            print(currTime, newTime, newTime-currTime)
             
-            let nmsPredictions = outputsToNMSPredictions(outputs: outputs, imgScaleX: imgScaleX, imgScaleY: imgScaleY, ivScaleX: ivScaleX, ivScaleY: ivScaleY, startX: startX, startY: startY)
+            let nmsPredictions = PostProcessor.outputsToNMSPredictions(outputs: outputs, imgScaleX: imgScaleX, imgScaleY: imgScaleY, ivScaleX: ivScaleX, ivScaleY: ivScaleY, startX: startX, startY: startY)
             
             DispatchQueue.main.async {
                 for pred in nmsPredictions {
@@ -101,27 +92,16 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
     }
 
-    
     @IBAction func nextTapped(_ sender: Any) {
-        cleanDrawing(imageView: imageView)
-        if imageName == "test1.png" {
-            imageName = "test2.jpg"
-            btnNext.setTitle("Text Image 2/3", for: .normal)
-        }
-        else if imageName == "test2.jpg" {
-            imageName = "test3.png"
-            btnNext.setTitle("Text Image 3/3", for: .normal)
-        }
-        else {
-            imageName = "test1.png"
-            btnNext.setTitle("Text Image 1/3", for: .normal)
-        }
-        image = UIImage(named: imageName)!
+        PostProcessor.cleanDrawing(imageView: imageView)
+        imgIndex = (imgIndex + 1) % testImages.count
+        btnNext.setTitle(String(format: "Text Image %d/%d", imgIndex + 1, testImages.count), for:.normal)
+        image = UIImage(named: testImages[imgIndex])!
         imageView.image = image
     }
 
     @IBAction func photosTapped(_ sender: Any) {
-        cleanDrawing(imageView: imageView)
+        PostProcessor.cleanDrawing(imageView: imageView)
         let imagePickerController = UIImagePickerController()
         imagePickerController.delegate = self;
         imagePickerController.sourceType = .photoLibrary
@@ -129,7 +109,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     @IBAction func cameraTapped(_ sender: Any) {
-        cleanDrawing(imageView: imageView)
+        PostProcessor.cleanDrawing(imageView: imageView)
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
             let imagePickerController = UIImagePickerController()
             imagePickerController.delegate = self;
@@ -140,7 +120,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
-        image = image!.resized(to: CGSize(width: 640, height: 640*image!.size.height/image!.size.width))
+        image = image!.resized(to: CGSize(width: width, height: height*image!.size.height/image!.size.width))
         imageView.image = image
         self.dismiss(animated: true, completion: nil)
     }
