@@ -69,4 +69,4 @@ results are:
 ![](screenshot4.png)
 
 
-You can also select a picture from your iOS device's Photos library or take a picture with the device camera and then do the object detection.
+You can also select a picture from your iOS device's Photos library, take a picture with the device camera, or even use live camera to do object detection.
