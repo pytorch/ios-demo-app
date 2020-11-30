@@ -7,9 +7,11 @@
 #import "InferenceModule.h"
 #import <LibTorch/LibTorch.h>
 
-// 640x640 is the default image size used in the export.py in the yolov5 repo to export the TorchScript model
+// 640x640 is the default image size used in the export.py in the yolov5 repo to export the TorchScript model, 25200*85 is the model output size
 const int input_width = 640;
 const int input_height = 640;
+const int output_size = 25200*85;
+
 
 @implementation InferenceModule {
     @protected torch::jit::script::Module _impl;
@@ -29,7 +31,7 @@ const int input_height = 640;
     return self;
 }
 
-- (float*)detectImage:(void*)imageBuffer {
+- (NSArray<NSNumber*>*)detectImage:(void*)imageBuffer {
     try {
         at::Tensor tensor = torch::from_blob(imageBuffer, { 1, 3, input_width, input_height }, at::kFloat);
         torch::autograd::AutoGradMode guard(false);
@@ -42,7 +44,13 @@ const int input_height = 640;
         if (!floatBuffer) {
             return nil;
         }
-        return floatBuffer;
+        
+        NSMutableArray* results = [[NSMutableArray alloc] init];
+        for (int i = 0; i < output_size; i++) {
+          [results addObject:@(floatBuffer[i])];
+        }
+        return [results copy];
+        
     } catch (const std::exception& exception) {
         NSLog(@"%s", exception.what());
     }

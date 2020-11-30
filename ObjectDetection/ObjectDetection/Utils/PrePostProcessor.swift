@@ -86,32 +86,32 @@ class PrePostProcessor : NSObject {
       return Float(intersectionArea / (areaA + areaB - intersectionArea))
     }
 
-    static func outputsToNMSPredictions(outputs: UnsafeMutablePointer<Float>, imgScaleX: Double, imgScaleY: Double, ivScaleX: Double, ivScaleY: Double, startX: Double, startY: Double) -> [Prediction] {
+    static func outputsToNMSPredictions(outputs: [NSNumber], imgScaleX: Double, imgScaleY: Double, ivScaleX: Double, ivScaleY: Double, startX: Double, startY: Double) -> [Prediction] {
         var predictions = [Prediction]()
         for i in 0..<outputRow {
-            if Float(truncating: NSNumber(value: outputs[i*outputColumn+4])) > threshold {
-                let x = Double(outputs[i*outputColumn])
-                let y = Double(outputs[i*outputColumn+1])
-                let w = Double(outputs[i*outputColumn+2])
-                let h = Double(outputs[i*outputColumn+3])
+            if Float(truncating: outputs[i*outputColumn+4]) > threshold {
+                let x = Double(truncating: outputs[i*outputColumn])
+                let y = Double(truncating: outputs[i*outputColumn+1])
+                let w = Double(truncating: outputs[i*outputColumn+2])
+                let h = Double(truncating: outputs[i*outputColumn+3])
                 
                 let left = imgScaleX * (x - w/2)
                 let top = imgScaleY * (y - h/2)
                 let right = imgScaleX * (x + w/2)
                 let bottom = imgScaleY * (y + h/2)
                 
-                var max = Double(outputs[i*outputColumn+5])
+                var max = Double(truncating: outputs[i*outputColumn+5])
                 var cls = 0
                 for j in 0 ..< outputColumn-5 {
-                    if Double(outputs[i*outputColumn+5+j]) > max {
-                        max = Double(outputs[i*outputColumn+5+j])
+                    if Double(truncating: outputs[i*outputColumn+5+j]) > max {
+                        max = Double(truncating: outputs[i*outputColumn+5+j])
                         cls = j
                     }
                 }
 
                 let rect = CGRect(x: startX+ivScaleX*left, y: startY+top*ivScaleY, width: ivScaleX*(right-left), height: ivScaleY*(bottom-top))
                 
-                let prediction = Prediction(classIndex: cls, score: Float(outputs[i*85+4]), rect: rect)
+                let prediction = Prediction(classIndex: cls, score: Float(truncating: outputs[i*85+4]), rect: rect)
                 predictions.append(prediction)
             }
         }
@@ -137,14 +137,15 @@ class PrePostProcessor : NSObject {
             let bbox = UIView(frame: pred.rect)
             bbox.backgroundColor = UIColor.clear
             bbox.layer.borderColor = UIColor.yellow.cgColor
-            bbox.layer.borderWidth = 3
+            bbox.layer.borderWidth = 2
             imageView.addSubview(bbox)
             
             let textLayer = CATextLayer()
             textLayer.string = String(format: " %@ %.2f", classes[pred.classIndex], pred.score)
-            textLayer.foregroundColor = UIColor.red.cgColor
-            textLayer.fontSize = 18
-            textLayer.frame = CGRect(x: pred.rect.origin.x, y: pred.rect.origin.y, width:100, height:25)
+            textLayer.foregroundColor = UIColor.white.cgColor
+            textLayer.backgroundColor = UIColor.magenta.cgColor
+            textLayer.fontSize = 14
+            textLayer.frame = CGRect(x: pred.rect.origin.x, y: pred.rect.origin.y, width:100, height:20)
             imageView.layer.addSublayer(textLayer)
         }
     }
