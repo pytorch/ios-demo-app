@@ -21,7 +21,7 @@ If you don't have the PyTorch environment set up to run the script, you can down
 
 The Python script `export.py` in the `models` folder of the [YOLOv5 repo](https://github.com/ultralytics/yolov5) is used to generate a TorchScript-formatted YOLOv5 model named `yolov5s.torchscript.pt` for mobile apps.
 
-Open a Mac Terminal, run the following commands:
+Open a Mac/Linux/Windows Terminal, run the following commands (note that we use the fork of the original YOLOv5 repo to make sure the code changes work, but feel free to use the original repo):
 
 ```
 git clone https://github.com/jeffxtang/yolov5
