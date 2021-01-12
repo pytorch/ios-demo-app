@@ -32,6 +32,8 @@
 
 - (NSString*)decoderForward:(NSDictionary*)dict {
     try {
+        // to be consistent with the model inputs defined in seq2seq_nmt.py, based on
+        // https://pytorch.org/tutorials/intermediate/seq2seq_translation_tutorial.html
         const int EOS_TOKEN = 1;
         const int HIDDEN_SIZE = 256;
         const int MAX_LENGTH = 50;
