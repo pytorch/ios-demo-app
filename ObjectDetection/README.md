@@ -31,9 +31,9 @@ pip install -r requirements.txt
 
 Then edit `models/export.py` to make two changes:
 
-* Change the line `model.model[-1].export = True` to `model.model[-1].export = False`
+* Change the line 50 from `model.model[-1].export = True` to `model.model[-1].export = False`
 
-* Add the following two lines of model optimization code between `ts = torch.jit.trace(model, img)` and `ts.save(f)`:
+* Add the following two lines of model optimization code after line 57, between `ts = torch.jit.trace(model, img)` and `ts.save(f)`:
 
 ```
     from torch.utils.mobile_optimizer import optimize_for_mobile
