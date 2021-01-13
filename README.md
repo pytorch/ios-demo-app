@@ -1,46 +1,35 @@
-## PyTorch iOS Examples
+## PyTorch iOS Example Apps
 
-### Requirements
+A list of iOS apps built on the powerful [PyTorch Mobile](https://pytorch.org/mobile) platform.
 
-- XCode 11.0 or above
-- iOS 12.0 or above
+### HelloWorld
 
-## The HelloWorld Example
-
-HelloWorld is a simple image classification application that demonstrates how to use PyTorch C++ libraries on iOS. The code is written in Swift and uses Objective-C as a bridge.
-
-### Model Preparation
-
-The model we are going to use is [MobileNet v2](https://pytorch.org/hub/pytorch_vision_mobilenet_v2/), a pre-trained image classification model that has been packaged in [TorchVision](https://pytorch.org/docs/stable/torchvision/index.html). To install it, run the command below.
-
-> We highly recommend following the [Pytorch Github page](https://github.com/pytorch/pytorch) to set up the Python development environment on your local machine. 
-
-```shell
-pip install torchvision
-```
-
-Once we have TorchVision installed successfully, navigate to the HelloWorld folder and run `trace_model.py` to generate our model. The script contains the code of tracing and saving a [torchscript model](https://pytorch.org/tutorials/beginner/Intro_to_TorchScript_tutorial.html) that can be run on mobile devices. 
-
-```shell
-python trace_model.py
-```
-
-If everything works well, `model.pt` should be generated in the `HelloWorld` folder. Now copy the model file to our application folder `HelloWorld/model`.
-
-### Install LibTorch via Cocoapods
-
-The PyTorch C++ library is available in [Cocoapods](https://cocoapods.org/), to integrate it to our project, we can run 
-
-```ruby
-pod install
-```
-Now open the `HelloWorld.xcworkspace` in XCode, select an iOS simulator and launch it (cmd + R). If everything works well, we should see a wolf picture on the simulator screen along with the prediction results.
-
-<img src="https://github.com/pytorch/ios-demo-app/blob/master/HelloWorld/screenshot.png?raw=true" width="50%">
+[HelloWorld](https://github.com/pytorch/ios-demo-app/tree/master/HelloWorld) is a simple image classification application that demonstrates how to use PyTorch C++ libraries on iOS. The code is written in Swift and uses Objective-C as a bridge.
 
 ### PyTorch demo app
 
-The PyTorch demo app is a full-fledged app that contains two showcases. A camera app that runs a quantized model to classifiy images in real time. And a text-based app that uses a text classification model to predict the topic from the input text.
+The [PyTorch demo app](https://github.com/pytorch/ios-demo-app/tree/master/PyTorchDemo) is a full-fledged app that contains two showcases. A camera app that runs a quantized model to classifiy images in real time. And a text-based app that uses a text classification model to predict the topic from the input text.
+
+### Image Segmentation
+
+[Image Segmentation](https://github.com/pytorch/ios-demo-app/tree/master/ImageSegmentation) demonstrates a Python script that converts the PyTorch [DeepLabV3](https://pytorch.org/hub/pytorch_vision_deeplabv3_resnet101/) model for mobile apps to use and an iOS app that uses the model to segment images.
+
+### Object Detection
+
+[Object Detection](https://github.com/pytorch/ios-demo-app/tree/master/ObjectDetection) demonstrates how to convert the popular [YOLOv5](https://pytorch.org/hub/ultralytics_yolov5/) model and use it on an iOS app that detects objects from pictures in your photos, taken with camera, or with live camera.
+
+### Neural Machine Translation
+
+[Neural Machine Translation](https://github.com/pytorch/ios-demo-app/tree/master/Seq2SeqNMT) demonstrates how to convert a sequence-to-sequence neural machine translation model trained with the code in the [PyTorch NMT tutorial](https://pytorch.org/tutorials/intermediate/seq2seq_translation_tutorial.html) and use the model in an iOS app to do French-English translation.
+
+### Question Answering
+
+[Question Answering](https://github.com/pytorch/ios-demo-app/tree/master/QuestionAnswering) demonstrates how to convert a powerful transformer QA model and use the model in an iOS app to answer questions about PyTorch Mobile and more.
+
+### Vision Transformer
+
+[Vision Transformer](https://github.com/pytorch/ios-demo-app/tree/master/ViT4MNIST) demonstrates how to use Facebook's latest Vision Transformer [DeiT](https://github.com/facebookresearch/deit) model to do image classification, and how convert another Vision Transformer model and use it in an iOS app to perform handwritten digit recognition.
+
 
 ## LICENSE
 
