@@ -77,7 +77,7 @@
 
 - (NSArray<NSString*>*)topics {
   try {
-    auto genericList = _impl.run_method("get_classes").toGenericList();
+    auto genericList = _impl.run_method("get_classes").toList();
     NSMutableArray<NSString*>* topics = [NSMutableArray<NSString*> new];
     for (int i = 0; i < genericList.size(); i++) {
       std::string topic = genericList.get(i).toString()->string();
