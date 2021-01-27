@@ -61,7 +61,9 @@ To Test Run the iOS ViT4MNIST demo app, follow the steps below:
 
 ### 1. Prepare the Model (Optional)
 
-On a Terminal, with PyTorch 1.7 and [einops](https://pypi.org/project/einops/) installed, run :
+Be aware that the model file included in the project was created with PyTorch 1.7.0, matching the iOS LibTorch library 1.7.0 specified in the `Podfile`. If you use a different version of PyTorch to create your model by following the instructions below, make sure you specify the same iOS LibTorch version in the `Podfile` to avoid possible errors caused by the version mismatch. Furthermore, if you want to use the latest prototype features in the PyTorch master branch to create the model, follow the steps at [Building PyTorch iOS Libraries from Source](https://pytorch.org/mobile/ios/#build-pytorch-ios-libraries-from-source) on how to use the model in iOS.
+
+On a Terminal, with PyTorch 1.7.0 and [einops](https://pypi.org/project/einops/) installed, run:
 ```
 python mnist_vit.py
 ```
