@@ -40,6 +40,7 @@
 		A09E179423398CC9002F8F15 /* VisionModelCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09E179323398CC9002F8F15 /* VisionModelCard.swift */; };
 		A09E1796233990A0002F8F15 /* VisionModelCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = A09E1795233990A0002F8F15 /* VisionModelCard.xib */; };
 		A0B12D4E2338944900380B1D /* TorchModule.mm in Sources */ = {isa = PBXBuildFile; fileRef = A0B12D4D2338944900380B1D /* TorchModule.mm */; };
+		B1C35BA725C99B5200CAB118 /* trace_model.py in Resources */ = {isa = PBXBuildFile; fileRef = B1C35BA625C99B5200CAB118 /* trace_model.py */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -80,6 +81,7 @@
 		A09E1795233990A0002F8F15 /* VisionModelCard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VisionModelCard.xib; sourceTree = "<group>"; };
 		A0B12D4C2338944900380B1D /* TorchModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TorchModule.h; sourceTree = "<group>"; };
 		A0B12D4D2338944900380B1D /* TorchModule.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = TorchModule.mm; sourceTree = "<group>"; };
+		B1C35BA625C99B5200CAB118 /* trace_model.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = trace_model.py; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,6 +189,7 @@
 		A091B7582330778B0008A5B8 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				B1C35BA625C99B5200CAB118 /* trace_model.py */,
 				A065C92A2335711B006BEAAD /* words.txt */,
 				A03349BB233D5E7C003425FD /* mobilenet_quantized.pt */,
 			);
@@ -282,6 +285,7 @@
 				A03349CA233DAE9F003425FD /* NLPResultView.xib in Resources */,
 				A03349C4233D71F2003425FD /* ImageClassificationItemView.xib in Resources */,
 				A036EA33233C19F500054A36 /* reddit.pt in Resources */,
+				B1C35BA725C99B5200CAB118 /* trace_model.py in Resources */,
 				A03349CE233DB128003425FD /* NLPItemView.xib in Resources */,
 				A091B19C23303F2D0008A5B8 /* Main.storyboard in Resources */,
 				A01F52AC233C6C32004039FC /* topics.txt in Resources */,
@@ -393,7 +397,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -448,7 +452,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
