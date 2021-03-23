@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="TorchVideo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BAh-gy-asI">
+                                <rect key="frame" x="64" y="548" width="54" height="30"/>
+                                <state key="normal" title="Test 1/3"/>
+                                <connections>
+                                    <action selector="testTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5df-Cb-lUm"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DQi-c5-Jqa">
+                                <rect key="frame" x="187" y="548" width="44" height="30"/>
+                                <state key="normal" title="Select"/>
+                                <connections>
+                                    <action selector="selectTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="O0a-Y0-zXr"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MHq-hZ-5AA">
+                                <rect key="frame" x="305" y="548" width="30" height="30"/>
+                                <state key="normal" title="Live"/>
+                                <connections>
+                                    <action selector="liveTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2AM-Dg-zgO"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nn0-4C-Hhu">
+                                <rect key="frame" x="20" y="611" width="374" height="232"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="DQi-c5-Jqa" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="187" id="45n-wf-2Yf"/>
+                            <constraint firstItem="MHq-hZ-5AA" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="DQi-c5-Jqa" secondAttribute="trailing" constant="8" symbolic="YES" id="5P5-74-Mu4"/>
+                            <constraint firstItem="DQi-c5-Jqa" firstAttribute="baseline" secondItem="MHq-hZ-5AA" secondAttribute="baseline" id="9Lt-F5-F2s"/>
+                            <constraint firstItem="DQi-c5-Jqa" firstAttribute="baseline" secondItem="BAh-gy-asI" secondAttribute="baseline" id="H2o-ap-ykd"/>
+                            <constraint firstItem="DQi-c5-Jqa" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="BAh-gy-asI" secondAttribute="trailing" constant="8" symbolic="YES" id="P3d-DL-kgn"/>
+                            <constraint firstItem="BAh-gy-asI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="64" id="T1U-rQ-p5c"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="MHq-hZ-5AA" secondAttribute="trailing" constant="79" id="YFI-L1-Xhp"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="DQi-c5-Jqa" secondAttribute="bottom" constant="284" id="kJQ-9y-2BD"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="btnTest" destination="BAh-gy-asI" id="SCz-lE-DVU"/>
+                        <outlet property="ivFrame" destination="Nn0-4C-Hhu" id="Yei-ce-boB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="43.526785714285715"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

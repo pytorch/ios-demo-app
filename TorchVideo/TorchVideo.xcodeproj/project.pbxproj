@@ -1,0 +1,466 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		26024B6426042B2300B6F625 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26024B6326042B2300B6F625 /* AppDelegate.swift */; };
+		26024B6626042B2300B6F625 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26024B6526042B2300B6F625 /* SceneDelegate.swift */; };
+		26024B6826042B2300B6F625 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26024B6726042B2300B6F625 /* ViewController.swift */; };
+		26024B6B26042B2300B6F625 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26024B6926042B2300B6F625 /* Main.storyboard */; };
+		26024B6D26042B2500B6F625 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26024B6C26042B2500B6F625 /* Assets.xcassets */; };
+		26024B7026042B2500B6F625 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26024B6E26042B2500B6F625 /* LaunchScreen.storyboard */; };
+		26024B81260970AE00B6F625 /* video1.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 26024B7E260970AD00B6F625 /* video1.mp4 */; };
+		26024B82260970AE00B6F625 /* video2.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 26024B7F260970AD00B6F625 /* video2.mp4 */; };
+		26024B83260970AE00B6F625 /* video3.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 26024B80260970AD00B6F625 /* video3.mp4 */; };
+		26024B87260A9F8500B6F625 /* video_classification.pt in Resources */ = {isa = PBXBuildFile; fileRef = 26024B85260A9F8500B6F625 /* video_classification.pt */; };
+		26024B88260A9F8500B6F625 /* classes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 26024B86260A9F8500B6F625 /* classes.txt */; };
+		26024B8C260A9FAB00B6F625 /* PrePostProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26024B8A260A9FAB00B6F625 /* PrePostProcessor.swift */; };
+		26024B8D260A9FAB00B6F625 /* UIImage+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26024B8B260A9FAB00B6F625 /* UIImage+Helper.swift */; };
+		26024B92260A9FCA00B6F625 /* InferenceModule.mm in Sources */ = {isa = PBXBuildFile; fileRef = 26024B90260A9FCA00B6F625 /* InferenceModule.mm */; };
+		26024B95260AA08200B6F625 /* VideoClassifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26024B94260AA08200B6F625 /* VideoClassifier.swift */; };
+		EE8FB06473848D3E64AFE631 /* Pods_TorchVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6332B9B5808F7441528BDAF7 /* Pods_TorchVideo.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		01D685B837B70D4D069E8F49 /* Pods-TorchVideo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TorchVideo.release.xcconfig"; path = "Target Support Files/Pods-TorchVideo/Pods-TorchVideo.release.xcconfig"; sourceTree = "<group>"; };
+		23ACC657D26379F0B85D8184 /* Pods-TorchVideo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TorchVideo.debug.xcconfig"; path = "Target Support Files/Pods-TorchVideo/Pods-TorchVideo.debug.xcconfig"; sourceTree = "<group>"; };
+		26024B6026042B2300B6F625 /* TorchVideo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TorchVideo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		26024B6326042B2300B6F625 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		26024B6526042B2300B6F625 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		26024B6726042B2300B6F625 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		26024B6A26042B2300B6F625 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		26024B6C26042B2500B6F625 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		26024B6F26042B2500B6F625 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		26024B7126042B2500B6F625 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		26024B7E260970AD00B6F625 /* video1.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = video1.mp4; sourceTree = "<group>"; };
+		26024B7F260970AD00B6F625 /* video2.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = video2.mp4; sourceTree = "<group>"; };
+		26024B80260970AD00B6F625 /* video3.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = video3.mp4; sourceTree = "<group>"; };
+		26024B85260A9F8500B6F625 /* video_classification.pt */ = {isa = PBXFileReference; lastKnownFileType = file; path = video_classification.pt; sourceTree = "<group>"; };
+		26024B86260A9F8500B6F625 /* classes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = classes.txt; sourceTree = "<group>"; };
+		26024B8A260A9FAB00B6F625 /* PrePostProcessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrePostProcessor.swift; sourceTree = "<group>"; };
+		26024B8B260A9FAB00B6F625 /* UIImage+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Helper.swift"; sourceTree = "<group>"; };
+		26024B8F260A9FC900B6F625 /* TorchVideo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TorchVideo-Bridging-Header.h"; sourceTree = "<group>"; };
+		26024B90260A9FCA00B6F625 /* InferenceModule.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = InferenceModule.mm; sourceTree = "<group>"; };
+		26024B91260A9FCA00B6F625 /* InferenceModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InferenceModule.h; sourceTree = "<group>"; };
+		26024B94260AA08200B6F625 /* VideoClassifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoClassifier.swift; sourceTree = "<group>"; };
+		6332B9B5808F7441528BDAF7 /* Pods_TorchVideo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TorchVideo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		26024B5D26042B2300B6F625 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EE8FB06473848D3E64AFE631 /* Pods_TorchVideo.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		26024B5726042B2300B6F625 = {
+			isa = PBXGroup;
+			children = (
+				26024B6226042B2300B6F625 /* TorchVideo */,
+				26024B6126042B2300B6F625 /* Products */,
+				EA0C558862607C5A9BA15E19 /* Pods */,
+				7D54F04110A960FDB70EEB13 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		26024B6126042B2300B6F625 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				26024B6026042B2300B6F625 /* TorchVideo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		26024B6226042B2300B6F625 /* TorchVideo */ = {
+			isa = PBXGroup;
+			children = (
+				26024B99260AA10500B6F625 /* Utils */,
+				26024B98260AA0F800B6F625 /* Live */,
+				26024B97260AA0DA00B6F625 /* Inference */,
+				26024B6326042B2300B6F625 /* AppDelegate.swift */,
+				26024B6526042B2300B6F625 /* SceneDelegate.swift */,
+				26024B6726042B2300B6F625 /* ViewController.swift */,
+				26024B6926042B2300B6F625 /* Main.storyboard */,
+				26024B6C26042B2500B6F625 /* Assets.xcassets */,
+				26024B6E26042B2500B6F625 /* LaunchScreen.storyboard */,
+				26024B7126042B2500B6F625 /* Info.plist */,
+				26024B7E260970AD00B6F625 /* video1.mp4 */,
+				26024B7F260970AD00B6F625 /* video2.mp4 */,
+				26024B80260970AD00B6F625 /* video3.mp4 */,
+				26024B86260A9F8500B6F625 /* classes.txt */,
+				26024B85260A9F8500B6F625 /* video_classification.pt */,
+			);
+			path = TorchVideo;
+			sourceTree = "<group>";
+		};
+		26024B97260AA0DA00B6F625 /* Inference */ = {
+			isa = PBXGroup;
+			children = (
+				26024B91260A9FCA00B6F625 /* InferenceModule.h */,
+				26024B90260A9FCA00B6F625 /* InferenceModule.mm */,
+				26024B94260AA08200B6F625 /* VideoClassifier.swift */,
+				26024B8F260A9FC900B6F625 /* TorchVideo-Bridging-Header.h */,
+			);
+			name = Inference;
+			sourceTree = "<group>";
+		};
+		26024B98260AA0F800B6F625 /* Live */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Live;
+			sourceTree = "<group>";
+		};
+		26024B99260AA10500B6F625 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				26024B8A260A9FAB00B6F625 /* PrePostProcessor.swift */,
+				26024B8B260A9FAB00B6F625 /* UIImage+Helper.swift */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
+		7D54F04110A960FDB70EEB13 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6332B9B5808F7441528BDAF7 /* Pods_TorchVideo.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EA0C558862607C5A9BA15E19 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				23ACC657D26379F0B85D8184 /* Pods-TorchVideo.debug.xcconfig */,
+				01D685B837B70D4D069E8F49 /* Pods-TorchVideo.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		26024B5F26042B2300B6F625 /* TorchVideo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 26024B7426042B2500B6F625 /* Build configuration list for PBXNativeTarget "TorchVideo" */;
+			buildPhases = (
+				EE9BA49DA44E0EF90DFB0A03 /* [CP] Check Pods Manifest.lock */,
+				26024B5C26042B2300B6F625 /* Sources */,
+				26024B5D26042B2300B6F625 /* Frameworks */,
+				26024B5E26042B2300B6F625 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TorchVideo;
+			productName = TorchVideo;
+			productReference = 26024B6026042B2300B6F625 /* TorchVideo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		26024B5826042B2300B6F625 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1230;
+				LastUpgradeCheck = 1230;
+				TargetAttributes = {
+					26024B5F26042B2300B6F625 = {
+						CreatedOnToolsVersion = 12.3;
+						LastSwiftMigration = 1230;
+					};
+				};
+			};
+			buildConfigurationList = 26024B5B26042B2300B6F625 /* Build configuration list for PBXProject "TorchVideo" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 26024B5726042B2300B6F625;
+			productRefGroup = 26024B6126042B2300B6F625 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				26024B5F26042B2300B6F625 /* TorchVideo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		26024B5E26042B2300B6F625 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				26024B7026042B2500B6F625 /* LaunchScreen.storyboard in Resources */,
+				26024B83260970AE00B6F625 /* video3.mp4 in Resources */,
+				26024B81260970AE00B6F625 /* video1.mp4 in Resources */,
+				26024B87260A9F8500B6F625 /* video_classification.pt in Resources */,
+				26024B6D26042B2500B6F625 /* Assets.xcassets in Resources */,
+				26024B82260970AE00B6F625 /* video2.mp4 in Resources */,
+				26024B6B26042B2300B6F625 /* Main.storyboard in Resources */,
+				26024B88260A9F8500B6F625 /* classes.txt in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		EE9BA49DA44E0EF90DFB0A03 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TorchVideo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		26024B5C26042B2300B6F625 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				26024B6826042B2300B6F625 /* ViewController.swift in Sources */,
+				26024B6426042B2300B6F625 /* AppDelegate.swift in Sources */,
+				26024B8D260A9FAB00B6F625 /* UIImage+Helper.swift in Sources */,
+				26024B92260A9FCA00B6F625 /* InferenceModule.mm in Sources */,
+				26024B95260AA08200B6F625 /* VideoClassifier.swift in Sources */,
+				26024B8C260A9FAB00B6F625 /* PrePostProcessor.swift in Sources */,
+				26024B6626042B2300B6F625 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		26024B6926042B2300B6F625 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				26024B6A26042B2300B6F625 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		26024B6E26042B2500B6F625 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				26024B6F26042B2500B6F625 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		26024B7226042B2500B6F625 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		26024B7326042B2500B6F625 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		26024B7526042B2500B6F625 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 23ACC657D26379F0B85D8184 /* Pods-TorchVideo.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = TorchVideo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.pytorch.mobile.TorchVideo.TorchVideo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "TorchVideo/TorchVideo-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		26024B7626042B2500B6F625 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 01D685B837B70D4D069E8F49 /* Pods-TorchVideo.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = TorchVideo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.pytorch.mobile.TorchVideo.TorchVideo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "TorchVideo/TorchVideo-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		26024B5B26042B2300B6F625 /* Build configuration list for PBXProject "TorchVideo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				26024B7226042B2500B6F625 /* Debug */,
+				26024B7326042B2500B6F625 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		26024B7426042B2500B6F625 /* Build configuration list for PBXNativeTarget "TorchVideo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				26024B7526042B2500B6F625 /* Debug */,
+				26024B7626042B2500B6F625 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 26024B5826042B2300B6F625 /* Project object */;
+}
