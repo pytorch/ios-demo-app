@@ -17,6 +17,8 @@ class ViewController: UIViewController {
     private let testVideos = ["video1", "video2", "video3"]
     private var videoIndex = 0
     
+    private var inferencer = VideoClassifier()
+    
     private var player : AVPlayer?
     private var playerController :AVPlayerViewController?
     
@@ -65,7 +67,22 @@ class ViewController: UIViewController {
 
         player!.play()
         
-        ivFrame.image = imageFromVideo(path: path, at: 100)
+        if let image = imageFromVideo(path: path, at: 100) {
+            ivFrame.image = image
+        
+            guard var pixelBuffer = image.normalized() else {
+                return
+            }
+            
+            DispatchQueue.global().async {
+                guard let outputs = self.inferencer.module.classify(frames: &pixelBuffer) else {
+                    return
+                }
+        
+            }
+        }
+        
+
         
     }
 

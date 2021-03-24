@@ -31,9 +31,10 @@ const int output_size = 25200*85;
     return self;
 }
 
-- (NSArray<NSNumber*>*)detectImage:(void*)imageBuffer {
+
+- (NSArray<NSNumber*>*)classifyFrames:(void*)framesBuffer {
     try {
-        at::Tensor tensor = torch::from_blob(imageBuffer, { 1, 3, input_width, input_height }, at::kFloat);
+        at::Tensor tensor = torch::from_blob(framesBuffer, { 1, 3, input_width, input_height }, at::kFloat);
         torch::autograd::AutoGradMode guard(false);
         at::AutoNonVariableTypeMode non_var_type_mode(true);
         
