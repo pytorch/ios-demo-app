@@ -17,6 +17,14 @@ const int TOP_COUNT = 5;
     @protected torch::jit::script::Module _impl;
 }
 
+NSInteger customCompareFunction(NSArray* first, NSArray* second, void* context)
+{
+    id firstValue = [first objectAtIndex:0];
+    id secondValue = [second objectAtIndex:0];
+    return [secondValue compare:firstValue];
+}
+
+
 - (nullable instancetype)initWithFileAtPath:(NSString*)filePath {
     self = [super init];
     if (self) {
@@ -44,12 +52,6 @@ const int TOP_COUNT = 5;
 }
 
 
-NSComparisonResult customCompareFunction(NSArray* first, NSArray* second, void* context)
-{
-    id firstValue = [first objectAtIndex:0];
-    id secondValue = [second objectAtIndex:0];
-    return [firstValue compare:secondValue];
-}
 
 
 - (NSArray<NSNumber*>*)classifyFrames:(void*)framesBuffer {
@@ -72,7 +74,7 @@ NSComparisonResult customCompareFunction(NSArray* first, NSArray* second, void* 
         
         NSMutableArray* scoresIdx = [[NSMutableArray alloc] init];
         for (int i = 0; i < OUTPUT_SIZE; i++) {
-          [scoresIdx addObject:[NSArray arrayWithObjects:scores[i], @(i)]];
+            [scoresIdx addObject:[NSArray arrayWithObjects:scores[i], @(i), nil]];
         }
         
         NSArray* sortedScoresIdx = [scoresIdx sortedArrayUsingFunction:customCompareFunction context:NULL];
