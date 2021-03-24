@@ -7,10 +7,10 @@
 #import "InferenceModule.h"
 #import <LibTorch/LibTorch.h>
 
-// 640x640 is the default image size used in the export.py in the yolov5 repo to export the TorchScript model, 25200*85 is the model output size
-const int input_width = 640;
-const int input_height = 640;
-const int output_size = 25200*85;
+const int INPUT_WIDTH = 160;
+const int INPUT_HEIGHT = 160;
+const int OUTPUT_SIZE = 400;
+const int TOP_COUNT = 5;
 
 
 @implementation InferenceModule {
@@ -31,25 +31,59 @@ const int output_size = 25200*85;
     return self;
 }
 
+- (int)argMax:(NSArray*)array {
+    int maxIdx = 0;
+    float maxVal = -FLT_MAX;
+    for (int j = 0; j < OUTPUT_SIZE; j++) {
+      if ([array[j] floatValue]> maxVal) {
+          maxVal = [array[j] floatValue];
+          maxIdx = j;
+      }
+    }
+    return maxIdx;
+}
+
+
+NSComparisonResult customCompareFunction(NSArray* first, NSArray* second, void* context)
+{
+    id firstValue = [first objectAtIndex:0];
+    id secondValue = [second objectAtIndex:0];
+    return [firstValue compare:secondValue];
+}
+
 
 - (NSArray<NSNumber*>*)classifyFrames:(void*)framesBuffer {
     try {
-        at::Tensor tensor = torch::from_blob(framesBuffer, { 1, 3, input_width, input_height }, at::kFloat);
+        at::Tensor tensor = torch::from_blob(framesBuffer, { 1, 3, 4, INPUT_WIDTH, INPUT_HEIGHT }, at::kFloat);
         torch::autograd::AutoGradMode guard(false);
         at::AutoNonVariableTypeMode non_var_type_mode(true);
         
-        auto outputTuple = _impl.forward({ tensor }).toTuple();
-        auto outputTensor = outputTuple->elements()[0].toTensor();
+        auto outputTensor = _impl.forward({ tensor }).toTensor();
 
         float* floatBuffer = outputTensor.data_ptr<float>();
         if (!floatBuffer) {
             return nil;
         }
         
-        NSMutableArray* results = [[NSMutableArray alloc] init];
-        for (int i = 0; i < output_size; i++) {
-          [results addObject:@(floatBuffer[i])];
+        NSMutableArray* scores = [[NSMutableArray alloc] init];
+        for (int i = 0; i < OUTPUT_SIZE; i++) {
+          [scores addObject:@(floatBuffer[i])];
         }
+        
+        NSMutableArray* scoresIdx = [[NSMutableArray alloc] init];
+        for (int i = 0; i < OUTPUT_SIZE; i++) {
+          [scoresIdx addObject:[NSArray arrayWithObjects:scores[i], @(i)]];
+        }
+        
+        NSArray* sortedScoresIdx = [scoresIdx sortedArrayUsingFunction:customCompareFunction context:NULL];
+
+        
+//        NSArray *sortedScores = [[[scores sortedArrayUsingSelector: @selector(compare:)] reverseObjectEnumerator] allObjects];
+        
+        NSMutableArray* results = [[NSMutableArray alloc] init];
+        for (int i = 0; i < TOP_COUNT; i++)
+            [results addObject: sortedScoresIdx[i]];
+        
         return [results copy];
         
     } catch (const std::exception& exception) {

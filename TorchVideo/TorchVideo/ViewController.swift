@@ -22,6 +22,8 @@ class ViewController: UIViewController {
     private var player : AVPlayer?
     private var playerController :AVPlayerViewController?
     
+    private var timeObserverToken: Any?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -65,43 +67,64 @@ class ViewController: UIViewController {
         self.view.addSubview((playerController?.view)!)
         self.addChild(playerController!)
 
+        let timeScale = CMTimeScale(NSEC_PER_SEC)
+        let time = CMTime(seconds: 0.5, preferredTimescale: timeScale)
+
+        timeObserverToken = player!.addPeriodicTimeObserver(forInterval: time,
+                                                          queue: .main) {
+            [weak self] time in
+                
+                DispatchQueue.global().async {
+                    if let image = self!.imageFromVideo(path: path, at: time.seconds) {
+                        
+                        let resizedImage = image.resized(to: CGSize(width: CGFloat(PrePostProcessor.inputWidth), height: CGFloat(PrePostProcessor.inputHeight)))
+
+                        
+                        DispatchQueue.main.async {
+                            self!.ivFrame.image = resizedImage
+                        }
+                    
+                        guard var pixelBuffer = resizedImage.normalized() else {
+                            return
+                        }
+                        
+                        pixelBuffer += pixelBuffer
+                        pixelBuffer += pixelBuffer
+
+                    guard let outputs = self!.inferencer.module.classify(frames: &pixelBuffer) else {
+                        return
+                    }
+                        
+                    print(outputs)
+
+                }
+            }
+
+                
+        }
+
         player!.play()
         
-        if let image = imageFromVideo(path: path, at: 100) {
-            ivFrame.image = image
-        
-            guard var pixelBuffer = image.normalized() else {
-                return
-            }
-            
-            DispatchQueue.global().async {
-                guard let outputs = self.inferencer.module.classify(frames: &pixelBuffer) else {
-                    return
-                }
-        
-            }
-        }
-        
-
         
     }
 
-    func imageFromVideo(path: String, at time: TimeInterval) -> UIImage? {
+    func imageFromVideo(path: String, at time: Double) -> UIImage? {
         let asset = AVURLAsset(url: URL(fileURLWithPath: path))
         let assetIG = AVAssetImageGenerator(asset: asset)
         assetIG.appliesPreferredTrackTransform = true
         assetIG.apertureMode = AVAssetImageGenerator.ApertureMode.encodedPixels
 
-        let cmTime = CMTime(seconds: time, preferredTimescale: 60)
-        let thumbnailImageRef: CGImage
+        let cmTime = CMTime(value: CMTimeValue(time*1000000), timescale: CMTimeScale(USEC_PER_SEC))
+
+        let frameRef: CGImage
         do {
-            thumbnailImageRef = try assetIG.copyCGImage(at: cmTime, actualTime: nil)
+            frameRef = try assetIG.copyCGImage(at: cmTime, actualTime: nil)
         } catch let error {
             print("Error: \(error)")
             return nil
         }
 
-        return UIImage(cgImage: thumbnailImageRef)
+        return UIImage(cgImage: frameRef)
     }
     
 
