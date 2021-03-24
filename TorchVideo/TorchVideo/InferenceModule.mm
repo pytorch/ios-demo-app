@@ -17,7 +17,7 @@ const int TOP_COUNT = 5;
     @protected torch::jit::script::Module _impl;
 }
 
-NSInteger customCompareFunction(NSArray* first, NSArray* second, void* context)
+NSInteger arrayWithIndexSort(NSArray* first, NSArray* second, void* context)
 {
     id firstValue = [first objectAtIndex:0];
     id secondValue = [second objectAtIndex:0];
@@ -52,8 +52,6 @@ NSInteger customCompareFunction(NSArray* first, NSArray* second, void* context)
 }
 
 
-
-
 - (NSArray<NSNumber*>*)classifyFrames:(void*)framesBuffer {
     try {
         at::Tensor tensor = torch::from_blob(framesBuffer, { 1, 3, 4, INPUT_WIDTH, INPUT_HEIGHT }, at::kFloat);
@@ -77,14 +75,11 @@ NSInteger customCompareFunction(NSArray* first, NSArray* second, void* context)
             [scoresIdx addObject:[NSArray arrayWithObjects:scores[i], @(i), nil]];
         }
         
-        NSArray* sortedScoresIdx = [scoresIdx sortedArrayUsingFunction:customCompareFunction context:NULL];
-
-        
-//        NSArray *sortedScores = [[[scores sortedArrayUsingSelector: @selector(compare:)] reverseObjectEnumerator] allObjects];
+        NSArray* sortedScoresIdx = [scoresIdx sortedArrayUsingFunction:arrayWithIndexSort context:NULL];
         
         NSMutableArray* results = [[NSMutableArray alloc] init];
         for (int i = 0; i < TOP_COUNT; i++)
-            [results addObject: sortedScoresIdx[i]];
+            [results addObject: sortedScoresIdx[i][1]];
         
         return [results copy];
         

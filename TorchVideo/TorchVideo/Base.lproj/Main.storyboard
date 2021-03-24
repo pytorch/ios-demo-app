@@ -37,10 +37,6 @@
                                     <action selector="liveTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2AM-Dg-zgO"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nn0-4C-Hhu">
-                                <rect key="frame" x="20" y="611" width="374" height="232"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -57,7 +53,6 @@
                     </view>
                     <connections>
                         <outlet property="btnTest" destination="BAh-gy-asI" id="SCz-lE-DVU"/>
-                        <outlet property="ivFrame" destination="Nn0-4C-Hhu" id="Yei-ce-boB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
