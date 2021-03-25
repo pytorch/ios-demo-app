@@ -22,6 +22,10 @@
 		26024B8D260A9FAB00B6F625 /* UIImage+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26024B8B260A9FAB00B6F625 /* UIImage+Helper.swift */; };
 		26024B92260A9FCA00B6F625 /* InferenceModule.mm in Sources */ = {isa = PBXBuildFile; fileRef = 26024B90260A9FCA00B6F625 /* InferenceModule.mm */; };
 		26024B95260AA08200B6F625 /* VideoClassifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26024B94260AA08200B6F625 /* VideoClassifier.swift */; };
+		26024BA8260D0E8A00B6F625 /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26024BA4260D0E8A00B6F625 /* CameraController.swift */; };
+		26024BA9260D0E8A00B6F625 /* LiveVideoClassificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26024BA5260D0E8A00B6F625 /* LiveVideoClassificationViewController.swift */; };
+		26024BAA260D0E8A00B6F625 /* CameraPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26024BA6260D0E8A00B6F625 /* CameraPreviewView.swift */; };
+		26024BAB260D0E8A00B6F625 /* CVPixelBuffer+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26024BA7260D0E8A00B6F625 /* CVPixelBuffer+Helper.swift */; };
 		EE8FB06473848D3E64AFE631 /* Pods_TorchVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6332B9B5808F7441528BDAF7 /* Pods_TorchVideo.framework */; };
 /* End PBXBuildFile section */
 
@@ -47,6 +51,10 @@
 		26024B90260A9FCA00B6F625 /* InferenceModule.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = InferenceModule.mm; sourceTree = "<group>"; };
 		26024B91260A9FCA00B6F625 /* InferenceModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InferenceModule.h; sourceTree = "<group>"; };
 		26024B94260AA08200B6F625 /* VideoClassifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoClassifier.swift; sourceTree = "<group>"; };
+		26024BA4260D0E8A00B6F625 /* CameraController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CameraController.swift; path = TorchVideo/CameraController.swift; sourceTree = SOURCE_ROOT; };
+		26024BA5260D0E8A00B6F625 /* LiveVideoClassificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LiveVideoClassificationViewController.swift; path = TorchVideo/LiveVideoClassificationViewController.swift; sourceTree = SOURCE_ROOT; };
+		26024BA6260D0E8A00B6F625 /* CameraPreviewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CameraPreviewView.swift; path = TorchVideo/CameraPreviewView.swift; sourceTree = SOURCE_ROOT; };
+		26024BA7260D0E8A00B6F625 /* CVPixelBuffer+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CVPixelBuffer+Helper.swift"; path = "TorchVideo/CVPixelBuffer+Helper.swift"; sourceTree = SOURCE_ROOT; };
 		6332B9B5808F7441528BDAF7 /* Pods_TorchVideo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TorchVideo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -116,6 +124,10 @@
 		26024B98260AA0F800B6F625 /* Live */ = {
 			isa = PBXGroup;
 			children = (
+				26024BA4260D0E8A00B6F625 /* CameraController.swift */,
+				26024BA6260D0E8A00B6F625 /* CameraPreviewView.swift */,
+				26024BA7260D0E8A00B6F625 /* CVPixelBuffer+Helper.swift */,
+				26024BA5260D0E8A00B6F625 /* LiveVideoClassificationViewController.swift */,
 			);
 			path = Live;
 			sourceTree = "<group>";
@@ -249,11 +261,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				26024B6826042B2300B6F625 /* ViewController.swift in Sources */,
+				26024BA9260D0E8A00B6F625 /* LiveVideoClassificationViewController.swift in Sources */,
+				26024BAA260D0E8A00B6F625 /* CameraPreviewView.swift in Sources */,
 				26024B6426042B2300B6F625 /* AppDelegate.swift in Sources */,
 				26024B8D260A9FAB00B6F625 /* UIImage+Helper.swift in Sources */,
 				26024B92260A9FCA00B6F625 /* InferenceModule.mm in Sources */,
+				26024BAB260D0E8A00B6F625 /* CVPixelBuffer+Helper.swift in Sources */,
 				26024B95260AA08200B6F625 /* VideoClassifier.swift in Sources */,
 				26024B8C260A9FAB00B6F625 /* PrePostProcessor.swift in Sources */,
+				26024BA8260D0E8A00B6F625 /* CameraController.swift in Sources */,
 				26024B6626042B2300B6F625 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

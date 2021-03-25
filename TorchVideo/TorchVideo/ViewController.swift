@@ -23,34 +23,33 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     private var timeObserverToken: Any?
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
 
-        guard let path = Bundle.main.path(forResource: testVideos[videoIndex], ofType:"mp4") else {
-            return
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
+        player?.pause()
+        if let pc = playerController {
+            lblResult.removeFromSuperview()
+            pc.view.removeFromSuperview()
+            pc.removeFromParent()
+            player!.removeTimeObserver(timeObserverToken as Any)
         }
-        
-        playVideo(url: URL(fileURLWithPath: path), path: path)
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-
     }
     
     
     @IBAction func testTapped(_ sender: Any) {
-        videoIndex = (videoIndex + 1) % testVideos.count
         btnTest.setTitle(String(format: "Test %d/%d", videoIndex + 1, testVideos.count), for:.normal)
 
         guard let path = Bundle.main.path(forResource: testVideos[videoIndex], ofType:"mp4") else {
             return
         }
-        playVideo(url: URL(fileURLWithPath: path), path: path)
+        playVideo(url: URL(fileURLWithPath: path), path: path)        
+        videoIndex = (videoIndex + 1) % testVideos.count
     }
     
     @IBAction func selectTapped(_ sender: Any) {
         player?.pause()
+        
         let imagePickerController = UIImagePickerController()
         imagePickerController.delegate = self;
         imagePickerController.sourceType = .photoLibrary
