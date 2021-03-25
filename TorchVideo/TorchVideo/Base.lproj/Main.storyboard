@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1Pk-ic-63J">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
@@ -35,6 +35,7 @@
                                 <state key="normal" title="Live"/>
                                 <connections>
                                     <action selector="liveTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2AM-Dg-zgO"/>
+                                    <segue destination="mcG-bu-5pK" kind="show" id="jvI-ox-35y"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -51,11 +52,81 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="DQi-c5-Jqa" secondAttribute="bottom" constant="284" id="kJQ-9y-2BD"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="k0a-rL-UWW"/>
                     <connections>
                         <outlet property="btnTest" destination="BAh-gy-asI" id="SCz-lE-DVU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1047.8260869565217" y="43.526785714285715"/>
+        </scene>
+        <!--Live Object Detection View Controller-->
+        <scene sceneID="CPj-p2-rsH">
+            <objects>
+                <viewController id="mcG-bu-5pK" customClass="LiveObjectDetectionViewController" customModule="ObjectDetection" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="XtQ-sg-7uZ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="83V-Un-WeH" customClass="CameraPreviewView" customModule="ObjectDetection" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="188" width="414" height="582"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="uoT-Gu-BwH">
+                                        <rect key="frame" x="197" y="287" width="20" height="20"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="model inference time: " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vwc-9e-Qh0">
+                                <rect key="frame" x="103" y="830" width="209" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="WTE-4R-8oO"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Ome-7b-WU3"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="83V-Un-WeH" firstAttribute="top" secondItem="Ome-7b-WU3" secondAttribute="top" constant="100" id="13n-dZ-g5o"/>
+                            <constraint firstItem="83V-Un-WeH" firstAttribute="trailing" secondItem="Ome-7b-WU3" secondAttribute="trailing" id="Ifg-VJ-7ep"/>
+                            <constraint firstItem="Ome-7b-WU3" firstAttribute="bottom" secondItem="vwc-9e-Qh0" secondAttribute="bottom" constant="10" id="LJB-hM-CUy"/>
+                            <constraint firstItem="vwc-9e-Qh0" firstAttribute="leading" secondItem="Ome-7b-WU3" secondAttribute="leading" constant="103" id="g93-U0-fxZ"/>
+                            <constraint firstItem="83V-Un-WeH" firstAttribute="leading" secondItem="Ome-7b-WU3" secondAttribute="leading" id="m1u-zO-3qV"/>
+                            <constraint firstItem="vwc-9e-Qh0" firstAttribute="top" secondItem="83V-Un-WeH" secondAttribute="bottom" constant="60" id="pXy-O2-S3o"/>
+                            <constraint firstItem="Ome-7b-WU3" firstAttribute="trailing" secondItem="vwc-9e-Qh0" secondAttribute="trailing" constant="102" id="q3p-7x-agR"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="v2q-Nh-sGS"/>
+                    <connections>
+                        <outlet property="benchmarkLabel" destination="vwc-9e-Qh0" id="ahb-DD-qAX"/>
+                        <outlet property="cameraView" destination="83V-Un-WeH" id="kzE-vs-W68"/>
+                        <outlet property="indicator" destination="uoT-Gu-BwH" id="1eY-Z1-Hhn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gri-fD-7hz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1821.7391304347827" y="-25.446428571428569"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="tpU-ih-ALZ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1Pk-ic-63J" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Vde-86-zbP">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="HH5-H3-rMA"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="q0a-8d-Ipi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="43.526785714285715"/>
         </scene>

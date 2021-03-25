@@ -9,7 +9,7 @@ import UIKit
 import AVKit
 import AVFoundation
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     @IBOutlet weak var btnTest: UIButton!
     
     private let testVideos = ["video1", "video2", "video3"]
@@ -25,39 +25,60 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        guard let path = Bundle.main.path(forResource: testVideos[videoIndex], ofType:"mp4") else {
+            return
+        }
+        
+        playVideo(url: URL(fileURLWithPath: path), path: path)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        playVideo()
     }
     
     
     @IBAction func testTapped(_ sender: Any) {
         videoIndex = (videoIndex + 1) % testVideos.count
         btnTest.setTitle(String(format: "Test %d/%d", videoIndex + 1, testVideos.count), for:.normal)
-        playVideo()
-    }
-    
-    @IBAction func selectTapped(_ sender: Any) {
-    }
-    
-    @IBAction func liveTapped(_ sender: Any) {
-    }
-    
-    private func playVideo() {
+
         guard let path = Bundle.main.path(forResource: testVideos[videoIndex], ofType:"mp4") else {
             return
         }
+        playVideo(url: URL(fileURLWithPath: path), path: path)
+    }
+    
+    @IBAction func selectTapped(_ sender: Any) {
+        player?.pause()
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.delegate = self;
+        imagePickerController.sourceType = .photoLibrary
+        imagePickerController.mediaTypes = ["public.movie"]
+        self.present(imagePickerController, animated: true, completion: nil)
+    }
+    
+    @IBAction func liveTapped(_ sender: Any) {
+        player?.pause()
         
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            let imagePickerController = UIImagePickerController()
+            imagePickerController.delegate = self;
+            imagePickerController.sourceType = .camera
+            self.present(imagePickerController, animated: true, completion: nil)
+        }
+    }
+    
+    
+    private func playVideo(url: URL, path: String) {
         if let pc = playerController {
             lblResult.removeFromSuperview()
             pc.view.removeFromSuperview()
             pc.removeFromParent()
+            player!.removeTimeObserver(timeObserverToken as Any)
         }
         
-        player = AVPlayer(url: URL(fileURLWithPath: path))
+        player = AVPlayer(url: url)
         playerController = AVPlayerViewController()
         playerController?.player = player
         
@@ -124,5 +145,13 @@ class ViewController: UIViewController {
 
         return UIImage(cgImage: frameRef)
     }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        let videoURL = info[UIImagePickerController.InfoKey.mediaURL] as! URL
+        playVideo(url: videoURL as URL, path: videoURL.path)
+        self.dismiss(animated: true, completion: nil)
+    
+    }
+    
 }
 
