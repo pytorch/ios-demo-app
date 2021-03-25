@@ -17,8 +17,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BAh-gy-asI">
-                                <rect key="frame" x="64" y="548" width="54" height="30"/>
-                                <state key="normal" title="Test 1/3"/>
+                                <rect key="frame" x="64" y="548" width="30" height="30"/>
+                                <state key="normal" title="Test"/>
                                 <connections>
                                     <action selector="testTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5df-Cb-lUm"/>
                                 </connections>
@@ -34,7 +34,6 @@
                                 <rect key="frame" x="305" y="548" width="30" height="30"/>
                                 <state key="normal" title="Live"/>
                                 <connections>
-                                    <action selector="liveTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2AM-Dg-zgO"/>
                                     <segue destination="mcG-bu-5pK" kind="show" id="jvI-ox-35y"/>
                                 </connections>
                             </button>
@@ -61,10 +60,10 @@
             </objects>
             <point key="canvasLocation" x="1047.8260869565217" y="43.526785714285715"/>
         </scene>
-        <!--Live Object Detection View Controller-->
+        <!--Live Video Classification View Controller-->
         <scene sceneID="CPj-p2-rsH">
             <objects>
-                <viewController id="mcG-bu-5pK" customClass="LiveObjectDetectionViewController" customModule="ObjectDetection" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="mcG-bu-5pK" customClass="LiveVideoClassificationViewController" customModule="TorchVideo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XtQ-sg-7uZ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
