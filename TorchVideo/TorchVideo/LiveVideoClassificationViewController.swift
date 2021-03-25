@@ -9,7 +9,7 @@ import UIKit
 
 class LiveVideoClassificationViewController: ViewController {
     @IBOutlet var cameraView: CameraPreviewView!
-    @IBOutlet var benchmarkLabel: UILabel!
+    @IBOutlet var lblResult: UILabel!
     @IBOutlet var indicator: UIActivityIndicatorView!
 
     private let delayMs: Double = 1000
@@ -20,6 +20,8 @@ class LiveVideoClassificationViewController: ViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+        
         cameraController.configPreviewLayer(cameraView)
         imageViewLive.frame = CGRect(x: 0, y: 0, width: cameraView.frame.size.width, height: cameraView.frame.size.height)
         cameraView.addSubview(imageViewLive)
@@ -31,17 +33,23 @@ class LiveVideoClassificationViewController: ViewController {
             }
             guard var pixelBuffer = buffer else { return }
             
+            // simulate 4 frames of image as requested by model input
+            pixelBuffer += pixelBuffer
+            pixelBuffer += pixelBuffer
+            
             let currentTimestamp = CACurrentMediaTime()
             if (currentTimestamp - strongSelf.prevTimestampMs) * 1000 <= strongSelf.delayMs { return }
             strongSelf.prevTimestampMs = currentTimestamp
             let startTime = CACurrentMediaTime()
-            guard let outputs = self?.inferencer.module.classify(frames: &pixelBuffer) else {
+            guard let top5Indexes = self?.inferencer.module.classify(frames: &pixelBuffer) else {
                 return
             }
             let inferenceTime = CACurrentMediaTime() - startTime
                 
             DispatchQueue.main.async {
-                
+                let results = top5Indexes.map { self!.inferencer.classes[$0.intValue] }
+                self!.lblResult.text = results.joined(separator: ", ") + " - \(Int(1000*inferenceTime))ms"
+
             }
         }
     }

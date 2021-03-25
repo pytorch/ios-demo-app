@@ -32,7 +32,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             lblResult.removeFromSuperview()
             pc.view.removeFromSuperview()
             pc.removeFromParent()
-            player!.removeTimeObserver(timeObserverToken as Any)
+            if let tmObserver = timeObserverToken {
+                player!.removeTimeObserver(tmObserver as Any)
+                timeObserverToken = nil
+            }
         }
     }
     
@@ -74,7 +77,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             lblResult.removeFromSuperview()
             pc.view.removeFromSuperview()
             pc.removeFromParent()
-            player!.removeTimeObserver(timeObserverToken as Any)
+            if let tmObserver = timeObserverToken {
+                player!.removeTimeObserver(tmObserver as Any)
+                timeObserverToken = nil
+            }
         }
         
         player = AVPlayer(url: url)
