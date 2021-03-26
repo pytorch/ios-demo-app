@@ -26,12 +26,9 @@
 		26024BA9260D0E8A00B6F625 /* LiveVideoClassificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26024BA5260D0E8A00B6F625 /* LiveVideoClassificationViewController.swift */; };
 		26024BAA260D0E8A00B6F625 /* CameraPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26024BA6260D0E8A00B6F625 /* CameraPreviewView.swift */; };
 		26024BAB260D0E8A00B6F625 /* CVPixelBuffer+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26024BA7260D0E8A00B6F625 /* CVPixelBuffer+Helper.swift */; };
-		EE8FB06473848D3E64AFE631 /* Pods_TorchVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6332B9B5808F7441528BDAF7 /* Pods_TorchVideo.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		01D685B837B70D4D069E8F49 /* Pods-TorchVideo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TorchVideo.release.xcconfig"; path = "Target Support Files/Pods-TorchVideo/Pods-TorchVideo.release.xcconfig"; sourceTree = "<group>"; };
-		23ACC657D26379F0B85D8184 /* Pods-TorchVideo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TorchVideo.debug.xcconfig"; path = "Target Support Files/Pods-TorchVideo/Pods-TorchVideo.debug.xcconfig"; sourceTree = "<group>"; };
 		26024B6026042B2300B6F625 /* TorchVideo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TorchVideo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		26024B6326042B2300B6F625 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		26024B6526042B2300B6F625 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -55,7 +52,6 @@
 		26024BA5260D0E8A00B6F625 /* LiveVideoClassificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LiveVideoClassificationViewController.swift; path = TorchVideo/LiveVideoClassificationViewController.swift; sourceTree = SOURCE_ROOT; };
 		26024BA6260D0E8A00B6F625 /* CameraPreviewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CameraPreviewView.swift; path = TorchVideo/CameraPreviewView.swift; sourceTree = SOURCE_ROOT; };
 		26024BA7260D0E8A00B6F625 /* CVPixelBuffer+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CVPixelBuffer+Helper.swift"; path = "TorchVideo/CVPixelBuffer+Helper.swift"; sourceTree = SOURCE_ROOT; };
-		6332B9B5808F7441528BDAF7 /* Pods_TorchVideo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TorchVideo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,7 +59,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EE8FB06473848D3E64AFE631 /* Pods_TorchVideo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,7 +71,6 @@
 				26024B6226042B2300B6F625 /* TorchVideo */,
 				26024B6126042B2300B6F625 /* Products */,
 				EA0C558862607C5A9BA15E19 /* Pods */,
-				7D54F04110A960FDB70EEB13 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -141,19 +135,9 @@
 			name = Utils;
 			sourceTree = "<group>";
 		};
-		7D54F04110A960FDB70EEB13 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				6332B9B5808F7441528BDAF7 /* Pods_TorchVideo.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		EA0C558862607C5A9BA15E19 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				23ACC657D26379F0B85D8184 /* Pods-TorchVideo.debug.xcconfig */,
-				01D685B837B70D4D069E8F49 /* Pods-TorchVideo.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -165,7 +149,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 26024B7426042B2500B6F625 /* Build configuration list for PBXNativeTarget "TorchVideo" */;
 			buildPhases = (
-				EE9BA49DA44E0EF90DFB0A03 /* [CP] Check Pods Manifest.lock */,
 				26024B5C26042B2300B6F625 /* Sources */,
 				26024B5D26042B2300B6F625 /* Frameworks */,
 				26024B5E26042B2300B6F625 /* Resources */,
@@ -229,31 +212,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		EE9BA49DA44E0EF90DFB0A03 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-TorchVideo-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		26024B5C26042B2300B6F625 /* Sources */ = {
@@ -414,13 +372,12 @@
 		};
 		26024B7526042B2500B6F625 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 23ACC657D26379F0B85D8184 /* Pods-TorchVideo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = V568RNX5Q4;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = TorchVideo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -439,13 +396,12 @@
 		};
 		26024B7626042B2500B6F625 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 01D685B837B70D4D069E8F49 /* Pods-TorchVideo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = V568RNX5Q4;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = TorchVideo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
