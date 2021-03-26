@@ -18,7 +18,7 @@
 		26024B83260970AE00B6F625 /* video3.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 26024B80260970AD00B6F625 /* video3.mp4 */; };
 		26024B87260A9F8500B6F625 /* video_classification.pt in Resources */ = {isa = PBXBuildFile; fileRef = 26024B85260A9F8500B6F625 /* video_classification.pt */; };
 		26024B88260A9F8500B6F625 /* classes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 26024B86260A9F8500B6F625 /* classes.txt */; };
-		26024B8C260A9FAB00B6F625 /* PrePostProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26024B8A260A9FAB00B6F625 /* PrePostProcessor.swift */; };
+		26024B8C260A9FAB00B6F625 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26024B8A260A9FAB00B6F625 /* Constants.swift */; };
 		26024B8D260A9FAB00B6F625 /* UIImage+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26024B8B260A9FAB00B6F625 /* UIImage+Helper.swift */; };
 		26024B92260A9FCA00B6F625 /* InferenceModule.mm in Sources */ = {isa = PBXBuildFile; fileRef = 26024B90260A9FCA00B6F625 /* InferenceModule.mm */; };
 		26024B95260AA08200B6F625 /* VideoClassifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26024B94260AA08200B6F625 /* VideoClassifier.swift */; };
@@ -45,7 +45,7 @@
 		26024B80260970AD00B6F625 /* video3.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = video3.mp4; sourceTree = "<group>"; };
 		26024B85260A9F8500B6F625 /* video_classification.pt */ = {isa = PBXFileReference; lastKnownFileType = file; path = video_classification.pt; sourceTree = "<group>"; };
 		26024B86260A9F8500B6F625 /* classes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = classes.txt; sourceTree = "<group>"; };
-		26024B8A260A9FAB00B6F625 /* PrePostProcessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrePostProcessor.swift; sourceTree = "<group>"; };
+		26024B8A260A9FAB00B6F625 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		26024B8B260A9FAB00B6F625 /* UIImage+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Helper.swift"; sourceTree = "<group>"; };
 		26024B8F260A9FC900B6F625 /* TorchVideo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TorchVideo-Bridging-Header.h"; sourceTree = "<group>"; };
 		26024B90260A9FCA00B6F625 /* InferenceModule.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = InferenceModule.mm; sourceTree = "<group>"; };
@@ -135,7 +135,7 @@
 		26024B99260AA10500B6F625 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				26024B8A260A9FAB00B6F625 /* PrePostProcessor.swift */,
+				26024B8A260A9FAB00B6F625 /* Constants.swift */,
 				26024B8B260A9FAB00B6F625 /* UIImage+Helper.swift */,
 			);
 			name = Utils;
@@ -268,7 +268,7 @@
 				26024B92260A9FCA00B6F625 /* InferenceModule.mm in Sources */,
 				26024BAB260D0E8A00B6F625 /* CVPixelBuffer+Helper.swift in Sources */,
 				26024B95260AA08200B6F625 /* VideoClassifier.swift in Sources */,
-				26024B8C260A9FAB00B6F625 /* PrePostProcessor.swift in Sources */,
+				26024B8C260A9FAB00B6F625 /* Constants.swift in Sources */,
 				26024BA8260D0E8A00B6F625 /* CameraController.swift in Sources */,
 				26024B6626042B2300B6F625 /* SceneDelegate.swift in Sources */,
 			);

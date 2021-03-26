@@ -114,7 +114,7 @@ extension CameraController: AVCaptureVideoDataOutputSampleBufferDelegate {
         guard let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else {
             return
         }
-        guard let normalizedBuffer = pixelBuffer.normalized(PrePostProcessor.inputWidth, PrePostProcessor.inputHeight) else {
+        guard let normalizedBuffer = pixelBuffer.normalized(Constants.inputWidth, Constants.inputHeight) else {
             return
         }
         if let callback = videoCaptureCompletionBlock {

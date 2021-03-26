@@ -4,15 +4,8 @@
 // This source code is licensed under the BSD-style license found in the
 // LICENSE file in the root directory of this source tree.
 
-import UIKit
 
-struct Prediction {
-  let classIndex: Int
-  let score: Float
-  let rect: CGRect
-}
-
-class PrePostProcessor : NSObject {
+class Constants : NSObject {
     // target video input size
     static let inputWidth = 160
     static let inputHeight = 160

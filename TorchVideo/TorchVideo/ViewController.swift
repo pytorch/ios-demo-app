@@ -22,7 +22,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     private var playerController :AVPlayerViewController?
     
     private var timeObserverToken: Any?
-    
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -110,7 +109,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                     var pixelBuffer = [Float32]()
                     for n in 0...3 {
                         if let image = self!.frameFromVideo(path: path, at: time.seconds + Double(n) * 0.3) {
-                            let resizedImage = image.resized(to: CGSize(width: CGFloat(PrePostProcessor.inputWidth), height: CGFloat(PrePostProcessor.inputHeight)))
+                            let resizedImage = image.resized(to: CGSize(width: CGFloat(Constants.inputWidth), height: CGFloat(Constants.inputHeight)))
                         
                             guard let frameBuffer = resizedImage.normalized() else { return }
                             pixelBuffer += frameBuffer
@@ -156,7 +155,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         playVideo(url: videoURL as URL, path: videoURL.path)
         self.dismiss(animated: true, completion: nil)
     
-    }
-    
+    }    
 }
 
