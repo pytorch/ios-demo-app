@@ -26,11 +26,9 @@
 		269E7498255CCBA000B1D6CA /* InferenceModule.mm in Sources */ = {isa = PBXBuildFile; fileRef = 269E7496255CCBA000B1D6CA /* InferenceModule.mm */; };
 		269E749B255CCBC300B1D6CA /* UIImage+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269E749A255CCBC300B1D6CA /* UIImage+Helper.swift */; };
 		26FAB5692565E8FC00EA6ED6 /* PrePostProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FAB5682565E8FC00EA6ED6 /* PrePostProcessor.swift */; };
-		E59C7A0EE37EBF9D5E6472AB /* Pods_ObjectDetection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1FB1B65020C9B26673B0368 /* Pods_ObjectDetection.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1B3F3EFB10E6318B0BD1D2B7 /* Pods-ObjectDetection.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ObjectDetection.release.xcconfig"; path = "Target Support Files/Pods-ObjectDetection/Pods-ObjectDetection.release.xcconfig"; sourceTree = "<group>"; };
 		266E871E2563077D00CF5151 /* yolov5s.torchscript.pt */ = {isa = PBXFileReference; lastKnownFileType = file; path = yolov5s.torchscript.pt; sourceTree = "<group>"; };
 		266E87222563120D00CF5151 /* classes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = classes.txt; sourceTree = "<group>"; };
 		266E8742256350C000CF5151 /* CameraController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraController.swift; sourceTree = "<group>"; };
@@ -54,8 +52,6 @@
 		269E7497255CCBA000B1D6CA /* InferenceModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InferenceModule.h; sourceTree = "<group>"; };
 		269E749A255CCBC300B1D6CA /* UIImage+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Helper.swift"; sourceTree = "<group>"; };
 		26FAB5682565E8FC00EA6ED6 /* PrePostProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrePostProcessor.swift; sourceTree = "<group>"; };
-		E11CB42BD3AA84E218E9E864 /* Pods-ObjectDetection.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ObjectDetection.debug.xcconfig"; path = "Target Support Files/Pods-ObjectDetection/Pods-ObjectDetection.debug.xcconfig"; sourceTree = "<group>"; };
-		E1FB1B65020C9B26673B0368 /* Pods_ObjectDetection.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ObjectDetection.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,7 +59,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E59C7A0EE37EBF9D5E6472AB /* Pods_ObjectDetection.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,7 +82,6 @@
 				269E7470255CC56200B1D6CA /* ObjectDetection */,
 				269E746F255CC56200B1D6CA /* Products */,
 				A3F013A889E9B190698071B6 /* Pods */,
-				C143F3D3C501251A64A54476 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -144,18 +138,8 @@
 		A3F013A889E9B190698071B6 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				E11CB42BD3AA84E218E9E864 /* Pods-ObjectDetection.debug.xcconfig */,
-				1B3F3EFB10E6318B0BD1D2B7 /* Pods-ObjectDetection.release.xcconfig */,
 			);
 			path = Pods;
-			sourceTree = "<group>";
-		};
-		C143F3D3C501251A64A54476 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				E1FB1B65020C9B26673B0368 /* Pods_ObjectDetection.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -165,7 +149,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 269E7482255CC56400B1D6CA /* Build configuration list for PBXNativeTarget "ObjectDetection" */;
 			buildPhases = (
-				D8CC679EDED7AE78D02D90BF /* [CP] Check Pods Manifest.lock */,
 				269E746A255CC56200B1D6CA /* Sources */,
 				269E746B255CC56200B1D6CA /* Frameworks */,
 				269E746C255CC56200B1D6CA /* Resources */,
@@ -229,31 +212,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		D8CC679EDED7AE78D02D90BF /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-ObjectDetection-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		269E746A255CC56200B1D6CA /* Sources */ = {
@@ -416,7 +374,6 @@
 		};
 		269E7483255CC56400B1D6CA /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E11CB42BD3AA84E218E9E864 /* Pods-ObjectDetection.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -441,7 +398,6 @@
 		};
 		269E7484255CC56400B1D6CA /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1B3F3EFB10E6318B0BD1D2B7 /* Pods-ObjectDetection.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
