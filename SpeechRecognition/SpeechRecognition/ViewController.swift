@@ -25,7 +25,7 @@ class ViewController: UIViewController, AVAudioRecorderDelegate  {
     
     private lazy var module: InferenceModule = {
         if let filePath = Bundle.main.path(forResource:
-            "wav2vec2_traced_quantized", ofType: "pt"),
+            "wav2vec_traced_quantized", ofType: "pt"),
             let module = InferenceModule(fileAtPath: filePath) {
             return module
         } else {
@@ -112,25 +112,28 @@ class ViewController: UIViewController, AVAudioRecorderDelegate  {
 
     func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
         _btn.setTitle("Recognizing...", for: .normal)
+        
         if flag {
 
             let url = NSURL.fileURL(withPath: _recorderFilePath)
             let file = try! AVAudioFile(forReading: url)
             let format = AVAudioFormat(commonFormat: .pcmFormatFloat32, sampleRate: file.fileFormat.sampleRate, channels: 1, interleaved: false)
 
-            let buf = AVAudioPCMBuffer(pcmFormat: format!, frameCapacity: 1024)
+            let buf = AVAudioPCMBuffer(pcmFormat: format!, frameCapacity: AVAudioFrameCount(file.length))
             try! file.read(into: buf!)
 
-            // this makes a copy, you might not want that
-            let floatArray = Array(UnsafeBufferPointer(start: buf?.floatChannelData![0], count:Int(buf!.frameLength)))
+            var floatArray = Array(UnsafeBufferPointer(start: buf?.floatChannelData![0], count:Int(buf!.frameLength)))
 
-            
+//            let floatArray = UnsafeMutableRawPointer(start: buf?.floatChannelData![0], count:Int(buf!.frameLength))
+//
             
             DispatchQueue.global().async {
-//                let result = self.module.recognize(floatArray)
-//                DispatchQueue.main.async {
-//                    _lbl.text = result
-//                }
+                floatArray.withUnsafeMutableBytes {
+                    let result = self.module.recognize(wavBuffer: $0.baseAddress!)
+                    DispatchQueue.main.async {
+                        //_lbl.text = result
+                    }
+                }
             }
         }
         else {

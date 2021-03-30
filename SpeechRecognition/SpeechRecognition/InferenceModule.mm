@@ -8,7 +8,8 @@
 #import "InferenceModule.h"
 #import <LibTorch/LibTorch.h>
 
-const int MODEL_INPUT_LENGTH = 360;
+const int MODEL_INPUT_LENGTH = 65024;
+const NSString *TOKENS[] = {@"<s>", @"<pad>", @"</s>", @"<unk>", @"|", @"E", @"T", @"A", @"O", @"N", @"I", @"H", @"S", @"R", @"D", @"L", @"U", @"M", @"W", @"C", @"F", @"G", @"Y", @"P", @"B", @"V", @"K", @"'", @"X", @"J", @"Q", @"Z"};
 
 @implementation InferenceModule {
     
@@ -50,36 +51,36 @@ const int MODEL_INPUT_LENGTH = 360;
 - (unsigned char*)recognize:(void*)wavBuffer {
     
     try {
-        long inputs[MODEL_INPUT_LENGTH];
-        for (int i = 0; i < MODEL_INPUT_LENGTH; i++)
-            inputs[i] = 0;
-        at::Tensor tensorInputs = torch::from_blob((void*)inputs, {1, MODEL_INPUT_LENGTH}, at::kLong);
+        at::Tensor tensorInputs = torch::from_blob((void*)wavBuffer, {1, MODEL_INPUT_LENGTH}, at::kFloat);
+        
+        float* floatInput = tensorInputs.data_ptr<float>();
+        if (!floatInput) {
+            return nil;
+        }
+        NSMutableArray* inputs = [[NSMutableArray alloc] init];
+        for (int i = 0; i < MODEL_INPUT_LENGTH; i++) {
+            [inputs addObject:@(floatInput[i])];
+        }
+        
         
         torch::autograd::AutoGradMode guard(false);
         at::AutoNonVariableTypeMode non_var_type_mode(true);
     
         auto outputDict = _impl.forward({ tensorInputs }).toGenericDict();
 
-        auto startTensor = outputDict.at("start_logits").toTensor();
-        float* startBuffer = startTensor.data_ptr<float>();
-        if (!startBuffer) {
+        auto logitsTensor = outputDict.at("logits").toTensor();
+        float* logitsBuffer = logitsTensor.data_ptr<float>();
+        if (!logitsBuffer) {
             return nil;
-        }
-        NSMutableArray* startLogits = [[NSMutableArray alloc] init];
-        for (int i = 0; i < MODEL_INPUT_LENGTH; i++) {
-            [startLogits addObject:@(startBuffer[i*2])]; // *2 - unique in the iOS implementation
         }
         
-        auto endTensor = outputDict.at("end_logits").toTensor();
-        float* endBuffer = endTensor.data_ptr<float>();
-        if (!endBuffer) {
-            return nil;
-        }
-        NSMutableArray* endLogits = [[NSMutableArray alloc] init];
-        for (int i = 0; i < MODEL_INPUT_LENGTH; i++) {
-            [endLogits addObject:@(endBuffer[i*2])];
-        }
+        NSUInteger TOKEN_LENGTH = (NSUInteger) (sizeof(TOKENS) / sizeof(NSString*));
 
+        NSMutableArray* logits = [[NSMutableArray alloc] init];
+        for (int i = 0; i < TOKEN_LENGTH; i++) {
+            [logits addObject:@(logitsBuffer[i])];
+        }
+        
 
         NSMutableArray* results = [[NSMutableArray alloc] init];
         
