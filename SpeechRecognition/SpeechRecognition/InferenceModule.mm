@@ -53,7 +53,7 @@ const NSString *TOKENS[] = {@"<s>", @"<pad>", @"</s>", @"<unk>", @"|", @"E", @"T
 }
 
 
-- (unsigned char*)recognize:(void*)wavBuffer {
+- (NSString*)recognize:(void*)wavBuffer {
     try {
         at::Tensor tensorInputs = torch::from_blob((void*)wavBuffer, {1, MODEL_INPUT_LENGTH}, at::kFloat);
         
@@ -81,12 +81,13 @@ const NSString *TOKENS[] = {@"<s>", @"<pad>", @"</s>", @"<unk>", @"|", @"E", @"T
         NSUInteger TOKEN_LENGTH = (NSUInteger) (sizeof(TOKENS) / sizeof(NSString*));
         int64_t output_len = logitsTensor.numel();
         NSMutableArray* logits = [[NSMutableArray alloc] init];
+        NSString *result = @"";
         for (int i = 0; i < output_len; i++) {
             // for every 32 output values, get the argmax and its token
             if (i > 0 && i % TOKEN_LENGTH == 0) {
                 int tid = [self argMax:logits];
                 if (tid > 4)
-                    NSLog(@"%d - %@", tid, TOKENS[tid]);
+                    result = [NSString stringWithFormat:@"%@ %@", result, TOKENS[tid]];
                 
                 [logits removeAllObjects];
                 [logits addObject:@(logitsBuffer[i])];
@@ -96,9 +97,7 @@ const NSString *TOKENS[] = {@"<s>", @"<pad>", @"</s>", @"<unk>", @"|", @"E", @"T
             }
         }
         
-        NSMutableArray* results = [[NSMutableArray alloc] init];
-        
-        return nil;
+        return result;
     }
     catch (const std::exception& exception) {
         NSLog(@"%s", exception.what());
