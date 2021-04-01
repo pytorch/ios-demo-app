@@ -53,83 +53,7 @@ const NSString *TOKENS[] = {@"<s>", @"<pad>", @"</s>", @"<unk>", @"|", @"E", @"T
 }
 
 
-//- (unsigned char*)recognize:(void*)wavBuffer {
-- (unsigned char*)recognize:(NSString*)wavFile {
-
-    const char *cString = [wavFile cStringUsingEncoding:NSASCIIStringEncoding];
-
-    CFStringRef str = CFStringCreateWithCString(
-                                                NULL,
-                                                cString,
-                                                kCFStringEncodingMacRoman
-                                                );
-    CFURLRef inputFileURL = CFURLCreateWithFileSystemPath(
-                                                          kCFAllocatorDefault,
-                                                          str,
-                                                          kCFURLPOSIXPathStyle,
-                                                          false
-                                                          );
-
-    ExtAudioFileRef fileRef;
-    ExtAudioFileOpenURL(inputFileURL, &fileRef);
-
-
-    AudioStreamBasicDescription audioFormat;
-    audioFormat.mSampleRate = 16000;
-    audioFormat.mFormatID = kAudioFormatLinearPCM;
-    audioFormat.mFormatFlags = kLinearPCMFormatFlagIsFloat;
-    audioFormat.mBitsPerChannel = sizeof(Float32) * 8;
-    audioFormat.mChannelsPerFrame = 1; // Mono
-    audioFormat.mBytesPerFrame = audioFormat.mChannelsPerFrame * sizeof(Float32);
-    audioFormat.mFramesPerPacket = 1;
-    audioFormat.mBytesPerPacket = audioFormat.mFramesPerPacket * audioFormat.mBytesPerFrame;
-
-    ExtAudioFileSetProperty(
-                            fileRef,
-                            kExtAudioFileProperty_ClientDataFormat,
-                            sizeof (AudioStreamBasicDescription), //= audioFormat
-                            &audioFormat);
-
-    int numSamples = 1024;
-    UInt32 sizePerPacket = audioFormat.mBytesPerPacket;
-    UInt32 packetsPerBuffer = numSamples;
-    UInt32 outputBufferSize = packetsPerBuffer * sizePerPacket;
-
-    UInt8 *outputBuffer = (UInt8 *)malloc(sizeof(UInt8 *) * outputBufferSize);
-
-    AudioBufferList convertedData ;
-
-    convertedData.mNumberBuffers = 1;
-    convertedData.mBuffers[0].mNumberChannels = audioFormat.mChannelsPerFrame;
-    convertedData.mBuffers[0].mDataByteSize = outputBufferSize;
-    convertedData.mBuffers[0].mData = outputBuffer;
-
-    UInt32 frameCount = numSamples;
-    float *samplesAsCArray;
-    int j =0;
-
-    int totalRead = 0;
-    float *wavBuffer = new float[16000*6];
-    while (frameCount > 0) {
-        ExtAudioFileRead(fileRef, &frameCount, &convertedData);
-        printf("frameCount=%d, totalRead=%d\n", frameCount, totalRead);
-        totalRead += frameCount;
-        if (frameCount > 0)  {
-            AudioBuffer audioBuffer = convertedData.mBuffers[0];
-            samplesAsCArray = (float *)audioBuffer.mData;
-
-            for (int i =0; i<1024; i++) {
-                wavBuffer[j] = (float)samplesAsCArray[i] ;
-                //if (i%20 == 0) printf("%f,",floatInputBuffer[j]);  // -1 TO +1
-                j++;
-            }
-        }
-    }
-
-    printf("totalRead=%d\n", totalRead);
-
-    
-    
+- (unsigned char*)recognize:(void*)wavBuffer {
     try {
         at::Tensor tensorInputs = torch::from_blob((void*)wavBuffer, {1, MODEL_INPUT_LENGTH}, at::kFloat);
         
@@ -140,8 +64,6 @@ const NSString *TOKENS[] = {@"<s>", @"<pad>", @"</s>", @"<unk>", @"|", @"E", @"T
         NSMutableArray* inputs = [[NSMutableArray alloc] init];
         for (int i = 0; i < MODEL_INPUT_LENGTH; i++) {
             [inputs addObject:@(floatInput[i])];
-//            if (floatInput[i] != 0.0)
-//                NSLog(@"%f", floatInput[i]);
         }
         
         
@@ -165,7 +87,6 @@ const NSString *TOKENS[] = {@"<s>", @"<pad>", @"</s>", @"<unk>", @"|", @"E", @"T
                 int tid = [self argMax:logits];
                 if (tid > 4)
                     NSLog(@"%d - %@", tid, TOKENS[tid]);
-                //else if (tid == 4)
                 
                 [logits removeAllObjects];
                 [logits addObject:@(logitsBuffer[i])];
@@ -174,9 +95,6 @@ const NSString *TOKENS[] = {@"<s>", @"<pad>", @"</s>", @"<unk>", @"|", @"E", @"T
                 [logits addObject:@(logitsBuffer[i])];
             }
         }
-        
-
-        
         
         NSMutableArray* results = [[NSMutableArray alloc] init];
         

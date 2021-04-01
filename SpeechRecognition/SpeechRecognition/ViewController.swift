@@ -115,32 +115,25 @@ class ViewController: UIViewController, AVAudioRecorderDelegate  {
         
         if flag {
             
-            DispatchQueue.global().async { [self] in
-                let result = self.module.recognize(wavFile: _recorderFilePath)
-                DispatchQueue.main.async {
-                    //_lbl.text = result
+
+
+            let url = NSURL.fileURL(withPath: _recorderFilePath)
+            let file = try! AVAudioFile(forReading: url)
+            let format = AVAudioFormat(commonFormat: .pcmFormatFloat32, sampleRate: file.fileFormat.sampleRate, channels: 1, interleaved: false)
+
+            let buf = AVAudioPCMBuffer(pcmFormat: format!, frameCapacity: AVAudioFrameCount(file.length))
+            try! file.read(into: buf!)
+
+            var floatArray = Array(UnsafeBufferPointer(start: buf?.floatChannelData![0], count:Int(buf!.frameLength)))
+
+            DispatchQueue.global().async {
+                floatArray.withUnsafeMutableBytes {
+                    let result = self.module.recognize(wavBuffer: $0.baseAddress!)
+                    DispatchQueue.main.async {
+                        //_lbl.text = result
+                    }
                 }
             }
-
-            
-
-//            let url = NSURL.fileURL(withPath: _recorderFilePath)
-//            let file = try! AVAudioFile(forReading: url)
-//            let format = AVAudioFormat(commonFormat: .pcmFormatFloat32, sampleRate: file.fileFormat.sampleRate, channels: 1, interleaved: false)
-//
-//            let buf = AVAudioPCMBuffer(pcmFormat: format!, frameCapacity: AVAudioFrameCount(file.length))
-//            try! file.read(into: buf!)
-//
-//            var floatArray = Array(UnsafeBufferPointer(start: buf?.floatChannelData![0], count:Int(buf!.frameLength)))
-//
-//            DispatchQueue.global().async {
-//                floatArray.withUnsafeMutableBytes {
-//                    let result = self.module.recognize(wavBuffer: $0.baseAddress!)
-//                    DispatchQueue.main.async {
-//                        //_lbl.text = result
-//                    }
-//                }
-//            }
         }
         else {
             _lbl.text = "Recording error"
