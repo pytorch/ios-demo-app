@@ -26,6 +26,10 @@ The [PyTorch demo app](https://github.com/pytorch/ios-demo-app/tree/master/PyTor
 
 [Question Answering](https://github.com/pytorch/ios-demo-app/tree/master/QuestionAnswering) demonstrates how to convert a powerful transformer QA model and use the model in an iOS app to answer questions about PyTorch Mobile and more.
 
+### Speech recognition
+
+[Speech Recognition](https://github.com/pytorch/ios-demo-app/tree/master/SpeechRecognition) demonstrates how to convert Facebook AI's wav2vec 2.0, one of the leading models in speech recognition, to TorchScript and how to use the scripted model in an iOS app to perform speech recognition.
+
 ### Vision Transformer
 
 [Vision Transformer](https://github.com/pytorch/ios-demo-app/tree/master/ViT4MNIST) demonstrates how to use Facebook's latest Vision Transformer [DeiT](https://github.com/facebookresearch/deit) model to do image classification, and how convert another Vision Transformer model and use it in an iOS app to perform handwritten digit recognition.
