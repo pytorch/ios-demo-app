@@ -66,7 +66,6 @@ const NSString *TOKENS[] = {@"<s>", @"<pad>", @"</s>", @"<unk>", @"|", @"E", @"T
             [inputs addObject:@(floatInput[i])];
         }
         
-        
         torch::autograd::AutoGradMode guard(false);
         at::AutoNonVariableTypeMode non_var_type_mode(true);
     
@@ -87,8 +86,10 @@ const NSString *TOKENS[] = {@"<s>", @"<pad>", @"</s>", @"<unk>", @"|", @"E", @"T
             if (i > 0 && i % TOKEN_LENGTH == 0) {
                 int tid = [self argMax:logits];
                 if (tid > 4)
-                    result = [NSString stringWithFormat:@"%@ %@", result, TOKENS[tid]];
-                
+                    result = [NSString stringWithFormat:@"%@%@", result, TOKENS[tid]];
+                else if (tid == 4)
+                    result = [NSString stringWithFormat:@"%@ ", result];
+
                 [logits removeAllObjects];
                 [logits addObject:@(logitsBuffer[i])];
             }

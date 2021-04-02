@@ -26,21 +26,18 @@ class ViewController: UIViewController, AVAudioRecorderDelegate  {
 
     private lazy var module: InferenceModule = {
         if let filePath = Bundle.main.path(forResource:
-            "wav2vec_traced_quantized", ofType: "pt"),
+            "wav2vec2", ofType: "pt"),
             let module = InferenceModule(fileAtPath: filePath) {
             return module
         } else {
             fatalError("Can't find the model file!")
         }
-    }()
-        
-
+    }()    
     
     @IBAction func startTapped(_ sender: Any) {
         AVAudioSession.sharedInstance().requestRecordPermission ({(granted: Bool)-> Void in
             if granted {
                 self.btnStart.setTitle("Listening...", for: .normal)
-
             } else{
                 self.tvResult.text = "Record premission needs to be granted, Record premission needs to be granted, Record premission needs to be granted"
             }
@@ -52,7 +49,7 @@ class ViewController: UIViewController, AVAudioRecorderDelegate  {
             try audioSession.setCategory(AVAudioSession.Category.record)
             try audioSession.setActive(true)
         } catch {
-            print("recording exception")
+            tvResult.text = "recording exception"
             return
         }
 
@@ -68,12 +65,11 @@ class ViewController: UIViewController, AVAudioRecorderDelegate  {
         
         do {
             _recorderFilePath = NSHomeDirectory().stringByAppendingPathComponent(path: "tmp").stringByAppendingPathComponent(path: "recorded_file.wav")
-            print("recorderFilePath="+_recorderFilePath.description)
             audioRecorder = try AVAudioRecorder(url: NSURL.fileURL(withPath: _recorderFilePath), settings: settings)
             audioRecorder.delegate = self
             audioRecorder.record(forDuration: 6)
         } catch let error {
-            print("error:" + error.localizedDescription)
+            tvResult.text = "error:" + error.localizedDescription
         }
     }
 
@@ -81,7 +77,6 @@ class ViewController: UIViewController, AVAudioRecorderDelegate  {
         btnStart.setTitle("Recognizing...", for: .normal)
         
         if flag {
-
             let url = NSURL.fileURL(withPath: _recorderFilePath)
             let file = try! AVAudioFile(forReading: url)
             let format = AVAudioFormat(commonFormat: .pcmFormatFloat32, sampleRate: file.fileFormat.sampleRate, channels: 1, interleaved: false)
@@ -105,7 +100,5 @@ class ViewController: UIViewController, AVAudioRecorderDelegate  {
             tvResult.text = "Recording error"
         }
     }
-
-
 }
 
