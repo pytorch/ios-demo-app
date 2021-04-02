@@ -10,7 +10,7 @@ To Test Run the Image Segmentation iOS App, follow the steps below:
 
 ### 1. Prepare the Model
 
-If you don't have the PyTorch environment set up to run the script below to generate the model file, you can download it to the `ios-demo-app/ImageSegmentation` folder using the link [here](https://drive.google.com/file/d/17KeE6mKo67l14XxTl8a-NbtqwAvduVZG/view?usp=sharing).
+If you don't have the PyTorch environment set up to run the script below to generate the model file, you can download it to the `ios-demo-app/ImageSegmentation` folder using the link [here](https://drive.google.com/file/d/1FHV9tN6-e3EWUgM_K3YvDoRLPBj7NHXO/view?usp=sharing).
 
 Be aware that the downloadable model file was created with PyTorch 1.7.0, matching the iOS LibTorch library 1.7.0 specified in the `Podfile`. If you use a different version of PyTorch to create your model by following the instructions below, make sure you specify the same iOS LibTorch version in the `Podfile` to avoid possible errors caused by the version mismatch. Furthermore, if you want to use the latest prototype features in the PyTorch master branch to create the model, follow the steps at [Building PyTorch iOS Libraries from Source](https://pytorch.org/mobile/ios/#build-pytorch-ios-libraries-from-source) on how to use the model in iOS.
 
