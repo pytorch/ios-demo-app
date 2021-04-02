@@ -18,11 +18,9 @@
 		26B208FB261284C700B597CB /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26B208FA261284C700B597CB /* AVFoundation.framework */; };
 		26B208FD261284CF00B597CB /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26B208FC261284CF00B597CB /* AudioToolbox.framework */; };
 		26B208FF261284D700B597CB /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26B208FE261284D700B597CB /* Accelerate.framework */; };
-		9842077B11E6B826215CD388 /* Pods_SpeechRecognition.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D467DC8B07C1A51B7C0F073A /* Pods_SpeechRecognition.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		19C0453B32BC86A647769195 /* Pods-SpeechRecognition.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpeechRecognition.debug.xcconfig"; path = "Target Support Files/Pods-SpeechRecognition/Pods-SpeechRecognition.debug.xcconfig"; sourceTree = "<group>"; };
 		26B208D426127FAD00B597CB /* SpeechRecognition.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpeechRecognition.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		26B208D726127FAD00B597CB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		26B208D926127FAD00B597CB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -38,8 +36,6 @@
 		26B208FA261284C700B597CB /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		26B208FC261284CF00B597CB /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		26B208FE261284D700B597CB /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
-		97D8C474C174BC76EBD0BE93 /* Pods-SpeechRecognition.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpeechRecognition.release.xcconfig"; path = "Target Support Files/Pods-SpeechRecognition/Pods-SpeechRecognition.release.xcconfig"; sourceTree = "<group>"; };
-		D467DC8B07C1A51B7C0F073A /* Pods_SpeechRecognition.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpeechRecognition.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,7 +46,6 @@
 				26B208FF261284D700B597CB /* Accelerate.framework in Frameworks */,
 				26B208FD261284CF00B597CB /* AudioToolbox.framework in Frameworks */,
 				26B208FB261284C700B597CB /* AVFoundation.framework in Frameworks */,
-				9842077B11E6B826215CD388 /* Pods_SpeechRecognition.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,8 +91,6 @@
 		4D6D8FA08BEAA3511106DA23 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				19C0453B32BC86A647769195 /* Pods-SpeechRecognition.debug.xcconfig */,
-				97D8C474C174BC76EBD0BE93 /* Pods-SpeechRecognition.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -108,7 +101,6 @@
 				26B208FE261284D700B597CB /* Accelerate.framework */,
 				26B208FC261284CF00B597CB /* AudioToolbox.framework */,
 				26B208FA261284C700B597CB /* AVFoundation.framework */,
-				D467DC8B07C1A51B7C0F073A /* Pods_SpeechRecognition.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -120,7 +112,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 26B208E826127FAE00B597CB /* Build configuration list for PBXNativeTarget "SpeechRecognition" */;
 			buildPhases = (
-				5ACD5BAA0E13E0D2D0203DD7 /* [CP] Check Pods Manifest.lock */,
 				26B208D026127FAD00B597CB /* Sources */,
 				26B208D126127FAD00B597CB /* Frameworks */,
 				26B208D226127FAD00B597CB /* Resources */,
@@ -180,31 +171,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		5ACD5BAA0E13E0D2D0203DD7 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-SpeechRecognition-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		26B208D026127FAD00B597CB /* Sources */ = {
@@ -358,13 +324,12 @@
 		};
 		26B208E926127FAE00B597CB /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 19C0453B32BC86A647769195 /* Pods-SpeechRecognition.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = V568RNX5Q4;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = SpeechRecognition/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -383,13 +348,12 @@
 		};
 		26B208EA26127FAE00B597CB /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 97D8C474C174BC76EBD0BE93 /* Pods-SpeechRecognition.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = V568RNX5Q4;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = SpeechRecognition/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
