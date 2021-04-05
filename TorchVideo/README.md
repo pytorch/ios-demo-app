@@ -6,7 +6,7 @@ The just released open-sourced PyTorch Video adds video classification, among ot
 
 ## Prerequisites
 
-* PyTorch 1.8.1, torchvision 0.9.1, PyTorchVideo (Optional)
+* PyTorch 1.8.0/1.8.1, torchvision 0.9.1, PyTorchVideo (Optional)
 * Python 3.8 or above (Optional)
 * Python 3.8 (Optional)
 * iOS PyTorch pod library 1.8
@@ -14,6 +14,8 @@ The just released open-sourced PyTorch Video adds video classification, among ot
 
 
 ## Quick Start
+
+### 1. Prepare the Model (Optional)
 
 If you don't have the PyTorch environment set up to run the script, you can download the model file `video_classification.pt` [here](https://drive.google.com/file/d/1qweDu7QZv7xJA7Sx_UIxjvcS7y1rQ2kE/view) to the `ios-demo-app/TorchVideo/TorchVideo` folder, then skip the rest of this step and go to step 2 directly.
 
