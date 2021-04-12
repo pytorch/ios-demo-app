@@ -43,18 +43,43 @@ const int output_size = 25200*85;
         auto outputTuple = _impl.forward({ at::TensorList(v) }).toTuple();
         
         // TODO: fix Expected Tensor but got GenericList
-        auto outputTensor = outputTuple->elements()[1].toTensor();
+        auto outputDict = outputTuple->elements()[1].toList().get(0).toGenericDict();
+        auto boxesTensor = outputDict.at("boxes").toTensor();
+        auto scoresTensor = outputDict.at("scores").toTensor();
+        auto labelsTensor = outputDict.at("labels").toTensor();
 
-        float* floatBuffer = outputTensor.data_ptr<float>();
-        if (!floatBuffer) {
+        float* boxesBuffer = boxesTensor.data_ptr<float>();
+        if (!boxesBuffer) {
+            return nil;
+        }
+        float* scoresBuffer = scoresTensor.data_ptr<float>();
+        if (!scoresBuffer) {
+            return nil;
+        }
+        long* labelsBuffer = labelsTensor.data_ptr<long>();
+        if (!labelsBuffer) {
             return nil;
         }
         
         NSMutableArray* results = [[NSMutableArray alloc] init];
-        for (int i = 0; i < output_size; i++) {
-          [results addObject:@(floatBuffer[i])];
+        long num = scoresTensor.numel();
+        for (int i = 0; i < num; i++) {
+            if (scoresBuffer[i] < 0.5)
+                continue;
+
+            [results addObject:@(boxesBuffer[4 * i])];
+            [results addObject:@(boxesBuffer[4 * i + 1])];
+            [results addObject:@(boxesBuffer[4 * i + 2])];
+            [results addObject:@(boxesBuffer[4 * i + 3])];
+            [results addObject:@(scoresBuffer[i])];
+            [results addObject:@(labelsBuffer[i])];
         }
+        
         return [results copy];
+        
+        
+        
+        return nil;
         
     } catch (const std::exception& exception) {
         NSLog(@"%s", exception.what());
