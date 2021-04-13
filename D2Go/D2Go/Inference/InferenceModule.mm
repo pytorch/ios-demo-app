@@ -42,7 +42,6 @@ const int output_size = 25200*85;
         
         auto outputTuple = _impl.forward({ at::TensorList(v) }).toTuple();
         
-        // TODO: fix Expected Tensor but got GenericList
         auto outputDict = outputTuple->elements()[1].toList().get(0).toGenericDict();
         auto boxesTensor = outputDict.at("boxes").toTensor();
         auto scoresTensor = outputDict.at("scores").toTensor();
@@ -56,7 +55,7 @@ const int output_size = 25200*85;
         if (!scoresBuffer) {
             return nil;
         }
-        long* labelsBuffer = labelsTensor.data_ptr<long>();
+        int64_t* labelsBuffer = labelsTensor.data_ptr<int64_t>();
         if (!labelsBuffer) {
             return nil;
         }
@@ -76,10 +75,6 @@ const int output_size = 25200*85;
         }
         
         return [results copy];
-        
-        
-        
-        return nil;
         
     } catch (const std::exception& exception) {
         NSLog(@"%s", exception.what());
