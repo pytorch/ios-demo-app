@@ -9,16 +9,11 @@ model.eval()
 
 audio_input, _ = sf.read("scent_of_a_woman_future.wav")
 input_values = tokenizer(audio_input, return_tensors="pt").input_values
-print(input_values.shape) # input_values is of 65024 long, matched INPUT_SIZE defined in Android code
 logits = model(input_values).logits
-print(logits.shape)
 predicted_ids = torch.argmax(logits, dim=-1)
 transcription = tokenizer.batch_decode(predicted_ids)[0]
-print(transcription)
 
-traced_model = torch.jit.trace(model, input_values, strict=False)
 model_dynamic_quantized = torch.quantization.quantize_dynamic(model, qconfig_spec={torch.nn.Linear}, dtype=torch.qint8)
 traced_quantized_model = torch.jit.trace(model_dynamic_quantized, input_values, strict=False)
-
 optimized_traced_quantized_model = optimize_for_mobile(traced_quantized_model)
 optimized_traced_quantized_model.save("wav2vec2.pt")
