@@ -7,10 +7,9 @@
 #import "InferenceModule.h"
 #import <torch-nightly/LibTorch.h>
 
-// 640x640 is the default image size used in the export.py in the yolov5 repo to export the TorchScript model, 25200*85 is the model output size
 const int input_width = 640;
 const int input_height = 640;
-const int output_size = 25200*85;
+const int threshold = 0.5;
 
 
 @implementation InferenceModule {
@@ -63,7 +62,7 @@ const int output_size = 25200*85;
         NSMutableArray* results = [[NSMutableArray alloc] init];
         long num = scoresTensor.numel();
         for (int i = 0; i < num; i++) {
-            if (scoresBuffer[i] < 0.5)
+            if (scoresBuffer[i] < threshold)
                 continue;
 
             [results addObject:@(boxesBuffer[4 * i])];

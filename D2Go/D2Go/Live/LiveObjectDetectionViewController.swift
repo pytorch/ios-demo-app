@@ -47,14 +47,14 @@ class LiveObjectDetectionViewController: ViewController {
                 let startX = Double((strongSelf.imageViewLive.frame.size.width - CGFloat(ivScaleX) * CGFloat(PrePostProcessor.inputWidth))/2)
                 let startY = Double((strongSelf.imageViewLive.frame.size.height -  CGFloat(ivScaleY) * CGFloat(PrePostProcessor.inputHeight))/2)
                 
-                let nmsPredictions = PrePostProcessor.outputsToNMSPredictions(outputs: outputs, imgScaleX: 1.0, imgScaleY: 1.0, ivScaleX: ivScaleX, ivScaleY: ivScaleY, startX: startX, startY: startY)
+                let predictions = PrePostProcessor.outputsToPredictions(outputs: outputs, imgScaleX: 1.0, imgScaleY: 1.0, ivScaleX: ivScaleX, ivScaleY: ivScaleY, startX: startX, startY: startY)
 
                 PrePostProcessor.cleanDetection(imageView: strongSelf.imageViewLive)
                 strongSelf.indicator.isHidden = true
                 strongSelf.benchmarkLabel.isHidden = false
                 strongSelf.benchmarkLabel.text = String(format: "%.2fms", 1000*inferenceTime)
                 
-//                PrePostProcessor.showDetection(imageView: strongSelf.imageViewLive, nmsPredictions: nmsPredictions, classes: strongSelf.inferencer.classes)
+                PrePostProcessor.showDetection(imageView: strongSelf.imageViewLive, nmsPredictions: predictions, classes: strongSelf.inferencer.classes)
             }
         }
     }
