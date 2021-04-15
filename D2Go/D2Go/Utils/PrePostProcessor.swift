@@ -132,20 +132,21 @@ class PrePostProcessor : NSObject {
         }
     }
 
-    static func showDetection(imageView: UIImageView, nmsPredictions: [Prediction], classes: [String]) {
-        for pred in nmsPredictions {
-            let bbox = UIView(frame: pred.rect)
+    static func showDetection(imageView: UIImageView, nmsPredictions:[NSNumber], classes: [String]) {
+        for n in 0..<nmsPredictions.count / 6 {
+            let rect = CGRect(x: nmsPredictions[n*6] as! CGFloat, y: nmsPredictions[n*6+1] as! CGFloat, width: nmsPredictions[n*6+2] as! CGFloat, height: nmsPredictions[n*6+3] as! CGFloat)
+            let bbox = UIView(frame: rect)
             bbox.backgroundColor = UIColor.clear
             bbox.layer.borderColor = UIColor.yellow.cgColor
             bbox.layer.borderWidth = 2
             imageView.addSubview(bbox)
             
             let textLayer = CATextLayer()
-            textLayer.string = String(format: " %@ %.2f", classes[pred.classIndex], pred.score)
+            textLayer.string = String(format: " %@ %.2f", classes[Int(truncating: nmsPredictions[n*6+5]) - 1], nmsPredictions[n*6+4] as! CGFloat)
             textLayer.foregroundColor = UIColor.white.cgColor
             textLayer.backgroundColor = UIColor.magenta.cgColor
             textLayer.fontSize = 14
-            textLayer.frame = CGRect(x: pred.rect.origin.x, y: pred.rect.origin.y, width:100, height:20)
+            textLayer.frame = CGRect(x: rect.origin.x, y: rect.origin.y, width:100, height:20)
             imageView.layer.addSublayer(textLayer)
         }
     }

@@ -54,7 +54,7 @@ class LiveObjectDetectionViewController: ViewController {
                 strongSelf.benchmarkLabel.isHidden = false
                 strongSelf.benchmarkLabel.text = String(format: "%.2fms", 1000*inferenceTime)
                 
-                PrePostProcessor.showDetection(imageView: strongSelf.imageViewLive, nmsPredictions: nmsPredictions, classes: strongSelf.inferencer.classes)
+//                PrePostProcessor.showDetection(imageView: strongSelf.imageViewLive, nmsPredictions: nmsPredictions, classes: strongSelf.inferencer.classes)
             }
         }
     }
