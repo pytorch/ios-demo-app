@@ -52,8 +52,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             
 //            let nmsPredictions = PrePostProcessor.outputsToNMSPredictions(outputs: outputs, imgScaleX: imgScaleX, imgScaleY: imgScaleY, ivScaleX: ivScaleX, ivScaleY: ivScaleY, startX: startX, startY: startY)
             
+            
+            let predictions = PrePostProcessor.outputsToPredictions(outputs: outputs, imgScaleX: imgScaleX, imgScaleY: imgScaleY, ivScaleX: ivScaleX, ivScaleY: ivScaleY, startX: startX, startY: startY)
+                        
             DispatchQueue.main.async {
-                PrePostProcessor.showDetection(imageView: self.imageView, nmsPredictions: outputs, classes: self.inferencer.classes)
+                PrePostProcessor.showDetection(imageView: self.imageView, nmsPredictions: predictions, classes: self.inferencer.classes)
                 self.btnRun.isEnabled = true
                 self.btnRun.setTitle("Detect", for: .normal)
             }

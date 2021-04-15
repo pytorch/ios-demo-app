@@ -17,9 +17,8 @@ class PrePostProcessor : NSObject {
     static let inputWidth = 640
     static let inputHeight = 640
 
-    // model output is of size 25200*85
     static let outputRow = 25200 // as decided by the YOLOv5 model for input image of size 640*640
-    static let outputColumn = 85 // left, top, right, bottom, score and 80 class probability
+    static let outputColumn = 6 // left, top, right, bottom, label, and score
     static let threshold : Float = 0.35 // score above which a detection is generated
     static let nmsLimit = 15 // max number of detections
     
@@ -132,21 +131,40 @@ class PrePostProcessor : NSObject {
         }
     }
 
-    static func showDetection(imageView: UIImageView, nmsPredictions:[NSNumber], classes: [String]) {
-        for n in 0..<nmsPredictions.count / 6 {
-            let rect = CGRect(x: nmsPredictions[n*6] as! CGFloat, y: nmsPredictions[n*6+1] as! CGFloat, width: nmsPredictions[n*6+2] as! CGFloat, height: nmsPredictions[n*6+3] as! CGFloat)
-            let bbox = UIView(frame: rect)
+    static func outputsToPredictions(outputs: [NSNumber], imgScaleX: Double, imgScaleY: Double, ivScaleX: Double, ivScaleY: Double, startX: Double, startY: Double) -> [Prediction] {
+        var predictions = [Prediction]()
+        for i in 0..<outputs.count / 6 {
+            if Float(truncating: outputs[i*outputColumn+4]) > threshold {
+                let left = imgScaleX * Double(truncating: outputs[i*outputColumn])
+                let top = imgScaleY * Double(truncating: outputs[i*outputColumn+1])
+                let right = imgScaleX * Double(truncating: outputs[i*outputColumn+2])
+                let bottom = imgScaleY * Double(truncating: outputs[i*outputColumn+3])
+                
+                let rect = CGRect(x: startX+ivScaleX*left, y: startY+top*ivScaleY, width: ivScaleX*(right-left), height: ivScaleY*(bottom-top))
+                
+                let prediction = Prediction(classIndex: Int(truncating: outputs[i*outputColumn+5]) - 1, score: Float(truncating: outputs[i*outputColumn+4]), rect: rect)
+                predictions.append(prediction)
+            }
+        }
+
+        return predictions
+    }
+    
+    
+    static func showDetection(imageView: UIImageView, nmsPredictions:[Prediction], classes: [String]) {
+        for prediction in nmsPredictions {
+            let bbox = UIView(frame: prediction.rect)
             bbox.backgroundColor = UIColor.clear
             bbox.layer.borderColor = UIColor.yellow.cgColor
             bbox.layer.borderWidth = 2
             imageView.addSubview(bbox)
             
             let textLayer = CATextLayer()
-            textLayer.string = String(format: " %@ %.2f", classes[Int(truncating: nmsPredictions[n*6+5]) - 1], nmsPredictions[n*6+4] as! CGFloat)
+            textLayer.string = String(format: " %@ %.2f", classes[prediction.classIndex], prediction.score)
             textLayer.foregroundColor = UIColor.white.cgColor
             textLayer.backgroundColor = UIColor.magenta.cgColor
             textLayer.fontSize = 14
-            textLayer.frame = CGRect(x: rect.origin.x, y: rect.origin.y, width:100, height:20)
+            textLayer.frame = CGRect(x: prediction.rect.origin.x, y: prediction.rect.origin.y, width:100, height:20)
             imageView.layer.addSublayer(textLayer)
         }
     }
