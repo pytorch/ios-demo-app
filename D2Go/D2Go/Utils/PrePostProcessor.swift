@@ -20,7 +20,6 @@ class PrePostProcessor : NSObject {
     static let outputColumn = 6 // left, top, right, bottom, label, and score
     static let threshold : Float = 0.5 // score above which a detection is generated
 
-
     static func cleanDetection(imageView: UIImageView) {
         if let layers = imageView.layer.sublayers {
             for layer in layers {
@@ -52,7 +51,6 @@ class PrePostProcessor : NSObject {
 
         return predictions
     }
-    
     
     static func showDetection(imageView: UIImageView, nmsPredictions:[Prediction], classes: [String]) {
         for prediction in nmsPredictions {

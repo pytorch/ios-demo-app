@@ -49,10 +49,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             guard let outputs = self.inferencer.module.detect(image: &pixelBuffer) else {
                 return
             }
-            
-//            let nmsPredictions = PrePostProcessor.outputsToNMSPredictions(outputs: outputs, imgScaleX: imgScaleX, imgScaleY: imgScaleY, ivScaleX: ivScaleX, ivScaleY: ivScaleY, startX: startX, startY: startY)
-            
-            
+                        
             let predictions = PrePostProcessor.outputsToPredictions(outputs: outputs, imgScaleX: imgScaleX, imgScaleY: imgScaleY, ivScaleX: ivScaleX, ivScaleY: ivScaleY, startX: startX, startY: startY)
                         
             DispatchQueue.main.async {

@@ -26,7 +26,6 @@
 		26C33495262120CB00C37AD3 /* test1.png in Resources */ = {isa = PBXBuildFile; fileRef = 26C3348A262120CB00C37AD3 /* test1.png */; };
 		26C33496262120CB00C37AD3 /* test3.png in Resources */ = {isa = PBXBuildFile; fileRef = 26C3348B262120CB00C37AD3 /* test3.png */; };
 		26C3349D2621215100C37AD3 /* InferenceModule.mm in Sources */ = {isa = PBXBuildFile; fileRef = 26C3349B2621215100C37AD3 /* InferenceModule.mm */; };
-		9B03FA1EDB22879539DAC9A8 /* Pods_D2Go.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B23E0D72D2267C3C911F2DD5 /* Pods_D2Go.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,9 +52,6 @@
 		26C3349A2621215000C37AD3 /* D2Go-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "D2Go-Bridging-Header.h"; sourceTree = "<group>"; };
 		26C3349B2621215100C37AD3 /* InferenceModule.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = InferenceModule.mm; sourceTree = "<group>"; };
 		26C3349C2621215100C37AD3 /* InferenceModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InferenceModule.h; sourceTree = "<group>"; };
-		AA4D3F3722B9BDB60271B726 /* Pods-D2Go.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-D2Go.debug.xcconfig"; path = "Target Support Files/Pods-D2Go/Pods-D2Go.debug.xcconfig"; sourceTree = "<group>"; };
-		B23E0D72D2267C3C911F2DD5 /* Pods_D2Go.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_D2Go.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D34C0E077382EC7A4DA5DCCF /* Pods-D2Go.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-D2Go.release.xcconfig"; path = "Target Support Files/Pods-D2Go/Pods-D2Go.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,7 +59,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9B03FA1EDB22879539DAC9A8 /* Pods_D2Go.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -73,8 +68,6 @@
 		0D8B9D86CB0BD45A3A292E96 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				AA4D3F3722B9BDB60271B726 /* Pods-D2Go.debug.xcconfig */,
-				D34C0E077382EC7A4DA5DCCF /* Pods-D2Go.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -85,7 +78,6 @@
 				26C3345A26210C3E00C37AD3 /* D2Go */,
 				26C3345926210C3E00C37AD3 /* Products */,
 				0D8B9D86CB0BD45A3A292E96 /* Pods */,
-				BAB890D7A5A943FF51376317 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -150,14 +142,6 @@
 			path = Live;
 			sourceTree = "<group>";
 		};
-		BAB890D7A5A943FF51376317 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				B23E0D72D2267C3C911F2DD5 /* Pods_D2Go.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -165,7 +149,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 26C3346C26210C3F00C37AD3 /* Build configuration list for PBXNativeTarget "D2Go" */;
 			buildPhases = (
-				A115B977C5809F9601F60981 /* [CP] Check Pods Manifest.lock */,
 				26C3345426210C3E00C37AD3 /* Sources */,
 				26C3345526210C3E00C37AD3 /* Frameworks */,
 				26C3345626210C3E00C37AD3 /* Resources */,
@@ -229,31 +212,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		A115B977C5809F9601F60981 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-D2Go-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		26C3345426210C3E00C37AD3 /* Sources */ = {
@@ -416,13 +374,12 @@
 		};
 		26C3346D26210C3F00C37AD3 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AA4D3F3722B9BDB60271B726 /* Pods-D2Go.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = V568RNX5Q4;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = D2Go/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -433,19 +390,18 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "D2Go/Inference/D2Go-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		26C3346E26210C3F00C37AD3 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D34C0E077382EC7A4DA5DCCF /* Pods-D2Go.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = V568RNX5Q4;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = D2Go/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -455,7 +411,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "D2Go/Inference/D2Go-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

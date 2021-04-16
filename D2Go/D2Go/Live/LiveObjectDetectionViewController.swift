@@ -70,7 +70,7 @@ class LiveObjectDetectionViewController: ViewController {
         cameraController.stopSession()
     }
 
-    @IBAction func onBackClicked(_: Any) {
+    @IBAction func backClicked(_ sender: Any) {
         navigationController?.popViewController(animated: true)
     }
 }
