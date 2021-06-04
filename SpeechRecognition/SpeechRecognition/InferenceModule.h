@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (nullable instancetype)initWithFileAtPath:(NSString*)filePath
     NS_SWIFT_NAME(init(fileAtPath:))NS_DESIGNATED_INITIALIZER;
 - (instancetype)init NS_UNAVAILABLE;
-- (nullable NSString*)recognize:(void*)wavBuffer NS_SWIFT_NAME(recognize(wavBuffer:));
+- (nullable NSString*)recognize:(void*)wavBuffer bufLength:(int)bufLength NS_SWIFT_NAME(recognize(wavBuffer:bufLength));
 @end
 
 NS_ASSUME_NONNULL_END

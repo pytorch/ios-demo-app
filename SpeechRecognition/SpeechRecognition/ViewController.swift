@@ -23,6 +23,9 @@ class ViewController: UIViewController, AVAudioRecorderDelegate  {
     
     private var audioRecorder: AVAudioRecorder!
     private var _recorderFilePath: String!
+    
+    private let AUDIO_LEN_IN_SECOND = 12
+    private let SAMPLE_RATE = 16000
 
     private lazy var module: InferenceModule = {
         if let filePath = Bundle.main.path(forResource:
@@ -55,7 +58,7 @@ class ViewController: UIViewController, AVAudioRecorderDelegate  {
 
         let settings = [
             AVFormatIDKey: Int(kAudioFormatLinearPCM),
-            AVSampleRateKey: 16000,
+            AVSampleRateKey: SAMPLE_RATE,
             AVNumberOfChannelsKey: 1,
             AVLinearPCMBitDepthKey: 16,
             AVLinearPCMIsBigEndianKey: false,
@@ -67,7 +70,7 @@ class ViewController: UIViewController, AVAudioRecorderDelegate  {
             _recorderFilePath = NSHomeDirectory().stringByAppendingPathComponent(path: "tmp").stringByAppendingPathComponent(path: "recorded_file.wav")
             audioRecorder = try AVAudioRecorder(url: NSURL.fileURL(withPath: _recorderFilePath), settings: settings)
             audioRecorder.delegate = self
-            audioRecorder.record(forDuration: 6)
+            audioRecorder.record(forDuration: TimeInterval(AUDIO_LEN_IN_SECOND))
         } catch let error {
             tvResult.text = "error:" + error.localizedDescription
         }
@@ -88,7 +91,7 @@ class ViewController: UIViewController, AVAudioRecorderDelegate  {
 
             DispatchQueue.global().async {
                 floatArray.withUnsafeMutableBytes {
-                    let result = self.module.recognize(wavBuffer: $0.baseAddress!)
+                    let result = self.module.recognize($0.baseAddress!, bufLength: Int32(self.AUDIO_LEN_IN_SECOND * self.SAMPLE_RATE))
                     DispatchQueue.main.async {
                         self.tvResult.text = result
                         self.btnStart.setTitle("Start", for: .normal)
