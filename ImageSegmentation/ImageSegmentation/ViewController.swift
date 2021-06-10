@@ -10,7 +10,7 @@ class ViewController: UIViewController {
 
     private lazy var module: TorchModule = {
         if let filePath = Bundle.main.path(forResource:
-            "deeplabv3_scripted_optimized", ofType: "ptl"),
+            "deeplabv3_scripted", ofType: "pt"),
             let module = TorchModule(fileAtPath: filePath) {
             return module
         } else {
@@ -37,12 +37,7 @@ class ViewController: UIViewController {
         let w = Int32(resizedImage.size.width)
         let h = Int32(resizedImage.size.height)
         DispatchQueue.global().async {
-            let startTime = CACurrentMediaTime()
             let buffer = self.module.segment(image: UnsafeMutableRawPointer(&pixelBuffer), withWidth:w, withHeight: h)
-            let inferenceTime = CACurrentMediaTime() - startTime
-            print("inferenceTime=\(inferenceTime)")
-
-
             DispatchQueue.main.async {
                 self.imageView.image = self.imageHelper.convertRGBBuffer(toUIImage: buffer , withWidth: w, withHeight: h)
                 self.btnSegment.isEnabled = true

@@ -14,21 +14,11 @@
 		265BAFEF253A6A6800467AC4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 265BAFED253A6A6800467AC4 /* Main.storyboard */; };
 		265BAFF1253A6A6900467AC4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 265BAFF0253A6A6900467AC4 /* Assets.xcassets */; };
 		265BAFF4253A6A6900467AC4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 265BAFF2253A6A6900467AC4 /* LaunchScreen.storyboard */; };
+		265BB005253A6B6200467AC4 /* deeplabv3_scripted.pt in Resources */ = {isa = PBXBuildFile; fileRef = 265BB004253A6B6200467AC4 /* deeplabv3_scripted.pt */; };
 		265BB008253A6B9600467AC4 /* deeplab.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 265BB007253A6B9600467AC4 /* deeplab.jpg */; };
 		265BB00E253A6E0E00467AC4 /* UIImage+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265BB00D253A6E0E00467AC4 /* UIImage+Helper.swift */; };
 		265BB017253A7F0500467AC4 /* TorchModule.mm in Sources */ = {isa = PBXBuildFile; fileRef = 265BB015253A7F0500467AC4 /* TorchModule.mm */; };
 		265F9A6F2551CB3700B8F2EC /* dog.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 265F9A6E2551CB3700B8F2EC /* dog.jpg */; };
-		26E61F5726703EFE00216741 /* libeigen_blas.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 26E61F4E26703EFE00216741 /* libeigen_blas.a */; };
-		26E61F5826703EFE00216741 /* libcpuinfo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 26E61F4F26703EFE00216741 /* libcpuinfo.a */; };
-		26E61F5926703EFE00216741 /* libc10.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 26E61F5026703EFE00216741 /* libc10.a */; };
-		26E61F5A26703EFE00216741 /* libclog.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 26E61F5126703EFE00216741 /* libclog.a */; };
-		26E61F5B26703EFE00216741 /* libpytorch_qnnpack.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 26E61F5226703EFE00216741 /* libpytorch_qnnpack.a */; };
-		26E61F5C26703EFE00216741 /* libpthreadpool.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 26E61F5326703EFE00216741 /* libpthreadpool.a */; };
-		26E61F5D26703EFE00216741 /* libtorch_cpu.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 26E61F5426703EFE00216741 /* libtorch_cpu.a */; };
-		26E61F5E26703EFE00216741 /* libXNNPACK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 26E61F5526703EFE00216741 /* libXNNPACK.a */; };
-		26E61F5F26703EFE00216741 /* libtorch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 26E61F5626703EFE00216741 /* libtorch.a */; };
-		26E61F622670417E00216741 /* deeplabv3_scripted.ptl in Resources */ = {isa = PBXBuildFile; fileRef = 26E61F612670417E00216741 /* deeplabv3_scripted.ptl */; };
-		26E61F66267045D300216741 /* deeplabv3_scripted_optimized.ptl in Resources */ = {isa = PBXBuildFile; fileRef = 26E61F65267045D300216741 /* deeplabv3_scripted_optimized.ptl */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,22 +33,12 @@
 		265BAFF3253A6A6900467AC4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		265BAFF5253A6A6900467AC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		265BAFFF253A6B1200467AC4 /* ImageSegmentation-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ImageSegmentation-Bridging-Header.h"; sourceTree = "<group>"; };
+		265BB004253A6B6200467AC4 /* deeplabv3_scripted.pt */ = {isa = PBXFileReference; lastKnownFileType = file; path = deeplabv3_scripted.pt; sourceTree = "<group>"; };
 		265BB007253A6B9600467AC4 /* deeplab.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = deeplab.jpg; sourceTree = "<group>"; };
 		265BB00D253A6E0E00467AC4 /* UIImage+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Helper.swift"; sourceTree = "<group>"; };
 		265BB015253A7F0500467AC4 /* TorchModule.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TorchModule.mm; sourceTree = "<group>"; };
 		265BB016253A7F0500467AC4 /* TorchModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TorchModule.h; sourceTree = "<group>"; };
 		265F9A6E2551CB3700B8F2EC /* dog.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = dog.jpg; sourceTree = "<group>"; };
-		26E61F4E26703EFE00216741 /* libeigen_blas.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libeigen_blas.a; path = ../../../repos/pytorch/build_ios/install/lib/libeigen_blas.a; sourceTree = "<group>"; };
-		26E61F4F26703EFE00216741 /* libcpuinfo.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcpuinfo.a; path = ../../../repos/pytorch/build_ios/install/lib/libcpuinfo.a; sourceTree = "<group>"; };
-		26E61F5026703EFE00216741 /* libc10.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libc10.a; path = ../../../repos/pytorch/build_ios/install/lib/libc10.a; sourceTree = "<group>"; };
-		26E61F5126703EFE00216741 /* libclog.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libclog.a; path = ../../../repos/pytorch/build_ios/install/lib/libclog.a; sourceTree = "<group>"; };
-		26E61F5226703EFE00216741 /* libpytorch_qnnpack.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libpytorch_qnnpack.a; path = ../../../repos/pytorch/build_ios/install/lib/libpytorch_qnnpack.a; sourceTree = "<group>"; };
-		26E61F5326703EFE00216741 /* libpthreadpool.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libpthreadpool.a; path = ../../../repos/pytorch/build_ios/install/lib/libpthreadpool.a; sourceTree = "<group>"; };
-		26E61F5426703EFE00216741 /* libtorch_cpu.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libtorch_cpu.a; path = ../../../repos/pytorch/build_ios/install/lib/libtorch_cpu.a; sourceTree = "<group>"; };
-		26E61F5526703EFE00216741 /* libXNNPACK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libXNNPACK.a; path = ../../../repos/pytorch/build_ios/install/lib/libXNNPACK.a; sourceTree = "<group>"; };
-		26E61F5626703EFE00216741 /* libtorch.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libtorch.a; path = ../../../repos/pytorch/build_ios/install/lib/libtorch.a; sourceTree = "<group>"; };
-		26E61F612670417E00216741 /* deeplabv3_scripted.ptl */ = {isa = PBXFileReference; lastKnownFileType = file; path = deeplabv3_scripted.ptl; sourceTree = SOURCE_ROOT; };
-		26E61F65267045D300216741 /* deeplabv3_scripted_optimized.ptl */ = {isa = PBXFileReference; lastKnownFileType = file; path = deeplabv3_scripted_optimized.ptl; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,15 +46,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				26E61F5726703EFE00216741 /* libeigen_blas.a in Frameworks */,
-				26E61F5826703EFE00216741 /* libcpuinfo.a in Frameworks */,
-				26E61F5926703EFE00216741 /* libc10.a in Frameworks */,
-				26E61F5A26703EFE00216741 /* libclog.a in Frameworks */,
-				26E61F5B26703EFE00216741 /* libpytorch_qnnpack.a in Frameworks */,
-				26E61F5C26703EFE00216741 /* libpthreadpool.a in Frameworks */,
-				26E61F5D26703EFE00216741 /* libtorch_cpu.a in Frameworks */,
-				26E61F5E26703EFE00216741 /* libXNNPACK.a in Frameworks */,
-				26E61F5F26703EFE00216741 /* libtorch.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,7 +65,6 @@
 				265BAFE6253A6A6800467AC4 /* ImageSegmentation */,
 				265BAFE5253A6A6800467AC4 /* Products */,
 				0230FA7E0130B495026BC19E /* Pods */,
-				26E61F4D26703EFE00216741 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -122,28 +92,11 @@
 				265BB015253A7F0500467AC4 /* TorchModule.mm */,
 				265BB00D253A6E0E00467AC4 /* UIImage+Helper.swift */,
 				265BAFFF253A6B1200467AC4 /* ImageSegmentation-Bridging-Header.h */,
-				26E61F612670417E00216741 /* deeplabv3_scripted.ptl */,
-				26E61F65267045D300216741 /* deeplabv3_scripted_optimized.ptl */,
+				265BB004253A6B6200467AC4 /* deeplabv3_scripted.pt */,
 				265BB007253A6B9600467AC4 /* deeplab.jpg */,
 				265F9A6E2551CB3700B8F2EC /* dog.jpg */,
 			);
 			path = ImageSegmentation;
-			sourceTree = "<group>";
-		};
-		26E61F4D26703EFE00216741 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				26E61F5026703EFE00216741 /* libc10.a */,
-				26E61F5126703EFE00216741 /* libclog.a */,
-				26E61F4F26703EFE00216741 /* libcpuinfo.a */,
-				26E61F4E26703EFE00216741 /* libeigen_blas.a */,
-				26E61F5326703EFE00216741 /* libpthreadpool.a */,
-				26E61F5226703EFE00216741 /* libpytorch_qnnpack.a */,
-				26E61F5426703EFE00216741 /* libtorch_cpu.a */,
-				26E61F5626703EFE00216741 /* libtorch.a */,
-				26E61F5526703EFE00216741 /* libXNNPACK.a */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -205,11 +158,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				265F9A6F2551CB3700B8F2EC /* dog.jpg in Resources */,
-				26E61F66267045D300216741 /* deeplabv3_scripted_optimized.ptl in Resources */,
 				265BAFF4253A6A6900467AC4 /* LaunchScreen.storyboard in Resources */,
 				265BB008253A6B9600467AC4 /* deeplab.jpg in Resources */,
 				265BAFF1253A6A6900467AC4 /* Assets.xcassets in Resources */,
-				26E61F622670417E00216741 /* deeplabv3_scripted.ptl in Resources */,
+				265BB005253A6B6200467AC4 /* deeplabv3_scripted.pt in Resources */,
 				265BAFEF253A6A6800467AC4 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -377,14 +329,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
-				HEADER_SEARCH_PATHS = /Users/jeffxtang/repos/pytorch/build_ios/install/include;
 				INFOPLIST_FILE = ImageSegmentation/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				LIBRARY_SEARCH_PATHS = /Users/jeffxtang/repos/pytorch/build_ios/install/lib;
-				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pytorch.mobile.ImageSegmentation;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "ImageSegmentation/ImageSegmentation-Bridging-Header.h";
@@ -403,14 +352,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
-				HEADER_SEARCH_PATHS = /Users/jeffxtang/repos/pytorch/build_ios/install/include;
 				INFOPLIST_FILE = ImageSegmentation/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				LIBRARY_SEARCH_PATHS = /Users/jeffxtang/repos/pytorch/build_ios/install/lib;
-				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pytorch.mobile.ImageSegmentation;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "ImageSegmentation/ImageSegmentation-Bridging-Header.h";

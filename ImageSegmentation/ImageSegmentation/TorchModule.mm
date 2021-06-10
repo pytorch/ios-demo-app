@@ -8,32 +8,18 @@
 #import "UIImageHelper.h"
 #import <CoreImage/CoreImage.h>
 #import <ImageIO/ImageIO.h>
-//#import <LibTorch/LibTorch.h>
-//#import <LibTorch/LibTorch.h>
-#include "ATen/ATen.h"
-#include "caffe2/core/timer.h"
-#include "caffe2/utils/string_utils.h"
-#include "torch/csrc/autograd/grad_mode.h"
-#include "torch/script.h"
-#include <torch/csrc/jit/mobile/function.h>
-#include <torch/csrc/jit/mobile/import.h>
-#include <torch/csrc/jit/mobile/interpreter.h>
-#include <torch/csrc/jit/mobile/module.h>
-#include <torch/csrc/jit/mobile/observer.h>
-
+#import <LibTorch/LibTorch.h>
 
 @implementation TorchModule {
 @protected
-    //torch::jit::script::Module _impl;
-    torch::jit::mobile::Module _impl;
+    torch::jit::script::Module _impl;
 }
 
 - (nullable instancetype)initWithFileAtPath:(NSString*)filePath {
     self = [super init];
     if (self) {
         try {
-            //_impl = torch::jit::load(filePath.UTF8String);
-            _impl = torch::jit::_load_for_mobile(filePath.UTF8String);
+            _impl = torch::jit::load(filePath.UTF8String);
             _impl.eval();
         } catch (const std::exception& exception) {
             NSLog(@"%s", exception.what());
