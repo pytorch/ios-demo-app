@@ -385,6 +385,28 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"XNNPACK\"",
+					"-l\"c++\"",
+					"-l\"c10\"",
+					"-l\"clog\"",
+					"-l\"cpuinfo\"",
+					"-l\"eigen_blas\"",
+					"-l\"pthreadpool\"",
+					"-l\"pytorch_qnnpack\"",
+					"-l\"stdc++\"",
+					"-l\"torch\"",
+					"-l\"torch_cpu\"",
+					"-l\"torchvision_ops\"",
+					"-force_load",
+					"$(PODS_ROOT)/LibTorch/install/lib/libtorch.a",
+					"-force_load",
+					"$(PODS_ROOT)/LibTorch/install/lib/libtorch_cpu.a",
+					"-force_load",
+					"$(PODS_ROOT)/LibTorchvision/install/lib/libtorchvision_ops.a",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.pytorch.mobile.D2Go;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "D2Go/Inference/D2Go-Bridging-Header.h";
@@ -406,6 +428,28 @@
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"XNNPACK\"",
+					"-l\"c++\"",
+					"-l\"c10\"",
+					"-l\"clog\"",
+					"-l\"cpuinfo\"",
+					"-l\"eigen_blas\"",
+					"-l\"pthreadpool\"",
+					"-l\"pytorch_qnnpack\"",
+					"-l\"stdc++\"",
+					"-l\"torch\"",
+					"-l\"torch_cpu\"",
+					"-l\"torchvision_ops\"",
+					"-force_load",
+					"$(PODS_ROOT)/LibTorch/install/lib/libtorch.a",
+					"-force_load",
+					"$(PODS_ROOT)/LibTorch/install/lib/libtorch_cpu.a",
+					"-force_load",
+					"$(PODS_ROOT)/LibTorchvision/install/lib/libtorchvision_ops.a",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.pytorch.mobile.D2Go;
 				PRODUCT_NAME = "$(TARGET_NAME)";

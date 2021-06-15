@@ -4,8 +4,7 @@ target 'D2Go' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 
-  # Pods for D2Go
-  pod 'vision-nightly'
-  #pod 'LibTorchvision'
+  pod 'LibTorch', '1.9.0'
+  pod 'LibTorchvision', '0.10.0'
 
 end

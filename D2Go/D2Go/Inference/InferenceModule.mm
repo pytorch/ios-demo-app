@@ -5,7 +5,7 @@
 // LICENSE file in the root directory of this source tree.
 
 #import "InferenceModule.h"
-#import <torch-nightly/LibTorch.h>
+#import <LibTorch.h>
 
 const int input_width = 640;
 const int input_height = 640;
