@@ -1,0 +1,10 @@
+platform :ios, '14.3'
+
+target 'D2Go' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  pod 'LibTorch', '1.9.0'
+  pod 'LibTorchvision', '0.10.0'
+
+end
