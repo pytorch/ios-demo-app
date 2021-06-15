@@ -62,4 +62,4 @@ waveform , _ = torchaudio.load('scent_of_a_woman_future.wav')
 print(waveform.size())
 print('Result:', optimized_model(waveform))
 
-optimized_model.save("wav2vec2.pt")
+optimized_model.save("SpeechRecognition/wav2vec2.pt")
