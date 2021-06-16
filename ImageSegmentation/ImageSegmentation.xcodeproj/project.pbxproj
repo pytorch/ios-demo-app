@@ -14,11 +14,11 @@
 		265BAFEF253A6A6800467AC4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 265BAFED253A6A6800467AC4 /* Main.storyboard */; };
 		265BAFF1253A6A6900467AC4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 265BAFF0253A6A6900467AC4 /* Assets.xcassets */; };
 		265BAFF4253A6A6900467AC4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 265BAFF2253A6A6900467AC4 /* LaunchScreen.storyboard */; };
-		265BB005253A6B6200467AC4 /* deeplabv3_scripted.pt in Resources */ = {isa = PBXBuildFile; fileRef = 265BB004253A6B6200467AC4 /* deeplabv3_scripted.pt */; };
 		265BB008253A6B9600467AC4 /* deeplab.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 265BB007253A6B9600467AC4 /* deeplab.jpg */; };
 		265BB00E253A6E0E00467AC4 /* UIImage+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265BB00D253A6E0E00467AC4 /* UIImage+Helper.swift */; };
 		265BB017253A7F0500467AC4 /* TorchModule.mm in Sources */ = {isa = PBXBuildFile; fileRef = 265BB015253A7F0500467AC4 /* TorchModule.mm */; };
 		265F9A6F2551CB3700B8F2EC /* dog.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 265F9A6E2551CB3700B8F2EC /* dog.jpg */; };
+		266A451D267974C300548578 /* deeplabv3_scripted.ptl in Resources */ = {isa = PBXBuildFile; fileRef = 266A451C267974C300548578 /* deeplabv3_scripted.ptl */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,12 +33,12 @@
 		265BAFF3253A6A6900467AC4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		265BAFF5253A6A6900467AC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		265BAFFF253A6B1200467AC4 /* ImageSegmentation-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ImageSegmentation-Bridging-Header.h"; sourceTree = "<group>"; };
-		265BB004253A6B6200467AC4 /* deeplabv3_scripted.pt */ = {isa = PBXFileReference; lastKnownFileType = file; path = deeplabv3_scripted.pt; sourceTree = "<group>"; };
 		265BB007253A6B9600467AC4 /* deeplab.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = deeplab.jpg; sourceTree = "<group>"; };
 		265BB00D253A6E0E00467AC4 /* UIImage+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Helper.swift"; sourceTree = "<group>"; };
 		265BB015253A7F0500467AC4 /* TorchModule.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TorchModule.mm; sourceTree = "<group>"; };
 		265BB016253A7F0500467AC4 /* TorchModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TorchModule.h; sourceTree = "<group>"; };
 		265F9A6E2551CB3700B8F2EC /* dog.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = dog.jpg; sourceTree = "<group>"; };
+		266A451C267974C300548578 /* deeplabv3_scripted.ptl */ = {isa = PBXFileReference; lastKnownFileType = file; path = deeplabv3_scripted.ptl; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,7 +92,7 @@
 				265BB015253A7F0500467AC4 /* TorchModule.mm */,
 				265BB00D253A6E0E00467AC4 /* UIImage+Helper.swift */,
 				265BAFFF253A6B1200467AC4 /* ImageSegmentation-Bridging-Header.h */,
-				265BB004253A6B6200467AC4 /* deeplabv3_scripted.pt */,
+				266A451C267974C300548578 /* deeplabv3_scripted.ptl */,
 				265BB007253A6B9600467AC4 /* deeplab.jpg */,
 				265F9A6E2551CB3700B8F2EC /* dog.jpg */,
 			);
@@ -161,8 +161,8 @@
 				265BAFF4253A6A6900467AC4 /* LaunchScreen.storyboard in Resources */,
 				265BB008253A6B9600467AC4 /* deeplab.jpg in Resources */,
 				265BAFF1253A6A6900467AC4 /* Assets.xcassets in Resources */,
-				265BB005253A6B6200467AC4 /* deeplabv3_scripted.pt in Resources */,
 				265BAFEF253A6A6800467AC4 /* Main.storyboard in Resources */,
+				266A451D267974C300548578 /* deeplabv3_scripted.ptl in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

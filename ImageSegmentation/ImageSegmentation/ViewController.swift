@@ -10,7 +10,7 @@ class ViewController: UIViewController {
 
     private lazy var module: TorchModule = {
         if let filePath = Bundle.main.path(forResource:
-            "deeplabv3_scripted", ofType: "pt"),
+            "deeplabv3_scripted", ofType: "ptl"),
             let module = TorchModule(fileAtPath: filePath) {
             return module
         } else {

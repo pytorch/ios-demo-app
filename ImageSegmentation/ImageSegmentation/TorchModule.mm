@@ -8,18 +8,18 @@
 #import "UIImageHelper.h"
 #import <CoreImage/CoreImage.h>
 #import <ImageIO/ImageIO.h>
-#import <LibTorch/LibTorch.h>
+#import <Libtorch-Lite/Libtorch-Lite.h>
 
 @implementation TorchModule {
 @protected
-    torch::jit::script::Module _impl;
+    torch::jit::mobile::Module _impl;
 }
 
 - (nullable instancetype)initWithFileAtPath:(NSString*)filePath {
     self = [super init];
     if (self) {
         try {
-            _impl = torch::jit::load(filePath.UTF8String);
+            _impl = torch::jit::_load_for_mobile(filePath.UTF8String);
             _impl.eval();
         } catch (const std::exception& exception) {
             NSLog(@"%s", exception.what());
