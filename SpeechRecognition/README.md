@@ -31,12 +31,13 @@ Be aware that the downloadable model file was created with PyTorch 1.9.0 and tor
 
 ### 2. Prepare the Model
 
-To install PyTorch 1.9.0 and torchvision 0.10.0, you can do something like this:
+To install PyTorch 1.9.0, torchaudio 0.9.0 and the Hugging Face transformers, you can do something like this:
 
 ```
 conda create -n wav2vec2 python=3.8.5
 conda activate wav2vec2
-pip install torch torchvision
+pip install torch torchaudio
+pip install transformers
 ```
 
 Now with PyTorch 1.9.0 and torchaudio 0.9.0 installed, run the following commands on a Terminal:
@@ -58,7 +59,7 @@ open SpeechRecognition.xcworkspace/
 
 ### 3. Build and run with Xcode
 
-After the app runs, tap the Start button and start saying something; after 12 seconds (you can change `private let AUDIO_LEN_IN_SECOND = 12` in `ViewController.swift` for the recording length), the model will infer to recognize your speech. Some example results are as follows:
+After the app runs, tap the Start button and start saying something; after 12 seconds (you can change `private let AUDIO_LEN_IN_SECOND = 12` in `ViewController.swift` for a longer or shorter recording length), the model will infer to recognize your speech. Some example results are as follows:
 
 ![](screenshot1.png)
 ![](screenshot2.png)
