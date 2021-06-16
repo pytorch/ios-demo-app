@@ -6,9 +6,9 @@ The newly released open-sourced [PyTorchVideo](https://github.com/facebookresear
 
 ## Prerequisites
 
-* PyTorch 1.8.0/1.8.1, torchvision 0.9.1, PyTorchVideo (Optional)
+* PyTorch 1.9.0, torchvision 0.10.0, PyTorchVideo 0.1.1 (Optional)
 * Python 3.8 or above (Optional)
-* iOS PyTorch pod library 1.8.0
+* iOS Cocoapods library LibTorch 1.9.0
 * Xcode 12 or later
 
 
@@ -18,19 +18,19 @@ The newly released open-sourced [PyTorchVideo](https://github.com/facebookresear
 
 If you don't have the PyTorch environment set up to run the script, you can download the model file `video_classification.pt` [here](https://drive.google.com/file/d/1qweDu7QZv7xJA7Sx_UIxjvcS7y1rQ2kE/view) to the `ios-demo-app/TorchVideo/TorchVideo` folder, then skip the rest of this step and go to step 2 directly.
 
-Be aware that the downloadable model file was created with PyTorch 1.8.1, matching the iOS LibTorch library 1.8.0 specified in the `Podfile`. If you use a different version of PyTorch to create your model by following the instructions below, make sure you specify the same iOS LibTorch version in the `Podfile` to avoid possible errors caused by the version mismatch. Furthermore, if you want to use the latest prototype features in the PyTorch master branch to create the model, follow the steps at [Building PyTorch iOS Libraries from Source](https://pytorch.org/mobile/ios/#build-pytorch-ios-libraries-from-source) on how to use the model in iOS.
+Be aware that the downloadable model file was created with PyTorch 1.9.0, matching the iOS LibTorch library 1.9.0 specified in the `Podfile`. If you use a different version of PyTorch to create your model by following the instructions below, make sure you specify the same iOS LibTorch version in the `Podfile` to avoid possible errors caused by the version mismatch. Furthermore, if you want to use the latest prototype features in the PyTorch master branch to create the model, follow the steps at [Building PyTorch iOS Libraries from Source](https://pytorch.org/mobile/ios/#build-pytorch-ios-libraries-from-source) on how to use the model in iOS.
 
 To create the model yourself, simply run the following commands:
 ```
-conda create -n pt181 python=3.8.5
-conda activate pt181
+conda create -n pt19 python=3.8.5
+conda activate pt19
 pip install torch torchvision
+pip install pytorchvideo
 
 # pip list|grep torch
-# torch             1.8.1
-# torchvision       0.9.1
-
-pip install pytorchvideo
+# torch             1.9.0
+# torchvision       0.10.0
+# pytorchvideo      0.1.1
 
 cd ios-demo-app/TorchVideo
 python build_model.py
