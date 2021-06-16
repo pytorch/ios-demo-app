@@ -14,7 +14,7 @@ The model we are going to use is [MobileNet v2](https://pytorch.org/hub/pytorch_
 > We highly recommend following the [Pytorch Github page](https://github.com/pytorch/pytorch) to set up the Python development environment on your local machine.
 
 ```shell
-pip install torchvision
+pip install torch torchvision
 ```
 
 Once we have TorchVision installed successfully, navigate to the HelloWorld folder and run `trace_model.py` to generate our model. The script contains the code of tracing and saving a [torchscript model](https://pytorch.org/tutorials/beginner/Intro_to_TorchScript_tutorial.html) that can be run on mobile devices.
@@ -23,7 +23,7 @@ Once we have TorchVision installed successfully, navigate to the HelloWorld fold
 python trace_model.py
 ```
 
-If everything works well, `model.pt` should be generated in the `HelloWorld` folder. Now copy the model file to our application folder `HelloWorld/model`.
+If everything works well, `model.pt` should be generated and saved in the `HelloWorld/HelloWorld/model`.
 
 ### Install LibTorch via Cocoapods
 
