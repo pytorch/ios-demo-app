@@ -6,5 +6,5 @@ target 'ImageSegmentation' do
   use_frameworks!
 
   # Pods for ImageSegmentation
-  pod 'LibTorch', '~>1.7.0'
+  pod 'LibTorch-Lite', '~>1.9.0'
 end
