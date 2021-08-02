@@ -1,5 +1,5 @@
 #import "TorchModule.h"
-#import <LibTorch/LibTorch.h>
+#import <Libtorch-Lite/Libtorch-Lite.h>
 
 @implementation TorchModule {
  @protected
