@@ -3,15 +3,14 @@
 
 @implementation TorchModule {
  @protected
-  torch::jit::script::Module _impl;
+  torch::jit::mobile::Module _impl;
 }
 
 - (nullable instancetype)initWithFileAtPath:(NSString*)filePath {
   self = [super init];
   if (self) {
     try {
-      _impl = torch::jit::load(filePath.UTF8String);
-      _impl.eval();
+      _impl = torch::jit::_load_for_mobile(filePath.UTF8String);
     } catch (const std::exception& exception) {
       NSLog(@"%s", exception.what());
       return nil;
