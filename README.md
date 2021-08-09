@@ -6,6 +6,10 @@ A list of iOS apps built on the powerful [PyTorch Mobile](https://pytorch.org/mo
 
 [HelloWorld](https://github.com/pytorch/ios-demo-app/tree/master/HelloWorld) is a simple image classification application that demonstrates how to use PyTorch C++ libraries on iOS. The code is written in Swift and uses Objective-C as a bridge.
 
+### HelloWorldMetal
+
+[HelloWorldMetal](https://github.com/pytorch/ios-demo-app/tree/master/HelloWorldMetal) is a simple image classification application that demonstrates how to use PyTorch C++ libraries with Metal support on iOS GPU. The code is written in Swift and uses Objective-C as a bridge.
+
 ### PyTorch demo app
 
 The [PyTorch demo app](https://github.com/pytorch/ios-demo-app/tree/master/PyTorchDemo) is a full-fledged app that contains two showcases. A camera app that runs a quantized model to classifiy images in real time. And a text-based app that uses a text classification model to predict the topic from the input text.
