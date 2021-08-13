@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5EDE19DE85D83B5F6A4AC5A3 /* libPods-HelloWorld.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CEAC4E4A977111B97FB776B4 /* libPods-HelloWorld.a */; };
 		A0497B682352FFA000D70E9E /* image.png in Resources */ = {isa = PBXBuildFile; fileRef = A0497B672352FFA000D70E9E /* image.png */; };
 		A07753C62343DDEE00186969 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07753C52343DDEE00186969 /* AppDelegate.swift */; };
 		A07753CA2343DDEE00186969 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07753C92343DDEE00186969 /* ViewController.swift */; };
@@ -21,7 +20,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		621D5B56BD99964F2B91D12F /* Pods-HelloWorld.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HelloWorld.debug.xcconfig"; path = "Target Support Files/Pods-HelloWorld/Pods-HelloWorld.debug.xcconfig"; sourceTree = "<group>"; };
 		A0497B672352FFA000D70E9E /* image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image.png; sourceTree = "<group>"; };
 		A07753C22343DDEE00186969 /* HelloWorld.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloWorld.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A07753C52343DDEE00186969 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -36,8 +34,6 @@
 		A07753E12343F9AD00186969 /* model.pt */ = {isa = PBXFileReference; lastKnownFileType = file; path = model.pt; sourceTree = "<group>"; };
 		A07753E22343F9AD00186969 /* words.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = words.txt; sourceTree = "<group>"; };
 		A07753E92343FDEC00186969 /* UIImage+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Helper.swift"; sourceTree = "<group>"; };
-		A3E3E5EDF7DC90E8181E130E /* Pods-HelloWorld.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HelloWorld.release.xcconfig"; path = "Target Support Files/Pods-HelloWorld/Pods-HelloWorld.release.xcconfig"; sourceTree = "<group>"; };
-		CEAC4E4A977111B97FB776B4 /* libPods-HelloWorld.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HelloWorld.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,30 +41,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5EDE19DE85D83B5F6A4AC5A3 /* libPods-HelloWorld.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		142D72B14004724085B7503E /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				621D5B56BD99964F2B91D12F /* Pods-HelloWorld.debug.xcconfig */,
-				A3E3E5EDF7DC90E8181E130E /* Pods-HelloWorld.release.xcconfig */,
-			);
-			name = Pods;
-			path = Pods;
-			sourceTree = "<group>";
-		};
 		A07753B92343DDEE00186969 = {
 			isa = PBXGroup;
 			children = (
 				A07753C42343DDEE00186969 /* HelloWorld */,
 				A07753C32343DDEE00186969 /* Products */,
-				142D72B14004724085B7503E /* Pods */,
-				C3020C4AB708B2526D0511C7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -116,14 +99,6 @@
 			path = model;
 			sourceTree = "<group>";
 		};
-		C3020C4AB708B2526D0511C7 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				CEAC4E4A977111B97FB776B4 /* libPods-HelloWorld.a */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -131,7 +106,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A07753D62343DDEF00186969 /* Build configuration list for PBXNativeTarget "HelloWorld" */;
 			buildPhases = (
-				13E44292D2F978BF9B935BF2 /* [CP] Check Pods Manifest.lock */,
 				A07753BE2343DDEE00186969 /* Sources */,
 				A07753BF2343DDEE00186969 /* Frameworks */,
 				A07753C02343DDEE00186969 /* Resources */,
@@ -194,31 +168,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		13E44292D2F978BF9B935BF2 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-HelloWorld-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A07753BE2343DDEE00186969 /* Sources */ = {
@@ -370,7 +319,6 @@
 		};
 		A07753D72343DDEF00186969 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 621D5B56BD99964F2B91D12F /* Pods-HelloWorld.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -393,7 +341,6 @@
 		};
 		A07753D82343DDEF00186969 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A3E3E5EDF7DC90E8181E130E /* Pods-HelloWorld.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
