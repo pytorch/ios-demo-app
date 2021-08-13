@@ -22,7 +22,7 @@
 - (NSArray<NSNumber*>*)predictImage:(void*)imageBuffer {
   try {
     at::Tensor tensor = torch::from_blob(imageBuffer, {1, 3, 224, 224}, at::kFloat);
-    c10::InferenceMode();
+    c10::InferenceMode guard;
     auto outputTensor = _impl.forward({tensor}).toTensor();
     float* floatBuffer = outputTensor.data_ptr<float>();
     if (!floatBuffer) {
