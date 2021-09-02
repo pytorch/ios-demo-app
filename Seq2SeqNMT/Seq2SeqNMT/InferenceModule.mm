@@ -5,10 +5,10 @@
 // LICENSE file in the root directory of this source tree.
 
 #import "InferenceModule.h"
-#import <LibTorch/LibTorch.h>
+#import <Libtorch-Lite/Libtorch-Lite.h>
 
 @implementation InferenceModule {
-    @protected torch::jit::script::Module _impl;
+    @protected torch::jit::mobile::Module _impl;
 }
 
 - (nullable instancetype)initWithFileAtPath:(NSString*)filePath {
@@ -19,8 +19,7 @@
             if (std::find(qengines.begin(), qengines.end(), at::QEngine::QNNPACK) != qengines.end()) {
                 at::globalContext().setQEngine(at::QEngine::QNNPACK);
             }
-            _impl = torch::jit::load(filePath.UTF8String);
-            _impl.eval();
+            _impl = torch::jit::_load_for_mobile(filePath.UTF8String);
         }
         catch (const std::exception& exception) {
             NSLog(@"%s", exception.what());
@@ -51,9 +50,8 @@
             outputs[i] =  [arrayOutputs[i] floatValue];
         at::Tensor tensorOutputs = torch::from_blob((void*)outputs, {MAX_LENGTH, HIDDEN_SIZE}, at::kFloat);
 
-        torch::autograd::AutoGradMode guard(false);
-        at::AutoNonVariableTypeMode non_var_type_mode(true);
         torch::Tensor tensorOutput;
+        c10::InferenceMode guard;
         
         long input[1]  = {0};
         at::Tensor tensorInput = torch::from_blob((void*)(&input[0]), {1, 1}, at::kLong);

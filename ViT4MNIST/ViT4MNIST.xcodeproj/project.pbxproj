@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		26A8C11626E1879C00F4A58D /* vit4mnist.ptl in Resources */ = {isa = PBXBuildFile; fileRef = 26A8C11526E1879C00F4A58D /* vit4mnist.ptl */; };
 		26E43F4825928B2C00D36C5B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E43F4725928B2C00D36C5B /* AppDelegate.swift */; };
 		26E43F4A25928B2C00D36C5B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E43F4925928B2C00D36C5B /* SceneDelegate.swift */; };
 		26E43F4C25928B2C00D36C5B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E43F4B25928B2C00D36C5B /* ViewController.swift */; };
@@ -16,10 +17,10 @@
 		26E43F702592A55100D36C5B /* InferenceModule.mm in Sources */ = {isa = PBXBuildFile; fileRef = 26E43F6E2592A55000D36C5B /* InferenceModule.mm */; };
 		26E43F732592C62500D36C5B /* HandwrittenDigitRecogizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E43F722592C62500D36C5B /* HandwrittenDigitRecogizer.swift */; };
 		26E43F7C2592D3AC00D36C5B /* ImageHelper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 26E43F7B2592D3AC00D36C5B /* ImageHelper.mm */; };
-		26E43F8625941E1F00D36C5B /* vit4mnist.pth in Resources */ = {isa = PBXBuildFile; fileRef = 26E43F8525941E1F00D36C5B /* vit4mnist.pth */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		26A8C11526E1879C00F4A58D /* vit4mnist.ptl */ = {isa = PBXFileReference; lastKnownFileType = file; path = vit4mnist.ptl; sourceTree = "<group>"; };
 		26E43F4425928B2C00D36C5B /* ViT4MNIST.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ViT4MNIST.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		26E43F4725928B2C00D36C5B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		26E43F4925928B2C00D36C5B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -34,7 +35,6 @@
 		26E43F722592C62500D36C5B /* HandwrittenDigitRecogizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandwrittenDigitRecogizer.swift; sourceTree = "<group>"; };
 		26E43F7B2592D3AC00D36C5B /* ImageHelper.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ImageHelper.mm; sourceTree = "<group>"; };
 		26E43F7F2592D49000D36C5B /* ImageHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageHelper.h; sourceTree = "<group>"; };
-		26E43F8525941E1F00D36C5B /* vit4mnist.pth */ = {isa = PBXFileReference; lastKnownFileType = file; path = vit4mnist.pth; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,7 +81,7 @@
 				26E43F5025928B2E00D36C5B /* Assets.xcassets */,
 				26E43F5225928B2E00D36C5B /* LaunchScreen.storyboard */,
 				26E43F5525928B2E00D36C5B /* Info.plist */,
-				26E43F8525941E1F00D36C5B /* vit4mnist.pth */,
+				26A8C11526E1879C00F4A58D /* vit4mnist.ptl */,
 			);
 			path = ViT4MNIST;
 			sourceTree = "<group>";
@@ -152,9 +152,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				26E43F5425928B2E00D36C5B /* LaunchScreen.storyboard in Resources */,
+				26A8C11626E1879C00F4A58D /* vit4mnist.ptl in Resources */,
 				26E43F5125928B2E00D36C5B /* Assets.xcassets in Resources */,
 				26E43F4F25928B2C00D36C5B /* Main.storyboard in Resources */,
-				26E43F8625941E1F00D36C5B /* vit4mnist.pth in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

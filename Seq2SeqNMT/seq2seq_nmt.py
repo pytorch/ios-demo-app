@@ -320,6 +320,8 @@ from torch.utils.mobile_optimizer import optimize_for_mobile
 
 traced_encoder_optimized = optimize_for_mobile(traced_encoder)
 traced_encoder_optimized.save("optimized_encoder_150k.pth")
+traced_encoder_optimized._save_for_lite_interpreter("optimized_encoder_150k.ptl")
 
 traced_decoder_optimized = optimize_for_mobile(traced_decoder)
 traced_decoder_optimized.save("optimized_decoder_150k.pth")
+traced_decoder_optimized._save_for_lite_interpreter("optimized_decoder_150k.ptl")

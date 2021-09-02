@@ -6,3 +6,5 @@ quantized_model = torch.quantization.quantize_dynamic(model, qconfig_spec={torch
 ts_model = torch.jit.script(quantized_model)
 optimized_torchscript_model = optimize_for_mobile(ts_model)
 optimized_torchscript_model.save("fbdeit.pt")
+optimized_torchscript_model._save_for_lite_interpreter("fbdeit.ptl")
+

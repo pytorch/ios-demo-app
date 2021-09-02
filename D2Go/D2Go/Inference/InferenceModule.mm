@@ -5,7 +5,7 @@
 // LICENSE file in the root directory of this source tree.
 
 #import "InferenceModule.h"
-#import <LibTorch.h>
+#import <Libtorch-Lite/Libtorch-Lite.h>
 
 const int input_width = 640;
 const int input_height = 640;
@@ -13,15 +13,14 @@ const int threshold = 0.5;
 
 
 @implementation InferenceModule {
-    @protected torch::jit::script::Module _impl;
+    @protected torch::jit::mobile::Module _impl;
 }
 
 - (nullable instancetype)initWithFileAtPath:(NSString*)filePath {
     self = [super init];
     if (self) {
         try {
-            _impl = torch::jit::load(filePath.UTF8String);
-            _impl.eval();
+            _impl = torch::jit::_load_for_mobile(filePath.UTF8String);
         } catch (const std::exception& exception) {
             NSLog(@"%s", exception.what());
             return nil;
@@ -39,7 +38,12 @@ const int threshold = 0.5;
         std::vector<torch::Tensor> v;
         v.push_back(tensor);
         
+        
+        CFTimeInterval startTime = CACurrentMediaTime();
         auto outputTuple = _impl.forward({ at::TensorList(v) }).toTuple();
+        CFTimeInterval elapsedTime = CACurrentMediaTime() - startTime;
+        NSLog(@"inference time:%f", elapsedTime);
+
         
         auto outputDict = outputTuple->elements()[1].toList().get(0).toGenericDict();
         auto boxesTensor = outputDict.at("boxes").toTensor();

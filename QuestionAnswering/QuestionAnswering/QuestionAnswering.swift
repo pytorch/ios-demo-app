@@ -20,11 +20,11 @@ class QuestionAnswering {
     private var id2token = [Int: String]()
     
     private var module: InferenceModule = {
-        if let filePath = Bundle.main.path(forResource: "qa360_quantized", ofType: "pt"),
+        if let filePath = Bundle.main.path(forResource: "qa360_quantized", ofType: "ptl"),
             let module = InferenceModule(fileAtPath: filePath) {
             return module
         } else {
-            fatalError("Failed to load model file qa360_quantized.pt")
+            fatalError("Failed to load model file qa360_quantized.ptl")
         }
     }()
     

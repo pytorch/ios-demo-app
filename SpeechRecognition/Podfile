@@ -6,5 +6,5 @@ target 'SpeechRecognition' do
   use_frameworks!
 
   # Pods for SpeechRecognition
-  pod 'LibTorch', '~>1.9.0'
+  pod 'LibTorch-Lite', '~>1.9.0'
 end

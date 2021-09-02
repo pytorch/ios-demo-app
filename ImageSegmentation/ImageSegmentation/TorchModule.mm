@@ -20,7 +20,6 @@
     if (self) {
         try {
             _impl = torch::jit::_load_for_mobile(filePath.UTF8String);
-            _impl.eval();
         } catch (const std::exception& exception) {
             NSLog(@"%s", exception.what());
             return nil;
@@ -40,9 +39,6 @@
 
         at::Tensor tensor = torch::from_blob(imageBuffer, { 1, 3, width, height }, at::kFloat);
 
-        torch::autograd::AutoGradMode guard(false);
-        at::AutoNonVariableTypeMode non_var_type_mode(true);
-
         float* floatInput = tensor.data_ptr<float>();
         if (!floatInput) {
             return nil;
@@ -52,8 +48,13 @@
             [inputs addObject:@(floatInput[i])];
         }
 
+        c10::InferenceMode guard;
+        
+        CFTimeInterval startTime = CACurrentMediaTime();
         auto outputDict = _impl.forward({ tensor }).toGenericDict();
-
+        CFTimeInterval elapsedTime = CACurrentMediaTime() - startTime;
+        NSLog(@"inference time:%f", elapsedTime);
+        
         auto outputTensor = outputDict.at("out").toTensor();
 
         float* floatBuffer = outputTensor.data_ptr<float>();

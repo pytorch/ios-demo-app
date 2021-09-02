@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		26A8C10E26E1571E00F4A58D /* wav2vec2.ptl in Resources */ = {isa = PBXBuildFile; fileRef = 26A8C10D26E1571D00F4A58D /* wav2vec2.ptl */; };
 		26B208D826127FAD00B597CB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B208D726127FAD00B597CB /* AppDelegate.swift */; };
 		26B208DA26127FAD00B597CB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B208D926127FAD00B597CB /* SceneDelegate.swift */; };
 		26B208DC26127FAD00B597CB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B208DB26127FAD00B597CB /* ViewController.swift */; };
@@ -14,13 +15,13 @@
 		26B208E126127FAE00B597CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26B208E026127FAE00B597CB /* Assets.xcassets */; };
 		26B208E426127FAE00B597CB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26B208E226127FAE00B597CB /* LaunchScreen.storyboard */; };
 		26B208F32612829C00B597CB /* InferenceModule.mm in Sources */ = {isa = PBXBuildFile; fileRef = 26B208F12612829B00B597CB /* InferenceModule.mm */; };
-		26B208F6261283AF00B597CB /* wav2vec2.pt in Resources */ = {isa = PBXBuildFile; fileRef = 26B208F5261283AF00B597CB /* wav2vec2.pt */; };
 		26B208FB261284C700B597CB /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26B208FA261284C700B597CB /* AVFoundation.framework */; };
 		26B208FD261284CF00B597CB /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26B208FC261284CF00B597CB /* AudioToolbox.framework */; };
 		26B208FF261284D700B597CB /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26B208FE261284D700B597CB /* Accelerate.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		26A8C10D26E1571D00F4A58D /* wav2vec2.ptl */ = {isa = PBXFileReference; lastKnownFileType = file; path = wav2vec2.ptl; sourceTree = "<group>"; };
 		26B208D426127FAD00B597CB /* SpeechRecognition.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpeechRecognition.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		26B208D726127FAD00B597CB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		26B208D926127FAD00B597CB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -32,7 +33,6 @@
 		26B208F02612829B00B597CB /* SpeechRecognition-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SpeechRecognition-Bridging-Header.h"; sourceTree = "<group>"; };
 		26B208F12612829B00B597CB /* InferenceModule.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = InferenceModule.mm; sourceTree = "<group>"; };
 		26B208F22612829C00B597CB /* InferenceModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InferenceModule.h; sourceTree = "<group>"; };
-		26B208F5261283AF00B597CB /* wav2vec2.pt */ = {isa = PBXFileReference; lastKnownFileType = file; path = wav2vec2.pt; sourceTree = "<group>"; };
 		26B208FA261284C700B597CB /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		26B208FC261284CF00B597CB /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		26B208FE261284D700B597CB /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
@@ -83,7 +83,7 @@
 				26B208E026127FAE00B597CB /* Assets.xcassets */,
 				26B208E226127FAE00B597CB /* LaunchScreen.storyboard */,
 				26B208E526127FAE00B597CB /* Info.plist */,
-				26B208F5261283AF00B597CB /* wav2vec2.pt */,
+				26A8C10D26E1571D00F4A58D /* wav2vec2.ptl */,
 			);
 			path = SpeechRecognition;
 			sourceTree = "<group>";
@@ -164,7 +164,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				26B208E426127FAE00B597CB /* LaunchScreen.storyboard in Resources */,
-				26B208F6261283AF00B597CB /* wav2vec2.pt in Resources */,
+				26A8C10E26E1571E00F4A58D /* wav2vec2.ptl in Resources */,
 				26B208E126127FAE00B597CB /* Assets.xcassets in Resources */,
 				26B208DF26127FAD00B597CB /* Main.storyboard in Resources */,
 			);
