@@ -8,9 +8,9 @@ In this demo app, we'll show how to quantize, trace, and optimize the wav2vec2 m
 
 ## Prerequisites
 
-* PyTorch 1.9.0 and torchaudio 0.9.0 (Optional)
+* PyTorch 1.9 and torchaudio 0.9 (Optional)
 * Python 3.8 or above (Optional)
-* iOS PyTorch Cocoapods library LibTorch 1.9.0
+* iOS Cocoapods LibTorch-Lite 1.9.0
 * Xcode 12.4 or later
 
 ## Quick Start
@@ -24,14 +24,11 @@ git clone https://github.com/pytorch/ios-demo-app
 cd ios-demo-app/SpeechRecognition
 ```
 
-If you don't have PyTorch 1.9.0 and torchaudio 0.9.0 installed or want to have a quick try of the demo app, you can download the quantized scripted wav2vec2 model file [here](https://drive.google.com/file/d/1RcCy3K3gDVN2Nun5IIdDbpIDbrKD-XVw/view?usp=sharing), then drag and drop to the project, and continue to Step 3.
-
-Be aware that the downloadable model file was created with PyTorch 1.9.0 and torchaudio 0.9.0, matching the iOS LibTorch library 1.9.0 specified in the `Podfile`. If you use a different version of PyTorch to create your model by following the instructions below, make sure you specify the same iOS LibTorch version in the `Podfile` to avoid possible errors caused by the version mismatch. Furthermore, if you want to use the latest prototype features in the PyTorch master branch to create the model, follow the steps at [Building PyTorch iOS Libraries from Source](https://pytorch.org/mobile/ios/#build-pytorch-ios-libraries-from-source) on how to use the model in iOS.
-
+If you don't have PyTorch 1.9 and torchaudio 0.9 installed or want to have a quick try of the demo app, you can download the quantized scripted wav2vec2 model file [here](https://drive.google.com/file/d/1xMh-BZMSIeoohBfZvQFYcemmh5zUn_gh/view?usp=sharing), then drag and drop to the project, and continue to Step 3.
 
 ### 2. Prepare the Model
 
-To install PyTorch 1.9.0, torchaudio 0.9.0 and the Hugging Face transformers, you can do something like this:
+To install PyTorch 1.9, torchaudio 0.9 and the Hugging Face transformers, you can do something like this:
 
 ```
 conda create -n wav2vec2 python=3.8.5
@@ -40,13 +37,13 @@ pip install torch torchaudio
 pip install transformers
 ```
 
-Now with PyTorch 1.9.0 and torchaudio 0.9.0 installed, run the following commands on a Terminal:
+Now with PyTorch 1.9 and torchaudio 0.9 installed, run the following commands on a Terminal:
 
 ```
 python create_wav2vec2.py
 ```
 
-This will create the model file `wav2vec2.pt` and save to the `SpeechRecognition` folder.
+This will create the model file `wav2vec2.ptl` and save to the `SpeechRecognition` folder.
 
 ### 2. Use LibTorch
 

@@ -2,7 +2,7 @@
 
 ## Introduction
 
-[Detectron2](https://github.com/facebookresearch/detectron2) is one of the most widely adopted open source projects and implements state-of-the-art object detection, semantic segmentation, panoptic segmentation, and human pose prediction. [D2Go](https://github.com/facebookresearch/d2go) is powered by PyTorch 1.9.0, torchvision 0.10.0, and Detectron2 with built-in SOTA networks for mobile - the D2Go model is very small (only 2.15MB) and runs very fast on iOS.
+[Detectron2](https://github.com/facebookresearch/detectron2) is one of the most widely adopted open source projects and implements state-of-the-art object detection, semantic segmentation, panoptic segmentation, and human pose prediction. [D2Go](https://github.com/facebookresearch/d2go) is powered by PyTorch 1.9, torchvision 0.10, and Detectron2 with built-in SOTA networks for mobile - the D2Go model is very small (only 2.15MB) and runs very fast on iOS.
 
 This D2Go iOS demo app shows how to prepare and use the D2Go model on iOS with the newly released LibTorchvision Cocoapods. The code is based on a previous PyTorch iOS [Object Detection demo app](https://github.com/pytorch/ios-demo-app/tree/master/ObjectDetection) that uses a pre-trained YOLOv5 model, with modified pre-processing and post-processing code required by the D2Go model.
 
@@ -10,14 +10,14 @@ This D2Go iOS demo app shows how to prepare and use the D2Go model on iOS with t
 
 * PyTorch 1.9 and torchvision 0.10 (Optional)
 * Python 3.8 or above (Optional)
-* iOS Cocoapods LibTorch 1.9.0 and LibTorchvision 0.10.0
+* iOS Cocoapods LibTorch-Lite 1.9.0 and LibTorchvision 0.10.0
 * Xcode 12.4 or later
 
 ## Quick Start
 
 This section shows how to create and use the D2Go model in an iOS app. To just build and run the app without creating the D2Go model yourself, go directly to Step 4.
 
-1. Install PyTorch 1.9.0 and torchvision 0.10.0, for example:
+1. Install PyTorch 1.9 and torchvision 0.10, for example:
 
 ```
 conda create -n d2go python=3.8.5
@@ -50,6 +50,7 @@ Run the following command to create the optimized D2Go model `d2go_optimized.pt`
 ```
 python create_d2go.py
 ```
+Both the optimized JIT model and the Lite Interpreter model will be created and saved in the project folder.
 
 4. Build and run the D2Go iOS app
 

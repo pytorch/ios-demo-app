@@ -6,5 +6,4 @@ model.eval()
 
 scripted_module = torch.jit.script(model)
 optimized_model = optimize_for_mobile(scripted_module)
-optimized_model.save("ImageSegmentation/deeplabv3_scripted.pt")
 optimized_model._save_for_lite_interpreter("ImageSegmentation/deeplabv3_scripted.ptl")
