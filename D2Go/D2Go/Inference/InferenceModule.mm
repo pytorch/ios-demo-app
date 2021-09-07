@@ -32,19 +32,18 @@ const int threshold = 0.5;
 - (NSArray<NSNumber*>*)detectImage:(void*)imageBuffer {
     try {
         at::Tensor tensor = torch::from_blob(imageBuffer, { 3, input_width, input_height }, at::kFloat);
-        torch::autograd::AutoGradMode guard(false);
-        at::AutoNonVariableTypeMode non_var_type_mode(true);
-        
+        c10::InferenceMode guard;
+
         std::vector<torch::Tensor> v;
         v.push_back(tensor);
-        
-        
+
+
         CFTimeInterval startTime = CACurrentMediaTime();
         auto outputTuple = _impl.forward({ at::TensorList(v) }).toTuple();
         CFTimeInterval elapsedTime = CACurrentMediaTime() - startTime;
         NSLog(@"inference time:%f", elapsedTime);
 
-        
+
         auto outputDict = outputTuple->elements()[1].toList().get(0).toGenericDict();
         auto boxesTensor = outputDict.at("boxes").toTensor();
         auto scoresTensor = outputDict.at("scores").toTensor();
@@ -62,7 +61,7 @@ const int threshold = 0.5;
         if (!labelsBuffer) {
             return nil;
         }
-        
+
         NSMutableArray* results = [[NSMutableArray alloc] init];
         long num = scoresTensor.numel();
         for (int i = 0; i < num; i++) {
@@ -76,9 +75,9 @@ const int threshold = 0.5;
             [results addObject:@(scoresBuffer[i])];
             [results addObject:@(labelsBuffer[i])];
         }
-        
+
         return [results copy];
-        
+
     } catch (const std::exception& exception) {
         NSLog(@"%s", exception.what());
     }
