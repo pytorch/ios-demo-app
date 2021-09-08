@@ -17,7 +17,7 @@ To Test Run the Image Segmentation iOS App, follow the steps below:
 
 ### 1. Prepare the Model
 
-If you don't have the PyTorch environment set up to run the script below to generate the model file, you can download it to the `ios-demo-app/ImageSegmentation` folder using the link [here](https://drive.google.com/file/d/1_guNVutt8eTvO_YhGxkAe1uReBhNaC4f/view?usp=sharing).
+If you don't have the PyTorch environment set up to run the script below to generate the model file, you can download it to the `ios-demo-app/ImageSegmentation` folder using the link [here](https://pytorch-mobile-demo-apps.s3.us-east-2.amazonaws.com/deeplabv3_scripted.ptl).
 
 Open a Mac Terminal, first install PyTorch 1.9 and torchvision 0.10 using command like `pip install torch torchvision`, then run the following commands:
 

@@ -17,7 +17,7 @@ To Test Run the Object Detection iOS App, follow the steps below:
 
 ### 1. Prepare the Model
 
-If you don't have the PyTorch environment set up to run the script, you can download the model file [here](https://drive.google.com/file/d/1_MF7NVi9Csm1lizoSCp1wCtUUUpuhwet/view?usp=sharing) to the `ios-demo-app/ObjectDetection/ObjectDetection` folder, then skip the rest of this step and go to step 2 directly.
+If you don't have the PyTorch environment set up to run the script, you can download the model file [here](https://pytorch-mobile-demo-apps.s3.us-east-2.amazonaws.com/yolov5s.torchscript.ptl) to the `ios-demo-app/ObjectDetection/ObjectDetection` folder, then skip the rest of this step and go to step 2 directly.
 
 The Python script `export.py` in the `models` folder of the [YOLOv5 repo](https://github.com/ultralytics/yolov5) is used to generate a TorchScript-formatted YOLOv5 model named `yolov5s.torchscript.ptl` for mobile apps.
 

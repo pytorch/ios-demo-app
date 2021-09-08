@@ -16,7 +16,7 @@ The newly released open-sourced [PyTorchVideo](https://github.com/facebookresear
 
 ### 1. Prepare the Model (Optional)
 
-If you don't have the PyTorch environment set up to run the script, you can download the model file `video_classification.pt` [here](https://drive.google.com/file/d/1ti8Eb59L5BZV3YJa-c0AUx6XCgEvsqlV/view?usp=sharing) to the `ios-demo-app/TorchVideo/TorchVideo` folder, then skip the rest of this step and go to step 2 directly.
+If you don't have the PyTorch environment set up to run the script, you can download the model file `video_classification.pt` [here](https://pytorch-mobile-demo-apps.s3.us-east-2.amazonaws.com/video_classification.ptl) to the `ios-demo-app/TorchVideo/TorchVideo` folder, then skip the rest of this step and go to step 2 directly.
 
 To create the model yourself, simply run the following commands:
 ```

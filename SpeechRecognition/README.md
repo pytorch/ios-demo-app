@@ -24,7 +24,7 @@ git clone https://github.com/pytorch/ios-demo-app
 cd ios-demo-app/SpeechRecognition
 ```
 
-If you don't have PyTorch 1.9 and torchaudio 0.9 installed or want to have a quick try of the demo app, you can download the quantized scripted wav2vec2 model file [here](https://drive.google.com/file/d/1xMh-BZMSIeoohBfZvQFYcemmh5zUn_gh/view?usp=sharing), then drag and drop to the project, and continue to Step 3.
+If you don't have PyTorch 1.9 and torchaudio 0.9 installed or want to have a quick try of the demo app, you can download the quantized scripted wav2vec2 model file [here](https://pytorch-mobile-demo-apps.s3.us-east-2.amazonaws.com/wav2vec2.ptl), then drag and drop to the project, and continue to Step 3.
 
 ### 2. Prepare the Model
 

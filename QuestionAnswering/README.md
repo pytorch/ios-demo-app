@@ -19,7 +19,7 @@ To Test Run the iOS QA demo app, run the following commands on a Terminal:
 
 ### 1. Prepare the Model
 
-If you don't have PyTorch installed or want to have a quick try of the demo app, you can download the scripted QA model compressed in a zip file [here](https://drive.google.com/file/d/1PgD3pAEf0riUiT3BfwHOm6UEGk8FfJzI/view?usp=sharing), then unzip, drag and drop it to the project, and continue to Step 2.
+If you don't have PyTorch installed or want to have a quick try of the demo app, you can download the scripted QA model compressed in a zip file [here](https://pytorch-mobile-demo-apps.s3.us-east-2.amazonaws.com/qa360_quantized.ptl), then unzip, drag and drop it to the project, and continue to Step 2.
 
 Be aware that the downloadable model file was created with PyTorch 1.9.0, matching the iOS LibTorch library 1.9.0 specified in the `Podfile`. If you use a different version of PyTorch to create your model by following the instructions below, make sure you specify the same iOS LibTorch version in the `Podfile` to avoid possible errors caused by the version mismatch. Furthermore, if you want to use the latest prototype features in the PyTorch master branch to create the model, follow the steps at [Building PyTorch iOS Libraries from Source](https://pytorch.org/mobile/ios/#build-pytorch-ios-libraries-from-source) on how to use the model in iOS.
 

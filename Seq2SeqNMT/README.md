@@ -23,7 +23,7 @@ To Test Run the Object Detection iOS App, follow the steps below:
 
 ### 1. Prepare the Model
 
-If you don't have the PyTorch environment set up to run the script, you can download the PyTorch trained and optimized NMT encoder and decoder models compressed in a zip [here](https://drive.google.com/file/d/1Azj1AI3-clVJ7ub_FUVSm3ja7TIn43Kl/view?usp=sharing), unzip it, copy to the iOS app project folder, and continue to Step 2.
+If you don't have the PyTorch environment set up to run the script, you can download the PyTorch trained and optimized NMT encoder and decoder models compressed in a zip [here](https://pytorch-mobile-demo-apps.s3.us-east-2.amazonaws.com/Seq2SeqNMT_models.zip), unzip it, copy to the iOS app project folder, and continue to Step 2.
 
 If you have a good GPU and want to train your model from scratch, uncomment the line `trainIters(encoder, decoder, 450100, print_every=5000)` in `seq2seq_nmt.py` before running `python seq2seq2_nmt.py` to go through the whole process of training, saving, loading, optimizing and saving the final mobile-ready models. Otherwise, run the script to create `optimized_encoder_150k.ptl` and `optimized_decoder_150k.ptl`, and copy them to the iOS app. Note that dynamic quantization is applied to the decoder in `seq2seq2_nmt.py` for its `nn.Linear` parameters to reduce the decoder model size from 29MB to 18MB.
 
