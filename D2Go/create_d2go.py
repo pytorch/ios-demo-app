@@ -70,6 +70,7 @@ def test_export_torchvision_format():
     scripted_model = torch.jit.script(wrapped_model)
     optimized_model = optimize_for_mobile(scripted_model)
     optimized_model.save("D2Go/d2go_optimized.pt")
+    optimized_model._save_for_lite_interpreter("D2Go/d2go_optimized.ptl")
 
 if __name__ == '__main__':
     test_export_torchvision_format()

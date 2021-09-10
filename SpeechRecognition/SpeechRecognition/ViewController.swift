@@ -24,12 +24,12 @@ class ViewController: UIViewController, AVAudioRecorderDelegate  {
     private var audioRecorder: AVAudioRecorder!
     private var _recorderFilePath: String!
     
-    private let AUDIO_LEN_IN_SECOND = 12
+    private let AUDIO_LEN_IN_SECOND = 6
     private let SAMPLE_RATE = 16000
 
     private lazy var module: InferenceModule = {
         if let filePath = Bundle.main.path(forResource:
-            "wav2vec2", ofType: "pt"),
+            "wav2vec2", ofType: "ptl"),
             let module = InferenceModule(fileAtPath: filePath) {
             return module
         } else {

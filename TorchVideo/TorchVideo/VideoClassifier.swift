@@ -8,7 +8,7 @@ import UIKit
 
 class VideoClassifier {
     lazy var module: InferenceModule = {
-        if let filePath = Bundle.main.path(forResource: "video_classification", ofType: "pt"),
+        if let filePath = Bundle.main.path(forResource: "video_classification", ofType: "ptl"),
             let module = InferenceModule(fileAtPath: filePath) {
             return module
         } else {

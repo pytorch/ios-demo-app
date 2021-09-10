@@ -6,13 +6,13 @@
 
 
 #import "InferenceModule.h"
-#import <LibTorch/LibTorch.h>
+#import <Libtorch-Lite/Libtorch-Lite.h>
 
 const int MNIST_IMAGE_SIZE = 28;
 const int MODEL_OUTPUT_SIZE = 10;
 
 @implementation InferenceModule {
-    @protected torch::jit::script::Module _impl;
+    @protected torch::jit::mobile::Module _impl;
 }
 
 - (nullable instancetype)initWithFileAtPath:(NSString*)filePath {
@@ -23,8 +23,7 @@ const int MODEL_OUTPUT_SIZE = 10;
             if (std::find(qengines.begin(), qengines.end(), at::QEngine::QNNPACK) != qengines.end()) {
                 at::globalContext().setQEngine(at::QEngine::QNNPACK);
             }
-            _impl = torch::jit::load(filePath.UTF8String);
-            _impl.eval();
+            _impl = torch::jit::_load_for_mobile(filePath.UTF8String);
         }
         catch (const std::exception& exception) {
             NSLog(@"%s", exception.what());
@@ -58,10 +57,13 @@ const int MODEL_OUTPUT_SIZE = 10;
         
         at::Tensor tensorInputs = torch::from_blob((void*)inputs, {1, 1, MNIST_IMAGE_SIZE, MNIST_IMAGE_SIZE}, at::kFloat);
         
-        torch::autograd::AutoGradMode guard(false);
-        at::AutoNonVariableTypeMode non_var_type_mode(true);
-    
+        c10::InferenceMode guard;
+        
+        CFTimeInterval startTime = CACurrentMediaTime();
         auto outputTensor = _impl.forward({ tensorInputs }).toTensor();
+        CFTimeInterval elapsedTime = CACurrentMediaTime() - startTime;
+        NSLog(@"inference time:%f", elapsedTime);
+
         float* outBuffer = outputTensor.data_ptr<float>();
         if (!outBuffer) {
             return nil;

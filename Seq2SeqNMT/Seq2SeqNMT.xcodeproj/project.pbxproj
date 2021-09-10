@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		26A5AF8F25A7EBF0007B1D51 /* optimized_decoder_150k.pth in Resources */ = {isa = PBXBuildFile; fileRef = 26A5AF8D25A7EBF0007B1D51 /* optimized_decoder_150k.pth */; };
-		26A5AF9025A7EBF0007B1D51 /* optimized_encoder_150k.pth in Resources */ = {isa = PBXBuildFile; fileRef = 26A5AF8E25A7EBF0007B1D51 /* optimized_encoder_150k.pth */; };
+		26A8C11926E1917100F4A58D /* optimized_decoder_150k.ptl in Resources */ = {isa = PBXBuildFile; fileRef = 26A8C11726E1917100F4A58D /* optimized_decoder_150k.ptl */; };
+		26A8C11A26E1917100F4A58D /* optimized_encoder_150k.ptl in Resources */ = {isa = PBXBuildFile; fileRef = 26A8C11826E1917100F4A58D /* optimized_encoder_150k.ptl */; };
 		390755732522F78C00D3F5B6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390755722522F78C00D3F5B6 /* AppDelegate.swift */; };
 		390755752522F78C00D3F5B6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390755742522F78C00D3F5B6 /* SceneDelegate.swift */; };
 		390755772522F78C00D3F5B6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390755762522F78C00D3F5B6 /* ViewController.swift */; };
@@ -22,8 +22,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		26A5AF8D25A7EBF0007B1D51 /* optimized_decoder_150k.pth */ = {isa = PBXFileReference; lastKnownFileType = file; path = optimized_decoder_150k.pth; sourceTree = "<group>"; };
-		26A5AF8E25A7EBF0007B1D51 /* optimized_encoder_150k.pth */ = {isa = PBXFileReference; lastKnownFileType = file; path = optimized_encoder_150k.pth; sourceTree = "<group>"; };
+		26A8C11726E1917100F4A58D /* optimized_decoder_150k.ptl */ = {isa = PBXFileReference; lastKnownFileType = file; path = optimized_decoder_150k.ptl; sourceTree = "<group>"; };
+		26A8C11826E1917100F4A58D /* optimized_encoder_150k.ptl */ = {isa = PBXFileReference; lastKnownFileType = file; path = optimized_encoder_150k.ptl; sourceTree = "<group>"; };
 		3907556F2522F78C00D3F5B6 /* Seq2SeqNMT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Seq2SeqNMT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		390755722522F78C00D3F5B6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		390755742522F78C00D3F5B6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -82,10 +82,10 @@
 				3907557B2522F79100D3F5B6 /* Assets.xcassets */,
 				3907557D2522F79100D3F5B6 /* LaunchScreen.storyboard */,
 				390755802522F79100D3F5B6 /* Info.plist */,
-				26A5AF8D25A7EBF0007B1D51 /* optimized_decoder_150k.pth */,
-				26A5AF8E25A7EBF0007B1D51 /* optimized_encoder_150k.pth */,
 				39448ED6252308280004A946 /* source_wrd2idx.json */,
 				39448ED7252308280004A946 /* target_idx2wrd.json */,
+				26A8C11726E1917100F4A58D /* optimized_decoder_150k.ptl */,
+				26A8C11826E1917100F4A58D /* optimized_encoder_150k.ptl */,
 			);
 			path = Seq2SeqNMT;
 			sourceTree = "<group>";
@@ -156,12 +156,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26A8C11926E1917100F4A58D /* optimized_decoder_150k.ptl in Resources */,
 				3907557F2522F79100D3F5B6 /* LaunchScreen.storyboard in Resources */,
+				26A8C11A26E1917100F4A58D /* optimized_encoder_150k.ptl in Resources */,
 				3907557C2522F79100D3F5B6 /* Assets.xcassets in Resources */,
 				3907557A2522F78C00D3F5B6 /* Main.storyboard in Resources */,
-				26A5AF9025A7EBF0007B1D51 /* optimized_encoder_150k.pth in Resources */,
 				39448EDA252308290004A946 /* source_wrd2idx.json in Resources */,
-				26A5AF8F25A7EBF0007B1D51 /* optimized_decoder_150k.pth in Resources */,
 				39448EDB252308290004A946 /* target_idx2wrd.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

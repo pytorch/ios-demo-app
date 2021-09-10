@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		266E871F2563077D00CF5151 /* yolov5s.torchscript.pt in Resources */ = {isa = PBXBuildFile; fileRef = 266E871E2563077D00CF5151 /* yolov5s.torchscript.pt */; };
 		266E87232563120D00CF5151 /* classes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 266E87222563120D00CF5151 /* classes.txt */; };
 		266E8746256350C000CF5151 /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266E8742256350C000CF5151 /* CameraController.swift */; };
 		266E8747256350C000CF5151 /* CVPixelBuffer+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266E8743256350C000CF5151 /* CVPixelBuffer+Helper.swift */; };
@@ -25,11 +24,11 @@
 		269E748D255CC6D100B1D6CA /* test2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 269E748B255CC6D100B1D6CA /* test2.jpg */; };
 		269E7498255CCBA000B1D6CA /* InferenceModule.mm in Sources */ = {isa = PBXBuildFile; fileRef = 269E7496255CCBA000B1D6CA /* InferenceModule.mm */; };
 		269E749B255CCBC300B1D6CA /* UIImage+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269E749A255CCBC300B1D6CA /* UIImage+Helper.swift */; };
+		26A8C11426E17F8100F4A58D /* yolov5s.torchscript.ptl in Resources */ = {isa = PBXBuildFile; fileRef = 26A8C11326E17F8100F4A58D /* yolov5s.torchscript.ptl */; };
 		26FAB5692565E8FC00EA6ED6 /* PrePostProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FAB5682565E8FC00EA6ED6 /* PrePostProcessor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		266E871E2563077D00CF5151 /* yolov5s.torchscript.pt */ = {isa = PBXFileReference; lastKnownFileType = file; path = yolov5s.torchscript.pt; sourceTree = "<group>"; };
 		266E87222563120D00CF5151 /* classes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = classes.txt; sourceTree = "<group>"; };
 		266E8742256350C000CF5151 /* CameraController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraController.swift; sourceTree = "<group>"; };
 		266E8743256350C000CF5151 /* CVPixelBuffer+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CVPixelBuffer+Helper.swift"; sourceTree = "<group>"; };
@@ -51,6 +50,7 @@
 		269E7496255CCBA000B1D6CA /* InferenceModule.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = InferenceModule.mm; sourceTree = "<group>"; };
 		269E7497255CCBA000B1D6CA /* InferenceModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InferenceModule.h; sourceTree = "<group>"; };
 		269E749A255CCBC300B1D6CA /* UIImage+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Helper.swift"; sourceTree = "<group>"; };
+		26A8C11326E17F8100F4A58D /* yolov5s.torchscript.ptl */ = {isa = PBXFileReference; lastKnownFileType = file; path = yolov5s.torchscript.ptl; sourceTree = "<group>"; };
 		26FAB5682565E8FC00EA6ED6 /* PrePostProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrePostProcessor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -110,7 +110,7 @@
 				269E748B255CC6D100B1D6CA /* test2.jpg */,
 				269E748A255CC6D100B1D6CA /* test3.png */,
 				266E87222563120D00CF5151 /* classes.txt */,
-				266E871E2563077D00CF5151 /* yolov5s.torchscript.pt */,
+				26A8C11326E17F8100F4A58D /* yolov5s.torchscript.ptl */,
 			);
 			path = ObjectDetection;
 			sourceTree = "<group>";
@@ -200,8 +200,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				266E871F2563077D00CF5151 /* yolov5s.torchscript.pt in Resources */,
 				269E747E255CC56400B1D6CA /* LaunchScreen.storyboard in Resources */,
+				26A8C11426E17F8100F4A58D /* yolov5s.torchscript.ptl in Resources */,
 				266E87232563120D00CF5151 /* classes.txt in Resources */,
 				269E747B255CC56400B1D6CA /* Assets.xcassets in Resources */,
 				269E748D255CC6D100B1D6CA /* test2.jpg in Resources */,

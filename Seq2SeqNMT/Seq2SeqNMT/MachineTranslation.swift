@@ -10,7 +10,7 @@ import UIKit
 
 class MachineTranslation {
     private var moduleEncoder: InferenceModule = {
-        if let filePath = Bundle.main.path(forResource: "optimized_encoder_150k", ofType: "pth"),
+        if let filePath = Bundle.main.path(forResource: "optimized_encoder_150k", ofType: "ptl"),
             let module = InferenceModule(fileAtPath: filePath) {
             return module
         } else {
@@ -19,7 +19,7 @@ class MachineTranslation {
     }()
     
     private var moduleDecoder: InferenceModule = {
-        if let filePath = Bundle.main.path(forResource: "optimized_decoder_150k", ofType: "pth"),
+        if let filePath = Bundle.main.path(forResource: "optimized_decoder_150k", ofType: "ptl"),
             let module = InferenceModule(fileAtPath: filePath) {
             return module
         } else {
@@ -31,6 +31,9 @@ class MachineTranslation {
         if text.isEmpty {
             return ""
         }
+        
+        let startTime = CACurrentMediaTime()
+
         guard let dict = moduleEncoder.encoderForward(text:text)
         else {
             fatalError("Failed to run encoder")
@@ -40,6 +43,9 @@ class MachineTranslation {
         else {
             fatalError("Failed to run decoder")
         }
+        
+        let inferenceTime = CACurrentMediaTime() - startTime
+        print("inferenceTime: ", inferenceTime)
 
         return result
     }

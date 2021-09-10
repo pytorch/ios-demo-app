@@ -12,9 +12,9 @@ In this demo app, we'll integrate the two oldest and most popular image datasets
 
 ## Prerequisites
 
-* PyTorch 1.7 or later (Optional)
+* PyTorch 1.9  (Optional)
 * Python 3.8 (Optional)
-* iOS PyTorch pod library 1.7
+* iOS Cocoapods LibTorch-Lite 1.9.0
 * Xcode 12 or later
 
 ## Quick Start on Using Facebook DeiT
@@ -61,16 +61,14 @@ To Test Run the iOS ViT4MNIST demo app, follow the steps below:
 
 ### 1. Prepare the Model (Optional)
 
-Be aware that the model file included in the project was created with PyTorch 1.7.0, matching the iOS LibTorch library 1.7.0 specified in the `Podfile`. If you use a different version of PyTorch to create your model by following the instructions below, make sure you specify the same iOS LibTorch version in the `Podfile` to avoid possible errors caused by the version mismatch. Furthermore, if you want to use the latest prototype features in the PyTorch master branch to create the model, follow the steps at [Building PyTorch iOS Libraries from Source](https://pytorch.org/mobile/ios/#build-pytorch-ios-libraries-from-source) on how to use the model in iOS.
-
-On a Terminal, with PyTorch 1.7.0 and [einops](https://pypi.org/project/einops/) installed, run:
+On a Terminal, with PyTorch 1.9 and [einops](https://pypi.org/project/einops/) installed, run:
 ```
 python mnist_vit.py
 ```
 
-The model definition in `vit_pytorch.py` and training code in `mnist_vit.py` are mostly taken from the blog [here](https://towardsdatascience.com/a-demonstration-of-using-vision-transformers-in-pytorch-mnist-handwritten-digit-recognition-407eafbc15b0). After the training, which takes about 20 minutes on a MacBook Pro, the model is saved as   `vit4mnist.pt` and then dynamic-quantized, converted to TorchScript, optimized, and saved as `vit4mnist.pth`, which should be the same as the one already added in the app project.
+The model definition in `vit_pytorch.py` and training code in `mnist_vit.py` are mostly taken from the blog [here](https://towardsdatascience.com/a-demonstration-of-using-vision-transformers-in-pytorch-mnist-handwritten-digit-recognition-407eafbc15b0). After the training, which takes about 20 minutes on a MacBook Pro, the model is saved as   `vit4mnist.pt` and then dynamic-quantized, converted to TorchScript, optimized, and saved as `vit4mnist.ptl`, which should be the same as the one already added in the app project.
 
-### 2. Use LibTorch
+### 2. Use LibTorch-Lite
 
 Run the commands below:
 

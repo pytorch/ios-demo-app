@@ -6,9 +6,9 @@ This repo offers a Python script that converts the [PyTorch DeepLabV3 model](htt
 
 ## Prerequisites
 
-* PyTorch 1.9.0 and torchvision 0.10.0 (Optional)
+* PyTorch 1.9 and torchvision 0.10 (Optional)
 * Python 3.8 or above (Optional)
-* iOS Cocoapods LibTorch-Lite 1.9.0
+* iOS Cocoapods LibTorch-Lite 1.9.0 and LibTorchvision 0.10.0
 * Xcode 12.4 or later
 
 ## Quick Start
@@ -17,11 +17,9 @@ To Test Run the Image Segmentation iOS App, follow the steps below:
 
 ### 1. Prepare the Model
 
-If you don't have the PyTorch environment set up to run the script below to generate the model file, you can download it to the `ios-demo-app/ImageSegmentation` folder using the link [here](https://drive.google.com/file/d/1FHV9tN6-e3EWUgM_K3YvDoRLPBj7NHXO/view?usp=sharing).
+If you don't have the PyTorch environment set up to run the script below to generate the model file, you can download it to the `ios-demo-app/ImageSegmentation` folder using the link [here](https://pytorch-mobile-demo-apps.s3.us-east-2.amazonaws.com/deeplabv3_scripted.ptl).
 
-Be aware that the downloadable model file was created with PyTorch 1.7.0, matching the iOS LibTorch library 1.7.0 specified in the `Podfile`. If you use a different version of PyTorch to create your model by following the instructions below, make sure you specify the same iOS LibTorch version in the `Podfile` to avoid possible errors caused by the version mismatch. Furthermore, if you want to use the latest prototype features in the PyTorch master branch to create the model, follow the steps at [Building PyTorch iOS Libraries from Source](https://pytorch.org/mobile/ios/#build-pytorch-ios-libraries-from-source) on how to use the model in iOS.
-
-Open a Mac Terminal, first install PyTorch 1.9.0 and torchvision 0.10.0 using command like `pip install torch torchvision`, then run the following commands:
+Open a Mac Terminal, first install PyTorch 1.9 and torchvision 0.10 using command like `pip install torch torchvision`, then run the following commands:
 
 ```
 git clone https://github.com/pytorch/ios-demo-app
@@ -31,7 +29,7 @@ python deeplabv3.py
 
 The Python script `deeplabv3.py` is used to generate the Lite Interpreter model file `deeplabv3_scripted.ptl` to be used in iOS.
 
-### 2. Use LibTorch
+### 2. Use LibTorch-Lite
 
 Run the commands below (note the `Podfile` uses `pod 'LibTorch-Lite', '~>1.9.0'`):
 

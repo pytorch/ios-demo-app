@@ -5,7 +5,7 @@
 // LICENSE file in the root directory of this source tree.
 
 #import "InferenceModule.h"
-#import <LibTorch.h>
+#import <Libtorch-Lite/Libtorch-Lite.h>
 
 const int input_width = 640;
 const int input_height = 640;
@@ -13,15 +13,14 @@ const int threshold = 0.5;
 
 
 @implementation InferenceModule {
-    @protected torch::jit::script::Module _impl;
+    @protected torch::jit::mobile::Module _impl;
 }
 
 - (nullable instancetype)initWithFileAtPath:(NSString*)filePath {
     self = [super init];
     if (self) {
         try {
-            _impl = torch::jit::load(filePath.UTF8String);
-            _impl.eval();
+            _impl = torch::jit::_load_for_mobile(filePath.UTF8String);
         } catch (const std::exception& exception) {
             NSLog(@"%s", exception.what());
             return nil;
@@ -33,14 +32,18 @@ const int threshold = 0.5;
 - (NSArray<NSNumber*>*)detectImage:(void*)imageBuffer {
     try {
         at::Tensor tensor = torch::from_blob(imageBuffer, { 3, input_width, input_height }, at::kFloat);
-        torch::autograd::AutoGradMode guard(false);
-        at::AutoNonVariableTypeMode non_var_type_mode(true);
-        
+        c10::InferenceMode guard;
+
         std::vector<torch::Tensor> v;
         v.push_back(tensor);
-        
+
+
+        CFTimeInterval startTime = CACurrentMediaTime();
         auto outputTuple = _impl.forward({ at::TensorList(v) }).toTuple();
-        
+        CFTimeInterval elapsedTime = CACurrentMediaTime() - startTime;
+        NSLog(@"inference time:%f", elapsedTime);
+
+
         auto outputDict = outputTuple->elements()[1].toList().get(0).toGenericDict();
         auto boxesTensor = outputDict.at("boxes").toTensor();
         auto scoresTensor = outputDict.at("scores").toTensor();
@@ -58,7 +61,7 @@ const int threshold = 0.5;
         if (!labelsBuffer) {
             return nil;
         }
-        
+
         NSMutableArray* results = [[NSMutableArray alloc] init];
         long num = scoresTensor.numel();
         for (int i = 0; i < num; i++) {
@@ -72,9 +75,9 @@ const int threshold = 0.5;
             [results addObject:@(scoresBuffer[i])];
             [results addObject:@(labelsBuffer[i])];
         }
-        
+
         return [results copy];
-        
+
     } catch (const std::exception& exception) {
         NSLog(@"%s", exception.what());
     }

@@ -5,7 +5,7 @@
 // LICENSE file in the root directory of this source tree.
 
 #import "InferenceModule.h"
-#import <LibTorch/LibTorch.h>
+#import <Libtorch-Lite/Libtorch-Lite.h>
 
 const int INPUT_WIDTH = 160;
 const int INPUT_HEIGHT = 160;
@@ -14,7 +14,7 @@ const int TOP_COUNT = 5;
 
 
 @implementation InferenceModule {
-    @protected torch::jit::script::Module _impl;
+    @protected torch::jit::mobile::Module _impl;
 }
 
 NSInteger arrayWithIndexSort(NSArray* first, NSArray* second, void* context)
@@ -29,8 +29,7 @@ NSInteger arrayWithIndexSort(NSArray* first, NSArray* second, void* context)
     self = [super init];
     if (self) {
         try {
-            _impl = torch::jit::load(filePath.UTF8String);
-            _impl.eval();
+            _impl = torch::jit::_load_for_mobile(filePath.UTF8String);
         } catch (const std::exception& exception) {
             NSLog(@"%s", exception.what());
             return nil;
@@ -55,8 +54,8 @@ NSInteger arrayWithIndexSort(NSArray* first, NSArray* second, void* context)
 - (NSArray<NSNumber*>*)classifyFrames:(void*)framesBuffer {
     try {
         at::Tensor tensor = torch::from_blob(framesBuffer, { 1, 3, 4, INPUT_WIDTH, INPUT_HEIGHT }, at::kFloat);
-        torch::autograd::AutoGradMode guard(false);
-        at::AutoNonVariableTypeMode non_var_type_mode(true);
+        
+        c10::InferenceMode guard;
         
         auto outputTensor = _impl.forward({ tensor }).toTensor();
 

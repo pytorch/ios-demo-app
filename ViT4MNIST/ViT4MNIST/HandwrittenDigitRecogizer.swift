@@ -13,7 +13,7 @@ class HandwrittenDigitRecognizer {
     private let MNIST_MEAN = 0.3081
 
     private var module: InferenceModule = {
-        if let filePath = Bundle.main.path(forResource: "vit4mnist", ofType: "pth"),
+        if let filePath = Bundle.main.path(forResource: "vit4mnist", ofType: "ptl"),
             let module = InferenceModule(fileAtPath: filePath) {
             return module
         } else {

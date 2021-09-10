@@ -8,13 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		260F86432627C445008F2567 /* classes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 260F86422627C445008F2567 /* classes.txt */; };
+		26A8C10A26DFEC4700F4A58D /* d2go_optimized.ptl in Resources */ = {isa = PBXBuildFile; fileRef = 26A8C10926DFEC4700F4A58D /* d2go_optimized.ptl */; };
 		26C3345C26210C3E00C37AD3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C3345B26210C3E00C37AD3 /* AppDelegate.swift */; };
 		26C3345E26210C3E00C37AD3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C3345D26210C3E00C37AD3 /* SceneDelegate.swift */; };
 		26C3346026210C3E00C37AD3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C3345F26210C3E00C37AD3 /* ViewController.swift */; };
 		26C3346326210C3E00C37AD3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26C3346126210C3E00C37AD3 /* Main.storyboard */; };
 		26C3346526210C3F00C37AD3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26C3346426210C3F00C37AD3 /* Assets.xcassets */; };
 		26C3346826210C3F00C37AD3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26C3346626210C3F00C37AD3 /* LaunchScreen.storyboard */; };
-		26C3347626211FC900C37AD3 /* d2go_optimized.pt in Resources */ = {isa = PBXBuildFile; fileRef = 26C3347526211FC900C37AD3 /* d2go_optimized.pt */; };
 		26C3348C262120CB00C37AD3 /* PrePostProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C3347D262120CB00C37AD3 /* PrePostProcessor.swift */; };
 		26C3348D262120CB00C37AD3 /* UIImage+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C3347E262120CB00C37AD3 /* UIImage+Helper.swift */; };
 		26C3348F262120CB00C37AD3 /* ObjectDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C33483262120CB00C37AD3 /* ObjectDetector.swift */; };
@@ -30,6 +30,7 @@
 
 /* Begin PBXFileReference section */
 		260F86422627C445008F2567 /* classes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = classes.txt; sourceTree = "<group>"; };
+		26A8C10926DFEC4700F4A58D /* d2go_optimized.ptl */ = {isa = PBXFileReference; lastKnownFileType = file; path = d2go_optimized.ptl; sourceTree = "<group>"; };
 		26C3345826210C3E00C37AD3 /* D2Go.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = D2Go.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		26C3345B26210C3E00C37AD3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		26C3345D26210C3E00C37AD3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -38,7 +39,6 @@
 		26C3346426210C3F00C37AD3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		26C3346726210C3F00C37AD3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		26C3346926210C3F00C37AD3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		26C3347526211FC900C37AD3 /* d2go_optimized.pt */ = {isa = PBXFileReference; lastKnownFileType = file; path = d2go_optimized.pt; sourceTree = "<group>"; };
 		26C3347D262120CB00C37AD3 /* PrePostProcessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrePostProcessor.swift; sourceTree = "<group>"; };
 		26C3347E262120CB00C37AD3 /* UIImage+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Helper.swift"; sourceTree = "<group>"; };
 		26C33483262120CB00C37AD3 /* ObjectDetector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectDetector.swift; sourceTree = "<group>"; };
@@ -105,7 +105,7 @@
 				26C3348A262120CB00C37AD3 /* test1.png */,
 				26C33484262120CB00C37AD3 /* test2.jpg */,
 				26C3348B262120CB00C37AD3 /* test3.png */,
-				26C3347526211FC900C37AD3 /* d2go_optimized.pt */,
+				26A8C10926DFEC4700F4A58D /* d2go_optimized.ptl */,
 				260F86422627C445008F2567 /* classes.txt */,
 			);
 			path = D2Go;
@@ -204,10 +204,10 @@
 				26C33490262120CB00C37AD3 /* test2.jpg in Resources */,
 				26C3346526210C3F00C37AD3 /* Assets.xcassets in Resources */,
 				26C3346326210C3E00C37AD3 /* Main.storyboard in Resources */,
-				26C3347626211FC900C37AD3 /* d2go_optimized.pt in Resources */,
 				26C33495262120CB00C37AD3 /* test1.png in Resources */,
 				26C33496262120CB00C37AD3 /* test3.png in Resources */,
 				260F86432627C445008F2567 /* classes.txt in Resources */,
+				26A8C10A26DFEC4700F4A58D /* d2go_optimized.ptl in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -401,9 +401,9 @@
 					"-l\"torch_cpu\"",
 					"-l\"torchvision_ops\"",
 					"-force_load",
-					"$(PODS_ROOT)/LibTorch/install/lib/libtorch.a",
+					"$(PODS_ROOT)/LibTorch-Lite/install/lib/libtorch.a",
 					"-force_load",
-					"$(PODS_ROOT)/LibTorch/install/lib/libtorch_cpu.a",
+					"$(PODS_ROOT)/LibTorch-Lite/install/lib/libtorch_cpu.a",
 					"-force_load",
 					"$(PODS_ROOT)/LibTorchvision/install/lib/libtorchvision_ops.a",
 				);
@@ -445,9 +445,9 @@
 					"-l\"torch_cpu\"",
 					"-l\"torchvision_ops\"",
 					"-force_load",
-					"$(PODS_ROOT)/LibTorch/install/lib/libtorch.a",
+					"$(PODS_ROOT)/LibTorch-Lite/install/lib/libtorch.a",
 					"-force_load",
-					"$(PODS_ROOT)/LibTorch/install/lib/libtorch_cpu.a",
+					"$(PODS_ROOT)/LibTorch-Lite/install/lib/libtorch_cpu.a",
 					"-force_load",
 					"$(PODS_ROOT)/LibTorchvision/install/lib/libtorchvision_ops.a",
 				);

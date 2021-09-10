@@ -6,5 +6,5 @@ target 'ViT4MNIST' do
   use_frameworks!
 
   # Pods for ViT4MNIST
-  pod 'LibTorch', '~>1.7.0'
+  pod 'LibTorch-Lite', '~>1.9.0'
 end

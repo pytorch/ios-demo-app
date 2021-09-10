@@ -8,7 +8,7 @@ import UIKit
 
 class ObjectDetector {
     lazy var module: InferenceModule = {
-        if let filePath = Bundle.main.path(forResource: "yolov5s.torchscript", ofType: "pt"),
+        if let filePath = Bundle.main.path(forResource: "yolov5s.torchscript", ofType: "ptl"),
             let module = InferenceModule(fileAtPath: filePath) {
             return module
         } else {

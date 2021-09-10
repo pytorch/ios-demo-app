@@ -8,7 +8,7 @@ import UIKit
 
 class ObjectDetector {
     lazy var module: InferenceModule = {
-        if let filePath = Bundle.main.path(forResource: "d2go_optimized", ofType: "pt"),
+        if let filePath = Bundle.main.path(forResource: "d2go_optimized", ofType: "ptl"),
             let module = InferenceModule(fileAtPath: filePath) {
             return module
         } else {

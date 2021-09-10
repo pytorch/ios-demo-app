@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		26E43FA525A7871C00D36C5B /* qa360_quantized.pt in Resources */ = {isa = PBXBuildFile; fileRef = 26E43FA325A7871C00D36C5B /* qa360_quantized.pt */; };
+		26A8C10C26DFF28500F4A58D /* qa360_quantized.ptl in Resources */ = {isa = PBXBuildFile; fileRef = 26A8C10B26DFF28500F4A58D /* qa360_quantized.ptl */; };
 		26E43FA625A7871C00D36C5B /* vocab.txt in Resources */ = {isa = PBXBuildFile; fileRef = 26E43FA425A7871C00D36C5B /* vocab.txt */; };
 		26FAB5B22587FBFD00EA6ED6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FAB5B12587FBFD00EA6ED6 /* AppDelegate.swift */; };
 		26FAB5B42587FBFD00EA6ED6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FAB5B32587FBFD00EA6ED6 /* SceneDelegate.swift */; };
@@ -20,7 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		26E43FA325A7871C00D36C5B /* qa360_quantized.pt */ = {isa = PBXFileReference; lastKnownFileType = file; path = qa360_quantized.pt; sourceTree = "<group>"; };
+		26A8C10B26DFF28500F4A58D /* qa360_quantized.ptl */ = {isa = PBXFileReference; lastKnownFileType = file; path = qa360_quantized.ptl; sourceTree = "<group>"; };
 		26E43FA425A7871C00D36C5B /* vocab.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vocab.txt; sourceTree = "<group>"; };
 		26FAB5AE2587FBFD00EA6ED6 /* QuestionAnswering.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuestionAnswering.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		26FAB5B12587FBFD00EA6ED6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -78,7 +78,7 @@
 				26FAB5BC2587FBFF00EA6ED6 /* LaunchScreen.storyboard */,
 				26FAB5BF2587FBFF00EA6ED6 /* Info.plist */,
 				26FAB5C62587FCAD00EA6ED6 /* QuestionAnswering-Bridging-Header.h */,
-				26E43FA325A7871C00D36C5B /* qa360_quantized.pt */,
+				26A8C10B26DFF28500F4A58D /* qa360_quantized.ptl */,
 				26E43FA425A7871C00D36C5B /* vocab.txt */,
 			);
 			path = QuestionAnswering;
@@ -152,8 +152,8 @@
 				26E43FA625A7871C00D36C5B /* vocab.txt in Resources */,
 				26FAB5BE2587FBFF00EA6ED6 /* LaunchScreen.storyboard in Resources */,
 				26FAB5BB2587FBFF00EA6ED6 /* Assets.xcassets in Resources */,
+				26A8C10C26DFF28500F4A58D /* qa360_quantized.ptl in Resources */,
 				26FAB5B92587FBFD00EA6ED6 /* Main.storyboard in Resources */,
-				26E43FA525A7871C00D36C5B /* qa360_quantized.pt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

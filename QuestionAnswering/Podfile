@@ -6,5 +6,5 @@ target 'QuestionAnswering' do
   use_frameworks!
 
   # Pods for QuestionAnswering
-  pod 'LibTorch', '~>1.9.0'
+  pod 'LibTorch-Lite', '~>1.9.0'
 end

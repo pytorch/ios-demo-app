@@ -6,13 +6,13 @@
 
 
 #import "InferenceModule.h"
-#import <LibTorch/LibTorch.h>
+#import <Libtorch-Lite/Libtorch-Lite.h>
 
 const int MODEL_INPUT_LENGTH = 360;
 
 @implementation InferenceModule {
     
-    @protected torch::jit::script::Module _impl;
+    @protected torch::jit::mobile::Module _impl;
 }
 
 - (nullable instancetype)initWithFileAtPath:(NSString*)filePath {
@@ -23,8 +23,8 @@ const int MODEL_INPUT_LENGTH = 360;
             if (std::find(qengines.begin(), qengines.end(), at::QEngine::QNNPACK) != qengines.end()) {
                 at::globalContext().setQEngine(at::QEngine::QNNPACK);
             }
-            _impl = torch::jit::load(filePath.UTF8String);
-            _impl.eval();
+            _impl = torch::jit::_load_for_mobile(filePath.UTF8String);
+            //_impl.eval();
         }
         catch (const std::exception& exception) {
             NSLog(@"%s", exception.what());
@@ -57,10 +57,13 @@ const int MODEL_INPUT_LENGTH = 360;
             inputs[i] = [tokenIds[i] longValue];
         at::Tensor tensorInputs = torch::from_blob((void*)inputs, {1, MODEL_INPUT_LENGTH}, at::kLong);
         
-        torch::autograd::AutoGradMode guard(false);
-        at::AutoNonVariableTypeMode non_var_type_mode(true);
-    
+        c10::InferenceMode guard;
+        
+        CFTimeInterval startTime = CACurrentMediaTime();
         auto outputDict = _impl.forward({ tensorInputs }).toGenericDict();
+        CFTimeInterval elapsedTime = CACurrentMediaTime() - startTime;
+        NSLog(@"inference time:%f", elapsedTime);
+
 
         auto startTensor = outputDict.at("start_logits").toTensor();
         float* startBuffer = startTensor.data_ptr<float>();

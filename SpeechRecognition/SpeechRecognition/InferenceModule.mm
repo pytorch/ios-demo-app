@@ -6,7 +6,7 @@
 
 
 #import "InferenceModule.h"
-#import <LibTorch/LibTorch.h>
+#import <Libtorch-Lite/Libtorch-Lite.h>
 #import <AVFoundation/AVAudioRecorder.h>
 #import <AVFoundation/AVAudioSettings.h>
 #import <AVFoundation/AVAudioSession.h>
@@ -15,7 +15,7 @@
 
 @implementation InferenceModule {
     
-    @protected torch::jit::script::Module _impl;
+    @protected torch::jit::mobile::Module _impl;
 }
 
 - (nullable instancetype)initWithFileAtPath:(NSString*)filePath {
@@ -26,8 +26,7 @@
             if (std::find(qengines.begin(), qengines.end(), at::QEngine::QNNPACK) != qengines.end()) {
                 at::globalContext().setQEngine(at::QEngine::QNNPACK);
             }
-            _impl = torch::jit::load(filePath.UTF8String);
-            _impl.eval();
+            _impl = torch::jit::_load_for_mobile(filePath.UTF8String);
         }
         catch (const std::exception& exception) {
             NSLog(@"%s", exception.what());
@@ -51,11 +50,13 @@
             [inputs addObject:@(floatInput[i])];
         }
         
-        torch::autograd::AutoGradMode guard(false);
-        at::AutoNonVariableTypeMode non_var_type_mode(true);
-    
+        c10::InferenceMode guard;
+        
+        CFTimeInterval startTime = CACurrentMediaTime();
         auto result = _impl.forward({ tensorInputs }).toStringRef();
-
+        CFTimeInterval elapsedTime = CACurrentMediaTime() - startTime;
+        NSLog(@"inference time:%f", elapsedTime);
+            
         return [NSString stringWithCString:result.c_str() encoding:[NSString defaultCStringEncoding]];
     }
     catch (const std::exception& exception) {
