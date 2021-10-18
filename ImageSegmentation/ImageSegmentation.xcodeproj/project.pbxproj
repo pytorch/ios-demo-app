@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2655CA6425454E6E006AD893 /* UIImageHelper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2655CA6225454E6E006AD893 /* UIImageHelper.mm */; };
+		2658DBFB26EC059F00AA0F61 /* deeplabv3_scripted.pt in Resources */ = {isa = PBXBuildFile; fileRef = 2658DBFA26EC059F00AA0F61 /* deeplabv3_scripted.pt */; };
 		265BAFE8253A6A6800467AC4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265BAFE7253A6A6800467AC4 /* AppDelegate.swift */; };
 		265BAFEA253A6A6800467AC4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265BAFE9253A6A6800467AC4 /* SceneDelegate.swift */; };
 		265BAFEC253A6A6800467AC4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265BAFEB253A6A6800467AC4 /* ViewController.swift */; };
@@ -18,12 +19,12 @@
 		265BB00E253A6E0E00467AC4 /* UIImage+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265BB00D253A6E0E00467AC4 /* UIImage+Helper.swift */; };
 		265BB017253A7F0500467AC4 /* TorchModule.mm in Sources */ = {isa = PBXBuildFile; fileRef = 265BB015253A7F0500467AC4 /* TorchModule.mm */; };
 		265F9A6F2551CB3700B8F2EC /* dog.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 265F9A6E2551CB3700B8F2EC /* dog.jpg */; };
-		266A451D267974C300548578 /* deeplabv3_scripted.ptl in Resources */ = {isa = PBXBuildFile; fileRef = 266A451C267974C300548578 /* deeplabv3_scripted.ptl */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2655CA6225454E6E006AD893 /* UIImageHelper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = UIImageHelper.mm; sourceTree = "<group>"; };
 		2655CA6325454E6E006AD893 /* UIImageHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIImageHelper.h; sourceTree = "<group>"; };
+		2658DBFA26EC059F00AA0F61 /* deeplabv3_scripted.pt */ = {isa = PBXFileReference; lastKnownFileType = file; path = deeplabv3_scripted.pt; sourceTree = "<group>"; };
 		265BAFE4253A6A6800467AC4 /* ImageSegmentation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImageSegmentation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		265BAFE7253A6A6800467AC4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		265BAFE9253A6A6800467AC4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -38,7 +39,6 @@
 		265BB015253A7F0500467AC4 /* TorchModule.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TorchModule.mm; sourceTree = "<group>"; };
 		265BB016253A7F0500467AC4 /* TorchModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TorchModule.h; sourceTree = "<group>"; };
 		265F9A6E2551CB3700B8F2EC /* dog.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = dog.jpg; sourceTree = "<group>"; };
-		266A451C267974C300548578 /* deeplabv3_scripted.ptl */ = {isa = PBXFileReference; lastKnownFileType = file; path = deeplabv3_scripted.ptl; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,7 +92,7 @@
 				265BB015253A7F0500467AC4 /* TorchModule.mm */,
 				265BB00D253A6E0E00467AC4 /* UIImage+Helper.swift */,
 				265BAFFF253A6B1200467AC4 /* ImageSegmentation-Bridging-Header.h */,
-				266A451C267974C300548578 /* deeplabv3_scripted.ptl */,
+				2658DBFA26EC059F00AA0F61 /* deeplabv3_scripted.pt */,
 				265BB007253A6B9600467AC4 /* deeplab.jpg */,
 				265F9A6E2551CB3700B8F2EC /* dog.jpg */,
 			);
@@ -161,8 +161,8 @@
 				265BAFF4253A6A6900467AC4 /* LaunchScreen.storyboard in Resources */,
 				265BB008253A6B9600467AC4 /* deeplab.jpg in Resources */,
 				265BAFF1253A6A6900467AC4 /* Assets.xcassets in Resources */,
+				2658DBFB26EC059F00AA0F61 /* deeplabv3_scripted.pt in Resources */,
 				265BAFEF253A6A6800467AC4 /* Main.storyboard in Resources */,
-				266A451D267974C300548578 /* deeplabv3_scripted.ptl in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -32,7 +32,7 @@ const int output_size = 25200*85;
 
 - (NSArray<NSNumber*>*)detectImage:(void*)imageBuffer {
     try {
-        at::Tensor tensor = torch::from_blob(imageBuffer, { 1, 3, input_width, input_height }, at::kFloat);
+        at::Tensor tensor = torch::from_blob(imageBuffer, { 1, 3, input_height, input_width }, at::kFloat);
 
         c10::InferenceMode guard;
         CFTimeInterval startTime = CACurrentMediaTime();

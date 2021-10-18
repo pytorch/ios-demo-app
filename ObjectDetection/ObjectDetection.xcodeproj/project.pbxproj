@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2669BE16270FA65200806A63 /* aicook2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2669BE11270FA61000806A63 /* aicook2.jpg */; };
+		2669BE18270FA65200806A63 /* aicook.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2669BE13270FA62F00806A63 /* aicook.txt */; };
+		2669BE19270FA65200806A63 /* aicook1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2669BE14270FA63D00806A63 /* aicook1.jpg */; };
+		2669BE1A270FA65200806A63 /* aicook3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2669BE15270FA65200806A63 /* aicook3.jpg */; };
 		266E87232563120D00CF5151 /* classes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 266E87222563120D00CF5151 /* classes.txt */; };
 		266E8746256350C000CF5151 /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266E8742256350C000CF5151 /* CameraController.swift */; };
 		266E8747256350C000CF5151 /* CVPixelBuffer+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266E8743256350C000CF5151 /* CVPixelBuffer+Helper.swift */; };
@@ -29,6 +33,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2669BE11270FA61000806A63 /* aicook2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = aicook2.jpg; sourceTree = "<group>"; };
+		2669BE13270FA62F00806A63 /* aicook.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = aicook.txt; sourceTree = "<group>"; };
+		2669BE14270FA63D00806A63 /* aicook1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = aicook1.jpg; sourceTree = "<group>"; };
+		2669BE15270FA65200806A63 /* aicook3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = aicook3.jpg; sourceTree = "<group>"; };
 		266E87222563120D00CF5151 /* classes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = classes.txt; sourceTree = "<group>"; };
 		266E8742256350C000CF5151 /* CameraController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraController.swift; sourceTree = "<group>"; };
 		266E8743256350C000CF5151 /* CVPixelBuffer+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CVPixelBuffer+Helper.swift"; sourceTree = "<group>"; };
@@ -109,6 +117,10 @@
 				269E7487255CC69400B1D6CA /* test1.png */,
 				269E748B255CC6D100B1D6CA /* test2.jpg */,
 				269E748A255CC6D100B1D6CA /* test3.png */,
+				2669BE13270FA62F00806A63 /* aicook.txt */,
+				2669BE14270FA63D00806A63 /* aicook1.jpg */,
+				2669BE11270FA61000806A63 /* aicook2.jpg */,
+				2669BE15270FA65200806A63 /* aicook3.jpg */,
 				266E87222563120D00CF5151 /* classes.txt */,
 				26A8C11326E17F8100F4A58D /* yolov5s.torchscript.ptl */,
 			);
@@ -201,12 +213,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				269E747E255CC56400B1D6CA /* LaunchScreen.storyboard in Resources */,
+				2669BE18270FA65200806A63 /* aicook.txt in Resources */,
 				26A8C11426E17F8100F4A58D /* yolov5s.torchscript.ptl in Resources */,
 				266E87232563120D00CF5151 /* classes.txt in Resources */,
 				269E747B255CC56400B1D6CA /* Assets.xcassets in Resources */,
+				2669BE19270FA65200806A63 /* aicook1.jpg in Resources */,
 				269E748D255CC6D100B1D6CA /* test2.jpg in Resources */,
+				2669BE16270FA65200806A63 /* aicook2.jpg in Resources */,
 				269E7488255CC69400B1D6CA /* test1.png in Resources */,
 				269E7479255CC56200B1D6CA /* Main.storyboard in Resources */,
+				2669BE1A270FA65200806A63 /* aicook3.jpg in Resources */,
 				269E748C255CC6D100B1D6CA /* test3.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
