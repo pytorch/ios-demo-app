@@ -6,9 +6,9 @@ This repo offers a Python script that converts the [PyTorch DeepLabV3 model](htt
 
 ## Prerequisites
 
-* PyTorch 1.9 and torchvision 0.10 (Optional)
+* PyTorch 1.10 and torchvision 0.11 (Optional)
 * Python 3.8 or above (Optional)
-* iOS Cocoapods LibTorch 1.9.0 or LibTorch-Lite 1.9.0
+* iOS Cocoapods LibTorch 1.10.0 or LibTorch-Lite 1.10.0
 * Xcode 12.4 or later
 
 ## Quick Start
@@ -19,7 +19,7 @@ To Test Run the Image Segmentation iOS App, follow the steps below:
 
 If you don't have the PyTorch environment set up to run the script below to generate the full JIT model file, you can download it to the `ios-demo-app/ImageSegmentation` folder using the link [here](https://pytorch-mobile-demo-apps.s3.us-east-2.amazonaws.com/deeplabv3_scripted.pt).
 
-Open a Terminal, first install PyTorch 1.9 and torchvision 0.10 using command like `pip install torch torchvision`, then run the following commands:
+Open a Terminal, first install PyTorch 1.10 and torchvision 0.11 using command like `pip install torch torchvision`, then run the following commands:
 
 ```
 git clone https://github.com/pytorch/ios-demo-app
@@ -31,7 +31,7 @@ The Python script `deeplabv3.py` is used to generate both the full JIT and the L
 
 ### 2. Use LibTorch
 
-Run the commands below (note the `Podfile` uses `pod 'LibTorch', '~>1.9.0'`):
+Run the commands below (note the `Podfile` uses `pod 'LibTorch', '~>1.10.0'`):
 
 ```
 pod install
@@ -64,15 +64,19 @@ optimized_model._save_for_lite_interpreter("ImageSegmentation/deeplabv3_scripted
 
 If you already went through the previous section and have the demo using the full JIT model up and running, close Xcode, go to the `ios-demo-app/ImageSegmentation` directory and run `pod deintegrate` first.
 
-In `Podfile`, change `pod 'LibTorch', '~>1.9.0'` to `pod 'LibTorch-Lite', '~>1.9.0'`
+In `Podfile`, change `pod 'LibTorch', '~>1.10.0'` to `pod 'LibTorch-Lite', '~>1.10.0'`
 
 Then run `pod install` and `open ImageSegmentation.xcworkspace`. Don't forget to drag and drop the `deeplabv3_scripted.ptl` file from step 1 to the project.
 
 ### 3. Change the iOS code
 
-In `InferenceModule.mm`, first change `#import <LibTorch/LibTorch.h>` to `#import <Libtorch-Lite/Libtorch-Lite.h>`, then change `@protected torch::jit::script::Module _impl;` to `@protected torch::jit::mobile::Module _impl;` and `_impl = torch::jit::load(filePath.UTF8String);` to `_impl = torch::jit::_load_for_mobile(filePath.UTF8String);`.
+In `TorchModule.mm`, make the following changes:
+* Change `#import <LibTorch/LibTorch.h>` to `#import <Libtorch-Lite/Libtorch-Lite.h>`
+* Change `@protected torch::jit::script::Module _impl;` to `@protected torch::jit::mobile::Module _impl;`
+* Change `_impl = torch::jit::load(filePath.UTF8String);` to `_impl = torch::jit::_load_for_mobile(filePath.UTF8String);`
+* Delete `_impl.eval();`
 
-Finally, modify `pt` in ViewController.swift's `Bundle.main.path(forResource: "deeplabv3_scripted", ofType: "pt")` to `ptl`.
+Finally, in ViewController.swift, modify `pt` in `Bundle.main.path(forResource: "deeplabv3_scripted", ofType: "pt")` to `ptl`.
 
 Now you can build and run the app using the Lite/Mobile interpreter model.
 
