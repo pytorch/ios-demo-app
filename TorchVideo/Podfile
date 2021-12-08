@@ -6,5 +6,5 @@ target 'TorchVideo' do
   use_frameworks!
 
   # Pods for TorchVideo
-  pod 'LibTorch-Lite', '~>1.9.0'
+  pod 'LibTorch-Lite', '~>1.10.0'
 end

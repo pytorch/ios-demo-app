@@ -12,9 +12,9 @@ This iOS demo app shows:
 
 ## Prerequisites
 
-* PyTorch 1.9 or later (Optional)
+* PyTorch 1.10 or later (Optional)
 * Python 3.8 (Optional)
-* iOS Cocoapods library LibTorch-Lite 1.9.0
+* iOS Cocoapods library LibTorch-Lite 1.10.0
 * Xcode 12 or later
 
 ## Quick Start

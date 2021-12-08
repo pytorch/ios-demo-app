@@ -6,9 +6,9 @@ The newly released open-sourced [PyTorchVideo](https://github.com/facebookresear
 
 ## Prerequisites
 
-* PyTorch 1.9, torchvision 0.10, PyTorchVideo 0.1.1 (Optional)
+* PyTorch 1.10, torchvision 0.11, PyTorchVideo 0.1.1 (Optional)
 * Python 3.8 or above (Optional)
-* iOS Cocoapods LibTorch-Lite 1.9.0
+* iOS Cocoapods LibTorch-Lite 1.10.0
 * Xcode 12 or later
 
 
@@ -20,21 +20,21 @@ If you don't have the PyTorch environment set up to run the script, you can down
 
 To create the model yourself, simply run the following commands:
 ```
-conda create -n pt19 python=3.8.5
-conda activate pt19
+conda create -n pt1.10 python=3.8.5
+conda activate pt1.10
 pip install torch torchvision
 pip install pytorchvideo
 
 # pip list|grep torch
-# torch             1.9.0
-# torchvision       0.10.0
-# pytorchvideo      0.1.1
+# torch             1.10.0
+# torchvision       0.11.1
+# pytorchvideo      0.1.3
 
 cd ios-demo-app/TorchVideo
 python build_model.py
 
 ```
-The model file `video_classification.pt` will be created and saved in the project folder.
+The model file `video_classification.ptl` will be created and saved in the project folder.
 
 ### 2. Use LibTorch-Lite
 
