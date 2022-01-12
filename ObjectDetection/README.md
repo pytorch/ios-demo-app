@@ -4,13 +4,13 @@
 
 [YOLO](https://pjreddie.com/darknet/yolo/) (You Only Look Once) is one of the fastest and most popular object detection models. [YOLOv5](https://github.com/ultralytics/yolov5) is an open-source implementation of the latest version of YOLO (for a quick test of loading YOLOv5 from PyTorch hub for inference, see [here](https://pytorch.org/hub/ultralytics_yolov5/#load-from-pytorch-hub)). This Object Detection with YOLOv5 iOS sample app uses the PyTorch scripted YOLOv5 model to detect objects of the [80 classes](https://github.com/ultralytics/yolov5/blob/master/data/coco.yaml) trained with the model.
 
-**Update 10-07-2021**: A new section of using a custom dataset to fine-tune the YOLOv5 model (aka transfer learning) with steps to change the iOS demo app to use the custom model was added.
+A new section of using a custom dataset to fine-tune the YOLOv5 model (aka transfer learning) with steps to change the iOS demo app to use the custom model was added.
 
 ## Prerequisites
 
-* PyTorch 1.9 and torchvision 0.10 (Optional)
+* PyTorch 1.10 and torchvision 0.11 (Optional)
 * Python 3.8 (Optional)
-* iOS Cocoapods LibTorch-Lite 1.9.0 and LibTorchvision 0.10.0
+* iOS Cocoapods LibTorch-Lite 1.10.0
 * Xcode 12 or later
 
 ## Quick Start
@@ -28,7 +28,7 @@ Open a Mac/Linux/Windows Terminal, run the following commands:
 ```
 git clone https://github.com/ultralytics/yolov5
 cd yolov5
-pip install -r requirements.txt wanb
+pip install -r requirements.txt wandb
 ```
 
 Note the steps below have been tested with the commit `cd35a009ba964331abccd30f6fa0614224105d39` and if there's any issue with running the script or using the model, try `git reset --hard cd35a009ba964331abccd30f6fa0614224105d39`.

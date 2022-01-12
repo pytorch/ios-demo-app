@@ -8,9 +8,9 @@ In this demo app, we'll show how to quantize, trace, and optimize the wav2vec2 m
 
 ## Prerequisites
 
-* PyTorch 1.9 and torchaudio 0.9 (Optional)
+* PyTorch 1.10 and torchaudio 0.10 (Optional)
 * Python 3.8 or above (Optional)
-* iOS Cocoapods LibTorch-Lite 1.9.0
+* iOS Cocoapods LibTorch-Lite 1.10.0
 * Xcode 12.4 or later
 
 ## Quick Start
@@ -24,11 +24,11 @@ git clone https://github.com/pytorch/ios-demo-app
 cd ios-demo-app/SpeechRecognition
 ```
 
-If you don't have PyTorch 1.9 and torchaudio 0.9 installed or want to have a quick try of the demo app, you can download the quantized scripted wav2vec2 model file [here](https://pytorch-mobile-demo-apps.s3.us-east-2.amazonaws.com/wav2vec2.ptl), then drag and drop to the project, and continue to Step 3.
+If you don't have PyTorch 1.10 and torchaudio 0.10 installed or want to have a quick try of the demo app, you can download the quantized scripted wav2vec2 model file [here](https://pytorch-mobile-demo-apps.s3.us-east-2.amazonaws.com/wav2vec2.ptl), then drag and drop to the project, and continue to Step 3.
 
 ### 2. Prepare the Model
 
-To install PyTorch 1.9, torchaudio 0.9 and the Hugging Face transformers, you can do something like this:
+To install PyTorch 1.10, torchaudio 0.10 and the Hugging Face transformers, you can do something like this:
 
 ```
 conda create -n wav2vec2 python=3.8.5
@@ -37,7 +37,7 @@ pip install torch torchaudio
 pip install transformers
 ```
 
-Now with PyTorch 1.9 and torchaudio 0.9 installed, run the following commands on a Terminal:
+Now with PyTorch 1.10 and torchaudio 0.10 installed, run the following commands on a Terminal:
 
 ```
 python create_wav2vec2.py

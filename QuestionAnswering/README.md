@@ -8,9 +8,9 @@ In this demo app, we'll show how to quantize and convert the Huggingface's Disti
 
 ## Prerequisites
 
-* PyTorch 1.9 or later (Optional)
+* PyTorch 1.10 or later (Optional)
 * Python 3.8 (Optional)
-* iOS Cocoapods LibTorch-Lite 1.9.0
+* iOS Cocoapods LibTorch-Lite 1.10.0
 * Xcode 12 or later
 
 ## Quick Start
@@ -21,9 +21,7 @@ To Test Run the iOS QA demo app, run the following commands on a Terminal:
 
 If you don't have PyTorch installed or want to have a quick try of the demo app, you can download the scripted QA model compressed in a zip file [here](https://pytorch-mobile-demo-apps.s3.us-east-2.amazonaws.com/qa360_quantized.ptl), then unzip, drag and drop it to the project, and continue to Step 2.
 
-Be aware that the downloadable model file was created with PyTorch 1.9.0, matching the iOS LibTorch library 1.9.0 specified in the `Podfile`. If you use a different version of PyTorch to create your model by following the instructions below, make sure you specify the same iOS LibTorch version in the `Podfile` to avoid possible errors caused by the version mismatch. Furthermore, if you want to use the latest prototype features in the PyTorch master branch to create the model, follow the steps at [Building PyTorch iOS Libraries from Source](https://pytorch.org/mobile/ios/#build-pytorch-ios-libraries-from-source) on how to use the model in iOS.
-
-With PyTorch 1.9.0 installed, first install the Huggingface `transformers` 4.6.1 (newer version may have some issue) by running `pip install transformers==4.6.1`, then run `python convert_distilbert_qa.py`.
+With PyTorch 1.10 installed, first install the Huggingface `transformers` 4.6.1 (newer version may have some issue) by running `pip install transformers==4.6.1`, then run `python convert_distilbert_qa.py`.
 
 Note that a pre-defined question and text, resulting in the size of the input tokens (of question and text) being 360, is used in the `convert_distilbert_qa.py`, and 360 is the maximum token size for the user text and question in the app. If the token size of the inputs of the text and question is less than 360, padding will be needed to make the model work correctly.
 

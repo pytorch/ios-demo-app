@@ -1,4 +1,4 @@
 platform :ios, '12.0'
 target 'Seq2SeqNMT' do
-  pod 'LibTorch-Lite', '~>1.9.0'
+  pod 'LibTorch-Lite', '~>1.10.0'
 end

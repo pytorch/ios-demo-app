@@ -24,7 +24,6 @@ const int MODEL_INPUT_LENGTH = 360;
                 at::globalContext().setQEngine(at::QEngine::QNNPACK);
             }
             _impl = torch::jit::_load_for_mobile(filePath.UTF8String);
-            //_impl.eval();
         }
         catch (const std::exception& exception) {
             NSLog(@"%s", exception.what());

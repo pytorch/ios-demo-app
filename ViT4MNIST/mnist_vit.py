@@ -65,7 +65,7 @@ def evaluate(model, data_loader, loss_history):
           '{:5}'.format(total_samples) + ' (' +
           '{:4.2f}'.format(100.0 * correct_samples / total_samples) + '%)\n')
 
-N_EPOCHS = 25
+N_EPOCHS = 10
 
 start_time = time.time()
 model = ViT(image_size=28, patch_size=7, num_classes=10, channels=1,

@@ -12,16 +12,16 @@ In this demo app, we'll integrate the two oldest and most popular image datasets
 
 ## Prerequisites
 
-* PyTorch 1.9  (Optional)
+* PyTorch 1.10  (Optional)
 * Python 3.8 (Optional)
-* iOS Cocoapods LibTorch-Lite 1.9.0
+* iOS Cocoapods LibTorch-Lite 1.10.0
 * Xcode 12 or later
 
 ## Quick Start on Using Facebook DeiT
 
 ### 1. Prepare the Model (Optional)
 
-To use a pre-trained Facebook DeiT model and convert it to TorchScript, first install [PyTorch](https://pytorch.org/get-started/locally/) 1.7 or later, then install [timm](https://github.com/rwightman/pytorch-image-models) using `pip install timm==0.3.2`, and finally run the following script:
+To use a pre-trained Facebook DeiT model and convert it to TorchScript, first install [PyTorch](https://pytorch.org/get-started/locally/) 1.10, then install [timm](https://github.com/rwightman/pytorch-image-models) using `pip install timm==0.3.2`, and finally run the following script:
 
 ```
 python convert_deit.py
@@ -39,7 +39,7 @@ optimized_torchscript_model.save("fbdeit.pt")
 
 ### 2. Run the Model on iOS
 
-The official [PyTorch iOS HelloWorld](https://github.com/pytorch/ios-demo-app#the-helloworld-example) example app uses MobileNet v2 for image classification. To run the converted `fbdeit.pt` on iOS, first follow the steps in the HelloWorld example to make sure it works (the LibTorch version used in the [Podfile](https://github.com/pytorch/ios-demo-app/blob/master/HelloWorld/HelloWorld/Podfile) needs to be 1.7.0, to be consistent with the PyTorch version used to generate the model file).
+The official [PyTorch iOS HelloWorld](https://github.com/pytorch/ios-demo-app#the-helloworld-example) example app uses MobileNet v2 for image classification. To run the converted `fbdeit.pt` on iOS, first follow the steps in the HelloWorld example to make sure it works (the LibTorch version used in the [Podfile](https://github.com/pytorch/ios-demo-app/blob/master/HelloWorld/HelloWorld/Podfile) needs to be 1.10, to be consistent with the PyTorch version used to generate the model file).
 
 Then, drag and drop the `fdbeit.pt` model generated or downloaded in Step 1 to the HelloWorld Xcode project.
 
@@ -61,7 +61,7 @@ To Test Run the iOS ViT4MNIST demo app, follow the steps below:
 
 ### 1. Prepare the Model (Optional)
 
-On a Terminal, with PyTorch 1.9 and [einops](https://pypi.org/project/einops/) installed, run:
+On a Terminal, with PyTorch 1.10 and [einops](https://pypi.org/project/einops/) installed, run:
 ```
 python mnist_vit.py
 ```
