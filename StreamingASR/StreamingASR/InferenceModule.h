@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (nullable instancetype)initWithFileAtPath:(NSString*)filePath
     NS_SWIFT_NAME(init(fileAtPath:))NS_DESIGNATED_INITIALIZER;
 - (instancetype)init NS_UNAVAILABLE;
-- (nullable NSString*)recognize:(void*)pcmBuffer chunkToRead:(int)chunkToRead chunkSize:(int)chunkSize NS_SWIFT_NAME(recognize(pcmBuffer:chunkToRead:chunkSize));
+- (nullable NSString*)recognize:(void*)modelInput melSpecX:(int)melSpecX melSpecY:(int)melSpecY NS_SWIFT_NAME(recognize(modelInput:melSpecX:melSpecY));
 @end
 
 NS_ASSUME_NONNULL_END

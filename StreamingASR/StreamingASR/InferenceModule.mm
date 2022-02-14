@@ -41,16 +41,16 @@
 }
 
 
-- (NSString*)recognize:(void*)pcmBuffer chunkToRead:(int)chunkToRead chunkSize:(int)chunkSize {
+- (NSString*)recognize:(void*)modelInput melSpecX:(int)melSpecX melSpecY:(int)melSpecY {
     try {
-        at::Tensor tensorInputs = torch::from_blob((void*)pcmBuffer, {1, chunkToRead, chunkSize}, at::kFloat);
+        at::Tensor tensorInputs = torch::from_blob((void*)modelInput, {1, melSpecX, melSpecY}, at::kFloat);
         
         float* floatInput = tensorInputs.data_ptr<float>();
         if (!floatInput) {
             return nil;
         }
         NSMutableArray* inputs = [[NSMutableArray alloc] init];
-        for (int i = 0; i < chunkToRead * chunkSize; i++) {
+        for (int i = 0; i < melSpecX * melSpecY; i++) {
             [inputs addObject:@(floatInput[i])];
         }
         
