@@ -235,6 +235,8 @@ extension ViewController {
 
         node.installTap(onBus: 0, bufferSize: 1024, format: inputFormat) {
             [unowned self] (buffer, _) in
+             
+
                 let pcmBuffer = AVAudioPCMBuffer(pcmFormat: recordingFormat!, frameCapacity: AVAudioFrameCount(recordingFormat!.sampleRate))
                 var error: NSError? = nil
                 
@@ -244,28 +246,29 @@ extension ViewController {
                 }
             
                 formatConverter!.convert(to: pcmBuffer!, error: &error, withInputFrom: inputBlock)
-                
+
                 let floatArray = Array(UnsafeBufferPointer(start: pcmBuffer!.floatChannelData![0], count:Int(pcmBuffer!.frameLength)))
-                let samples = Array(floatArray[0..<CHUNK_TO_READ * CHUNK_SIZE]).map { Double($0)/1.0 }
+                for n in 0...5 {
+                    let from = n * (CHUNK_TO_READ - 1) * CHUNK_SIZE
+                    let to = from + CHUNK_TO_READ * CHUNK_SIZE
+                    let samples = Array(floatArray[from..<to]).map { Double($0)/1.0 }
 
-                let melSpectrogram = samples.melspectrogram(nFFT: 400, hopLength: 160, sampleRate: Int(SAMPLE_RATE), melsCount: 80)
-            
-                var modelInput: [[Float]] = Array(repeating: Array(repeating: 0.0, count: melSpectrogram.count), count: melSpectrogram[0].count)
+                    let melSpectrogram = samples.melspectrogram(nFFT: 400, hopLength: 160, sampleRate: Int(SAMPLE_RATE), melsCount: 80)
                 
-                for i in 0..<melSpectrogram.count {
-                    for j in 0..<melSpectrogram[i].count {
-                        modelInput[j][i] = Float(melSpectrogram[i][j]) - Float(MEAN[i])
-                        modelInput[j][i] *= Float(INVSTDDEV[i])
+                    var modelInput: [[Float]] = Array(repeating: Array(repeating: 0.0, count: melSpectrogram.count), count: melSpectrogram[0].count)
+                    
+                    for i in 0..<melSpectrogram.count {
+                        for j in 0..<melSpectrogram[i].count {
+                            modelInput[j][i] = Float(melSpectrogram[i][j]) - Float(MEAN[i])
+                            modelInput[j][i] *= Float(INVSTDDEV[i])
+                        }
                     }
-                }
 
-                DispatchQueue.global().async {
-                    modelInput.withUnsafeMutableBytes {
-                        let result = self.module.recognize($0.baseAddress!, melSpecX: Int32(melSpectrogram.count - 1), melSpecY: Int32(melSpectrogram[0].count))
-                        print(result)
-
-                    }
+                modelInput.withUnsafeMutableBytes {
+                    let result = self.module.recognize($0.baseAddress!, melSpecX: Int32(melSpectrogram.count - 1), melSpecY: Int32(melSpectrogram[0].count))
+                    print(result)
                 }
+            }
         }
 
         audioEngine.prepare()

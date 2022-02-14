@@ -63,8 +63,6 @@
             auto transcript = outputTuple->elements()[0].toStringRef();
             hypo = outputTuple->elements()[1];
             state = outputTuple->elements()[2];
-            
-            
             CFTimeInterval elapsedTime = CACurrentMediaTime() - startTime;
             NSLog(@"inference time:%f", elapsedTime);
                 
@@ -84,9 +82,6 @@
                 
             return [NSString stringWithCString:transcript.c_str() encoding:[NSString defaultCStringEncoding]];
         }
-            
-
-        
     }
     catch (const std::exception& exception) {
         NSLog(@"%s", exception.what());
