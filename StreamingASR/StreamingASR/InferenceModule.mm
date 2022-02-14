@@ -14,6 +14,9 @@
 
 
 @implementation InferenceModule {
+    at::IValue hypo;
+    at::IValue state;
+    bool passHypoState;
     
     @protected torch::jit::mobile::Module _impl;
 }
@@ -27,6 +30,7 @@
                 at::globalContext().setQEngine(at::QEngine::QNNPACK);
             }
             _impl = torch::jit::_load_for_mobile(filePath.UTF8String);
+            NSLog(@"Done loading %@", filePath);
         }
         catch (const std::exception& exception) {
             NSLog(@"%s", exception.what());
@@ -53,16 +57,36 @@
         c10::InferenceMode guard;
         
         CFTimeInterval startTime = CACurrentMediaTime();
-        auto outputTuple = _impl.forward({ tensorInputs }).toTuple();
-        
-        auto transcript = outputTuple->elements()[0].toStringRef();
-        auto hypo = outputTuple->elements()[1];
-        auto state = outputTuple->elements()[2];
-        
-        CFTimeInterval elapsedTime = CACurrentMediaTime() - startTime;
-        NSLog(@"inference time:%f", elapsedTime);
+        if (!passHypoState) {
+            passHypoState = true;
+            auto outputTuple = _impl.forward({ tensorInputs }).toTuple();
+            auto transcript = outputTuple->elements()[0].toStringRef();
+            hypo = outputTuple->elements()[1];
+            state = outputTuple->elements()[2];
             
-        return [NSString stringWithCString:transcript.c_str() encoding:[NSString defaultCStringEncoding]];
+            
+            CFTimeInterval elapsedTime = CACurrentMediaTime() - startTime;
+            NSLog(@"inference time:%f", elapsedTime);
+                
+            return [NSString stringWithCString:transcript.c_str() encoding:[NSString defaultCStringEncoding]];
+        }
+        else {
+            auto outputTuple = _impl.forward({ tensorInputs, hypo, state }).toTuple();
+            auto transcript = outputTuple->elements()[0].toStringRef();
+            hypo = outputTuple->elements()[1];
+            state = outputTuple->elements()[2];
+            auto hypoTensor = hypo.toTuple()->elements()[1].toTensor();
+            float* hypoFloats = hypoTensor.data_ptr<float>();
+            NSLog(@"hypo: %@", @(hypoFloats[100]));
+            
+            CFTimeInterval elapsedTime = CACurrentMediaTime() - startTime;
+            NSLog(@"inference time:%f", elapsedTime);
+                
+            return [NSString stringWithCString:transcript.c_str() encoding:[NSString defaultCStringEncoding]];
+        }
+            
+
+        
     }
     catch (const std::exception& exception) {
         NSLog(@"%s", exception.what());

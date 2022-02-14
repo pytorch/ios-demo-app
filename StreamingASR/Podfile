@@ -7,4 +7,5 @@ target 'StreamingASR' do
 
   # Pods for StreamingASR
   pod 'LibTorch-Lite', '~>1.10.0'
+  pod 'RosaKit'
 end
