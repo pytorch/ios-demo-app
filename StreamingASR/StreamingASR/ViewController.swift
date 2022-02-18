@@ -9,6 +9,7 @@
 import UIKit
 import AVFoundation
 import RosaKit
+import Foundation
 
 
 class ViewController: UIViewController {
@@ -24,6 +25,8 @@ class ViewController: UIViewController {
     private let CHUNK_SIZE = 640
     private let SPECTROGRAM_X = 21
     private let SPECTROGRAM_Y = 80
+    
+    private let GAIN = pow(10, 2 * log10(32767.0))
     
     private let MEAN =  [
         16.462461471557617,
@@ -236,7 +239,6 @@ extension ViewController {
         node.installTap(onBus: 0, bufferSize: 1024, format: inputFormat) {
             [unowned self] (buffer, _) in
              
-
                 let pcmBuffer = AVAudioPCMBuffer(pcmFormat: recordingFormat!, frameCapacity: AVAudioFrameCount(recordingFormat!.sampleRate))
                 var error: NSError? = nil
                 
@@ -248,27 +250,46 @@ extension ViewController {
                 formatConverter!.convert(to: pcmBuffer!, error: &error, withInputFrom: inputBlock)
 
                 let floatArray = Array(UnsafeBufferPointer(start: pcmBuffer!.floatChannelData![0], count:Int(pcmBuffer!.frameLength)))
-                for n in 0...5 {
+            
+                print(floatArray.count)
+
+                for n in 0..<5 {
                     let from = n * (CHUNK_TO_READ - 1) * CHUNK_SIZE
                     let to = from + CHUNK_TO_READ * CHUNK_SIZE
                     let samples = Array(floatArray[from..<to]).map { Double($0)/1.0 }
-
+                    
                     let melSpectrogram = samples.melspectrogram(nFFT: 400, hopLength: 160, sampleRate: Int(SAMPLE_RATE), melsCount: 80)
+                    
+                    // values are the same as in Android! except the size is 80x21 on iOS and 21x80 on Android
                 
                     var modelInput: [[Float]] = Array(repeating: Array(repeating: 0.0, count: melSpectrogram.count), count: melSpectrogram[0].count)
                     
                     for i in 0..<melSpectrogram.count {
                         for j in 0..<melSpectrogram[i].count {
-                            modelInput[j][i] = Float(melSpectrogram[i][j]) - Float(MEAN[i])
-                            modelInput[j][i] *= Float(INVSTDDEV[i])
+                            modelInput[j][i] = Float(melSpectrogram[i][j] * GAIN)
+                            if (modelInput[j][i] > exp(1.0)) {
+                                modelInput[j][i] = log(modelInput[j][i])
+                            }
+                            else {
+                                modelInput[j][i] /= exp(1.0);
+                            }
+                        }
+                    }
+                    
+                    for i in 0..<modelInput.count {
+                        for j in 0..<modelInput[i].count {
+                            modelInput[i][j] -= Float(MEAN[j])
+                            modelInput[i][j] *= Float(INVSTDDEV[j])
                         }
                     }
 
-                modelInput.withUnsafeMutableBytes {
-                    let result = self.module.recognize($0.baseAddress!, melSpecX: Int32(melSpectrogram.count - 1), melSpecY: Int32(melSpectrogram[0].count))
-                    print(result)
+                    let melSpecX = Int32(modelInput.count - 1)
+                    let melSpecY = Int32(modelInput[0].count)
+                    modelInput.withUnsafeMutableBytes {
+                        let result = self.module.recognize($0.baseAddress!, melSpecX: melSpecX, melSpecY: melSpecY)
+                        print(result)
+                    }
                 }
-            }
         }
 
         audioEngine.prepare()

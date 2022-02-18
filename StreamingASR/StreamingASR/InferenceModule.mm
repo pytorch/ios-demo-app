@@ -64,7 +64,7 @@
             hypo = outputTuple->elements()[1];
             state = outputTuple->elements()[2];
             CFTimeInterval elapsedTime = CACurrentMediaTime() - startTime;
-            NSLog(@"inference time:%f", elapsedTime);
+            //NSLog(@"inference time:%f", elapsedTime);
                 
             return [NSString stringWithCString:transcript.c_str() encoding:[NSString defaultCStringEncoding]];
         }
@@ -75,10 +75,10 @@
             state = outputTuple->elements()[2];
             auto hypoTensor = hypo.toTuple()->elements()[1].toTensor();
             float* hypoFloats = hypoTensor.data_ptr<float>();
-            NSLog(@"hypo: %@", @(hypoFloats[100]));
+            //NSLog(@"hypo: %@", @(hypoFloats[100]));
             
             CFTimeInterval elapsedTime = CACurrentMediaTime() - startTime;
-            NSLog(@"inference time:%f", elapsedTime);
+            //NSLog(@"inference time:%f", elapsedTime);
                 
             return [NSString stringWithCString:transcript.c_str() encoding:[NSString defaultCStringEncoding]];
         }
