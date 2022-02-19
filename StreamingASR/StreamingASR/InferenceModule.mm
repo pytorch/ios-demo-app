@@ -66,25 +66,22 @@
             hypo = outputTuple->elements()[1];
             state = outputTuple->elements()[2];
             CFTimeInterval elapsedTime = CACurrentMediaTime() - startTime;
-            //NSLog(@"inference time:%f", elapsedTime);
-            auto hypoTensor = hypo.toTuple()->elements()[1].toTensor();
-            float* hypoFloats = hypoTensor.data_ptr<float>();
-            NSLog(@"hypo: %@", @(hypoFloats[100]));
-            return [NSString stringWithCString:transcript.c_str() encoding:[NSString defaultCStringEncoding]];
+            NSLog(@"inference time:%f", elapsedTime);
+            return [NSString stringWithUTF8String:transcript.c_str()];
         }
         else {
             auto outputTuple = _impl.forward({ tensorInputs, hypo, state }).toTuple();
             auto transcript = outputTuple->elements()[0].toStringRef();
             hypo = outputTuple->elements()[1];
             state = outputTuple->elements()[2];
-            auto hypoTensor = hypo.toTuple()->elements()[1].toTensor();
-            float* hypoFloats = hypoTensor.data_ptr<float>();
-            NSLog(@"hypo: %@", @(hypoFloats[100]));
+//            auto hypoTensor = hypo.toTuple()->elements()[1].toTensor();
+//            float* hypoFloats = hypoTensor.data_ptr<float>();
+//            NSLog(@"hypo: %@", @(hypoFloats[100]));
             
             CFTimeInterval elapsedTime = CACurrentMediaTime() - startTime;
-            //NSLog(@"inference time:%f", elapsedTime);
-                
-            return [NSString stringWithCString:transcript.c_str() encoding:[NSString defaultCStringEncoding]];
+            NSLog(@"inference time:%f", elapsedTime);
+                            
+            return [NSString stringWithUTF8String:transcript.c_str()];
         }
     }
     catch (const std::exception& exception) {
