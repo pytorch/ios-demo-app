@@ -236,41 +236,30 @@ extension ViewController {
         let recordingFormat = AVAudioFormat(commonFormat: .pcmFormatFloat32, sampleRate: Double(SAMPLE_RATE), channels: 1, interleaved: false)
         let formatConverter =  AVAudioConverter(from:inputFormat, to: recordingFormat!)
                 
-//        node.installTap(onBus: 0, bufferSize: 1024, format: inputFormat) {
-//            [unowned self] (buffer, _) in
-//
-//                let pcmBuffer = AVAudioPCMBuffer(pcmFormat: recordingFormat!, frameCapacity: AVAudioFrameCount(recordingFormat!.sampleRate))
-//                var error: NSError? = nil
-//
-//                let inputBlock: AVAudioConverterInputBlock = { inNumPackets, outStatus in
-//                    outStatus.pointee = AVAudioConverterInputStatus.haveData
-//                    return buffer
-//                }
-//
-//                formatConverter!.convert(to: pcmBuffer!, error: &error, withInputFrom: inputBlock)
-//
-//                let floatArray2 = Array(UnsafeBufferPointer(start: pcmBuffer!.floatChannelData![0], count:Int(pcmBuffer!.frameLength)))
-//
-            
-            // TODO Friday: read boy_audio.txt into floatArray and samples
-            // verify the recognition result is boy
+        node.installTap(onBus: 0, bufferSize: 1024, format: inputFormat) {
+            [unowned self] (buffer, _) in
+
+                let pcmBuffer = AVAudioPCMBuffer(pcmFormat: recordingFormat!, frameCapacity: AVAudioFrameCount(recordingFormat!.sampleRate))
+                var error: NSError? = nil
+
+                let inputBlock: AVAudioConverterInputBlock = { inNumPackets, outStatus in
+                    outStatus.pointee = AVAudioConverterInputStatus.haveData
+                    return buffer
+                }
+
+                formatConverter!.convert(to: pcmBuffer!, error: &error, withInputFrom: inputBlock)
+
         
-            let filePath = Bundle.main.path(forResource: "what_can_i_do_you", ofType: "txt")
-            if let floats = try? String(contentsOfFile: filePath!) {
-                let nolb = floats.replacingOccurrences(of: "\n", with: "")
-                let floatArray = (nolb.components(separatedBy: ", ")).map { (value) -> Float in
-                    return Float(value)!
-                    }
+            //DispatchQueue.global().async {
+                let floatArray = Array(UnsafeBufferPointer(start: pcmBuffer!.floatChannelData![0], count:Int(pcmBuffer!.frameLength)))
             
-                for n in 0..<25 {
+                for n in 0..<5 {
                     let from = n * (CHUNK_TO_READ - 1) * CHUNK_SIZE
                     let to = from + CHUNK_TO_READ * CHUNK_SIZE
                     let samples = Array(floatArray[from..<to]).map { Double($0)/1.0 }
                     
                     let melSpectrogram = samples.melspectrogram(nFFT: 400, hopLength: 160, sampleRate: Int(SAMPLE_RATE), melsCount: 80)
                     
-                    // values are the same as in Android! except the size is 80x21 on iOS and 21x80 on Android
-                
                     var modelInput: [[Float]] = Array(repeating: Array(repeating: 0.0, count: melSpectrogram.count), count: melSpectrogram[0].count)
                     
                     for i in 0..<melSpectrogram.count {
@@ -288,8 +277,7 @@ extension ViewController {
                     let melSpecX = Int32(modelInput.count - 1)
                     let melSpecY = Int32(modelInput[0].count)
                     var inputArray = [Float32]()
-                    
-                    
+                                        
                     // get rid of last row
                     for i in 0..<modelInput.count-1 {
                         for j in 0..<modelInput[i].count {
@@ -298,27 +286,22 @@ extension ViewController {
                             inputArray.append(modelInput[i][j])
                         }
                     }
-                    
-                    
-                    let result = self.module.recognize(&inputArray, melSpecX: melSpecX, melSpecY: melSpecY)
+                                        
+                    var result = self.module.recognize(&inputArray, melSpecX: melSpecX, melSpecY: melSpecY)
                     if result!.count > 0 {
-                        print(result?.replacingOccurrences(of: "▁", with: ""))
-                    }
-                    
-//                    modelInput.withUnsafeMutableBytes {
-//                        let result = self.module.recognize($0.baseAddress!, melSpecX: melSpecX, melSpecY: melSpecY)
-//                        print(result)
-//                    }
-                    
+                        result = result!.replacingOccurrences(of: "▁", with: "")
+                        print(result)
+                        
+                        DispatchQueue.main.async {
+                            self.tvResult.text = self.tvResult.text + " " + result!
+                        }
+                    //}
                 }
-
-            } else {
-                fatalError("classes file was not found.")
             }
-//        }
-//
-//        audioEngine.prepare()
-//        try audioEngine.start()
+        }
+
+        audioEngine.prepare()
+        try audioEngine.start()
     }
 
     fileprivate func stopRecording() {
