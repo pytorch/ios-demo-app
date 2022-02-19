@@ -213,10 +213,12 @@ class ViewController: UIViewController {
             self.btnStart.setTitle("Listening... Stop", for: .normal)
             self.mListening = true
             
-            do {
-              try self.startRecording()
-            } catch let error {
-              print("There was a problem starting recording: \(error.localizedDescription)")
+            DispatchQueue.global().async {
+                do {
+                  try self.startRecording()
+                } catch let error {
+                  print("There was a problem starting recording: \(error.localizedDescription)")
+                }
             }
         }
         else {
