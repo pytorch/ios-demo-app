@@ -56,6 +56,8 @@
         
         c10::InferenceMode guard;
         
+        // TODO: 1. confirm the code below works - confirmed with hardcoded audio and hypo[100] same for 3 forward calls. So same SINGLE iOS/Android model input leads to same model output.
+        // TODO: 2. more Android model input and output comparison - why boy_audio.txt doesn't lead to iOS recognition result??? possible 2 causes: transcript
         CFTimeInterval startTime = CACurrentMediaTime();
         if (!passHypoState) {
             passHypoState = true;
@@ -65,7 +67,9 @@
             state = outputTuple->elements()[2];
             CFTimeInterval elapsedTime = CACurrentMediaTime() - startTime;
             //NSLog(@"inference time:%f", elapsedTime);
-                
+            auto hypoTensor = hypo.toTuple()->elements()[1].toTensor();
+            float* hypoFloats = hypoTensor.data_ptr<float>();
+            NSLog(@"hypo: %@", @(hypoFloats[100]));
             return [NSString stringWithCString:transcript.c_str() encoding:[NSString defaultCStringEncoding]];
         }
         else {
@@ -75,7 +79,7 @@
             state = outputTuple->elements()[2];
             auto hypoTensor = hypo.toTuple()->elements()[1].toTensor();
             float* hypoFloats = hypoTensor.data_ptr<float>();
-            //NSLog(@"hypo: %@", @(hypoFloats[100]));
+            NSLog(@"hypo: %@", @(hypoFloats[100]));
             
             CFTimeInterval elapsedTime = CACurrentMediaTime() - startTime;
             //NSLog(@"inference time:%f", elapsedTime);

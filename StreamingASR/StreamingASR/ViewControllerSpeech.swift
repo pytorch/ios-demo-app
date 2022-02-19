@@ -57,9 +57,6 @@ extension ViewController {
         let node = audioEngine.inputNode
         let inputFormat = node.outputFormat(forBus: 0)
           
-        let recordingFormat = AVAudioFormat(commonFormat: .pcmFormatFloat32, sampleRate: Double(SAMPLE_RATE), channels: 1, interleaved: false)
-        let formatConverter =  AVAudioConverter(from:inputFormat, to: recordingFormat!)
-
         node.installTap(onBus: 0, bufferSize: 1024, format: inputFormat) { [unowned self]
                           (buffer, _) in
             self.recognitionRequest.append(buffer)
