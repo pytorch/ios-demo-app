@@ -232,18 +232,52 @@ class ViewController: UIViewController {
 
 extension ViewController {
     fileprivate func startRecording() throws {
-        let node = audioEngine.inputNode
-        let inputFormat = node.outputFormat(forBus: 0)
-          
-        let recordingFormat = AVAudioFormat(commonFormat: .pcmFormatFloat32, sampleRate: Double(SAMPLE_RATE), channels: 1, interleaved: false)
-        let formatConverter =  AVAudioConverter(from:inputFormat, to: recordingFormat!)
+        let inputNode = audioEngine.inputNode
+        let inputNodeOutputFormat = inputNode.outputFormat(forBus: 0)
+        let inputNodeInputFormat = inputNode.inputFormat(forBus: 0)
+        //let inputFormat = inputNode.inputFormat(forBus: 0)
+
+        /*        var mixerNode = AVAudioMixerNode()
+        let main = audioEngine.mainMixerNode
+        
+        //let format16KHzMono = AVAudioFormat(commonFormat: .pcmFormatFloat32, sampleRate: 16000.0, channels: 1, interleaved: true)
+        let mixerFormat = AVAudioFormat(commonFormat: .pcmFormatFloat32, sampleRate: 16000.0, channels: 1, interleaved: true)
+
+//        audioEngine.attach(mixerNode)
+//        audioEngine.connect(inputNode, to: mixerNode, format: inputNode.outputFormat(forBus: 0))
+//        //audioEngine.connect(mixerNode, to: audioEngine.outputNode, format: mixerFormat)
+//        audioEngine.connect(mixerNode, to: main, format: mixerFormat)
+//        mixerNode.installTap(onBus: 0, bufferSize: 1024, format: mixerFormat) {
+//        //mixerNode.installTap(onBus: 0, bufferSize: 1024, format: mixerNode.outputFormat(forBus: 0)) {
+
+        inputNode.installTap(onBus: 0, bufferSize: 1024, format: inputNode.outputFormat(forBus: 0)) {
+            [unowned self] (buffer, _) in
+            print(buffer)
+            print(buffer.description)
+            
+            // TODO: WATCH MORE WWDC AVAudioEngine videos and other tutorials
+            // figure out why buffer here is all 0's.
+            if let channel1Buffer = buffer.floatChannelData?[0] {
+            //if let channel1Buffer = buffer.int16ChannelData?[0] {
+                // print(channel1Buffer[0])
+                for i in 0 ... Int(buffer.frameLength-1) {
+                    print((channel1Buffer[i]))
+                }
+            }
+        }
+*/
+        
+        
+
+        let targetFormat = AVAudioFormat(commonFormat: .pcmFormatInt16, sampleRate: Double(SAMPLE_RATE), channels: 1, interleaved: false)
+        let formatConverter =  AVAudioConverter(from:inputNodeOutputFormat, to: targetFormat!)
                 
         var pcmBufferTotal = [Float32]()
         
-        node.installTap(onBus: 0, bufferSize: 1024, format: inputFormat) {
+        inputNode.installTap(onBus: 0, bufferSize: 1024, format: inputNodeInputFormat) { //inputNodeOutputFormat) {
             [unowned self] (buffer, _) in
-
-                let pcmBuffer = AVAudioPCMBuffer(pcmFormat: recordingFormat!, frameCapacity: AVAudioFrameCount(recordingFormat!.sampleRate))
+                //print(buffer.frameCapacity)
+                let pcmBuffer = AVAudioPCMBuffer(pcmFormat: targetFormat!, frameCapacity: 1600) //AVAudioFrameCount(targetFormat!.sampleRate))
                 var error: NSError? = nil
 
                 let inputBlock: AVAudioConverterInputBlock = { inNumPackets, outStatus in
@@ -252,16 +286,27 @@ extension ViewController {
                 }
 
                 formatConverter!.convert(to: pcmBuffer!, error: &error, withInputFrom: inputBlock)
-        
-            //DispatchQueue.global().async {
-                let floatArray = Array(UnsafeBufferPointer(start: pcmBuffer!.floatChannelData![0], count:Int(pcmBuffer!.frameLength)))
 
-                pcmBufferTotal += floatArray
+                let floatArray = Array(UnsafeBufferPointer(start: pcmBuffer!.int16ChannelData![0], count:Int(pcmBuffer!.frameLength)))
+
+//            let floatArray = Array(UnsafeBufferPointer(start: buffer.floatChannelData![0], count:Int(buffer.frameLength)))
+
+            
+                //pcmBufferTotal += floatArray
+            pcmBufferTotal += Array(floatArray).map { Float32($0)/32767 }
             print("\(Date()): \(pcmBufferTotal.count)")
             
-            if pcmBufferTotal.count > 464000 {
+            if pcmBufferTotal.count > 51200 {
+                
+                
+//                let filePath = Bundle.main.path(forResource: "what_can_i_do_you", ofType: "txt")
+//                if let floats = try? String(contentsOfFile: filePath!) {
+//                    let nolb = floats.replacingOccurrences(of: "\n", with: "")
+//                    pcmBufferTotal = (nolb.components(separatedBy: ", ")).map { (value) -> Float in
+//                        return Float(value)!
+//                        }
 
-                for n in 0..<50 {
+                for n in 0..<25 {
                     let from = n * (CHUNK_TO_READ - 1) * CHUNK_SIZE
                     let to = from + CHUNK_TO_READ * CHUNK_SIZE
                     let samples = Array(pcmBufferTotal[from..<to]).map { Double($0)/1.0 }
@@ -303,11 +348,12 @@ extension ViewController {
                         DispatchQueue.main.async {
                             self.tvResult.text = self.tvResult.text + " " + result!
                         }
-                    //}
-                }
+                    }
+                //}
                 }
             }
         }
+ 
 
         audioEngine.prepare()
         try audioEngine.start()
