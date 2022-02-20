@@ -238,6 +238,8 @@ extension ViewController {
         let recordingFormat = AVAudioFormat(commonFormat: .pcmFormatFloat32, sampleRate: Double(SAMPLE_RATE), channels: 1, interleaved: false)
         let formatConverter =  AVAudioConverter(from:inputFormat, to: recordingFormat!)
                 
+        var pcmBufferTotal = [Float32]()
+        
         node.installTap(onBus: 0, bufferSize: 1024, format: inputFormat) {
             [unowned self] (buffer, _) in
 
@@ -250,15 +252,19 @@ extension ViewController {
                 }
 
                 formatConverter!.convert(to: pcmBuffer!, error: &error, withInputFrom: inputBlock)
-
         
             //DispatchQueue.global().async {
                 let floatArray = Array(UnsafeBufferPointer(start: pcmBuffer!.floatChannelData![0], count:Int(pcmBuffer!.frameLength)))
+
+                pcmBufferTotal += floatArray
+            print("\(Date()): \(pcmBufferTotal.count)")
             
-                for n in 0..<5 {
+            if pcmBufferTotal.count > 464000 {
+
+                for n in 0..<50 {
                     let from = n * (CHUNK_TO_READ - 1) * CHUNK_SIZE
                     let to = from + CHUNK_TO_READ * CHUNK_SIZE
-                    let samples = Array(floatArray[from..<to]).map { Double($0)/1.0 }
+                    let samples = Array(pcmBufferTotal[from..<to]).map { Double($0)/1.0 }
                     
                     let melSpectrogram = samples.melspectrogram(nFFT: 400, hopLength: 160, sampleRate: Int(SAMPLE_RATE), melsCount: 80)
                     
@@ -298,6 +304,7 @@ extension ViewController {
                             self.tvResult.text = self.tvResult.text + " " + result!
                         }
                     //}
+                }
                 }
             }
         }
