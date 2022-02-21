@@ -56,15 +56,12 @@
         
         c10::InferenceMode guard;
         
-        CFTimeInterval startTime = CACurrentMediaTime();
         if (!passHypoState) {
             passHypoState = true;
             auto outputTuple = _impl.forward({ tensorInputs }).toTuple();
             auto transcript = outputTuple->elements()[0].toStringRef();
             hypo = outputTuple->elements()[1];
             state = outputTuple->elements()[2];
-            CFTimeInterval elapsedTime = CACurrentMediaTime() - startTime;
-            NSLog(@"inference time:%f", elapsedTime);
             return [NSString stringWithUTF8String:transcript.c_str()];
         }
         else {
@@ -72,9 +69,6 @@
             auto transcript = outputTuple->elements()[0].toStringRef();
             hypo = outputTuple->elements()[1];
             state = outputTuple->elements()[2];
-            CFTimeInterval elapsedTime = CACurrentMediaTime() - startTime;
-            NSLog(@"inference time:%f", elapsedTime);
-                            
             return [NSString stringWithUTF8String:transcript.c_str()];
         }
     }

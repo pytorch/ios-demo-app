@@ -15,7 +15,6 @@
 		262B866227B0E40800B8583C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 262B866027B0E40800B8583C /* LaunchScreen.storyboard */; };
 		268D031027B1A868001A77D5 /* InferenceModule.mm in Sources */ = {isa = PBXBuildFile; fileRef = 268D030E27B1A868001A77D5 /* InferenceModule.mm */; };
 		26D52FF627B77A990047C990 /* streaming_asr.ptl in Resources */ = {isa = PBXBuildFile; fileRef = 26D52FF527B77A990047C990 /* streaming_asr.ptl */; };
-		E195C8213A98C16DFEBAE488 /* Pods_StreamingASR.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B8238DE3B6160F56B626FB1 /* Pods_StreamingASR.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,9 +30,6 @@
 		268D030E27B1A868001A77D5 /* InferenceModule.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = InferenceModule.mm; sourceTree = "<group>"; };
 		268D030F27B1A868001A77D5 /* InferenceModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InferenceModule.h; sourceTree = "<group>"; };
 		26D52FF527B77A990047C990 /* streaming_asr.ptl */ = {isa = PBXFileReference; lastKnownFileType = file; path = streaming_asr.ptl; sourceTree = "<group>"; };
-		4AD0CD7C4EFA695E23D1AEDA /* Pods-StreamingASR.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StreamingASR.release.xcconfig"; path = "Target Support Files/Pods-StreamingASR/Pods-StreamingASR.release.xcconfig"; sourceTree = "<group>"; };
-		8B8238DE3B6160F56B626FB1 /* Pods_StreamingASR.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StreamingASR.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		AE5E51590DC7DDC6EA453B15 /* Pods-StreamingASR.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StreamingASR.debug.xcconfig"; path = "Target Support Files/Pods-StreamingASR/Pods-StreamingASR.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,7 +37,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E195C8213A98C16DFEBAE488 /* Pods_StreamingASR.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -54,7 +49,6 @@
 				262B865427B0E40600B8583C /* StreamingASR */,
 				262B865327B0E40600B8583C /* Products */,
 				61D0CA281303D80900C7EDE1 /* Pods */,
-				FD8C01DB686DDB25E103BFE4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -87,18 +81,8 @@
 		61D0CA281303D80900C7EDE1 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				AE5E51590DC7DDC6EA453B15 /* Pods-StreamingASR.debug.xcconfig */,
-				4AD0CD7C4EFA695E23D1AEDA /* Pods-StreamingASR.release.xcconfig */,
 			);
 			path = Pods;
-			sourceTree = "<group>";
-		};
-		FD8C01DB686DDB25E103BFE4 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				8B8238DE3B6160F56B626FB1 /* Pods_StreamingASR.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -108,11 +92,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 262B866627B0E40800B8583C /* Build configuration list for PBXNativeTarget "StreamingASR" */;
 			buildPhases = (
-				8388DA8B83B0DD84F43EC0DF /* [CP] Check Pods Manifest.lock */,
 				262B864E27B0E40600B8583C /* Sources */,
 				262B864F27B0E40600B8583C /* Frameworks */,
 				262B865027B0E40600B8583C /* Resources */,
-				3932944DC71A02C1EDE83A13 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -170,48 +152,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		3932944DC71A02C1EDE83A13 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-StreamingASR/Pods-StreamingASR-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-StreamingASR/Pods-StreamingASR-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-StreamingASR/Pods-StreamingASR-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		8388DA8B83B0DD84F43EC0DF /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-StreamingASR-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		262B864E27B0E40600B8583C /* Sources */ = {
@@ -299,7 +239,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -355,7 +295,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -367,14 +307,13 @@
 		};
 		262B866727B0E40800B8583C /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AE5E51590DC7DDC6EA453B15 /* Pods-StreamingASR.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = V568RNX5Q4;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = StreamingASR/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -399,14 +338,13 @@
 		};
 		262B866827B0E40800B8583C /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4AD0CD7C4EFA695E23D1AEDA /* Pods-StreamingASR.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = V568RNX5Q4;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = StreamingASR/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
