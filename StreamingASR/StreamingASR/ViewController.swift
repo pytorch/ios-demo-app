@@ -16,7 +16,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var btnStart: UIButton!
     @IBOutlet weak var tvResult: UITextView!
     
-    private var mListening: Bool!
+    let audioEngine = AVAudioEngine()
+    let serialQueue = DispatchQueue(label: "sasr.serial.queue")
     
     private let AUDIO_LEN_IN_SECOND = 6
     private let SAMPLE_RATE = 16000
@@ -196,10 +197,7 @@ class ViewController: UIViewController {
         0.22755587298227964,
         0.24719513536827162
     ]
-
-    let audioEngine = AVAudioEngine()
     
-
     private let module: InferenceModule = {
         if let filePath = Bundle.main.path(forResource:
             "streaming_asr", ofType: "ptl"),
@@ -214,19 +212,17 @@ class ViewController: UIViewController {
     @IBAction func startTapped(_ sender: Any) {
         if (self.btnStart.title(for: .normal)! == "Start") {
             self.btnStart.setTitle("Listening... Stop", for: .normal)
-            self.mListening = true
             
-            DispatchQueue.global().async {
+//            DispatchQueue.global().async {
                 do {
                   try self.startRecording()
                 } catch let error {
                   print("There was a problem starting recording: \(error.localizedDescription)")
                 }
-            }
+//            }
         }
         else {
             self.btnStart.setTitle("Start", for: .normal)
-            self.mListening = false            
             self.stopRecording()
         }
     }
@@ -241,11 +237,10 @@ extension ViewController {
         let formatConverter =  AVAudioConverter(from:inputNodeOutputFormat, to: targetFormat!)
         var pcmBufferToBeProcessed = [Float32]()
         
-        inputNode.installTap(onBus: 0, bufferSize: 1024, format: inputNodeOutputFormat) {
-            [unowned self] (buffer, _) in
+        inputNode.installTap(onBus: 0, bufferSize: 1024, format: inputNodeOutputFormat) { [unowned self] (buffer, _) in
                 let pcmBuffer = AVAudioPCMBuffer(pcmFormat: targetFormat!, frameCapacity: AVAudioFrameCount(targetFormat!.sampleRate) / 10)
                 var error: NSError? = nil
-
+            
                 let inputBlock: AVAudioConverterInputBlock = { inNumPackets, outStatus in
                     outStatus.pointee = AVAudioConverterInputStatus.haveData
                     return buffer
@@ -257,43 +252,44 @@ extension ViewController {
             
                 if pcmBufferToBeProcessed.count >= CHUNK_TO_READ * CHUNK_SIZE {
                     let samples = Array(pcmBufferToBeProcessed[0..<CHUNK_TO_READ * CHUNK_SIZE]) .map { Double($0)/1.0 }
-                    let melSpectrogram = samples.melspectrogram(nFFT: FFT_SIZE, hopLength: HOP_LENGTH, sampleRate: Int(SAMPLE_RATE), melsCount: MEL_NUMBERS)
-                    
-                    var features: [[Float]] = Array(repeating: Array(repeating: 0.0, count: melSpectrogram.count), count: melSpectrogram[0].count)
-                    for i in 0..<melSpectrogram.count {
-                        for j in 0..<melSpectrogram[i].count {
-                            features[j][i] = Float(melSpectrogram[i][j] * GAIN)
-                            if (features[j][i] > exp(1.0)) {
-                                features[j][i] = log(features[j][i])
-                            }
-                            else {
-                                features[j][i] /= exp(1.0);
-                            }
-                        }
-                    }
-                    
-                    let melSpecX = Int32(features.count - 1)
-                    let melSpecY = Int32(features[0].count)
-                    var modelInput = [Float32]()
-                                        
-                    for i in 0..<features.count-1 {
-                        for j in 0..<features[i].count {
-                            features[i][j] -= Float(MEAN[j])
-                            features[i][j] *= Float(INVSTDDEV[j])
-                            modelInput.append(features[i][j])
-                        }
-                    }
-                                        
-                    var result = self.module.recognize(&modelInput, melSpecX: melSpecX, melSpecY: melSpecY)
-                    if result!.count > 0 {
-                        result = result!.replacingOccurrences(of: "▁", with: "")
-                        
-                        DispatchQueue.main.async {
-                            self.tvResult.text = self.tvResult.text + " " + result!
-                        }
-                    }
                     pcmBufferToBeProcessed = Array(pcmBufferToBeProcessed[(CHUNK_TO_READ - 1) * CHUNK_SIZE..<pcmBufferToBeProcessed.count])
-            }
+                    
+                    serialQueue.async {
+                        let melSpectrogram = samples.melspectrogram(nFFT: FFT_SIZE, hopLength: HOP_LENGTH, sampleRate: Int(SAMPLE_RATE), melsCount: MEL_NUMBERS)
+                        var features: [[Float]] = Array(repeating: Array(repeating: 0.0, count: melSpectrogram.count), count: melSpectrogram[0].count)
+                        for i in 0..<melSpectrogram.count {
+                            for j in 0..<melSpectrogram[i].count {
+                                features[j][i] = Float(melSpectrogram[i][j] * GAIN)
+                                if (features[j][i] > exp(1.0)) {
+                                    features[j][i] = log(features[j][i])
+                                }
+                                else {
+                                    features[j][i] /= exp(1.0);
+                                }
+                            }
+                        }
+                        
+                        let melSpecX = Int32(features.count - 1)
+                        let melSpecY = Int32(features[0].count)
+                        var modelInput = [Float32]()
+                                            
+                        for i in 0..<features.count-1 {
+                            for j in 0..<features[i].count {
+                                features[i][j] -= Float(MEAN[j])
+                                features[i][j] *= Float(INVSTDDEV[j])
+                                modelInput.append(features[i][j])
+                            }
+                        }
+                                            
+                        var result = self.module.recognize(&modelInput, melSpecX: melSpecX, melSpecY: melSpecY)
+                        if result!.count > 0 {
+                            result = result!.replacingOccurrences(of: "▁", with: "")
+                            DispatchQueue.main.async {
+                                self.tvResult.text = self.tvResult.text + " " + result!
+                            }
+                        }
+                    }
+                }
         }
 
         audioEngine.prepare()
