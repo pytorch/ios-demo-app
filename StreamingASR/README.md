@@ -78,8 +78,10 @@ After the app runs, tap the Start button and start saying something. Unlike the 
 ![](screenshot2.png)
 ![](screenshot3.png)
 
-A quick note on how the model works: For every segment of 5 chunks of data, we perform transcription, which does the following:
+A quick note on how the model works to help you better understand the iOS code - for every segment of 5 chunks of data, we perform transcription, which does the following:
 
 1. Apply data transformation function to convert the segment of audio data to a tensor of features.
+
 2. Feed tensor of features and output of previous decoder invocation (token sequence and model state) to decoder, which iteratively runs the streaming ASR model to generate an output that comprises a token sequence (the recognition result) and model state.
+
 3. Store token sequence and model state for use in the next decoder invocation on next segment of 5 chunks of data - first chunk is exactly the preceding segment’s last chunk.
