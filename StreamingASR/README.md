@@ -4,7 +4,7 @@
 
 In the Speech Recognition iOS [demo app](https://github.com/pytorch/ios-demo-app/tree/master/SpeechRecognition), we showed how to use the [wav2vec 2.0](https://github.com/pytorch/fairseq/tree/master/examples/wav2vec) model on an iOS demo app to perform non-continuous speech recognition. Here we're going one step further, using a torchaudio [Emformer-RNNT-based ASR](https://pytorch.org/audio/main/prototype.pipelines.html#torchaudio.prototype.pipelines.EMFORMER_RNNT_BASE_LIBRISPEECH) model in iOS to perform streaming speech recognition.
 
-This demo uses iOS [AVAudioEngine](https://developer.apple.com/documentation/avfaudio/avaudioengine) instead of [AVAudioRecorder](https://github.com/pytorch/ios-demo-app/blob/master/SpeechRecognition/SpeechRecognition/ViewController.swift#L24) to perform live audio processing for the streaming speech recognition model. AVAudioRecorder is simple to use, but you can't process the audio before it is written to a target file. AVAudioEngine is a lot more powerful and supports real-time audio analysis.
+This demo uses iOS [AVAudioEngine](https://developer.apple.com/documentation/avfaudio/avaudioengine) instead of [AVAudioRecorder](https://github.com/pytorch/ios-demo-app/blob/master/SpeechRecognition/SpeechRecognition/ViewController.swift#L24) to perform live audio processing for the streaming speech recognition model. AVAudioRecorder is simple to use, but you can't process the audio before it is written to a target file. AVAudioEngine is a lot more powerful and supports real time audio analysis.
 
 
 ## Prerequisites
@@ -77,3 +77,9 @@ After the app runs, tap the Start button and start saying something. Unlike the 
 ![](screenshot1.png)
 ![](screenshot2.png)
 ![](screenshot3.png)
+
+A quick note on how the model works: For every segment of 5 chunks of data, we perform transcription, which does the following:
+
+1. Apply data transformation function to convert the segment of audio data to a tensor of features.
+2. Feed tensor of features and output of previous decoder invocation (token sequence and model state) to decoder, which iteratively runs the streaming ASR model to generate an output that comprises a token sequence (the recognition result) and model state.
+3. Store token sequence and model state for use in the next decoder invocation on next segment of 5 chunks of data - first chunk is exactly the preceding segment’s last chunk.
