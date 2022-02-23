@@ -42,7 +42,7 @@ class ViewController: UIViewController, AVAudioRecorderDelegate  {
             if granted {
                 self.btnStart.setTitle("Listening...", for: .normal)
             } else{
-                self.tvResult.text = "Record premission needs to be granted, Record premission needs to be granted, Record premission needs to be granted"
+                self.tvResult.text = "Record premission needs to be granted"
             }
          })
         
