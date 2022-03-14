@@ -9,9 +9,9 @@ This demo uses iOS [AVAudioEngine](https://developer.apple.com/documentation/avf
 
 ## Prerequisites
 
-* PyTorch 1.10.1 and torchaudio 0.10.1 (Optional)
+* PyTorch 1.11 and torchaudio 0.11 (Optional)
 * Python 3.8 or above (Optional)
-* iOS Cocoapods LibTorch-Lite 1.10.0
+* iOS Cocoapods LibTorch-Lite 1.11.0
 * Xcode 13 or later
 
 ## Quick Start
@@ -25,16 +25,16 @@ git clone https://github.com/pytorch/ios-demo-app
 cd ios-demo-app/StreamingASR
 ```
 
-If you don't have PyTorch 1.10.1 and torchaudio 0.10.1 installed or want to have a quick try of the demo app, you can download the optimized scripted model file [streaming_asr.ptl](https://drive.google.com/file/d/1awT_1S6H5IXSOOqpFLmpeg0B-kQVWG2y/view?usp=sharing), then drag and drop it to the project, and continue to Step 3.
+If you don't have PyTorch 1.11 and torchaudio 0.11 installed or want to have a quick try of the demo app, you can download the optimized scripted model file [streaming_asr.ptl](https://drive.google.com/file/d/1awT_1S6H5IXSOOqpFLmpeg0B-kQVWG2y/view?usp=sharing), then drag and drop it to the project, and continue to Step 3.
 
 
 ### 2. Test and Prepare the Model
 
-To install PyTorch 1.10.1, torchaudio 0.10.1, and other required Python packages (numpy and pyaudio), do something like this:
+To install PyTorch 1.11, torchaudio 0.11, and other required Python packages (numpy and pyaudio), do something like this:
 
 ```
-conda create -n pt1.10.1 python=3.8.5
-conda activate pt1.10.1
+conda create -n pt1.11 python=3.8.5
+conda activate pt1.11
 pip install torch torchaudio numpy pyaudio
 ```
 
@@ -56,10 +56,10 @@ mv streaming_asr.ptl StreamingASR
 
 ### 3. Use LibTorch
 
-Run the command `pod install`, and you will see:
+Run the command `pod install` (if you're upgrading from PyTorch 1.10, you may need to run `pod repo update` first), and you will see:
 
 ```
-Installing LibTorch-Lite (1.10.0)
+Installing LibTorch-Lite (1.11.0)
 Installing PlainPocketFFT (0.0.9)
 Installing PocketFFT (0.0.1)
 Installing RosaKit (0.0.6)

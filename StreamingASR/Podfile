@@ -6,6 +6,6 @@ target 'StreamingASR' do
   use_frameworks!
 
   # Pods for StreamingASR
-  pod 'LibTorch-Lite', '~>1.10.0'
+  pod 'LibTorch-Lite', '~>1.11.0'
   pod 'RosaKit'
 end
