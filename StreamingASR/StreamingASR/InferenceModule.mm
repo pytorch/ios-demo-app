@@ -12,6 +12,7 @@
 #import <AVFoundation/AVAudioSession.h>
 #import <AudioToolbox/AudioToolbox.h>
 
+const int INPUT_SIZE = 3200;
 
 @implementation InferenceModule {
     at::IValue hypo;
@@ -41,16 +42,16 @@
 }
 
 
-- (NSString*)recognize:(void*)modelInput melSpecX:(int)melSpecX melSpecY:(int)melSpecY {
+- (NSString*)recognize:(void*)modelInput {
     try {
-        at::Tensor tensorInputs = torch::from_blob((void*)modelInput, {1, melSpecX, melSpecY}, at::kFloat);
+        at::Tensor tensorInputs = torch::from_blob((void*)modelInput, {INPUT_SIZE}, at::kFloat);
         
         float* floatInput = tensorInputs.data_ptr<float>();
         if (!floatInput) {
             return nil;
         }
         NSMutableArray* inputs = [[NSMutableArray alloc] init];
-        for (int i = 0; i < melSpecX * melSpecY; i++) {
+        for (int i = 0; i < INPUT_SIZE; i++) {
             [inputs addObject:@(floatInput[i])];
         }
         

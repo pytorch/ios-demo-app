@@ -14,7 +14,7 @@
 		262B865F27B0E40800B8583C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 262B865E27B0E40800B8583C /* Assets.xcassets */; };
 		262B866227B0E40800B8583C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 262B866027B0E40800B8583C /* LaunchScreen.storyboard */; };
 		268D031027B1A868001A77D5 /* InferenceModule.mm in Sources */ = {isa = PBXBuildFile; fileRef = 268D030E27B1A868001A77D5 /* InferenceModule.mm */; };
-		26D52FF627B77A990047C990 /* streaming_asr.ptl in Resources */ = {isa = PBXBuildFile; fileRef = 26D52FF527B77A990047C990 /* streaming_asr.ptl */; };
+		26942F1C285D03330050C4BA /* streaming_asrv2.ptl in Resources */ = {isa = PBXBuildFile; fileRef = 26942F1B285D03330050C4BA /* streaming_asrv2.ptl */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,7 +29,7 @@
 		268D030727B1A40A001A77D5 /* StreamingASR-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "StreamingASR-Bridging-Header.h"; sourceTree = "<group>"; };
 		268D030E27B1A868001A77D5 /* InferenceModule.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = InferenceModule.mm; sourceTree = "<group>"; };
 		268D030F27B1A868001A77D5 /* InferenceModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InferenceModule.h; sourceTree = "<group>"; };
-		26D52FF527B77A990047C990 /* streaming_asr.ptl */ = {isa = PBXFileReference; lastKnownFileType = file; path = streaming_asr.ptl; sourceTree = "<group>"; };
+		26942F1B285D03330050C4BA /* streaming_asrv2.ptl */ = {isa = PBXFileReference; lastKnownFileType = file; path = streaming_asrv2.ptl; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,7 +73,7 @@
 				268D030F27B1A868001A77D5 /* InferenceModule.h */,
 				268D030E27B1A868001A77D5 /* InferenceModule.mm */,
 				268D030727B1A40A001A77D5 /* StreamingASR-Bridging-Header.h */,
-				26D52FF527B77A990047C990 /* streaming_asr.ptl */,
+				26942F1B285D03330050C4BA /* streaming_asrv2.ptl */,
 			);
 			path = StreamingASR;
 			sourceTree = "<group>";
@@ -145,8 +145,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				262B866227B0E40800B8583C /* LaunchScreen.storyboard in Resources */,
+				26942F1C285D03330050C4BA /* streaming_asrv2.ptl in Resources */,
 				262B865F27B0E40800B8583C /* Assets.xcassets in Resources */,
-				26D52FF627B77A990047C990 /* streaming_asr.ptl in Resources */,
 				262B865D27B0E40600B8583C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
