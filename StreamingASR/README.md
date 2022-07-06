@@ -9,9 +9,9 @@ This demo uses iOS [AVAudioEngine](https://developer.apple.com/documentation/avf
 
 ## Prerequisites
 
-* PyTorch 1.11 and torchaudio 0.11 (Optional)
+* PyTorch 1.12 and torchaudio 0.12 (Optional)
 * Python 3.8 or above (Optional)
-* iOS Cocoapods LibTorch-Lite 1.11.0
+* iOS Cocoapods LibTorch-Lite 1.12.0
 * Xcode 13 or later
 
 ## Quick Start
@@ -25,50 +25,41 @@ git clone https://github.com/pytorch/ios-demo-app
 cd ios-demo-app/StreamingASR
 ```
 
-If you don't have PyTorch 1.11 and torchaudio 0.11 installed or want to have a quick try of the demo app, you can download the optimized scripted model file [streaming_asr.ptl](https://drive.google.com/file/d/1awT_1S6H5IXSOOqpFLmpeg0B-kQVWG2y/view?usp=sharing), then drag and drop it to the project, and continue to Step 3.
+If you don't have PyTorch 1.12 and torchaudio 0.12 installed or want to have a quick try of the demo app, you can download the optimized scripted model file [streaming_asrv2.ptl](https://drive.google.com/file/d/1XRCAFpMqOSz5e7VP0mhiACMGCCcYfpk-/view?usp=sharing), then drag and drop it to the project, and continue to Step 3.
 
 
 ### 2. Test and Prepare the Model
 
-To install PyTorch 1.11, torchaudio 0.11, and other required Python packages (numpy and pyaudio), do something like this:
+To install PyTorch 1.12, torchaudio 0.12, and other required packages (numpy, pyaudio, and fairseq), do something like this:
 
 ```
-conda create -n pt1.11 python=3.8.5
-conda activate pt1.11
-pip install torch torchaudio numpy pyaudio
+conda create -n pt1.12 python=3.8.5
+conda activate pt1.12
+pip install torch torchaudio numpy pyaudio fairseq
 ```
 
-Now download the streaming ASR model file
-[scripted_wrapper_tuple_no_transform.pt](https://drive.google.com/file/d/1_49DwHS_a3p3THGdHZj3TXmjNJj60AhP/view?usp=sharing) to the `ios-demo-app/StreamingASR` directory.
+First, create the model file `scripted_wrapper_tuple.pt` by running `python generate_ts.py`.
 
-To test the model, run `python run_sasr.py`. After you see:
+Then, to test the model, run `python run_sasr.py`. After you see:
 ```
 Initializing model...
 Initialization complete.
 ```
-say something like "good afternoon happy new year", and you'll likely see the streaming recognition results `▁good ▁afternoon ▁happy ▁new ▁year` while you speak. Hit Ctrl-C to end.
+say something like "good afternoon happy new year", and you'll likely see the streaming recognition results `good afternoon happy new year` while you speak. Hit Ctrl-C to end.
 
-To optimize and convert the model to the format that can run on iOS, run the following commands:
+Finally, to optimize and convert the model to the format that can run on Android, run the following commands:
 ```
 python save_model_for_mobile.py
-mv streaming_asr.ptl StreamingASR
+mv streaming_asrv2.ptl StreamingASR
 ```
 
-### 3. Use LibTorch
+### 3. Use LibTorch-Lite
 
-Run the command `pod install` (if you're upgrading from PyTorch 1.10, you may need to run `pod repo update` first), and you will see:
+Run the command `pod install` (if you're upgrading from PyTorch 1.11, you may need to run `pod repo update` first), and you will see `Installing LibTorch-Lite (1.12.0)`.
 
-```
-Installing LibTorch-Lite (1.11.0)
-Installing PlainPocketFFT (0.0.9)
-Installing PocketFFT (0.0.1)
-Installing RosaKit (0.0.6)
-```
-
-The [RosaKit](https://github.com/dhrebeniuk/RosaKit) library is used to perform the audio [MelSpectrogram](https://pytorch.org/audio/stable/transforms.html#melspectrogram install) transformation.
+In the first version of the demo, the [RosaKit](https://github.com/dhrebeniuk/RosaKit) library is used to perform the audio [MelSpectrogram](https://pytorch.org/audio/stable/transforms.html#melspectrogram install) transformation. Since the updated model has the MelSpectrogram transformation built in, made possible since torchaudio version 0.11, we only need to feed the current mode with the raw audio input.
 
 Now run `open StreamingASR.xcworkspace` to open the project in Xcode.
-
 
 ### 4. Build and run with Xcode
 
