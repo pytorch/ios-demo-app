@@ -57,7 +57,7 @@ mv streaming_asrv2.ptl StreamingASR
 
 Run the command `pod install` (if you're upgrading from PyTorch 1.11, you may need to run `pod repo update` first), and you will see `Installing LibTorch-Lite (1.12.0)`.
 
-In the first version of the demo, the [RosaKit](https://github.com/dhrebeniuk/RosaKit) library is used to perform the audio [MelSpectrogram](https://pytorch.org/audio/stable/transforms.html#melspectrogram install) transformation. Since the updated model has the MelSpectrogram transformation built in, made possible since torchaudio version 0.11, we only need to feed the current mode with the raw audio input.
+In the first version of the demo, the [RosaKit](https://github.com/dhrebeniuk/RosaKit) library is used to perform the audio [MelSpectrogram](https://pytorch.org/audio/stable/transforms.html#melspectrogram) transformation. Since the updated model has the MelSpectrogram transformation built in, made possible since torchaudio version 0.11, we only need to feed the current mode with the raw audio input.
 
 Now run `open StreamingASR.xcworkspace` to open the project in Xcode.
 
@@ -69,9 +69,9 @@ After the app runs, tap the Start button and start saying something. Unlike the 
 ![](screenshot2.png)
 ![](screenshot3.png)
 
-A quick note on how the model works to help you better understand the iOS code - for every segment of 5 chunks of data, we perform transcription, which does the following:
+A quick note on how the model inference works to help you better understand the iOS code - for every segment of 5 chunks of data, we perform transcription, which does the following:
 
-1. Apply data transformation function to convert the segment of audio data to a tensor of features.
+1. Convert the segment of audio data to a tensor of features.
 
 2. Feed tensor of features and output of previous decoder invocation (token sequence and model state) to decoder, which iteratively runs the streaming ASR model to generate an output that comprises a token sequence (the recognition result) and model state.
 
