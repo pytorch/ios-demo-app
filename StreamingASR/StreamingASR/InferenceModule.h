@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (nullable instancetype)initWithFileAtPath:(NSString*)filePath
     NS_SWIFT_NAME(init(fileAtPath:))NS_DESIGNATED_INITIALIZER;
 - (instancetype)init NS_UNAVAILABLE;
-- (nullable NSString*)recognize:(void*)modelInput NS_SWIFT_NAME(recognize(modelInput));
+- (nullable NSString*)recognize:(const void*)modelInput NS_SWIFT_NAME(recognize(modelInput));
 @end
 
 NS_ASSUME_NONNULL_END
