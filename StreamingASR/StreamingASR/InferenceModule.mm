@@ -42,7 +42,7 @@ const int INPUT_SIZE = 3200;
 }
 
 
-- (NSString*)recognize:(void*)modelInput {
+- (NSString*)recognize:(const void*)modelInput {
     try {
         at::Tensor tensorInputs = torch::from_blob((void*)modelInput, {INPUT_SIZE}, at::kFloat);
         

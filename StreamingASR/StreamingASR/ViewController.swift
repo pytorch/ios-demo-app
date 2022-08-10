@@ -77,17 +77,11 @@ extension ViewController {
                 pcmBufferToBeProcessed += floatArray
             
                 if pcmBufferToBeProcessed.count >= CHUNK_TO_READ * CHUNK_SIZE {
-                    let samples = Array(pcmBufferToBeProcessed[0..<CHUNK_TO_READ * CHUNK_SIZE]) .map { Double($0)/1.0 }
+                    let samples = Array(pcmBufferToBeProcessed[0..<CHUNK_TO_READ * CHUNK_SIZE])
                     pcmBufferToBeProcessed = Array(pcmBufferToBeProcessed[(CHUNK_TO_READ - 1) * CHUNK_SIZE..<pcmBufferToBeProcessed.count])
                     
                     serialQueue.async {
-                        var modelInput = [Float32]()
-                        
-                        for i in 0..<INPUT_SIZE {
-                            modelInput.append(Float32(samples[i]))
-                        }
-                                            
-                        var result = self.module.recognize(&modelInput)
+                        var result = self.module.recognize(samples)
                         if result!.count > 0 {
                             result = result!.replacingOccurrences(of: "▁", with: "")
                             DispatchQueue.main.async {
