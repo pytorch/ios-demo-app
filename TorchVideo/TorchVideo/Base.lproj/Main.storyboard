@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1Pk-ic-63J">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1Pk-ic-63J">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -16,49 +17,49 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BAh-gy-asI">
-                                <rect key="frame" x="64" y="537" width="43" height="41"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <state key="normal" title="Test"/>
-                                <connections>
-                                    <action selector="testTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5df-Cb-lUm"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DQi-c5-Jqa">
-                                <rect key="frame" x="187" y="537" width="65" height="41"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <state key="normal" title="Select"/>
-                                <connections>
-                                    <action selector="selectTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="O0a-Y0-zXr"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MHq-hZ-5AA">
-                                <rect key="frame" x="292" y="537" width="43" height="41"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <state key="normal" title="Live"/>
-                                <connections>
-                                    <segue destination="mcG-bu-5pK" kind="show" id="jvI-ox-35y"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="To play pre-recorded videos, tap Test To select video from Camera Roll, tap Select To see live video classification, tap Live" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5gU-dN-k8N">
-                                <rect key="frame" x="64" y="594" width="271" height="105"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To play pre-recorded videos, tap Test To select video from Camera Roll, tap Select To see live video classification, tap Live" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5gU-dN-k8N">
+                                <rect key="frame" x="73" y="815" width="268" height="47"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="60" translatesAutoresizingMaskIntoConstraints="NO" id="2AH-fH-Zes">
+                                <rect key="frame" x="71.5" y="766" width="271" height="41"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BAh-gy-asI">
+                                        <rect key="frame" x="0.0" y="0.0" width="43" height="41"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                        <state key="normal" title="Test"/>
+                                        <connections>
+                                            <action selector="testTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5df-Cb-lUm"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DQi-c5-Jqa">
+                                        <rect key="frame" x="103" y="0.0" width="65" height="41"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                        <state key="normal" title="Select"/>
+                                        <connections>
+                                            <action selector="selectTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="O0a-Y0-zXr"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MHq-hZ-5AA">
+                                        <rect key="frame" x="228" y="0.0" width="43" height="41"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                        <state key="normal" title="Live"/>
+                                        <connections>
+                                            <segue destination="mcG-bu-5pK" kind="show" id="jvI-ox-35y"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="DQi-c5-Jqa" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="187" id="45n-wf-2Yf"/>
-                            <constraint firstItem="MHq-hZ-5AA" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="DQi-c5-Jqa" secondAttribute="trailing" constant="8" symbolic="YES" id="5P5-74-Mu4"/>
-                            <constraint firstItem="DQi-c5-Jqa" firstAttribute="baseline" secondItem="MHq-hZ-5AA" secondAttribute="baseline" id="9Lt-F5-F2s"/>
-                            <constraint firstItem="DQi-c5-Jqa" firstAttribute="baseline" secondItem="BAh-gy-asI" secondAttribute="baseline" id="H2o-ap-ykd"/>
-                            <constraint firstItem="DQi-c5-Jqa" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="BAh-gy-asI" secondAttribute="trailing" constant="8" symbolic="YES" id="P3d-DL-kgn"/>
-                            <constraint firstItem="BAh-gy-asI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="64" id="T1U-rQ-p5c"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="MHq-hZ-5AA" secondAttribute="trailing" constant="79" id="YFI-L1-Xhp"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="DQi-c5-Jqa" secondAttribute="bottom" constant="284" id="kJQ-9y-2BD"/>
+                            <constraint firstItem="2AH-fH-Zes" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="7Sh-b9-a20"/>
+                            <constraint firstItem="5gU-dN-k8N" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="IZC-79-RGG"/>
+                            <constraint firstItem="5gU-dN-k8N" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="WtL-4V-6gd"/>
+                            <constraint firstItem="5gU-dN-k8N" firstAttribute="top" secondItem="2AH-fH-Zes" secondAttribute="bottom" constant="8" symbolic="YES" id="uw5-hK-mDq"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="k0a-rL-UWW"/>
@@ -78,7 +79,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="83V-Un-WeH" customClass="CameraPreviewView" customModule="ObjectDetection" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="83V-Un-WeH" customClass="CameraPreviewView" customModule="TorchVideo" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="118" width="414" height="630"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7zP-Jr-oTE">

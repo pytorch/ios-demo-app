@@ -14,9 +14,9 @@ enum PredictorError: Swift.Error {
 protocol Predictor {}
 
 extension Predictor {
-    func topK(scores: [NSNumber], labels: [String], count: Int) -> [InferenceResult] {
-        let zippedResults = zip(labels.indices, scores)
-        let sortedResults = zippedResults.sorted { $0.1.floatValue > $1.1.floatValue }.prefix(count)
-        return sortedResults.map { InferenceResult(score: $0.1.floatValue, label: labels[$0.0]) }
-    }
+  func topK(scores: UnsafeBufferPointer<Float>, labels: [String], count: Int) -> [InferenceResult] {
+    let zippedResults = zip(scores, labels.indices)
+    let sortedResults = zippedResults.sorted { $0.0 > $1.0 }.prefix(count)
+    return sortedResults.map { InferenceResult(score: $0.0, label: labels[$0.1]) }
+  }
 }
