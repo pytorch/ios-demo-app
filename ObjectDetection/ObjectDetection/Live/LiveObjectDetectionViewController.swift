@@ -17,43 +17,51 @@ class LiveObjectDetectionViewController: ViewController {
     private var cameraController = CameraController()
     private var imageViewLive =  UIImageView()
     private var inferencer = ObjectDetector()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         cameraController.configPreviewLayer(cameraView)
         imageViewLive.frame = CGRect(x: 0, y: 0, width: cameraView.frame.size.width, height: cameraView.frame.size.height)
         cameraView.addSubview(imageViewLive)
-        
+
         cameraController.videoCaptureCompletionBlock = { [weak self] buffer, error in
             guard let strongSelf = self else { return }
             if error != nil {
                 return
             }
-            guard var pixelBuffer = buffer else { return }
-            
+            guard let pixelBuffer = buffer else { return }
+
             let currentTimestamp = CACurrentMediaTime()
             if (currentTimestamp - strongSelf.prevTimestampMs) * 1000 <= strongSelf.delayMs { return }
             strongSelf.prevTimestampMs = currentTimestamp
+
+            // UnsafeMutablePointer() doesn't guarantee that the converted pointer points to the memory that is still being allocated
+            // So we create a new pointer and copy the &pixelBuffer's memory to where it points to
+            let copiedBufferPtr = UnsafeMutablePointer<Float>.allocate(capacity: pixelBuffer.count)
+            copiedBufferPtr.initialize(from: pixelBuffer, count: pixelBuffer.count)
+
             let startTime = CACurrentMediaTime()
-            guard let outputs = self?.inferencer.module.detect(image: &pixelBuffer) else {
+            guard let outputs = self?.inferencer.module.detect(image: copiedBufferPtr) else {
+                copiedBufferPtr.deallocate()
                 return
             }
+            copiedBufferPtr.deallocate()
             let inferenceTime = CACurrentMediaTime() - startTime
-                
+
             DispatchQueue.main.async {
                 let ivScaleX : Double =  Double(strongSelf.imageViewLive.frame.size.width / CGFloat(PrePostProcessor.inputWidth))
                 let ivScaleY : Double = Double(strongSelf.imageViewLive.frame.size.height / CGFloat(PrePostProcessor.inputHeight))
 
                 let startX = Double((strongSelf.imageViewLive.frame.size.width - CGFloat(ivScaleX) * CGFloat(PrePostProcessor.inputWidth))/2)
                 let startY = Double((strongSelf.imageViewLive.frame.size.height -  CGFloat(ivScaleY) * CGFloat(PrePostProcessor.inputHeight))/2)
-                
+
                 let nmsPredictions = PrePostProcessor.outputsToNMSPredictions(outputs: outputs, imgScaleX: 1.0, imgScaleY: 1.0, ivScaleX: ivScaleX, ivScaleY: ivScaleY, startX: startX, startY: startY)
 
                 PrePostProcessor.cleanDetection(imageView: strongSelf.imageViewLive)
                 strongSelf.indicator.isHidden = true
                 strongSelf.benchmarkLabel.isHidden = false
                 strongSelf.benchmarkLabel.text = String(format: "%.2fms", 1000*inferenceTime)
-                
+
                 PrePostProcessor.showDetection(imageView: strongSelf.imageViewLive, nmsPredictions: nmsPredictions, classes: strongSelf.inferencer.classes)
             }
         }
