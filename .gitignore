@@ -37,3 +37,5 @@ Podfile.lock
 Carthage/Checkouts
 Carthage/Build
 
+#Core ML Model files
+*.mlmodel
