@@ -27,7 +27,7 @@ cd ObjectDetection-CoreML
 ```
 
 
-The Python script `export-nms.py` in the `yolov5` submodule folder is used to generate a Core ML -formatted YOLOv5 model. The script is a modified version of the original `export.py` script that inlcudes the NMS at the end of the model to support using iOS's Vision.
+The Python script `export-nms.py` in the `yolov5` submodule folder is used to generate a Core ML -formatted YOLOv5 model. The script is a modified version of the original `export.py` script that includes the NMS at the end of the model to support using iOS's Vision.
 
 Before running the script, create a python environment with python >=3.7 and install dependencies both in `requirements.txt` and `requirements-export.txt` with:
 
