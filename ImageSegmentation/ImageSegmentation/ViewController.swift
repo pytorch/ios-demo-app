@@ -37,9 +37,16 @@ class ViewController: UIViewController {
         let w = Int32(resizedImage.size.width)
         let h = Int32(resizedImage.size.height)
         DispatchQueue.global().async {
-            let buffer = self.module.segment(image: UnsafeMutableRawPointer(&pixelBuffer), withWidth:w, withHeight: h)
+            let copiedBufferPtr = UnsafeMutablePointer<Float>.allocate(capacity: pixelBuffer.count)
+            copiedBufferPtr.initialize(from: pixelBuffer, count: pixelBuffer.count)
+            let buffer = self.module.segment(image: copiedBufferPtr, withWidth:w, withHeight: h)
+            copiedBufferPtr.deallocate()
+            
+            let copiedOutputBufferPtr = UnsafeMutablePointer<CUnsignedChar>.allocate(capacity: Int(w * h * 3))
+            copiedOutputBufferPtr.initialize(from: buffer, count: Int(w * h * 3))
+            
             DispatchQueue.main.async {
-                self.imageView.image = self.imageHelper.convertRGBBuffer(toUIImage: buffer , withWidth: w, withHeight: h)
+                self.imageView.image = self.imageHelper.convertRGBBuffer(toUIImage: copiedOutputBufferPtr , withWidth: w, withHeight: h)
                 self.btnSegment.isEnabled = true
                 self.btnSegment.setTitle("Segment", for: .normal)
             }
