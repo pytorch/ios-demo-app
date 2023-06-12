@@ -17,7 +17,7 @@ class HandwrittenDigitRecognizer {
             let module = InferenceModule(fileAtPath: filePath) {
             return module
         } else {
-            fatalError("Failed to load model file vit4mnist.pth")
+            fatalError("Failed to load model file vit4mnist.ptl")
         }
     }()
         
