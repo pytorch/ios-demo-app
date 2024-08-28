@@ -26,12 +26,18 @@ class ViewController: UIViewController {
         let image = UIImage(named: "image.png")!
         imageView.image = image
         let resizedImage = image.resized(to: CGSize(width: 224, height: 224))
-        guard var pixelBuffer = resizedImage.normalized() else {
+        guard let pixelBuffer = resizedImage.normalized() else {
             return
         }
-        guard let outputs = module.predict(image: UnsafeMutableRawPointer(&pixelBuffer)) else {
+        // UnsafeMutablePointer() doesn't guarantee that the converted pointer points to the memory that is still being allocated
+        // So we create a new pointer and copy the &pixelBuffer's memory to where it points to
+        let copiedBufferPtr = UnsafeMutablePointer<Float>.allocate(capacity: pixelBuffer.count)
+        copiedBufferPtr.initialize(from: pixelBuffer, count: pixelBuffer.count)
+        guard let outputs = module.predict(image: copiedBufferPtr) else {
+            copiedBufferPtr.deallocate()
             return
         }
+        copiedBufferPtr.deallocate()
         let zippedResults = zip(labels.indices, outputs)
         let sortedResults = zippedResults.sorted { $0.1.floatValue > $1.1.floatValue }.prefix(3)
         var text = ""

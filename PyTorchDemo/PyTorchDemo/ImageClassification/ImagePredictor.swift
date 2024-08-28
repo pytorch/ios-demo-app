@@ -25,11 +25,18 @@ class ImagePredictor: Predictor {
             return nil
         }
         isRunning = true
+
+        // UnsafeMutablePointer() doesn't guarantee that the converted pointer points to the memory that is still being allocated
+        // So we create a new pointer and copy the &pixelBuffer's memory to where it points to
+        let copiedBufferPtr = UnsafeMutablePointer<Float>.allocate(capacity: buffer.count)
+        copiedBufferPtr.initialize(from: buffer, count: buffer.count)
+
         let startTime = CACurrentMediaTime()
-        var tensorBuffer = buffer;
-        guard let outputs = module.predict(image: UnsafeMutableRawPointer(&tensorBuffer)) else {
+        guard let outputs = module.predict(image: copiedBufferPtr) else {
+            copiedBufferPtr.deallocate()
             throw PredictorError.invalidInputTensor
         }
+        copiedBufferPtr.deallocate()
         isRunning = false
         let inferenceTime = (CACurrentMediaTime() - startTime) * 1000
         let results = topK(scores: outputs, labels: labels, count: resultCount)
