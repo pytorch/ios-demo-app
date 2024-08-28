@@ -2,6 +2,9 @@
 
 A list of iOS apps built on the powerful [PyTorch Mobile](https://pytorch.org/mobile) platform.
 
+> ### Note
+> PyTorch Mobile is no longer actively supported. Please check out [ExecuTorch](https://pytorch.org/executorch-overview), PyTorch’s all-new on-device inference library. You can learn more about ExecuTorch’s iOS demo apps [here](https://github.com/pytorch/executorch/tree/main/examples/demo-apps/apple_ios). 
+
 ### HelloWorld
 
 [HelloWorld](https://github.com/pytorch/ios-demo-app/tree/master/HelloWorld) is a simple image classification application that demonstrates how to use PyTorch C++ libraries on iOS. The code is written in Swift and uses Objective-C as a bridge.
