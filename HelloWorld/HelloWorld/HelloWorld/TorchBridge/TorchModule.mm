@@ -1,14 +1,20 @@
 #import "TorchModule.h"
-#import <Libtorch-Lite/Libtorch-Lite.h>
+#import "LibTorch-Lite.h"
 
 @implementation TorchModule {
- @protected
+@protected
   torch::jit::mobile::Module _impl;
+  at::Tensor _output;
+  int64_t _inputSize[4];
 }
 
-- (nullable instancetype)initWithFileAtPath:(NSString*)filePath {
+- (nullable instancetype)initWithFileAtPath:(NSString*)filePath width:(long)width height:(long)height {
   self = [super init];
   if (self) {
+    _inputSize[0] = 1;
+    _inputSize[1] = 3;
+    _inputSize[2] = width;
+    _inputSize[3] = height;
     try {
       _impl = torch::jit::_load_for_mobile(filePath.UTF8String);
     } catch (const std::exception& exception) {
@@ -19,23 +25,16 @@
   return self;
 }
 
-- (NSArray<NSNumber*>*)predictImage:(void*)imageBuffer {
+- (float*)predictImage:(void*)imageBuffer {
   try {
-    at::Tensor tensor = torch::from_blob(imageBuffer, {1, 3, 224, 224}, at::kFloat);
-    c10::InferenceMode guard;
-    auto outputTensor = _impl.forward({tensor}).toTensor();
-    float* floatBuffer = outputTensor.data_ptr<float>();
-    if (!floatBuffer) {
-      return nil;
-    }
-    NSMutableArray* results = [[NSMutableArray alloc] init];
-    for (int i = 0; i < 1000; i++) {
-      [results addObject:@(floatBuffer[i])];
-    }
-    return [results copy];
+    c10::InferenceMode guard(true);
+    at::Tensor tensor = torch::from_blob(imageBuffer, _inputSize, at::kFloat);
+    _output = _impl.forward({tensor}).toTensor().cpu();
+    return _output.data_ptr<float>();
   } catch (const std::exception& exception) {
     NSLog(@"%s", exception.what());
   }
+
   return nil;
 }
 

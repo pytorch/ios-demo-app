@@ -7,19 +7,33 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		492EFF2688481D0773EA77DA /* libPods-HelloWorld-Metal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C8FA3F26EDC2BFF1CFF70E63 /* libPods-HelloWorld-Metal.a */; };
 		8BA1BEFC26C1C13C008AD5B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA1BEFB26C1C13C008AD5B2 /* AppDelegate.swift */; };
 		8BA1BF0026C1C13C008AD5B2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA1BEFF26C1C13C008AD5B2 /* ViewController.swift */; };
 		8BA1BF0326C1C13C008AD5B2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BA1BF0126C1C13C008AD5B2 /* Main.storyboard */; };
 		8BA1BF0526C1C13D008AD5B2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8BA1BF0426C1C13D008AD5B2 /* Assets.xcassets */; };
 		8BA1BF0826C1C13D008AD5B2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BA1BF0626C1C13D008AD5B2 /* LaunchScreen.storyboard */; };
-		8BA1BF1026C1C2CC008AD5B2 /* image.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BA1BF0F26C1C2CC008AD5B2 /* image.png */; };
+		8BA1BF1026C1C2CC008AD5B2 /* wolf.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BA1BF0F26C1C2CC008AD5B2 /* wolf.png */; };
 		8BA1BF1726C1C305008AD5B2 /* words.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8BA1BF1526C1C305008AD5B2 /* words.txt */; };
 		8BA1BF1E26C1C356008AD5B2 /* UIImage+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA1BF1D26C1C356008AD5B2 /* UIImage+Helper.swift */; };
 		8BA1BF2926C1C885008AD5B2 /* TorchModule.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8BA1BF2726C1C885008AD5B2 /* TorchModule.mm */; };
 		8BA1BF4B26C1DDCD008AD5B2 /* model.pt in Resources */ = {isa = PBXBuildFile; fileRef = 8BA1BF4A26C1DDCD008AD5B2 /* model.pt */; };
+		BDCC15C627578D00005A979D /* animal-3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BDCC15BA27578CFF005A979D /* animal-3.jpg */; };
+		BDCC15C727578D00005A979D /* food-1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BDCC15BB27578CFF005A979D /* food-1.jpg */; };
+		BDCC15C827578D00005A979D /* car-3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BDCC15BC27578CFF005A979D /* car-3.jpg */; };
+		BDCC15C927578D00005A979D /* girl-1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BDCC15BD27578CFF005A979D /* girl-1.jpg */; };
+		BDCC15CA27578D00005A979D /* girl-2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BDCC15BE27578CFF005A979D /* girl-2.jpg */; };
+		BDCC15CC27578D00005A979D /* car-1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BDCC15C027578CFF005A979D /* car-1.jpg */; };
+		BDCC15CD27578D00005A979D /* car-2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BDCC15C127578D00005A979D /* car-2.jpg */; };
+		BDCC15CE27578D00005A979D /* animal-2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BDCC15C227578D00005A979D /* animal-2.jpg */; };
+		BDCC15CF27578D00005A979D /* kitten_small.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BDCC15C327578D00005A979D /* kitten_small.jpg */; };
+		BDCC15D027578D00005A979D /* girl-3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BDCC15C427578D00005A979D /* girl-3.jpg */; };
+		BDCC15D127578D00005A979D /* animal-1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BDCC15C527578D00005A979D /* animal-1.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2F88BD040F1A45FD07B00711 /* Pods-HelloWorld-Metal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HelloWorld-Metal.release.xcconfig"; path = "Target Support Files/Pods-HelloWorld-Metal/Pods-HelloWorld-Metal.release.xcconfig"; sourceTree = "<group>"; };
+		5D06AFB6753649843FB01282 /* Pods-HelloWorld-Metal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HelloWorld-Metal.debug.xcconfig"; path = "Target Support Files/Pods-HelloWorld-Metal/Pods-HelloWorld-Metal.debug.xcconfig"; sourceTree = "<group>"; };
 		8BA1BEF826C1C13C008AD5B2 /* HelloWorld-Metal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HelloWorld-Metal.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BA1BEFB26C1C13C008AD5B2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8BA1BEFF26C1C13C008AD5B2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -27,13 +41,25 @@
 		8BA1BF0426C1C13D008AD5B2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8BA1BF0726C1C13D008AD5B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8BA1BF0926C1C13D008AD5B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8BA1BF0F26C1C2CC008AD5B2 /* image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image.png; sourceTree = "<group>"; };
+		8BA1BF0F26C1C2CC008AD5B2 /* wolf.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wolf.png; sourceTree = "<group>"; };
 		8BA1BF1526C1C305008AD5B2 /* words.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = words.txt; sourceTree = "<group>"; };
 		8BA1BF1D26C1C356008AD5B2 /* UIImage+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Helper.swift"; sourceTree = "<group>"; };
 		8BA1BF2126C1C861008AD5B2 /* HelloWorld-Metal-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HelloWorld-Metal-Bridging-Header.h"; sourceTree = "<group>"; };
 		8BA1BF2726C1C885008AD5B2 /* TorchModule.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TorchModule.mm; sourceTree = "<group>"; };
 		8BA1BF2826C1C885008AD5B2 /* TorchModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TorchModule.h; sourceTree = "<group>"; };
 		8BA1BF4A26C1DDCD008AD5B2 /* model.pt */ = {isa = PBXFileReference; lastKnownFileType = file; path = model.pt; sourceTree = "<group>"; };
+		BDCC15BA27578CFF005A979D /* animal-3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "animal-3.jpg"; sourceTree = "<group>"; };
+		BDCC15BB27578CFF005A979D /* food-1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "food-1.jpg"; sourceTree = "<group>"; };
+		BDCC15BC27578CFF005A979D /* car-3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "car-3.jpg"; sourceTree = "<group>"; };
+		BDCC15BD27578CFF005A979D /* girl-1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "girl-1.jpg"; sourceTree = "<group>"; };
+		BDCC15BE27578CFF005A979D /* girl-2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "girl-2.jpg"; sourceTree = "<group>"; };
+		BDCC15C027578CFF005A979D /* car-1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "car-1.jpg"; sourceTree = "<group>"; };
+		BDCC15C127578D00005A979D /* car-2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "car-2.jpg"; sourceTree = "<group>"; };
+		BDCC15C227578D00005A979D /* animal-2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "animal-2.jpg"; sourceTree = "<group>"; };
+		BDCC15C327578D00005A979D /* kitten_small.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = kitten_small.jpg; sourceTree = "<group>"; };
+		BDCC15C427578D00005A979D /* girl-3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "girl-3.jpg"; sourceTree = "<group>"; };
+		BDCC15C527578D00005A979D /* animal-1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "animal-1.jpg"; sourceTree = "<group>"; };
+		C8FA3F26EDC2BFF1CFF70E63 /* libPods-HelloWorld-Metal.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HelloWorld-Metal.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,17 +67,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				492EFF2688481D0773EA77DA /* libPods-HelloWorld-Metal.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6934F693EDBC7C05977F1E39 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5D06AFB6753649843FB01282 /* Pods-HelloWorld-Metal.debug.xcconfig */,
+				2F88BD040F1A45FD07B00711 /* Pods-HelloWorld-Metal.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		8BA1BEEF26C1C13C008AD5B2 = {
 			isa = PBXGroup;
 			children = (
 				8BA1BEFA26C1C13C008AD5B2 /* HelloWorld-Metal */,
 				8BA1BEF926C1C13C008AD5B2 /* Products */,
+				6934F693EDBC7C05977F1E39 /* Pods */,
+				D598EFAF0D884557076C0509 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -66,7 +104,7 @@
 		8BA1BEFA26C1C13C008AD5B2 /* HelloWorld-Metal */ = {
 			isa = PBXGroup;
 			children = (
-				8BA1BF0F26C1C2CC008AD5B2 /* image.png */,
+				BDCC15B927578C5D005A979D /* images */,
 				8BA1BF1326C1C305008AD5B2 /* model */,
 				8BA1BF2526C1C885008AD5B2 /* TorchBridge */,
 				8BA1BEFB26C1C13C008AD5B2 /* AppDelegate.swift */,
@@ -99,6 +137,33 @@
 			path = TorchBridge;
 			sourceTree = "<group>";
 		};
+		BDCC15B927578C5D005A979D /* images */ = {
+			isa = PBXGroup;
+			children = (
+				8BA1BF0F26C1C2CC008AD5B2 /* wolf.png */,
+				BDCC15C527578D00005A979D /* animal-1.jpg */,
+				BDCC15C227578D00005A979D /* animal-2.jpg */,
+				BDCC15BA27578CFF005A979D /* animal-3.jpg */,
+				BDCC15C027578CFF005A979D /* car-1.jpg */,
+				BDCC15C127578D00005A979D /* car-2.jpg */,
+				BDCC15BC27578CFF005A979D /* car-3.jpg */,
+				BDCC15BB27578CFF005A979D /* food-1.jpg */,
+				BDCC15BD27578CFF005A979D /* girl-1.jpg */,
+				BDCC15BE27578CFF005A979D /* girl-2.jpg */,
+				BDCC15C427578D00005A979D /* girl-3.jpg */,
+				BDCC15C327578D00005A979D /* kitten_small.jpg */,
+			);
+			path = images;
+			sourceTree = "<group>";
+		};
+		D598EFAF0D884557076C0509 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C8FA3F26EDC2BFF1CFF70E63 /* libPods-HelloWorld-Metal.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -106,6 +171,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8BA1BF0C26C1C13D008AD5B2 /* Build configuration list for PBXNativeTarget "HelloWorld-Metal" */;
 			buildPhases = (
+				DD3150C9787B8E05005715ED /* [CP] Check Pods Manifest.lock */,
 				8BA1BEF426C1C13C008AD5B2 /* Sources */,
 				8BA1BEF526C1C13C008AD5B2 /* Frameworks */,
 				8BA1BEF626C1C13C008AD5B2 /* Resources */,
@@ -159,15 +225,51 @@
 			buildActionMask = 2147483647;
 			files = (
 				8BA1BF0826C1C13D008AD5B2 /* LaunchScreen.storyboard in Resources */,
+				BDCC15C927578D00005A979D /* girl-1.jpg in Resources */,
 				8BA1BF0526C1C13D008AD5B2 /* Assets.xcassets in Resources */,
+				BDCC15CA27578D00005A979D /* girl-2.jpg in Resources */,
+				BDCC15CC27578D00005A979D /* car-1.jpg in Resources */,
+				BDCC15D127578D00005A979D /* animal-1.jpg in Resources */,
 				8BA1BF0326C1C13C008AD5B2 /* Main.storyboard in Resources */,
+				BDCC15CF27578D00005A979D /* kitten_small.jpg in Resources */,
+				BDCC15C627578D00005A979D /* animal-3.jpg in Resources */,
+				BDCC15D027578D00005A979D /* girl-3.jpg in Resources */,
 				8BA1BF1726C1C305008AD5B2 /* words.txt in Resources */,
-				8BA1BF1026C1C2CC008AD5B2 /* image.png in Resources */,
+				BDCC15CE27578D00005A979D /* animal-2.jpg in Resources */,
+				8BA1BF1026C1C2CC008AD5B2 /* wolf.png in Resources */,
 				8BA1BF4B26C1DDCD008AD5B2 /* model.pt in Resources */,
+				BDCC15CD27578D00005A979D /* car-2.jpg in Resources */,
+				BDCC15C827578D00005A979D /* car-3.jpg in Resources */,
+				BDCC15C727578D00005A979D /* food-1.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		DD3150C9787B8E05005715ED /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HelloWorld-Metal-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8BA1BEF426C1C13C008AD5B2 /* Sources */ = {
@@ -321,15 +423,17 @@
 		};
 		8BA1BF0D26C1C13D008AD5B2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5D06AFB6753649843FB01282 /* Pods-HelloWorld-Metal.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UP6SS5ES7E;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "HelloWorld-Metal/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -346,15 +450,17 @@
 		};
 		8BA1BF0E26C1C13D008AD5B2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2F88BD040F1A45FD07B00711 /* Pods-HelloWorld-Metal.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UP6SS5ES7E;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "HelloWorld-Metal/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

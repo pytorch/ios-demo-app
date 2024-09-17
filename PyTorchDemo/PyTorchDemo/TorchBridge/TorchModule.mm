@@ -1,21 +1,17 @@
 #import "TorchModule.h"
-#import <LibTorch/LibTorch.h>
+#import <LibTorch-Lite.h>
 
 @implementation TorchModule {
- @protected
-  torch::jit::script::Module _impl;
+@protected
+  torch::jit::mobile::Module _model;
+  at::Tensor _output;
 }
 
 - (nullable instancetype)initWithFileAtPath:(NSString*)filePath {
   self = [super init];
   if (self) {
     try {
-      auto qengines = at::globalContext().supportedQEngines();
-      if (std::find(qengines.begin(), qengines.end(), at::QEngine::QNNPACK) != qengines.end()) {
-        at::globalContext().setQEngine(at::QEngine::QNNPACK);
-      }
-      _impl = torch::jit::load(filePath.UTF8String);
-      _impl.eval();
+      _model = torch::jit::_load_for_mobile(filePath.UTF8String);
     } catch (const std::exception& exception) {
       NSLog(@"%s", exception.what());
       return nil;
@@ -28,21 +24,12 @@
 
 @implementation VisionTorchModule
 
-- (NSArray<NSNumber*>*)predictImage:(void*)imageBuffer {
+- (float*)predictImage:(void*)imageBuffer {
   try {
+    c10::InferenceMode guard(true);
     at::Tensor tensor = torch::from_blob(imageBuffer, {1, 3, 224, 224}, at::kFloat);
-    torch::autograd::AutoGradMode guard(false);
-    at::AutoNonVariableTypeMode non_var_type_mode(true);
-    auto outputTensor = _impl.forward({tensor}).toTensor();
-    float* floatBuffer = outputTensor.data_ptr<float>();
-    if (!floatBuffer) {
-      return nil;
-    }
-    NSMutableArray* results = [[NSMutableArray alloc] init];
-    for (int i = 0; i < 1000; i++) {
-      [results addObject:@(floatBuffer[i])];
-    }
-    return [results copy];
+    _output = _model.forward({tensor}).toTensor();
+    return _output.data_ptr<float>();
   } catch (const std::exception& exception) {
     NSLog(@"%s", exception.what());
   }
@@ -53,22 +40,13 @@
 
 @implementation NLPTorchModule
 
-- (NSArray<NSNumber*>*)predictText:(NSString*)text {
+- (float*)predictText:(NSString*)text {
   try {
+    c10::InferenceMode guard(true);
     const char* buffer = text.UTF8String;
-    torch::autograd::AutoGradMode guard(false);
-    at::AutoNonVariableTypeMode non_var_type_mode(true);
     at::Tensor tensor = torch::from_blob((void*)buffer, {1, (int64_t)(strlen(buffer))}, at::kByte);
-    auto outputTensor = _impl.forward({tensor}).toTensor();
-    float* floatBuffer = outputTensor.data_ptr<float>();
-    if (!floatBuffer) {
-      return nil;
-    }
-    NSMutableArray* results = [[NSMutableArray alloc] init];
-    for (int i = 0; i < 16; i++) {
-      [results addObject:@(floatBuffer[i])];
-    }
-    return [results copy];
+    _output = _model.forward({tensor}).toTensor();
+    return _output.data_ptr<float>();
   } catch (const std::exception& exception) {
     NSLog(@"%s", exception.what());
   }
@@ -77,7 +55,7 @@
 
 - (NSArray<NSString*>*)topics {
   try {
-    auto genericList = _impl.run_method("get_classes").toList();
+    auto genericList = _model.run_method("get_classes").toList();
     NSMutableArray<NSString*>* topics = [NSMutableArray<NSString*> new];
     for (int i = 0; i < genericList.size(); i++) {
       std::string topic = genericList.get(i).toString()->string();

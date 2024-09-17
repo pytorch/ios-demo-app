@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
     NS_SWIFT_NAME(init(fileAtPath:))NS_DESIGNATED_INITIALIZER;
 + (instancetype)new NS_UNAVAILABLE;
 - (instancetype)init NS_UNAVAILABLE;
-- (nullable NSArray<NSNumber*>*)classifyFrames:(void*)framesBuffer NS_SWIFT_NAME(classify(frames:));
+- (nullable float*)classifyFrames:(void*)framesBuffer NS_SWIFT_NAME(classify(frames:));
 
 @end
 

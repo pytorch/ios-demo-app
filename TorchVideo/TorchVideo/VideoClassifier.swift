@@ -7,21 +7,21 @@
 import UIKit
 
 class VideoClassifier {
-    lazy var module: InferenceModule = {
-        if let filePath = Bundle.main.path(forResource: "video_classification", ofType: "ptl"),
-            let module = InferenceModule(fileAtPath: filePath) {
-            return module
-        } else {
-            fatalError("Failed to load model!")
-        }
-    }()
-    
-    lazy var classes: [String] = {
-        if let filePath = Bundle.main.path(forResource: "classes", ofType: "txt"),
-            let classes = try? String(contentsOfFile: filePath) {
-            return classes.components(separatedBy: .newlines)
-        } else {
-            fatalError("classes file was not found.")
-        }
-    }()
+  lazy var module: InferenceModule = {
+    guard let filePath = Bundle.main.path(forResource: "video_classification", ofType: "ptl"),
+          let module = InferenceModule(fileAtPath: filePath)
+    else {
+      fatalError("Failed to load model!")
+    }
+    return module
+  }()
+
+  lazy var classes: [Substring] = {
+    guard let filePath = Bundle.main.path(forResource: "classes", ofType: "txt"),
+          let classes = try? String(contentsOfFile: filePath)
+    else {
+      fatalError("classes file was not found.")
+    }
+    return classes.split(whereSeparator: \.isNewline)
+  }()
 }
