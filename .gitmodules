@@ -1,0 +1,3 @@
+[submodule "ObjectDetection-CoreML/yolov5"]
+	path = ObjectDetection-CoreML/yolov5
+	url = git@github.com:hietalajulius/yolov5.git
