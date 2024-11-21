@@ -1,4 +1,4 @@
 platform :ios, '14.3'
 target 'PyTorchDemo' do
-  pod 'LibTorch', '~>1.9.0'
+  pod 'LibTorch', '~>1.13.0'
 end
